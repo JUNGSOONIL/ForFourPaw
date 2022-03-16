@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
+import Vue from "vue";
+import VueRouter from "vue-router";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 import Main from "@/views/Main.vue";
 import Shop from "@/views/Shop.vue";
@@ -9,6 +9,7 @@ import ShopDetail from "@/views/ShopDetail.vue";
 import DogList from "@/views/DogList.vue";
 import BlogDetail from "@/views/BlogDetail.vue";
 import Blog from "@/views/Blog.vue";
+import SocialLogin from "@/views/SocialLogin.vue";
 
 export default new VueRouter({
   routes: [
@@ -46,10 +47,11 @@ export default new VueRouter({
       path: "/blogDetail",
       component: BlogDetail,
     },
+
+    {
+      name: "SocialLogin",
+      path: "/socialLogin",
+      component: SocialLogin,
+    },
   ],
 });
-
-
-
-
-
