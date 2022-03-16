@@ -13,6 +13,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.*;
@@ -32,7 +33,8 @@ public class PrincipalOauth2UserService {
     private final NetHttpTransport transport = new NetHttpTransport();
     private final JsonFactory jsonFactory = new GsonFactory();
 
-    private final String clientId = "172274534251-7a2a6sthcuviratis75u7gu7utbkdp8d.apps.googleusercontent.com";
+    @Value("{google.client-id}")
+    private String clientId;
 
     public UserDto tokenVerify(String idToken) {
 
@@ -106,7 +108,7 @@ public class PrincipalOauth2UserService {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=54115c9fc805ecfb96348d18733e6e4a");  //본인이 발급받은 key
+            sb.append("&client_id=8f6cc36f143aeef41e87ebc8f6a766ef");  //본인이 발급받은 rest api key
             sb.append("&redirect_uri=https://i6e203.p.ssafy.io/login/KaKaoLogin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
