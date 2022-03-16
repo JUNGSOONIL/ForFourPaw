@@ -9,6 +9,7 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Base64Utils;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.crypto.SecretKey;
 import java.io.UnsupportedEncodingException;
@@ -22,9 +23,8 @@ public class JwtService {
     UserDao userDao;
 
 
-//    @Value("{jwt.secret}")
-//    private String encodeKey;
-    private final String encodeKey = "6ZIjhannFz8FQQhGkPM80cx8aKhZJB1zF-L0BYFumUNGPoNorcTfqNVisFU2oxH_ZrpjoozNFb7b-3_qDMCeiQ";
+    @Value("{jwt.secret}")
+    private String encodeKey;
     private final Integer accessExpMin = 30;
     private final Integer refreshExpMin = 10080;
 
