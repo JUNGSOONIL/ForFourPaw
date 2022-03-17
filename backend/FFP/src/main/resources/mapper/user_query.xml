@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.UserDao">
+
+	<insert id="userRegister"
+		parameterType="com.ssafy.FFP.Dto.UserDto">
+		insert into user(email, nickname, name)
+		values (#{email}, #{nickname}, #{name})
+	</insert>
+
+	<select id="userSelect" parameterType="int"
+		resultType="com.ssafy.FFP.Dto.UserDto">
+		select no, email, nickname, name, profile_img as profileImg
+		from user
+		where no = #{no}
+	</select>
+
+	<select id="userSelectByEmail" parameterType="string"
+			resultType="com.ssafy.FFP.Dto.UserDto">
+		select no, email, nickname, name, profile_img as profileImg
+		from user
+		where email = #{email}
+	</select>
+
+	<select id="duplicateEmail" parameterType="String"
+		resultType="int">
+		select count(*)
+		from user
+		where email = #{email}
+	</select>
+
+	<select id="duplicateNickname" parameterType="String"
+		resultType="int">
+		select count(*)
+		from user
+		where nickname = #{nickname}
+	</select>
+
+	<delete id="userDelete" parameterType="int">
+		delete from user where
+		no = #{no}
+	</delete>
+
+	<update id="userUpdate"
+		parameterType="com.ssafy.FFP.Dto.UserDto">
+		update user
+		set nickname = #{nickname}, name = #{name}
+		where no = #{no}
+	</update>
+
+	<update id="userRefreshToken"
+			parameterType="com.ssafy.FFP.Dto.UserDto">
+		UPDATE user
+		SET refresh_token = #{refreshToken}
+		WHERE email = #{email}
+	</update>
+
+	<select id="selectRefreshToken" parameterType="String"
+			resultType="String">
+		select refresh_token as refreshToken
+		from user
+		where email = #{email}
+	</select>
+</mapper>
