@@ -8,7 +8,11 @@ RUN npm install
 RUN npm run build
 
 FROM nginx:stable-alpine as production-stage
+<<<<<<< HEAD
 COPY  ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+=======
+COPY  ./nginx.conf /etc/nginx/conf.d/default.conf
+>>>>>>> 597fbabf55b813ab6d227df4cef28e80768172ee
 
 COPY --from=build-stage /app/dist /usr/share/nginx/html
 CMD ["nginx", "-g", "daemon off;"]
