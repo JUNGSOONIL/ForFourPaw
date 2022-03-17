@@ -12,7 +12,7 @@ import Blog from "@/views/Blog.vue";
 import SocialLogin from "@/views/accounts/SocialLogin.vue";
 
 export default new VueRouter({
-  // mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: "/",
