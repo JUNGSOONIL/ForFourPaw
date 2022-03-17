@@ -9,9 +9,10 @@ import ShopDetail from "@/views/ShopDetail.vue";
 import DogList from "@/views/DogList.vue";
 import BlogDetail from "@/views/BlogDetail.vue";
 import Blog from "@/views/Blog.vue";
-import SocialLogin from "@/views/SocialLogin.vue";
+import SocialLogin from "@/views/accounts/SocialLogin.vue";
 
 export default new VueRouter({
+  mode: 'history',
   routes: [
     {
       path: "/",
@@ -53,5 +54,17 @@ export default new VueRouter({
       path: "/socialLogin",
       component: SocialLogin,
     },
+
+    {
+      name: 'KaKaoLogin',
+      path: '/KaKaoLogin',
+      component: () => import ('@/views/accounts/KaKaoLogin.vue'),
+      meta: {
+        loginRequired: false,
+        testRequired: false,
+        title: '카카오로 로그인하기'
+      }
+    },
+
   ],
 });
