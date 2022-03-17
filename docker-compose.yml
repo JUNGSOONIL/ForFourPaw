@@ -12,7 +12,7 @@ services:
       - "443:443" 
     # [인증서 파일 저장 경로]:/var/www/html
     volumes:
-      - /home/ubuntu/docker-volume/ssl_copy:/var/www/html
+      - /home/ubuntu/docker-volume/ssl-copy:/var/www/html
     container_name: "frontend"
   
   backend:
@@ -23,5 +23,5 @@ services:
     ports:
       - "8443:8443"  
     volumes:
-      - /home/ubuntu/docker-volume/ssl_copy:/root
+      - /home/ubuntu/docker-volume/ssl-copy:/root
     container_name: "backend"
