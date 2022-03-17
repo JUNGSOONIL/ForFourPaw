@@ -60,7 +60,7 @@ public class LoginController {
         String reqUrl =
                 "https://kauth.kakao.com/oauth/authorize"
                         + "?client_id=54115c9fc805ecfb96348d18733e6e4a"
-                        + "&redirect_uri=http://localhost:8080/login/oauth/kakao"
+                        + "&redirect_uri=https://j6e105.p.ssafy.io/login/oauth/kakao"
                         + "&response_type=code";
 
         return ResponseEntity.ok().body(reqUrl);
