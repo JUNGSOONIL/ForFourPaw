@@ -7,8 +7,7 @@
 		insert into user(email, nickname, name)
 		values (#{email}, #{nickname}, #{name})
 	</insert>
-	
-	
+
 	<select id="userSelect" parameterType="int"
 		resultType="com.ssafy.FFP.Dto.UserDto">
 		select no, email, nickname, name, profile_img as profileImg
@@ -24,7 +23,7 @@
 	</select>
 
 	<select id="duplicateEmail" parameterType="String"
-		resultType="int">	`
+		resultType="int">
 		select count(*)
 		from user
 		where email = #{email}
@@ -39,7 +38,7 @@
 
 	<delete id="userDelete" parameterType="int">
 		delete from user where
-		no = #{no};
+		no = #{no}
 	</delete>
 
 	<update id="userUpdate"
@@ -53,7 +52,7 @@
 			parameterType="com.ssafy.FFP.Dto.UserDto">
 		UPDATE user
 		SET refresh_token = #{refreshToken}
-		WHERE email = #{email};
+		WHERE email = #{email}
 	</update>
 
 	<select id="selectRefreshToken" parameterType="String"

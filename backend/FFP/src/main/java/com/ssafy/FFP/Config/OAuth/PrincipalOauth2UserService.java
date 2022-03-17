@@ -33,7 +33,7 @@ public class PrincipalOauth2UserService {
     private final NetHttpTransport transport = new NetHttpTransport();
     private final JsonFactory jsonFactory = new GsonFactory();
 
-    @Value("{google.client-id}")
+    @Value("${google.client-id}")
     private String clientId;
 
     public UserDto tokenVerify(String idToken) {
@@ -79,6 +79,7 @@ public class PrincipalOauth2UserService {
     }
 
     public int insertUser(UserDto userDto) {
+        System.out.println(userDto.getEmail());
         if (userDao.duplicateEmail(userDto.getEmail()) == 0) {
             int result = userDao.userRegister(userDto);
             return result;
@@ -109,7 +110,7 @@ public class PrincipalOauth2UserService {
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=8f6cc36f143aeef41e87ebc8f6a766ef");  //본인이 발급받은 rest api key
-            sb.append("&redirect_uri=https://i6e203.p.ssafy.io/login/KaKaoLogin");     // 본인이 설정해 놓은 경로
+            sb.append("&redirect_uri=http://localhost:5500/socialLogin/KaKaoLogin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
@@ -184,17 +185,21 @@ public class PrincipalOauth2UserService {
             String nickname = Long.toString((Long) jsonObject.get("id"));
             String email = (String) kakao_account.get("email");
             String profileImg = (String) profile.get("profile_image_url");
+            String name = (String) profile.get("nickname");
+
             System.out.println(nickname);
             System.out.println(email);
             userInfo.put("accessToken", access_Token);
             userInfo.put("nickname", nickname);
             userInfo.put("email", email);
             userInfo.put("profileImg", profileImg);
+            userInfo.put("nickname", nickname);
 
             UserDto userDto = new UserDto();
             userDto.setEmail((String) userInfo.get("email"));
             userDto.setEmail((String) userInfo.get("nickname"));
             userDto.setEmail((String) userInfo.get("profile_image_url"));
+            userDto.setName((String) userInfo.get("nickname"));
 
         } catch (IOException e) {
             // TODO Auto-generated catch block

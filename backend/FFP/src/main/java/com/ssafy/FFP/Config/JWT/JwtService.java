@@ -23,7 +23,7 @@ public class JwtService {
     UserDao userDao;
 
 
-    @Value("{jwt.secret}")
+    @Value("${jwt.secret}")
     private String encodeKey;
     private final Integer accessExpMin = 30;
     private final Integer refreshExpMin = 10080;
