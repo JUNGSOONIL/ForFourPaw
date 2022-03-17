@@ -28,6 +28,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .addPathPatterns("/**")
                 .excludePathPatterns("/users/update/**")
                 .excludePathPatterns("/login/**")
+                .excludePathPatterns("/login/oauth/**")
                 .excludePathPatterns("/kauth.kakao.com/**")
                 .excludePathPatterns("/kapi.kakao.com/**")
                 .excludePathPatterns("/error/**")

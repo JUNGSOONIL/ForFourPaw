@@ -9,14 +9,15 @@ import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
+@CrossOrigin(origins = {"http://localhost:5500", "https://j6e105.p.ssafy.io"}, allowCredentials = "true", allowedHeaders = "*", methods = {
+        RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.HEAD,
+        RequestMethod.OPTIONS })
+@RestController
 public class LoginController {
 
     @Autowired
@@ -66,7 +67,7 @@ public class LoginController {
     }
 
     // 카카오 연동정보 조회
-    @RequestMapping(value = "/login/oauth/kakao")
+    @RequestMapping(value = "/login/oauth/kakao", method = RequestMethod.POST)
     public ResponseEntity<?> oauthKakao(
             @RequestBody String code) throws Exception {
 
