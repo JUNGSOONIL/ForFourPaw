@@ -29,7 +29,7 @@ export default {
         console.log("카카오로그인 시작")
         axios({
             method: 'post',
-            url: 'http://localhost:8080/api/login/oauth/kakao',
+            url: '/api/login/oauth/kakao',
             data: code
         }).then((res) => {
             console.log('카카오 데이터 받아오기 : ' + res.data.email)

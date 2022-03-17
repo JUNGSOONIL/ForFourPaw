@@ -114,7 +114,7 @@ export default {
       console.log(error);
     },
     tokenVerify() {
-      const url = 'http://localhost:8080/api/login/oauth/google';
+      const url = '/api/login/oauth/google';
       const params = new URLSearchParams();
       params.append('idToken', this.googleUser.wc.id_token);
       console.log('idtoken : ' + this.googleUser.wc.id_token)
@@ -140,7 +140,7 @@ export default {
      handleClickKaKaoSignin() {
       const params = {
           //redirectUri: "https://i6e203.p.ssafy.io/login/KaKaoLogin",
-          redirectUri: "http://localhost:5500/socialLogin/KaKaoLogin",
+          redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
       };
       window.Kakao.Auth.authorize(params);
     },
