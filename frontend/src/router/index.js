@@ -10,6 +10,8 @@ import DogList from "@/views/DogList.vue";
 import BlogDetail from "@/views/BlogDetail.vue";
 import Blog from "@/views/Blog.vue";
 import SocialLogin from "@/views/accounts/SocialLogin.vue";
+import Analysis_Region from "@/views/analysis/Analysis_Region.vue";
+
 
 export default new VueRouter({
   mode: 'history',
@@ -17,6 +19,7 @@ export default new VueRouter({
     {
       path: "/",
       component: Main,
+     
     },
 
     {
@@ -35,6 +38,9 @@ export default new VueRouter({
       name: "DogList",
       path: "/dogList",
       component: DogList,
+      meta :{
+        title : 'ForFourPaw'
+      }
     },
 
     {
@@ -65,6 +71,13 @@ export default new VueRouter({
         title: '카카오로 로그인하기'
       }
     },
+
+    {
+      name: "Analysis_Region",
+      path: "/Analysis_Region",
+      component: Analysis_Region,
+    },
+
 
   ],
 });
