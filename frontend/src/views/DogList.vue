@@ -11,14 +11,14 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 class="title">Dog List</h2>
+                <h2 class="title">유기동물 목록</h2>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link to="/">Home</router-link>
+                      <router-link to="/"> 메인 </router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      Dog List
+                      유기 동물 목록
                     </li>
                   </ol>
                 </nav>
@@ -505,9 +505,40 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+const session = window.sessionStorage;
+
 export default {
-  name: "App",
+  name: "DogList",
   components: {},
+  methods : {
+    GetAnimalstest(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      let data = {
+        name: '',
+        type: ''
+       };
+
+      axios({
+              method: 'get',
+              url: '/api/qss/list',
+              data: data, // post 나 put에 데이터 넣어 줄때
+              headers: headers,  // 넣는거 까먹지 마세요
+            }).then((res) => {
+              this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
+              this.dispatch('accessTokenRefresh', res) // store에서
+            }).catch((error) => {
+              console.log(error);
+              }).then(() => {
+                console.log('getQSSList End!!');
+                });
+   
+    },
+  }, 
 };
 </script>
 
