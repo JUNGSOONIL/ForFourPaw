@@ -9,7 +9,7 @@ public interface UserService {
     public int userDelete(int no);
     public int duplicateEmail(String email);
     public int duplicateNickname(String nickname);
-    public int userUpdate(UserDto userDto, UserDto changuserDto);
+    public int userUpdate(UserDto changuserDto);
     public int userRefreshToken(UserDto userDto);
     public String selectRefreshToken(String email);
 }
