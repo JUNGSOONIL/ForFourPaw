@@ -14,7 +14,7 @@
 
     <!-- header-area -->
     <header>
-      <div class="header-top-area">
+      <!-- <div class="header-top-area">
         <div class="container custom-container">
           <div class="row align-items-center">
             <div class="col-md-7">
@@ -49,7 +49,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div id="sticky-header" class="menu-area">
         <div class="container custom-container">
           <div class="row">
@@ -58,19 +58,43 @@
               <div class="menu-wrap">
                 <nav class="menu-nav show">
                   <div class="logo">
-                    <a href="index.html"
+                    <router-link to="/"
                       ><img src="img/logo/paw_logo_2line.png" alt=""
-                    /></a>
+                    /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
                     <ul class="navigation">
                       <li class="active menu-item-has-children">
-                        <a href="index.html">Home</a>
+                        <router-link to="/">홈</router-link>
+                      </li>
+                      <!-- 헤더-유기동물 -->
+                      <li class="menu-item-has-children">
+                        <router-link to="/shop">유기동물</router-link>
+
                         <ul class="submenu">
-                          <li class="active">
-                            <a href="index.html">Home One</a>
+                          <li>
+                            <router-link to="/shop">Our Shop</router-link>
                           </li>
-                          <li><a href="index-2.html">Home Two</a></li>
+                          <li>
+                            <router-link to="/shopDetail"
+                              >Shop Details</router-link
+                            >
+                          </li>
+                        </ul>
+                      </li>
+                      <!-- 헤더-실종동물 -->
+                      <li class="menu-item-has-children">
+                        <router-link to="/shop">실종동물</router-link>
+
+                        <ul class="submenu">
+                          <li>
+                            <router-link to="/shop">Our Shop</router-link>
+                          </li>
+                          <li>
+                            <router-link to="/shopDetail"
+                              >Shop Details</router-link
+                            >
+                          </li>
                         </ul>
                       </li>
                       <li><router-link to="/dogList">Dog List</router-link></li>
@@ -88,13 +112,6 @@
                           </li>
                         </ul>
                       </li>
-                      <!-- <li><a href="adoption.html">Adoption</a></li>
-                                            <li class="menu-item-has-children"><a href="breeder.html">Breeder</a>
-                                                <ul class="submenu">
-                                                    <li><a href="breeder.html">Our Breeder</a></li>
-                                                    <li><a href="breeder-details.html">Breeder Details</a></li>
-                                                </ul>
-                                            </li> -->
                       <li class="menu-item-has-children">
                         <router-link to="/blog">Blog</router-link>
                         <ul class="submenu">
@@ -108,12 +125,23 @@
                           </li>
                         </ul>
                       </li>
+                      <!-- <li><a href="adoption.html">Adoption</a></li> -->
+                      <!-- <li class="menu-item-has-children">
+                        <a href="breeder.html">Breeder</a>
+                        <ul class="submenu">
+                          <li><a href="breeder.html">Our Breeder</a></li>
+                          <li>
+                            <a href="breeder-details.html">Breeder Details</a>
+                          </li>
+                        </ul>
+                      </li> -->
+
                       <!-- <li><a href="contact.html">contacts</a></li> -->
                     </ul>
                   </div>
                   <div class="header-action d-none d-md-block">
                     <ul>
-                      <li class="header-search">
+                      <!-- <li class="header-search">
                         <a href="#"><i class="flaticon-search"></i></a>
                       </li>
                       <li class="header-shop-cart">
@@ -169,11 +197,6 @@
                             </div>
                           </li>
                         </ul>
-                      </li>
-                      <!-- <li class="header-btn">
-                        <a href="adoption.html" class="btn"
-                          >로그인 <img src="img/icon/w_pawprint.png" alt=""
-                        /></a>
                       </li> -->
                       <li class="header-btn" v-if="!isLoginGetters">
                         <router-link to="/socialLogin" class="btn"
@@ -181,8 +204,17 @@
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
-                        <a @click="logout" class="btn">로그아웃</a
-                        ><img src="img/icon/w_pawprint.png" alt="" />
+                        <router-link to="/moreInfo" class="btn"
+                          >추가정보<img src="img/icon/w_pawprint.png" alt=""
+                        /></router-link>
+                      </li>
+                      <li class="header-btn" v-if="isLoginGetters">
+                        <router-link
+                          to="/logoutPage"
+                          class="btn"
+                          @click.native="logout"
+                          >로그아웃<img src="img/icon/w_pawprint.png" alt=""
+                        /></router-link>
                       </li>
                     </ul>
                   </div>
@@ -280,7 +312,8 @@ export default {
   },
   methods: {
     logout: function () {
-      this.$store.state.login.isLogin = false;
+      // this.$store.state.login.isLogin = false;
+      this.$store.commit("login/SET_LOGOUT");
     },
   },
 };
