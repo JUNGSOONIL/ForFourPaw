@@ -20,16 +20,35 @@
                 <h5 class="title">For Four Paw에 오신 걸 환영합니다.</h5>
 
                 <!-- OAuth 로그인 양식 맞춰서 만들기 빡세누.... -->
-                <!-- <div class="g-signin2">로그인</div> -->
-                <div>
-                  <button type="button" class="btn btn-outline-primary" @click="handleClickSignIn">
+                <div class="d-flex justify-content-center">
+                  <div class="google-btn btn-block" @click="handleClickSignIn">
+                    <div class="google-icon-wrapper btn-block">
+                      <img
+                        class="google-icon-svg"
+                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                      />
+                    </div>
+                    <p class="btn-text"><b>Sign in with Google</b></p>
+                  </div>
+                </div>
+                <!-- <div>
+                  <button type="button" class="btn" @click="handleClickSignIn">
                     구글
                   </button>
-                </div>
+                </div> -->
                 <div>
-                  <button type="button" class="btn btn-outline-primary" @click="handleClickKaKaoSignin">
+                  <button
+                    type="button"
+                    class="btn"
+                    @click="handleClickKaKaoSignin"
+                  >
                     카카오
                   </button>
+                </div>
+                <div v-if="!isLoginGetters">
+                  <router-link to="/" class="btn" @click.native="login"
+                    >로그인(테스트용)</router-link
+                  >
                 </div>
 
                 <!-- <form action="#" class="comment-reply-form">
@@ -67,20 +86,28 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 export default {
-  name: 'SocialLogin',
+  name: "SocialLogin",
   data: function () {
     return {
       credentials: {
-        email: null, 
+        email: null,
         pw: null,
       },
       googleUser: null,
       kakaoOauthUrl: null,
-    }
+    };
+  },
+  computed: {
+    isLoginGetters() {
+      return this.$store.getters["login/isLogin"];
+    },
   },
   methods: {
+    login: function () {
+      this.$store.commit("login/SET_LOGIN");
+    },
     //OAUTH-google
     async handleClickSignIn() {
       try {
@@ -97,57 +124,57 @@ export default {
           this.$gAuth.GoogleAuth.currentUser.get().getAuthResponse()
         );
         this.isSignIn = this.$gAuth.isAuthorized;
-        this.onSuccess(googleUser)
+        this.onSuccess(googleUser);
       } catch (error) {
         //on fail do something
-        this.onFailure(error)
+        this.onFailure(error);
       }
     },
     onSuccess(googleUser) {
       // eslint-disable-next-line
       console.log(googleUser);
       this.googleUser = googleUser;
-      this.tokenVerify()
+      this.tokenVerify();
     },
     onFailure(error) {
       // eslint-disable-next-line
       console.log(error);
     },
     tokenVerify() {
-      const url = '/api/login/oauth/google';
+      const url = "/api/login/oauth/google";
       const params = new URLSearchParams();
-      params.append('idToken', this.googleUser.wc.id_token);
-      console.log('idtoken : ' + this.googleUser.wc.id_token)
-      axios.post(url, params).then((res) => {
-        // alert("로그인 성공")
-        console.log(res.headers);
-        // this.$store.dispatch('allTokenRefresh', res)
-        //console.log(this.$store.state.userInfo.email)
-        this.sendToken();
-        // if (this.$store.state.userInfo.tel === null) {
-        //   this.$router.push('/moreInfo')
-        // }
-        // else{
-        //   //this.$store.commit('loginConfirmModalActivate')
-        //   // this.$router.push('EmotionTest')
-        //}
-      }).catch((error) => {
-        console.log(error);
-        // this.$store.commit('loginFailModalActivate')
-      })
+      params.append("idToken", this.googleUser.wc.id_token);
+      console.log("idtoken : " + this.googleUser.wc.id_token);
+      axios
+        .post(url, params)
+        .then((res) => {
+          // alert("로그인 성공")
+          console.log(res.headers);
+          // this.$store.dispatch('allTokenRefresh', res)
+          //console.log(this.$store.state.userInfo.email)
+          this.sendToken();
+          // if (this.$store.state.userInfo.tel === null) {
+          //   this.$router.push('/moreInfo')
+          // }
+          // else{
+          //   //this.$store.commit('loginConfirmModalActivate')
+          //   // this.$router.push('EmotionTest')
+          //}
+        })
+        .catch((error) => {
+          console.log(error);
+          // this.$store.commit('loginFailModalActivate')
+        });
     },
-    
-     handleClickKaKaoSignin() {
+
+    handleClickKaKaoSignin() {
       const params = {
-          //redirectUri: "https://i6e203.p.ssafy.io/login/KaKaoLogin",
-          redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
+        //redirectUri: "https://i6e203.p.ssafy.io/login/KaKaoLogin",
+        redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
       };
       window.Kakao.Auth.authorize(params);
     },
-
-  }
-
-
+  },
 };
 </script>
 
