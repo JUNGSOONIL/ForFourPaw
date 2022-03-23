@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.ShelnimalDao">
+
+    <select id="select" parameterType="int"
+            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+        select no, category, kind, color, age, care_addr as careAddr, shelter, shelter_tel as shelterTel,
+               neuter_yn as neuterYn, happen_place, happenPlace, process_state as processState, sum_img as sumImg,
+               img, notice_sdt as noticeSdt, notice_edt as noticeEdt, descr, weight, sex_cd as sexCd
+        from shelnimal
+        where no &lt; #{no}
+    </select>
+
+    <select id="list" parameterType="int"
+            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+        select no, category, kind, color, age, care_addr as careAddr, shelter, shelter_tel as shelterTel,
+               neuter_yn as neuterYn, happen_place, happenPlace, process_state as processState, sum_img as sumImg,
+               img, notice_sdt as noticeSdt, notice_edt as noticeEdt, descr, weight, sex_cd as sexCd
+        from shelnimal
+        WHERE notice_edt >= #{sdt}
+    </select>
+
+    <select id="find" parameterType="int"
+            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+        select no, category, kind, color, age, care_addr as careAddr, shelter, shelter_tel as shelterTel,
+               neuter_yn as neuterYn, happen_place as happenPlace, process_state as processState, sum_img as sumImg,
+               img, notice_sdt as noticeSdt, notice_edt as noticeEdt, descr, weight, sex_cd as sexCd
+        from shelnimal
+        WHERE no is not null
+        <if test ="category != null">
+            AND category = '%'||#{category}||'%'
+        </if>
+        <if test ="kind != null">
+            AND kind = '%'||#{kind}||'%'
+        </if>
+        <if test ="color != null">
+            AND color = '%'||#{color}||'%'
+        </if>
+        <if test ="age != null">
+            AND age = '%'||#{age}||'%'
+        </if>
+        <if test ="neuterYn != null">
+            AND neuter_yn = '%'||#{neuterYn}||'%'
+        </if>
+        <if test ="processState != null">
+            AND process_state = '%'||#{processState}||'%'
+        </if>
+        <if test ="descr != null">
+            AND descr = '%'||#{descr}||'%'
+        </if>
+        <if test ="sexCd != null">
+            AND sex_cd = '%'||#{sexCd}||'%'
+        </if>
+        <if test ="noticeSdt != null">
+            AND notice_sdt &lt; #{noticeSdt}
+        </if>
+        <if test ="noticeEdt != null">
+            AND notice_edt &gt; #{noticeEdt}
+        </if>
+    </select>
+
+</mapper>

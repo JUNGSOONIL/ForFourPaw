@@ -17,7 +17,7 @@ public class JwtInterceptor implements HandlerInterceptor {
     JwtService jwtService;
 
     @Autowired
-    UserService userService;
+     UserService userService;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

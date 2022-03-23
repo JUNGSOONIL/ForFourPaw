@@ -64,7 +64,7 @@ public class UserServiceImpl implements UserService{
             return FAIL;
     }
 
-    public int userUpdate(UserDto userDto, UserDto changeuserDto) { // 회원 수정
+    public int userUpdate(UserDto userDto) { // 회원 수정
         if (userDao.userUpdate(userDto) == SUCCESS) // 변경된 기존 유저정보를 가지고 db내용을 변경함
             return SUCCESS;
         else // 실패
