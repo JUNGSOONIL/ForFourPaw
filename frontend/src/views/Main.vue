@@ -47,7 +47,7 @@
               </div>
             </div>
           </div>
-          <div
+          <!-- <div
             class="single-slider slider-bg d-flex align-items-center"
             style="background-image: url('img/slider/slider_bg02.jpg')"
           >
@@ -88,7 +88,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="slider-shape">
           <img src="img/slider/slider_shape01.png" alt="" />
