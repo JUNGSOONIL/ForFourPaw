@@ -63,7 +63,7 @@ export default new VueRouter({
 
     {
       name: "KaKaoLogin",
-      path: "/KaKaoLogin",
+      path: "/socialLogin/KaKaoLogin",
       component: () => import("@/views/accounts/KaKaoLogin.vue"),
       meta: {
         loginRequired: false,
