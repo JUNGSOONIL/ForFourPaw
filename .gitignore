@@ -55,3 +55,6 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# ignore
+/frontend/vue.config.js

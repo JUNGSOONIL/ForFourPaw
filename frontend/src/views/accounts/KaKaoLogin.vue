@@ -8,6 +8,7 @@
 import axios from 'axios'
 
 const session = window.sessionStorage;
+import VueJwtDecode from 'vue-jwt-decode'
 
 
 export default {
@@ -38,9 +39,9 @@ export default {
             session.setItem('at-jwt-access-token', res.headers['at-jwt-access-token']);
             session.setItem('at-jwt-refresh-token', res.headers['at-jwt-refresh-token']);
 
-            // this.$store.dispatch('allTokenRefresh', res)
+            this.$store.dispatch('login/allTokenRefresh', res)
 
-            // this.sendToken();
+            this.sendToken();
 
             // if (this.$store.state.userInfo.tel === null) {
             //     this.$router.push('/moreInfo')
@@ -55,26 +56,26 @@ export default {
         });
     },
 
-    // sendToken() {
-    //     console.log('나는 sendToken!')
-    //     const decodeAccessToken = jwt.decode(session.getItem('at-jwt-access-token'));
-    //     let headers = null;
-    //     if(decodeAccessToken.exp < Date.now()/1000 + 60){
-    //     console.log('만료됨!!');
-    //     headers = {
-    //         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-    //         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-    //     }
-    //     console.log('headers : ', headers);
-    //     }else{
-    //     console.log('만료되지않음!!');
-    //     headers = {
-    //         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-    //         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-    //     }
-    //     console.log('headers : ', headers);
-    //     }
-    // }
+    sendToken() {
+        console.log('나는 sendToken!')
+        const decodeAccessToken = VueJwtDecode.decode(session.getItem('at-jwt-access-token'));
+        let headers = null;
+        if(decodeAccessToken.exp < Date.now()/1000 + 60){
+        console.log('만료됨!!');
+        headers = {
+            'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+            'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+        }
+        console.log('headers : ', headers);
+        }else{
+        console.log('만료되지않음!!');
+        headers = {
+            'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+            'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+        }
+        console.log('headers : ', headers);
+        }
+    }
 
   },
   created: function() {
