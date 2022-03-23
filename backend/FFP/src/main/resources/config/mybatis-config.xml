@@ -10,6 +10,9 @@
 
     <mappers>
         <mapper resource="mapper/user_query.xml" />
+        <mapper resource="mapper/shel_query.xml" />
+        <mapper resource="mapper/miss_query.xml" />
+        <mapper resource="mapper/comment_query.xml" />
 
     </mappers>
 

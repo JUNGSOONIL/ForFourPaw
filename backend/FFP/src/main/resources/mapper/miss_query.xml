@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.MissnimalDao">
+
+    <select id="select" parameterType="int"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select no, name, miss_addr as missAddr, descr, tel, color, kind, sex_cd as sexCd, guardian, distinction,
+               age, miss_date as missDate, animal_category as animalCategory, protect_category as protectCategory, img,
+               author
+        from missnimal
+        where no &lt; #{no}
+    </select>
+
+    <select id="list" parameterType="int"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select no, name, miss_addr as missAddr, descr, tel, color, kind, sex_cd as sexCd, guardian, distinction,
+               age, miss_date as missDate, animal_category as animalCategory, protect_category as protectCategory, img,
+               author
+        from missnimal
+        WHERE notice_edt >= #{sdt}
+    </select>
+
+    <select id="find" parameterType="int"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select no, name, miss_addr as missAddr, descr, tel, color, kind, sex_cd as sexCd, guardian, distinction,
+               age, miss_date as missDate, animal_category as animalCategory, protect_category as protectCategory, img,
+               author
+        from missnimal
+        WHERE no is not null
+        <if test ="category != null">
+            AND category = '%'||#{category}||'%'
+        </if>
+    </select>
+
+    <insert id="create"
+            parameterType="com.ssafy.FFP.Dto.MissnimalDto">
+        insert into missnimal(no, name, miss_addr as missAddr, descr, tel, color, kind, sex_cd as sexCd, guardian, distinction,
+                              age, miss_date as missDate, animal_category as animalCategory, protect_category as protectCategory, img,
+                              author)
+        values ()
+    </insert>
+
+    <delete id="delete" parameterType="int">
+        delete from missnimal where
+        no = #{no}
+    </delete>
+</mapper>
