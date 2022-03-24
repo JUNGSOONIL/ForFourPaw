@@ -13,7 +13,7 @@
         <mapper resource="mapper/shel_query.xml" />
         <mapper resource="mapper/miss_query.xml" />
         <mapper resource="mapper/comment_query.xml" />
-
+		<mapper resource="mapper/missmatch_query.xml" />
     </mappers>
 
 </configuration>
