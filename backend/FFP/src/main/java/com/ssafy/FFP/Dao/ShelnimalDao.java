@@ -14,4 +14,5 @@ public interface ShelnimalDao {
     public List<ShelnimalDto> list(String sdt);
     public List<ShelnimalDto> match(int userNo);
     public List<ShelnimalDto> find(SearchDto searchDto);
+    public List<ShelnimalDto> view();
 }

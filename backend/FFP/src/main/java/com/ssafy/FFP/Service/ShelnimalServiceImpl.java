@@ -36,4 +36,10 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     public List<ShelnimalDto> find(SearchDto searchDto) {
         return shelnimalDao.find(searchDto);
     }
+
+	@Override
+	public List<ShelnimalDto> view() {
+		List<ShelnimalDto> shelnimalDtos = shelnimalDao.view();
+		return shelnimalDtos;
+	}
 }

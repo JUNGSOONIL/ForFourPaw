@@ -58,5 +58,11 @@
             AND notice_edt &gt; #{noticeEdt}
         </if>
     </select>
+    
+    <select id="view" resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+        SELECT * 
+        FROM ffp.dataset 
+        ORDER BY RAND() LIMIT 10;
+    </select>
 
 </mapper>
