@@ -304,6 +304,8 @@
 </template>
 
 <script>
+const session = window.sessionStorage;
+
 export default {
   computed: {
     isLoginGetters() {
@@ -314,6 +316,7 @@ export default {
     logout: function () {
       // this.$store.state.login.isLogin = false;
       this.$store.commit("login/SET_LOGOUT");
+      session.clear();
     },
   },
 };
