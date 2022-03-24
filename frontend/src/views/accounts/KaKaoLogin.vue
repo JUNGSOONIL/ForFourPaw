@@ -49,6 +49,7 @@ export default {
             // else{
             //     this.$store.commit('loginConfirmModalActivate')
             // }
+            //dad
         }).catch((error) => {
             console.log(error);
         }).then(() => {
