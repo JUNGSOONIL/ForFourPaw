@@ -26,6 +26,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security' // 시큐리티
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' // OAUTH
 	implementation group: 'com.google.api-client', name: 'google-api-client', version: '1.32.1' // google api
+	implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.0.1.RELEASE' // aws
+
 
 	//map util
 	implementation group: 'org.apache.commons', name: 'commons-collections4', version: '4.1' // maputil
