@@ -3,34 +3,34 @@
 <mapper namespace="com.ssafy.FFP.Dao.UserDao">
 
 	<insert id="userRegister"
-		parameterType="com.ssafy.FFP.Dto.UserDto">
+			parameterType="com.ssafy.FFP.Dto.UserDto">
 		insert into user(email, nickname, name)
 		values (#{email}, #{nickname}, #{name})
 	</insert>
 
 	<select id="userSelect" parameterType="int"
-		resultType="com.ssafy.FFP.Dto.UserDto">
-		select no, email, nickname, name, profile_img as profileImg
+			resultType="com.ssafy.FFP.Dto.UserDto">
+		select no, email, nickname, name, profile_img as profileImg, addrs
 		from user
 		where no = #{no}
 	</select>
 
 	<select id="userSelectByEmail" parameterType="string"
 			resultType="com.ssafy.FFP.Dto.UserDto">
-		select no, email, nickname, name, profile_img as profileImg
+		select no, email, nickname, name, profile_img as profileImg, addrs
 		from user
 		where email = #{email}
 	</select>
 
 	<select id="duplicateEmail" parameterType="String"
-		resultType="int">
+			resultType="int">
 		select count(*)
 		from user
 		where email = #{email}
 	</select>
 
 	<select id="duplicateNickname" parameterType="String"
-		resultType="int">
+			resultType="int">
 		select count(*)
 		from user
 		where nickname = #{nickname}
@@ -42,9 +42,9 @@
 	</delete>
 
 	<update id="userUpdate"
-		parameterType="com.ssafy.FFP.Dto.UserDto">
+			parameterType="com.ssafy.FFP.Dto.UserDto">
 		update user
-		set nickname = #{nickname}, name = #{name}
+		set nickname = #{nickname}, name = #{name}, addrs = #{addrs}
 		where no = #{no}
 	</update>
 
