@@ -1,0 +1,1 @@
+docker exec -it hadoop sh -c "cd ~/docker && /bin/bash"
