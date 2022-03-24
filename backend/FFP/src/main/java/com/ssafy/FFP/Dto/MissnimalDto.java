@@ -16,14 +16,14 @@ public class MissnimalDto {
     private String missDate;
     private String animalCategory;
     private String protectCategory;
-    private String img;
+    private int img;
     private int author;
 
     public MissnimalDto() {
     }
 
     public MissnimalDto(int no, String name, String missAddr, String descr, String tel, String color, String kind, String sexCd, String guardian,
-                        String distinction, String age, String missDate, String animalCategory, String protectCategory, String img, int author) {
+                        String distinction, String age, String missDate, String animalCategory, String protectCategory, int img, int author) {
         this.no = no;
         this.name = name;
         this.missAddr = missAddr;
@@ -154,11 +154,11 @@ public class MissnimalDto {
         this.protectCategory = protectCategory;
     }
 
-    public String getImg() {
+    public int getImg() {
         return img;
     }
 
-    public void setImg(String img) {
+    public void setImg(int img) {
         this.img = img;
     }
 
