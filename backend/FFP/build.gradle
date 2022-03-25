@@ -70,11 +70,11 @@ dependencies {
 	testImplementation 'org.springframework.security:spring-security-test'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	
-		// spark kmeans
+
+	// spark kmeans
 	// https://mvnrepository.com/artifact/org.apache.spark/spark-mllib
-	compileOnly ('org.apache.spark:spark-mllib_2.12:2.4.3'){
-		exclude group : "org.slf4j", module : "slf4j-log4j12"
+	implementation ('org.apache.spark:spark-mllib_2.12:3.1.3') {
+		exclude group: "org.slf4j", module: "slf4j-log4j12"
 	}
 }
 
