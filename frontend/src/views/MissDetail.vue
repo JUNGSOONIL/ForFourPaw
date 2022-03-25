@@ -97,7 +97,7 @@
                       role="tab"
                       aria-controls="details"
                       aria-selected="true"
-                      >매칭 시스템</a
+                      >매칭</a
                     >
                   </li>
                   <li class="nav-item">
@@ -184,10 +184,58 @@
 </template>
 
 <script>
+import axios from 'axios'
+const session = window.sessionStorage;
 
 export default {
   name: "App",
   components: {},
+  data: function(){
+     return {
+       miss: {
+        kindCd : "말티즈",
+        colorCd : "흰색",
+        sexCd : "F",
+        orgNm : "서울특별시"
+       },
+       misslist:[],
+     }
+  },
+  load:{
+    
+  },
+  created() {
+    this.match();
+  },
+  methods:{
+    match(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+    };
+    let data = {
+      kindCd : "말티즈",
+      colorCd : "흰색",
+      sexCd : "F",
+      orgNm : "서울특별시"
+    };
+    axios({
+        method: 'post',
+        url: 'http://localhost:8080/kmeans',
+        data: data, // post 나 put에 데이터 넣어 줄때
+        headers: headers,  // 넣는거 까먹지 마세요
+      }).then((res) => {
+
+        this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
+        console.log(res);
+        this.misslist = res.data;
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('getQSSList End!!');
+      });
+    },
+  },
 };
 </script>
 
