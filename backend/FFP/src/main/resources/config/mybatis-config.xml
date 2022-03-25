@@ -13,7 +13,11 @@
         <mapper resource="mapper/shel_query.xml" />
         <mapper resource="mapper/miss_query.xml" />
         <mapper resource="mapper/comment_query.xml" />
+<<<<<<< HEAD
 		<mapper resource="mapper/missmatch_query.xml" />
+=======
+		<mapper resource="mapper/dataset_query.xml" />
+>>>>>>> feature/datasetBE
     </mappers>
 
 </configuration>
