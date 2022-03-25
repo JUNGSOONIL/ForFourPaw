@@ -6,6 +6,7 @@ Vue.use(VueRouter);
 import Main from "@/views/Main.vue";
 import Shop from "@/views/Shop.vue";
 import ShopDetail from "@/views/ShopDetail.vue";
+import MissDetail from "@/views/MissDetail.vue";
 import DogList from "@/views/DogList.vue";
 import BlogDetail from "@/views/BlogDetail.vue";
 import Blog from "@/views/Blog.vue";
@@ -32,6 +33,12 @@ export default new VueRouter({
       name: "ShopDetail",
       path: "/shopDetail",
       component: ShopDetail,
+    },
+
+    {
+      name: "MissDetail",
+      path: "/missDetail",
+      component: MissDetail,
     },
 
     {

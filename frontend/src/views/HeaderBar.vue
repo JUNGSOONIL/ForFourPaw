@@ -95,6 +95,11 @@
                               >Shop Details</router-link
                             >
                           </li>
+                                                    <li>
+                            <router-link to="/missDetail"
+                              >실종동물 상세</router-link
+                            >
+                          </li>
                         </ul>
                       </li>
                       <li><router-link to="/dogList">Dog List</router-link></li>
