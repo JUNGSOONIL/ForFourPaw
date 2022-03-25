@@ -4,53 +4,53 @@
 
 	<insert id="userRegister"
 			parameterType="com.ssafy.FFP.Dto.UserDto">
-		insert into user(email, nickname, name)
+		insert into ffp.user(email, nickname, name)
 		values (#{email}, #{nickname}, #{name})
 	</insert>
 
 	<select id="userSelect" parameterType="int"
 			resultType="com.ssafy.FFP.Dto.UserDto">
 		select no, email, nickname, name, profile_img as profileImg, addrs
-		from user
+		from ffp.user
 		where no = #{no}
 	</select>
 
 	<select id="userSelectByEmail" parameterType="string"
 			resultType="com.ssafy.FFP.Dto.UserDto">
 		select no, email, nickname, name, profile_img as profileImg, addrs
-		from user
+		from ffp.user
 		where email = #{email}
 	</select>
 
 	<select id="duplicateEmail" parameterType="String"
 			resultType="int">
 		select count(*)
-		from user
+		from ffp.user
 		where email = #{email}
 	</select>
 
 	<select id="duplicateNickname" parameterType="String"
 			resultType="int">
 		select count(*)
-		from user
+		from ffp.user
 		where nickname = #{nickname}
 	</select>
 
 	<delete id="userDelete" parameterType="int">
-		delete from user where
+		delete from ffp.user where
 		no = #{no}
 	</delete>
 
 	<update id="userUpdate"
 			parameterType="com.ssafy.FFP.Dto.UserDto">
-		update user
+		update ffp.user
 		set nickname = #{nickname}, name = #{name}, addrs = #{addrs}
 		where no = #{no}
 	</update>
 
 	<update id="userRefreshToken"
 			parameterType="com.ssafy.FFP.Dto.UserDto">
-		UPDATE user
+		UPDATE ffp.user
 		SET refresh_token = #{refreshToken}
 		WHERE email = #{email}
 	</update>
