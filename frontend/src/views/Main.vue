@@ -989,6 +989,14 @@
 export default {
   name: "App",
   components: {},
+  methods : {
+    shelimalList() {
+      
+    }
+  },
+  created() {
+
+  }
 };
 </script>
 
