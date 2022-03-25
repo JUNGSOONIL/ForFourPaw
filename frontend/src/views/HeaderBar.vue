@@ -91,8 +91,8 @@
                             <router-link to="/shop">Our Shop</router-link>
                           </li>
                           <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
+                            <router-link to="/missWrite"
+                              >실종동물 추가</router-link
                             >
                           </li>
                                                     <li>

@@ -91,18 +91,6 @@
                   <li class="nav-item">
                     <a
                       class="nav-link active"
-                      id="details-tab"
-                      data-toggle="tab"
-                      href="#details"
-                      role="tab"
-                      aria-controls="details"
-                      aria-selected="true"
-                      >매칭</a
-                    >
-                  </li>
-                  <li class="nav-item">
-                    <a
-                      class="nav-link"
                       id="review-tab"
                       data-toggle="tab"
                       href="#review"
@@ -112,24 +100,23 @@
                       >약관</a
                     >
                   </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="details-tab"
+                      data-toggle="tab"
+                      href="#details"
+                      role="tab"
+                      aria-controls="details"
+                      aria-selected="true"
+                      >매칭</a
+                    >
+                  </li>
                 </ul>
                 
                 <div class="tab-content" id="myTabContentTwo">
                   <div
                     class="tab-pane fade show active"
-                    id="details"
-                    role="tabpanel"
-                    aria-labelledby="details-tab"
-                  >
-                    <div class="product-desc-content">
-                      <h2>
-                        혹시 이 동물은 아니신가요? <br>
-                        포포포가 찾아드려요!
-                      </h2>
-                    </div>
-                  </div>
-                  <div
-                    class="tab-pane fade show"
                     id="review"
                     role="tabpanel"
                     aria-labelledby="details-tab"
@@ -143,6 +130,19 @@
 또한 「동물보호법」 제17조에 따른 공고가 있는 날부터 10일이 경과하여도 소유자 등을 알 수 없는 경우에는
 「유실물법」 제12조 및 「민법」 제253조의 규정에도 불구하고 해당 시·도지사 또는 시장·군수·구청장이 그 동물의 소유권을 취득하게 됩니다.
                       </p>
+                    </div>
+                  </div>
+                                    <div
+                    class="tab-pane fade show"
+                    id="details"
+                    role="tabpanel"
+                    aria-labelledby="details-tab"
+                  >
+                    <div class="product-desc-content">
+                      <h2>
+                        혹시 이 동물은 아니신가요? <br>
+                        포포포가 찾아드려요!
+                      </h2>
                     </div>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ export default {
     };
     axios({
         method: 'post',
-        url: 'http://localhost:8080/kmeans',
+        url: 'api/kmeans',
         data: data, // post 나 put에 데이터 넣어 줄때
         headers: headers,  // 넣는거 까먹지 마세요
       }).then((res) => {
