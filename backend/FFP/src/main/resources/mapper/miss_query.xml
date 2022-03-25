@@ -34,10 +34,10 @@
 
     <insert id="create"
             parameterType="com.ssafy.FFP.Dto.MissnimalDto">
-        insert into missnimal(no, name, miss_addr as missAddr, descr, tel, color, kind, sex_cd as sexCd, guardian, distinction,
-                              age, miss_date as missDate, animal_category as animalCategory, protect_category as protectCategory, img,
-                              author)
-        values ()
+        insert into missnimal(name, miss_addr as missAddr, descr, tel, color, kind, sex_cd as sexCd, guardian, distinction,
+                              age, miss_date as missDate, animal_category as animalCategory, protect_category as protectCategory, author)
+        values (#{name}, #{missAddr}, #{descr}, #{tel}, #{color}, #{kind}, #{sexCd}, #{guardian}, #{distinction}, #{age}, #{missDate}, #{animalCategory},
+                #{protectCategory}, #{author})
     </insert>
 
     <delete id="delete" parameterType="int">
