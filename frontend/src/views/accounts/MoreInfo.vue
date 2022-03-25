@@ -178,7 +178,7 @@ export default {
       if (
         this.isNickNameValid &&
         this.isNickNameDBValid &&
-        this.selected != ""
+        this.addrs != ""
       ) {
         console.log("send");
         axios({
@@ -195,6 +195,9 @@ export default {
             console.log(error);
           });
       } else {
+        console.log(this.isNickNameValid)
+        console.log(this.isNickNameDBValid)
+        console.log(this.addrs)
         this.$alertify.error("정보를 수정할 수 없습니다");
       }
     },
