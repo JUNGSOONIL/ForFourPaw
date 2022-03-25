@@ -87,7 +87,7 @@
 
 <script>
 import axios from "axios";
-import VueJwtDecode from 'vue-jwt-decode'
+import VueJwtDecode from "vue-jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -129,6 +129,7 @@ export default {
         );
         this.isSignIn = this.$gAuth.isAuthorized;
         this.onSuccess(googleUser);
+        this.login();
       } catch (error) {
         //on fail do something
         this.onFailure(error);
@@ -154,16 +155,17 @@ export default {
         .then((res) => {
           // alert("로그인 성공")
           console.log(res.headers);
-          this.$store.dispatch('login/allTokenRefresh', res)
-          console.log(this.$store.state.userInfo.email)
+          this.$store.dispatch("login/allTokenRefresh", res);
+          console.log(this.$store.getters["login/userInfo"]);
           this.sendToken();
-          // if (this.$store.state.userInfo.tel === null) {
-          //   this.$router.push('/moreInfo')
-          // }
-          // else{
-          //   //this.$store.commit('loginConfirmModalActivate')
-          //   // this.$router.push('EmotionTest')
-          //}
+          const info = this.$store.getters["login/userInfo"];
+          if (info.addrs === null) {
+            this.$router.push("/moreInfo");
+          } else {
+            //로그인기능 수행 라우팅
+            //this.$store.commit('loginConfirmModalActivate')
+            this.$router.push("/");
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -173,34 +175,34 @@ export default {
 
     handleClickKaKaoSignin() {
       const params = {
-          redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
-          //redirectUri: "http://localhost:5500/socialLogin/KaKaoLogin",
+        redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
+        //redirectUri: "http://localhost:5500/socialLogin/KaKaoLogin",
       };
       window.Kakao.Auth.authorize(params);
     },
 
     sendToken() {
-    console.log('나는 sendToken!')
-    const decodeAccessToken = VueJwtDecode.decode(session.getItem('at-jwt-access-token'));
-    let headers = null;
-      if(decodeAccessToken.exp < Date.now()/1000 + 60){
-        console.log('만료됨!!');
+      console.log("나는 sendToken!");
+      const decodeAccessToken = VueJwtDecode.decode(
+        session.getItem("at-jwt-access-token")
+      );
+      let headers = null;
+      if (decodeAccessToken.exp < Date.now() / 1000 + 60) {
+        console.log("만료됨!!");
         headers = {
-            'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-            'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-      }
-      console.log('headers : ', headers);
-      }else{
-        console.log('만료되지않음!!');
+          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
+          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
+        };
+        console.log("headers : ", headers);
+      } else {
+        console.log("만료되지않음!!");
         headers = {
-          'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-          'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-        }
-        console.log('headers : ', headers);
+          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
+          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
+        };
+        console.log("headers : ", headers);
       }
     },
-
-
   },
 };
 </script>
