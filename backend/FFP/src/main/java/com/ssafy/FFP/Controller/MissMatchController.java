@@ -21,11 +21,11 @@ import com.ssafy.FFP.Service.MissMatchService;
 @RestController
 public class MissMatchController {
 
-	@Autowired
-	MissMatchService service;
-
-	@PostMapping("/kmeans")
-	public List<DatasetDto> matching(@RequestBody Map<String, String> map) {
-		return service.matching(map);
-	}
+//	@Autowired
+//	MissMatchService missMatchService;
+//
+//	@PostMapping("/kmeans")
+//	public List<DatasetDto> matching(@RequestBody Map<String, String> map) {
+//		return missMatchService.matching(map);
+//	}
 }

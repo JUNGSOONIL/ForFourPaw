@@ -12,6 +12,7 @@ public class FfpApplication {
 			+ "classpath:security.yml";
 
 	public static void main(String[] args) {
+
 		new SpringApplicationBuilder(FfpApplication.class)
 				.properties(APPLICATION_LOCATIONS)
 				.run(args);
