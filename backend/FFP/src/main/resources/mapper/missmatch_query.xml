@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.MissMatchDao">
+
+		<select id="DataSelect" parameterType="Map" resultType="com.ssafy.FFP.Dto.DatasetDto">
+       		select *
+			from dataset
+			where happenDt between date_add(now(),interval -4 MONTH) and now() and kindCd like CONCAT('%',#{kindCd},'%');
+    	</select>
+    	
+</mapper>
