@@ -13,7 +13,7 @@ module.exports = {
       "/api": {
         //프록시 요청을 보낼 서버의 주소
         target: "https://j6e105.p.ssafy.io:8443",
-        //target: 'http://localhost:8080',
+        // target: 'http://localhost:8080',
         // target: 'http://3.38.149.72:8443',
         changeOrigin: true,
       },
