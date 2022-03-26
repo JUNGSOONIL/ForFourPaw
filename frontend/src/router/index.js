@@ -7,6 +7,7 @@ import Main from "@/views/Main.vue";
 import Shop from "@/views/Shop.vue";
 import ShopDetail from "@/views/ShopDetail.vue";
 import MissDetail from "@/views/MissDetail.vue";
+import ShelDetail from "@/views/ShelDetail.vue";
 import MissWrite from "@/views/MissWrite.vue";
 import DogList from "@/views/DogList.vue";
 import BlogDetail from "@/views/BlogDetail.vue";
@@ -42,6 +43,13 @@ export default new VueRouter({
       component: MissDetail,
     },
 
+    {
+      name: "ShelDetail",
+      path: "/shelDetail",
+      component: ShelDetail,
+      props: true,
+    },
+    
     {
       name: "MissWrite",
       path: "/missWrite",

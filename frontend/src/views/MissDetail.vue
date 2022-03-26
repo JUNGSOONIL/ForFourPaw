@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('img/bg/banner3.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -34,7 +34,7 @@
         <div class="container">
           <div class="shop-details-wrap">
             <div class="row">
-              <div class="col-7">
+              <div class="col-6">
                 <div class="shop-details-img-wrap">
                   <div class="tab-content" id="myTabContent">
                     <div
@@ -44,41 +44,138 @@
                       aria-labelledby="item-one-tab"
                     >
                       <div class="shop-details-img">
-                        <img src="img/product/shop_details01.jpg" alt="" />
+                        <img v-if="!miss.profile" src="../assets/img/image.png" alt="" style="
+                              background-color: #bcbcbc;
+                              width: 616px;
+                              height: 568px;
+                              border: 2px solid black;
+                        "/>
+                        <img v-else :src="miss.profile" alt="" style="
+                              width: 616px;
+                              height: 568px;
+                              border: 2px solid black;
+                        "/>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="col-5">
-                <div class="shop-details-content">
-                  <span>여기는 뭐쓰지</span>
-                  <h2 class="title">여기는 제목 쓰는게 좋을까?</h2>
-                  <!-- <div class="shop-details-review">
-                    <div class="rating">
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                      <i class="fas fa-star"></i>
-                    </div>
-                    <span>( 01 Review )</span>
-                  </div> -->
+              <div class="col-6">
+                <div id="test"
+                  style="
+                    border: 2px solid black;
+                    padding: 10px;
+                    width: 586px;
+                    height: 568px;
+                    overflow: auto;
+                  ">
                   <div class="shop-details-price">
-                    <h2 class="price">동물정보</h2>
-                    <!-- <h5 class="stock-status">- IN Stock</h5> -->
+                    <h2 class="price">사람 정보</h2>
+                    <h5 class="stock-status">- Person</h5>
                   </div>
                   <div class="shop-details-dimension">
-                    <span>이름 :</span>
-                    <span>품종 :</span>
-                    <span>색상 :</span>
-                    <span>성별 :</span>
-                    <span>작성자 :</span>
-                    <span>연락처 :</span>
-                    <span>실종날짜 :</span>
-                    <span>실종장소 :</span>
-                    <hr>
-                    <span>특이사항 :</span>
+                    <label for="personName">이름</label>
+                    <input
+                      id="personName"
+                      type="text"
+                      v-model="miss.author"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="personTel">전화번호</label>
+                    <input
+                      id="personTel"
+                      type="tel"
+                      v-model="miss.careTel"
+                      class="form-control"
+                      readonly
+                    />
+                  </div>
+                  <div class="shop-details-price">
+                    <h2 class="price">동물 정보</h2>
+                    <h5 class="stock-status">- Animal</h5>
+                  </div>
+                  <div class="shop-details-dimension">
+                    <label for="animalName">이름</label>
+                    <input
+                      id="animalName"
+                      type="text"
+                      v-model="miss.name"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="animalKind">품종</label>
+                    <input
+                      id="animalKind"
+                      type="text"
+                      v-model="miss.kindCd"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="animalColor">색상</label>
+                    <input
+                      id="animalColor"
+                      type="text"
+                      v-model="miss.colorCd"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="animalAge">나이</label>
+                    <input
+                      id="animalAge"
+                      type="text"
+                      v-model="miss.age"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="animalSex">성별</label>
+                    <input
+                      id="animalSex"
+                      type="text"
+                      v-model="miss.sexCd"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="animalneuter">중성화</label>
+                    <input
+                      id="animalneuter"
+                      type="text"
+                      v-model="miss.neuterYn"
+                      class="form-control"
+                      readonly
+                    />
+                    <!-- <br>
+                    <label for="animalneuterY">Y</label>
+                    <input type="radio" name="neuter" id="animalneuterY" value="Y" v-model="miss.neuterYn">
+                    <label for="animalneuterN">N</label>
+                    <input type="radio" name="neuter" id="animalneuterN" value="N" v-model="miss.neuterYn">
+                    <br> -->
+                    <label for="animalHappenDay">실종날짜</label>
+                    <input
+                      id="animalHappenDay"
+                      type="date"
+                      v-model="miss.happenDt"
+                      class="form-control"
+                      readonly
+                    />
+                    <label for="animalHappenPlace">실종장소</label>
+                    <div>
+                        <input
+                          id="animalHappenPlace"
+                          type="text"
+                          v-model="miss.happenPlace"
+                          class="form-control"
+                          readonly
+                        />
+                    </div>
+                    <label for="animalDesc">특이사항</label>
+                    <textarea
+                      id="animalDesc"
+                      type="text"
+                      v-model="miss.descr"
+                      class="form-control"
+                      readonly
+                    />
                   </div>
                 </div>
               </div>
@@ -132,7 +229,7 @@
                       </p>
                     </div>
                   </div>
-                                    <div
+                  <div
                     class="tab-pane fade show"
                     id="details"
                     role="tabpanel"
@@ -144,37 +241,40 @@
                         포포포가 찾아드려요!
                       </h2>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="related-products-wrap">
+
             <div class="row related-product-active">
-              <div  v-for="(miss, index) in misslist" v-bind:key="index" class="col-lg-3">
+              <div v-for="(miss, index) in misslist.slice(0,4)" v-bind:key="index" class="col-lg-3">
                 <div class="shop-item mb-55">
                   <div class="shop-thumb">
                     <a href="shop-details.html"
-                      ><img :src=miss.popfile alt="" 
+                      ><img :src=miss.popfile alt="" style="width:278px; height: 268px; border-radius: 70%"
                     /></a>
                   </div>
                   <div class="shop-content">
-                    <h4 class="title">
-                      <a href="shop-details.html">{{miss.noticeSdt}} ~ {{miss.noticeEdt}}</a>
-                    </h4>
+                    <h5 class="title">
+                      <a href="shop-details.html">{{miss.orgNm}} {{miss.happenPlace}}</a>
+                    </h5>
                     <div class="shop-content-bottom">
-                      <span class="price">{{miss.orgNm}}</span>
-                      <span class="price">{{miss.careNm}}</span>
-                      <span class="price">{{miss.careTel}}</span>
-                      <span class="add-cart"
-                        ><a href="shop-details.html">상세</a></span>
+                      <!-- <span class="price">{{miss.careNm}}</span> -->
+                      <span class="price">보호기관 : {{miss.careTel}}</span>
+                      <span class="add-cart">
+                        <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
+                          상세보기
+                        </router-link>
+                      </span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
+          <!-- <div class="related-products-wrap">
+            
+          </div> -->
         </div>
       </section>
       <!-- shop-details-area-end -->
@@ -193,16 +293,21 @@ export default {
   data: function(){
      return {
        miss: {
+        name : "말티",
         kindCd : "말티즈",
-        colorCd : "흰색",
-        sexCd : "F",
-        orgNm : "서울특별시"
-       },
+        colorCd: "흰색",
+        age: "5",
+        sexCd: "F",
+        neuterYn: "Y",
+        author: "홍길동",
+        careTel: "010-0000-0000",
+        happenDt: "2022-03-26",
+        happenPlace: "서울특별시 00구 00동 00역",
+        descr: "없음",
+        profile: "http://www.animal.go.kr/files/shelter/2021/12/202201011301749.jpg",
+       }, 
        misslist:[],
      }
-  },
-  load:{
-    
   },
   created() {
     this.match();
@@ -221,7 +326,7 @@ export default {
     };
     axios({
         method: 'post',
-        url: 'api/kmeans',
+        url: 'http://localhost:8080/kmeans',
         data: data, // post 나 put에 데이터 넣어 줄때
         headers: headers,  // 넣는거 까먹지 마세요
       }).then((res) => {
@@ -239,8 +344,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #app{
 
+}
+#test::-webkit-scrollbar {
+  width: 15px; /*스크롤바의 너비*/
+}
+
+#test::-webkit-scrollbar-thumb {
+  background-color: red; /*스크롤바의 색상*/
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 100px;
+}
+#test::-webkit-scrollbar-track {
+  background-color: white; /*스크롤바 트랙 색상*/
 }
 </style>
