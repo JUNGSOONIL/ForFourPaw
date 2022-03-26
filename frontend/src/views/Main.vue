@@ -991,11 +991,11 @@ export default {
   components: {},
   methods : {
     shelimalList() {
-      
+      this.$store.getters["Main/getList"];
     }
   },
-  created() {
-
+  mounted() {
+    this.shelimalList()
   }
 };
 </script>
