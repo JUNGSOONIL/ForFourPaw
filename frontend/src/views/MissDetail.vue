@@ -289,6 +289,11 @@ const session = window.sessionStorage;
 
 export default {
   name: "App",
+  props:{
+    no:{
+      type:Number,
+    },
+  },
   components: {},
   data: function(){
      return {
@@ -319,14 +324,14 @@ export default {
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
     };
     let data = {
-      kindCd : "말티즈",
-      colorCd : "흰색",
-      sexCd : "F",
-      orgNm : "서울특별시"
+      kindCd : this.miss.kindCd,
+      colorCd : this.miss.colorCd,
+      sexCd : this.miss.sexCd,
+      happenPlace : this.miss.happenPlace
     };
     axios({
         method: 'post',
-        url: 'http://localhost:8080/kmeans',
+        url: 'http://localhost:8080/kmeans', //여기 수정
         data: data, // post 나 put에 데이터 넣어 줄때
         headers: headers,  // 넣는거 까먹지 마세요
       }).then((res) => {
@@ -334,6 +339,25 @@ export default {
         this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
         console.log(res);
         this.misslist = res.data;
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('getQSSList End!!');
+      });
+    },
+    selectMiss(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+    };
+    axios({
+        method: 'get',
+        url: 'http://localhost:8080/kmeans' + this.no, // 여기 수정
+        headers: headers, 
+      }).then((res) => {
+        this.$store.dispatch('login/accessTokenRefresh', res) 
+        console.log(res);
+        this.miss = res; // 여기 수정
       }).catch((error) => {
         console.log(error);
       }).then(() => {
