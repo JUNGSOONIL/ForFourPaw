@@ -34,7 +34,7 @@ public class MissMatchServiceImpl implements MissMatchService {
 		DatasetDto missdto = new DatasetDto();
 		missdto.setSexCd(map.get("sexCd"));
 		missdto.setColorCd(map.get("colorCd"));
-		missdto.setOrgNm(map.get("orgNm"));
+		missdto.setOrgNm(map.get("happenPlace"));
 		ArrayList<DatasetDto> list = new ArrayList<DatasetDto>();
 		list.add(missdto);
 		list.addAll(missMatchtDao.DataSelect(map));
