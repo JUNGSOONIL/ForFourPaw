@@ -8,12 +8,10 @@ import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Map.Entry;
+import java.util.*;
 
-import static org.apache.spark.sql.functions.col;
-import static org.apache.spark.sql.functions.regexp_replace;
+import static org.apache.spark.sql.functions.*;
 
 @Service
 public class AnalysisServiceImpl implements  AnalysisService {
@@ -23,20 +21,17 @@ public class AnalysisServiceImpl implements  AnalysisService {
     private static final int FAIL = -1;
 
     static long[] valuearr;
+    static HashMap<String, Long > HM;
+    static List<AnalysisDto> list;
 
     @Override
     public AnalysisResultDto test() {
         AnalysisResultDto result = new AnalysisResultDto();
 
         result.setNumber(486);
-
-        System.out.println("스파크테스트");
+        // 스파크
+        System.out.println("[System] Spark 데이터 분석");
         String logFile = "src/main/resources/data/dataset.csv";
-
-//        SparkSession spark = SparkSession.builder().appName("simple app").config("spark.master", "local").getOrCreate();
-//
-//        Dataset<Row> logData = spark.read().csv(logFile);
-//        logData.show();
 
         SparkSession spark = SparkSession.builder()
                 .appName("simple app")
@@ -44,37 +39,8 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .getOrCreate();
 
         Dataset<Row> df = spark.read().option("delimiter", ";").option("header", "true").option("encoding", "euc-kr").csv(logFile);
-        //Dataset<Row> df = spark.read().csv(logFile);
 
-//        Dataset<Row> re  = df.groupBy("weight").count();
-//        Dataset<Row> re  = df.select("weight");
-//        .select(col("Description"),
-//                lower(col("Description")),
-//                upper(lower(col("Description"))))
-//                .show(2)
-////
-//        df.withColumn('year', substring('date', 1,4))\
-//    .withColumn('month', substring('date', 5,2))\
-//    .withColumn('day', substring('date', 7,2))
-
-//        df.select(col("a"), substring_index(col("a"), ",", 1).as("b"));
-
-        System.out.println("결과 출력");
-
-        // substring 사용
-//        df.withColumn("test", substring( col("weight"),0,-1 )).select("test").show();
-        // 무게별로 카운트 해버리기
-//        re.show(30);
-
-        // SQL 활용용
-//        df.createOrReplaceTempView("animal");
-//        Dataset<Row> sqlDF = spark.sql("SELECT * FROM animal LIMIT 3");
-//        sqlDF.show();
-
-        // 정규식
-
-//        val simpleColors = Seq("black", "white", "red", "green", "blue")
-//        val regexString = simpleColors.map(_.toUpperCase).mkString("|")
+        System.out.println("[System] 데이터 전처리 실행 ");
 
         Dataset<Row> re = df
 //                .select( regexp_replace( col("weight"), "[(]Kg[)]", "").alias("holyshit"), col("weight"))
@@ -83,22 +49,10 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .groupBy("holyshit2")
                 .count();
         re.show();
-//        re.foreach((ForeachFunction<Row>) row ->
-//                {
-//                    row.
-//                    System.out.println(row);
-//                }
-//        );
-
-        System.out.println("foreach사용해보기");
 
         valuearr = new long[11];
-
         re.foreach( now -> {
             // 변수 타입은 String
-//            System.out.print( "무게 : " + now.get(0) );
-//            System.out.println( " 수 : " + now.get(1) );
-
 //            String temp = now.get(0) + " >>>> " + now.get(1);
             String temp = (String) now.get(0);
             if (
@@ -107,10 +61,7 @@ public class AnalysisServiceImpl implements  AnalysisService {
                             && temp.contains("..") == false
                             && temp.charAt(0) != '.'
             ){
-//                    System.out.print(temp + " >>> ");
                 Double num = Double.parseDouble(temp);
-//                    System.out.println( num );
-//                    System.out.println( (long) now.get(1) + 1000000 );
                 if ( 0 <= num && num < 1){
                     valuearr[0] += (long) now.get(1);
                 } else if ( 1 <= num && num < 2 ){
@@ -147,6 +98,113 @@ public class AnalysisServiceImpl implements  AnalysisService {
             System.out.println(result_list.get(i).toString());
         }
         result.setList(result_list);
+
+        // 날짜 분류 코드
+        Dataset<Row> date_re = df
+//                .select( regexp_replace( col("weight"), "[(]Kg[)]", "").alias("holyshit"), col("weight"))
+                .select( regexp_replace( col("happenDt"), "20[0-9]{2}|[^0-9]", "").alias("date"), col("happenDt"))
+                .groupBy("date")
+                .count();
+        date_re.show();
+
+        valuearr = new long[12];
+        date_re.foreach( now -> {
+            String temp = (String) now.get(0);
+            int month = Integer.parseInt(temp.substring(0,2));
+//            long monthvalue = Long.parseLong( (String) now.get(1) );
+            if ( month <= 12){
+                valuearr[month-1] += (long) now.get(1);
+            }
+        });
+        // 결과 출력
+        System.out.println("월별 통계");
+        System.out.println(Arrays.toString(valuearr));
+        List<AnalysisDto> date_list = new ArrayList<AnalysisDto>();
+        for (int i = 0 ; i < 12; i++ ){
+            date_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
+        }
+        result.setDatelist(date_list);
+
+        // 풍종 분류
+        System.out.println("[system] 품종 별로 분류");
+        re  = df
+                .select( regexp_replace( col("kindCd"), "(?!개|고|기).|", "").alias("kind"), col("kindCd"))
+                .groupBy("kind")
+                .count();
+        re.show(30);
+        valuearr = new long[3];
+        re.foreach( now -> {
+            String temp = (String) now.get(0);
+            if ( temp.length() >= 1 ){
+                if ( temp.charAt(0) == '개' ) {
+                    valuearr[0] += (long) now.get(1);
+                } else if ( temp.charAt(0) == '고' ) {
+                    valuearr[1] += (long) now.get(1);
+                } else if ( temp.charAt(0) == '기' ) {
+                    valuearr[2] += (long) now.get(1);
+                }
+            }
+        });
+        System.out.println("동물 별 통계");
+        System.out.println(Arrays.toString(valuearr));
+        List<AnalysisDto> kind_list = new ArrayList<AnalysisDto>();
+        for (int i = 0 ; i < valuearr.length ; i++ ){
+            kind_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
+        }
+        result.setKindlist(kind_list);
+
+        // 품종 분류2
+        System.out.println("[system] 품종 별로 분류 2");
+        re  = df
+                .select( regexp_replace( col("kindCd"), "\\[개\\]|\\[고양이\\]|\\[기타축종\\]|[^가-힣]", "").alias("kind"), col("kindCd"))
+                .groupBy("kind")
+                .count();
+        re = re.orderBy(desc("count"));
+
+        re.show(200);
+        HM = new HashMap<String,Long>();
+
+        re.foreach( now -> {
+            String temp = (String) now.get(0);
+            long value = (long) now.get(1);
+            if ( value >= 20 ){
+                if ( temp.length() < 1 ||temp.equals("길고양이") || temp.equals("믹스묘") || temp.equals("고양이") || temp.equals("코숏") || temp.equals("혼합") || temp.equals("한국고양이") ){
+                    temp = "코리안 숏헤어";
+                } else if ( temp.equals("혼종") || temp.equals("발바리")
+                        || temp.equals("mix") || temp.equals("믹스") || temp.equals("혼합종")
+                        || temp.equals("믹스견") || temp.equals("잡종") || temp.equals("강아지") ) {
+                    temp = "믹스견";
+                }
+                // 데이터에 넣기
+                HM.put(temp, HM.getOrDefault(temp, (long) 0) + value);
+            }
+        });
+
+        ArrayList<AnalysisDto> kind_list2 = new ArrayList<AnalysisDto>();
+        for ( Entry<String, Long> entry : HM.entrySet()) {
+            kind_list2.add( new AnalysisDto( entry.getKey(), entry.getValue() ));
+//            System.out.println("[Key]:" + entry.getKey() + " [Value]:" + entry.getValue());
+        }
+        result.setKindlist2(kind_list2);
+
+        // 지역 통계
+        System.out.println("[system] 지역 통계");
+        re  = df
+                .select( regexp_replace( col("orgNm"), "(?<=도|시)[ 가-힣]+", "").alias("region"), col("orgNm"))
+                .groupBy("region")
+                .count();
+        re = re.orderBy(desc("count"));
+        re.show(100);
+
+        list = new ArrayList<AnalysisDto>();
+        re.foreach( now -> {
+            String temp = (String) now.get(0);
+            long value = (long) now.get(1);
+            if ( value >= 10 ) {
+                list.add(new AnalysisDto(temp,value));
+            }
+        });
+        result.setRegionlist(list);
 
         // 여기서 실행
         return result;
