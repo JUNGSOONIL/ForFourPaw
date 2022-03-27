@@ -41,6 +41,7 @@ export default new VueRouter({
       name: "MissDetail",
       path: "/missDetail",
       component: MissDetail,
+      props: true,
     },
 
     {
