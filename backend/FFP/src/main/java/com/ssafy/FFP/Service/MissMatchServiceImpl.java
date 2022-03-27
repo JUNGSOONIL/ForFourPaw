@@ -29,6 +29,8 @@ public class MissMatchServiceImpl implements MissMatchService {
 	@Autowired
 	MissMatchDao missMatchtDao;
 	
+	static SparkConf conf = new SparkConf().setAppName("JavaKMeansExample").setMaster("local");
+	
 	@Override
 	public List<DatasetDto> matching(Map<String, String> map) {
 		DatasetDto missdto = new DatasetDto();
@@ -97,7 +99,6 @@ public class MissMatchServiceImpl implements MissMatchService {
 		// CSV 파일 읽고 Kmeans 돌리기
 		String path = "src/main/resources/recommend.csv";
 
-		SparkConf conf = new SparkConf().setAppName("JavaKMeansExample").setMaster("local");
 		JavaSparkContext jsc = new JavaSparkContext(conf);
 		JavaRDD<String> data = jsc.textFile(path);
 	
