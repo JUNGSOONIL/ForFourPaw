@@ -299,31 +299,23 @@ export default {
      }
   },
   created() {
-    this.match();
     alert(this.no)
+    this.selectShel();
   },
   methods:{
-    match(){
+    selectShel(){
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
     };
-    let data = {
-      kindCd : "말티즈",
-      colorCd : "흰색",
-      sexCd : "F",
-      orgNm : "서울특별시"
-    };
     axios({
-        method: 'post',
-        url: 'http://localhost:8080/kmeans',
-        data: data, // post 나 put에 데이터 넣어 줄때
-        headers: headers,  // 넣는거 까먹지 마세요
+        method: 'get',
+        url: 'http://localhost:8080/kmeans' + this.no, // 여기 수정
+        headers: headers, 
       }).then((res) => {
-
-        this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
+        this.$store.dispatch('login/accessTokenRefresh', res) 
         console.log(res);
-        this.misslist = res.data;
+        this.miss = res; // 여기 수정
       }).catch((error) => {
         console.log(error);
       }).then(() => {
