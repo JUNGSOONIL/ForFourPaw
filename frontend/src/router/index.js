@@ -54,6 +54,7 @@ export default new VueRouter({
       name: "MissWrite",
       path: "/missWrite",
       component: MissWrite,
+      props: true,
     },
 
     {
