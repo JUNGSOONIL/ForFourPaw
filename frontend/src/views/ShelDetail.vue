@@ -310,7 +310,7 @@ export default {
     };
     axios({
         method: 'get',
-        url: 'http://localhost:8080/kmeans' + this.no, // 여기 수정
+        url: '/api/shel/' + this.no, // 여기 수정
         headers: headers, 
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 

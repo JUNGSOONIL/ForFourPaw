@@ -331,7 +331,7 @@ export default {
     };
     axios({
         method: 'post',
-        url: 'http://localhost:8080/kmeans', //여기 수정
+        url: '/api/kmeans', //여기 수정
         data: data, // post 나 put에 데이터 넣어 줄때
         headers: headers,  // 넣는거 까먹지 마세요
       }).then((res) => {
@@ -352,7 +352,7 @@ export default {
     };
     axios({
         method: 'get',
-        url: 'http://localhost:8080/kmeans' + this.no, // 여기 수정
+        url: '/api/miss/' + this.no, // 여기 수정
         headers: headers, 
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 
