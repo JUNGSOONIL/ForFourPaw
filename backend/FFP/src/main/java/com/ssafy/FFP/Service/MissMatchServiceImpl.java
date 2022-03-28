@@ -48,7 +48,7 @@ public class MissMatchServiceImpl implements MissMatchService {
 		String[] gugun = new String[] {"인천광역시","서울특별시","경기도","강원도","세종특별자치시","대전광역시","충청남도","충청북도","경상북도","대구광역시","울산광역시","경상남도","부산광역시","전라북도","전라남도","광주광역시","제주특별자치도"};
 		String[] sex = new String[] {"F","Q","M"};
 		String[] color = new String[] {"흰","힌","휜","하","화","백","white","베","아이","황","크림","노","누","골","금","gold","붉","빨","분","커피","브라","갈","밤","쵸","초코","초콜","초","녹","실버","그","회","감장","흑","블","검","black","바둑","젖소","점박","얼룩","삼색","호피","블루","고","치즈","턱시","코숏"};
-		File csv = new File("src/main/resources/recommend.csv");
+		File csv = new File("/recommend.csv");
 		BufferedWriter bw = null; // 출력 스트림 생성
 		try {
 			bw = new BufferedWriter(new FileWriter(csv));
@@ -97,7 +97,7 @@ public class MissMatchServiceImpl implements MissMatchService {
 		}
 
 		// CSV 파일 읽고 Kmeans 돌리기
-		String path = "src/main/resources/recommend.csv";
+		String path = "/recommend.csv";
 
 		JavaSparkContext jsc = new JavaSparkContext(conf);
 		JavaRDD<String> data = jsc.textFile(path);
