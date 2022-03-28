@@ -4,46 +4,49 @@
 
     <select id="select" parameterType="int"
             resultType="com.ssafy.FFP.Dto.ShelnimalDto">
-        select no, category, kind, color, age, care_addr as careAddr, shelter, shelter_tel as shelterTel,
-               neuter_yn as neuterYn, happen_place, happenPlace, process_state as processState, sum_img as sumImg,
-               img, notice_sdt as noticeSdt, notice_edt as noticeEdt, descr, weight, sex_cd as sexCd
-        from shelnimal
-        where no &lt; #{no}
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd,
+               colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
+               processState, sexCd, neuterYn, specialMark, careNm, careTel,
+               careAddr, orgNm, chargeNm, officetel as officeTel
+        from dataset
+        where no = #{no}
     </select>
 
     <select id="list" parameterType="int"
             resultType="com.ssafy.FFP.Dto.ShelnimalDto">
-        select no, category, kind, color, age, care_addr as careAddr, shelter, shelter_tel as shelterTel,
-               neuter_yn as neuterYn, happen_place, happenPlace, process_state as processState, sum_img as sumImg,
-               img, notice_sdt as noticeSdt, notice_edt as noticeEdt, descr, weight, sex_cd as sexCd
-        from shelnimal
-        WHERE notice_edt >= #{sdt}
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd,
+               colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
+               processState, sexCd, neuterYn, specialMark, careNm, careTel,
+               careAddr, orgNm, chargeNm, officetel as officeTel
+        from dataset
+        WHERE noticeEdt >= #{sdt} and processState = '보호중'
     </select>
 
     <select id="find" parameterType="int"
             resultType="com.ssafy.FFP.Dto.ShelnimalDto">
-        select no, category, kind, color, age, care_addr as careAddr, shelter, shelter_tel as shelterTel,
-               neuter_yn as neuterYn, happen_place as happenPlace, process_state as processState, sum_img as sumImg,
-               img, notice_sdt as noticeSdt, notice_edt as noticeEdt, descr, weight, sex_cd as sexCd
-        from shelnimal
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd,
+               colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
+               processState, sexCd, neuterYn, specialMark, careNm, careTel,
+               careAddr, orgNm, chargeNm, officetel as officeTel
+        from dataset
         WHERE no is not null
-        <if test ="category != null">
-            AND category = '%'||#{category}||'%'
+        <if test ="happenDt != null">
+            AND happenDt = #{happenDt}
         </if>
-        <if test ="kind != null">
-            AND kind = '%'||#{kind}||'%'
+        <if test ="happenPlace != null">
+            AND happenPlace = #{happenPlace}
         </if>
-        <if test ="color != null">
-            AND color = '%'||#{color}||'%'
+        <if test ="kindCd != null">
+            AND kindCd = #{kindCd}
         </if>
-        <if test ="age != null">
-            AND age = '%'||#{age}||'%'
+        <if test ="colorCd != null">
+            AND colorCd = #{colorCd}
         </if>
         <if test ="neuterYn != null">
-            AND neuter_yn = '%'||#{neuterYn}||'%'
+            AND neuter_yn = #{neuterYn}
         </if>
         <if test ="processState != null">
-            AND process_state = '%'||#{processState}||'%'
+            AND process_state = #{processState}
         </if>
         <if test ="descr != null">
             AND descr = '%'||#{descr}||'%'
@@ -56,6 +59,9 @@
         </if>
         <if test ="noticeEdt != null">
             AND notice_edt &gt; #{noticeEdt}
+        </if>
+        <if test ="careNm != null">
+            AND careNm &gt; #{careNm}
         </if>
     </select>
 
