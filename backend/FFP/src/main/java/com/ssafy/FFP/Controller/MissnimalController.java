@@ -34,8 +34,8 @@ public class MissnimalController {
     // 특정 공고 조회
     @GetMapping("/miss/{no}")
     public ResponseEntity<?> select(@PathVariable String no){
-        int shelNo = Integer.parseInt(no);
-        MissnimalDto missnimalDto = missnimalService.select(shelNo);
+        int missNo = Integer.parseInt(no);
+        MissnimalDto missnimalDto = missnimalService.select(missNo);
 
         if(missnimalDto != null) {
             return ResponseEntity.ok().body(missnimalDto);
@@ -77,7 +77,7 @@ public class MissnimalController {
     }
 
     // 검색
-    @PostMapping("/miss")
+    @PostMapping("/miss/search")
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
         List<MissnimalDto> missnimalDtos = missnimalService.find(searchDto);
@@ -90,64 +90,31 @@ public class MissnimalController {
         }
     }
 
-//    // 검색
-//    @PostMapping("/misses")
-//    public ResponseEntity<?> create(
-//            @RequestPart(value="userInfo") MissnimalDto missnimalDto,
-//            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
-//
-//        List<Integer> imgNo = new ArrayList<>();
-//        if(multipartFile != null){
-//            imgNo = s3Service.uploadFile(multipartFile);
-//        }
-//
-//        List<S3Dto> imgs = new ArrayList<>();
-//        for (int no : imgNo) {
-//            imgs.add(imgService.select(no));
-//        }
-//
-//        int result = missnimalService.create(missnimalDto);
-//
-//        if(result != 0) {
-//            return ResponseEntity.ok().body(result);
-//        }
-//        else {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
-//        }
-//    }
-//
-//    @PutMapping(value ="/feeds") // 글 수정
-//    public ResponseEntity<Integer> update(
-//            @RequestPart(value="userInfo") FeedDto feedDto,
-//            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile) {
-//
-//        List<Integer> imgNo = new ArrayList<>();
-//        if(multipartFile != null){
-//            imgNo = s3Service.uploadFile(multipartFile);
-//        }
-//
-//        List<ImgDto> imgs = new ArrayList<>();
-//        for (int no : imgNo) {
-//            imgs.add(imgService.select(no));
-//        }
-//
-//
-//        int result = 0;
-//        if(imgs.size() != 0) {
-//            feedDto.setImgs(imgs);
-//            result = feedService.update(feedDto, 0);
-//        }
-//        else {
-//            FeedDto now = feedService.read(feedDto.getNo(), feedDto.getAuthor());
-//            feedDto.setImgs(now.getImgs());
-//            result = feedService.update(feedDto, 1);
-//        }
-//
-//
-//        if(result == SUCCESS) {
-//            return new ResponseEntity<Integer>(result, HttpStatus.OK);
-//        }else {
-//            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "수정에 실패 했습니다.");
-//        }
-//    }
+    // 글 작성
+    @PostMapping("/miss")
+    public ResponseEntity<?> create(
+            @RequestPart(value="missData") MissnimalDto missnimalDto,
+            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
+
+        System.out.println(missnimalDto.toString());
+        List<Integer> imgNo = new ArrayList<>();
+        if(multipartFile != null){
+            imgNo = s3Service.uploadFile(multipartFile);
+        }
+
+        List<S3Dto> imgs = new ArrayList<>();
+        for (int no : imgNo) {
+            System.out.println("no: " + no);
+            imgs.add(s3Service.select(no));
+        }
+
+        int result = missnimalService.create(missnimalDto, imgs.get(0));
+
+        if(result != 0) {
+            return ResponseEntity.ok().body(result);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
+        }
+    }
 }

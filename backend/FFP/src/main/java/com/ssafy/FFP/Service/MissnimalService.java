@@ -1,13 +1,14 @@
 package com.ssafy.FFP.Service;
 
 import com.ssafy.FFP.Dto.MissnimalDto;
+import com.ssafy.FFP.Dto.S3Dto;
 import com.ssafy.FFP.Dto.SearchDto;
 
 import java.util.List;
 
 public interface MissnimalService {
     public MissnimalDto select(int no);
-    public int create(MissnimalDto missnimalDto);
+    public int create(MissnimalDto missnimalDto, S3Dto s3Dto);
     public int update(MissnimalDto missnimalDto);
     public int delete(int no);
     public List<MissnimalDto> list(String sdt);
