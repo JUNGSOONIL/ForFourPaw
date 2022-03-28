@@ -3,6 +3,7 @@ package com.ssafy.FFP.Dao;
 import com.ssafy.FFP.Dto.MissnimalDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
