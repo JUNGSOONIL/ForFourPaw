@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import login from "./modules/login";
-import Main from "./modules/main";
+import mainView from "./modules/mainView";
 import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
@@ -10,11 +10,11 @@ const createStore = () => {
   return new Vuex.Store({
     modules: {
       login,
-      Main,
+      mainView,
     },
     plugins: [
       createPersistedState({
-        paths: ["login", "Main"],
+        paths: ["login", "mainView"],
       }),
     ],
   });

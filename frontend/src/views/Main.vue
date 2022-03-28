@@ -525,216 +525,209 @@
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb01.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Mister Tartosh</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
+              <div class="col-lg-4 col-md-6" v-for="(shelnimal, index) in this.$store.state[`mainView`].shelnimal.list" v-bind:key="index">
+                <div class="adoption-shop-item">
+                  <div class="adoption-shop-thumb">
+                    <img style="width : 380px; height : 381px" :src="shelnimal.popfile" alt="" />
+                    <a href="shop-details.html" class="btn"
+                      >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    /></a>
                   </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
+                  <div class="adoption-shop-content">
+                    <h4 class="title">
+                    </h4>
+                    <div class="adoption-meta">
+                      <ul>
+                        <li>
+                          <i class="fas fa-cog"></i><a href="#">{{shelnimal.kindCd}}</a>
+                        </li>
+                        <li><i class="far fa-calendar"></i>{{shelnimal.age}}</li>
+                      </ul>
+                    </div>
+                    <div class="adoption-rating">
+                      <ul>
+                        <li><i class="fas fa-coins"></i> 특징</li>
+                        <li> {{shelnimal.specialMark}}</li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title"><a href="shop-details.html">Charlie</a></h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i
-                        ><a href="#">Golden Retriever</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
-                    </ul>
+              <!-- <div class="col-lg-4 col-md-6">
+                <div class="adoption-shop-item">
+                  <div class="adoption-shop-thumb">
+                    <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
+                    <a href="shop-details.html" class="btn"
+                      >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    /></a>
                   </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$30</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb03.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Alessia Max</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">German Sherped</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$29</span></li>
-                    </ul>
+                  <div class="adoption-shop-content">
+                    <h4 class="title"><a href="shop-details.html">Charlie</a></h4>
+                    <div class="adoption-meta">
+                      <ul>
+                        <li>
+                          <i class="fas fa-cog"></i
+                          ><a href="#">Golden Retriever</a>
+                        </li>
+                        <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
+                      </ul>
+                    </div>
+                    <div class="adoption-rating">
+                      <ul>
+                        <li class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="price">Total Price : <span>$30</span></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb04.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Canadian</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">German Sherped</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
+              <div class="col-lg-4 col-md-6">
+                <div class="adoption-shop-item">
+                  <div class="adoption-shop-thumb">
+                    <img src="img/product/adoption_shop_thumb03.jpg" alt="" />
+                    <a href="shop-details.html" class="btn"
+                      >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    /></a>
                   </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$39</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb05.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Entertainment</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
+                  <div class="adoption-shop-content">
+                    <h4 class="title">
+                      <a href="shop-details.html">Alessia Max</a>
+                    </h4>
+                    <div class="adoption-meta">
+                      <ul>
+                        <li>
+                          <i class="fas fa-cog"></i><a href="#">German Sherped</a>
+                        </li>
+                        <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
+                      </ul>
+                    </div>
+                    <div class="adoption-rating">
+                      <ul>
+                        <li class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="price">Total Price : <span>$29</span></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb06.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Dangerous</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i
-                        ><a href="#">Golden Retriever</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
+              <div class="col-lg-4 col-md-6">
+                <div class="adoption-shop-item">
+                  <div class="adoption-shop-thumb">
+                    <img src="img/product/adoption_shop_thumb04.jpg" alt="" />
+                    <a href="shop-details.html" class="btn"
+                      >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    /></a>
                   </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
+                  <div class="adoption-shop-content">
+                    <h4 class="title">
+                      <a href="shop-details.html">Canadian</a>
+                    </h4>
+                    <div class="adoption-meta">
+                      <ul>
+                        <li>
+                          <i class="fas fa-cog"></i><a href="#">German Sherped</a>
+                        </li>
+                        <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
+                      </ul>
+                    </div>
+                    <div class="adoption-rating">
+                      <ul>
+                        <li class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="price">Total Price : <span>$39</span></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="adoption-shop-item">
+                  <div class="adoption-shop-thumb">
+                    <img src="img/product/adoption_shop_thumb05.jpg" alt="" />
+                    <a href="shop-details.html" class="btn"
+                      >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="adoption-shop-content">
+                    <h4 class="title">
+                      <a href="shop-details.html">Entertainment</a>
+                    </h4>
+                    <div class="adoption-meta">
+                      <ul>
+                        <li>
+                          <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
+                        </li>
+                        <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
+                      </ul>
+                    </div>
+                    <div class="adoption-rating">
+                      <ul>
+                        <li class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="price">Total Price : <span>Free</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="adoption-shop-item">
+                  <div class="adoption-shop-thumb">
+                    <img src="img/product/adoption_shop_thumb06.jpg" alt="" />
+                    <a href="shop-details.html" class="btn"
+                      >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    /></a>
+                  </div>
+                  <div class="adoption-shop-content">
+                    <h4 class="title">
+                      <a href="shop-details.html">Dangerous</a>
+                    </h4>
+                    <div class="adoption-meta">
+                      <ul>
+                        <li>
+                          <i class="fas fa-cog"></i
+                          ><a href="#">Golden Retriever</a>
+                        </li>
+                        <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
+                      </ul>
+                    </div>
+                    <div class="adoption-rating">
+                      <ul>
+                        <li class="rating">
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                          <i class="fas fa-star"></i>
+                        </li>
+                        <li class="price">Total Price : <span>Free</span></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
           </div>
         </div>
       </section>
@@ -991,7 +984,12 @@ export default {
   components: {},
   methods : {
     shelimalList() {
-      this.$store.getters["Main/getList"];
+      console.log("비로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalList");
+    },
+    shelimalDetail() {
+      console.log("유기동물 상세 페이지");
+      this.$store.dispatch();
     }
   },
   mounted() {
