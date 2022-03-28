@@ -93,7 +93,7 @@ public class ShelnimalController {
     // 비로그인시 메인페이지 유기동물 추천
     @GetMapping("/shel/view/notlogin")
     public ResponseEntity<?> mainList(){
-
+    	System.out.println("mainList : 비로그인");
         List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
 
         if(shelnimalDtos != null) {
