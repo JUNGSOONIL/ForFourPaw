@@ -17,8 +17,14 @@
         delete from img where no = #{no}
     </delete>
 
-    <select id="select" parameterType="string">
-        select no
+    <select id="select" parameterType="int" resultType="com.ssafy.FFP.Dto.S3Dto">
+        select no, img_link as imgLink, img_name as imgName
+        from img
+        where no = #{no}
+    </select>
+
+    <select id="selectByName" parameterType="string" resultType="com.ssafy.FFP.Dto.S3Dto">
+        select no, img_link as imgLink, img_name as imgName
         from img
         where img_name = #{imgName}
     </select>

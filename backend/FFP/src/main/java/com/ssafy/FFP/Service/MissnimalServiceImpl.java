@@ -2,6 +2,7 @@ package com.ssafy.FFP.Service;
 
 import com.ssafy.FFP.Dao.MissnimalDao;
 import com.ssafy.FFP.Dto.MissnimalDto;
+import com.ssafy.FFP.Dto.S3Dto;
 import com.ssafy.FFP.Dto.SearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,8 @@ public class MissnimalServiceImpl implements MissnimalService{
     }
 
     @Override
-    public int create(MissnimalDto missnimalDto) {
+    public int create(MissnimalDto missnimalDto, S3Dto img) {
+        missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.create(missnimalDto);
         return result;
     }
