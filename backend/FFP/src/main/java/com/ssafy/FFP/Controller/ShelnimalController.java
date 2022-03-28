@@ -49,10 +49,10 @@ public class ShelnimalController {
     @GetMapping("/shel")
     public ResponseEntity<?> list(){
         LocalDate seoulNow = LocalDate.now(ZoneId.of("Asia/Seoul"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String formatedNow = seoulNow.format(formatter);
-
-        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(formatedNow);
+        int sdt = Integer.parseInt(formatedNow);
+        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt);
 
         if(shelnimalDtos != null) {
             return ResponseEntity.ok().body(shelnimalDtos);
