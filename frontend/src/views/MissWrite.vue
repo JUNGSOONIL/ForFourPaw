@@ -350,7 +350,7 @@
 <script>
 import axios from 'axios'
 const session = window.sessionStorage;
-const userInfo = JSON.parse(session.getItem('userInfo')) 
+
 export default {
   name: "App",
   components: {},
@@ -467,14 +467,18 @@ export default {
         this.$alertify.error("똑바로 입력하세요");
         return
       }
+      const userInfo = JSON.parse(session.getItem('userInfo'))
       console.log(this.miss)
-      const formData = new FormData();
-      formData.append("multipartFile", this.$refs.animalImg.files[0]);
-
+      
       let headers = {
+        'Content-Type': 'multipart/form-data',
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
       };
+
+      const formData = new FormData();
+      formData.append("multipartFile", this.$refs.animalImg.files[0]);
+      console.log(this.$refs.animalImg.files[0].image)
       let data = {
         name : this.miss.name,
         kindCd : this.miss.kindCd,
@@ -487,18 +491,25 @@ export default {
         happenDt: this.miss.happenDt,
         happenPlace: this.miss.happenGugun+" "+this.miss.happenPlace,
         descr: this.miss.descr,
-        profile: this.miss.profile,  // 이거 제거해야할수도있음 이미지에 따라
       };
+
+      formData.append(
+        "missData",
+        new Blob([JSON.stringify(data)], { type: "application/json" })
+      );
+
+ 
       axios({
         method: 'post',
-        url: '/api/qss/list', // 이부분 수정해야함
-        data: data,
+        url: '/api/miss', // 이부분 수정해야함
+        data: formData,
         headers: headers,
       }).then((res) => {
 
         this.$store.dispatch('login/accessTokenRefresh', res)
         console.log(res);
         this.$alertify.success("작성 완료했습니다.");
+        this.$route.push("/");
       }).catch((error) => {
         console.log(error);
       }).then(() => {
