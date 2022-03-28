@@ -368,7 +368,6 @@ export default {
         age: "",
         sexCd: "",
         neuterYn: "",
-        author: userInfo.no,
         careTel: "",
         happenDt: "",
         happenGugun: "",
@@ -430,7 +429,7 @@ export default {
     },
     check(){
       if (!this.validate.name|| !this.validate.kindCd|| !this.validate.colorCd || !this.validate.age || !this.validate.sexCd || this.miss.profile == "" ||
-        !this.validate.happenGugun|| !this.validate.neuterYn|| this.miss.author != null || !this.validate.careTel ||  !this.validate.happenPlace){
+        !this.validate.happenGugun|| !this.validate.neuterYn || !this.validate.careTel ||  !this.validate.happenPlace){
           return true;
       }
     },
@@ -483,7 +482,7 @@ export default {
         age: this.miss.age,
         sexCd: this.miss.sexCd,
         neuterYn: this.miss.neuterYn,
-        author: this.miss.author,
+        author: userInfo.no,
         careTel: this.miss.careTel,
         happenDt: this.miss.happenDt,
         happenPlace: this.miss.happenGugun+" "+this.miss.happenPlace,
