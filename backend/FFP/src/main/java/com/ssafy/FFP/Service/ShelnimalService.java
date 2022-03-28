@@ -8,7 +8,7 @@ import java.util.List;
 public interface ShelnimalService {
 
     public ShelnimalDto select(int no);
-    public List<ShelnimalDto> list(String sdt);
+    public List<ShelnimalDto> list(int sdt);
     public List<ShelnimalDto> match(int userNo);
     public List<ShelnimalDto> find(SearchDto searchDto);
 }
