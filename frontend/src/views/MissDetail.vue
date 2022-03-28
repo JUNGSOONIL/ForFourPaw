@@ -258,7 +258,7 @@
                       <!-- <span class="price">{{miss.careNm}}</span> -->
                       <span class="price">보호기관 : {{miss.careTel}}</span>
                       <span class="add-cart">
-                        <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
+                        <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
                           상세보기
                         </router-link>
                       </span>
@@ -291,6 +291,7 @@ export default {
   name: "App",
   props:{
     no:{
+      default : 2,
       type:Number,
     },
   },
@@ -298,24 +299,12 @@ export default {
   data: function(){
      return {
        miss: {
-        name : "말티",
-        kindCd : "말티즈",
-        colorCd: "흰색",
-        age: "5",
-        sexCd: "F",
-        neuterYn: "Y",
-        author: "홍길동",
-        careTel: "010-0000-0000",
-        happenDt: "2022-03-26",
-        happenPlace: "서울특별시 00구 00동 00역",
-        descr: "없음",
-        profile: "http://www.animal.go.kr/files/shelter/2021/12/202201011301749.jpg",
        }, 
        misslist:[],
      }
   },
   created() {
-    this.match();
+    this.selectMiss();
   },
   methods:{
     match(){
@@ -335,14 +324,12 @@ export default {
         data: data, // post 나 put에 데이터 넣어 줄때
         headers: headers,  // 넣는거 까먹지 마세요
       }).then((res) => {
-
         this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
-        console.log(res);
         this.misslist = res.data;
       }).catch((error) => {
         console.log(error);
       }).then(() => {
-        console.log('getQSSList End!!');
+        console.log('kmeans End!!');
       });
     },
     selectMiss(){
@@ -356,12 +343,12 @@ export default {
         headers: headers, 
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 
-        console.log(res);
-        this.miss = res; // 여기 수정
+        this.miss = res.data; // 여기 수정
       }).catch((error) => {
         console.log(error);
       }).then(() => {
-        console.log('getQSSList End!!');
+        console.log('selectMiss End!!');
+        this.match();
       });
     },
   },
