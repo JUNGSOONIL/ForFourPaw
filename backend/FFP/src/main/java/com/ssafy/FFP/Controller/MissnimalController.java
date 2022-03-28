@@ -36,7 +36,7 @@ public class MissnimalController {
     public ResponseEntity<?> select(@PathVariable String no){
         int missNo = Integer.parseInt(no);
         MissnimalDto missnimalDto = missnimalService.select(missNo);
-
+        System.out.println("missDto : " + missnimalDto);
         if(missnimalDto != null) {
             return ResponseEntity.ok().body(missnimalDto);
         }
