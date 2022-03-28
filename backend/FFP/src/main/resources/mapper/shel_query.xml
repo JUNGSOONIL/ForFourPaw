@@ -64,5 +64,12 @@
             AND careNm &gt; #{careNm}
         </if>
     </select>
+    
+    <select id="mainList" parameterType="String" resultType="com.ssafy.FFP.Dto.DatasetDto">
+        select desertionNo, filename, happenDt, happenPlace, kindCd, colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd, neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel
+        from dataset
+        where processState = #{processState}
+        ORDER BY RAND() LIMIT 6
+    </select>
 
 </mapper>
