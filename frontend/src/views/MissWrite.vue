@@ -93,28 +93,29 @@
                   "
                 >
                   <div class="shop-details-price">
-                    <h2 class="price">사람 정보</h2>
-                    <h5 class="stock-status">- Person</h5>
+                    <h2 class="price">실종 정보</h2>
+                    <h5 class="stock-status">- Missing</h5>
                   </div>
                   <div class="shop-details-dimension">
                     <div>
-                    <label for="personName">이름</label>
+                      <label for="animalName">이름</label>
                     <input
-                      id="personName"
+                      id="animalName"
                       type="text"
-                      v-model="miss.author"
+                      v-model="miss.name"
                       class="form-control"
-                      placeholder="이름을 입력해주세요."
-                      @input="validate.author = miss.author.length >= 3 ? true : false"
-                      @focus="focusdate.author = true"
+                      placeholder="동물 이름을 입력해주세요."
+                      @input="validate.name = miss.name.length > 0 ? true : false"
+                      @focus="focusdate.name = true"
                       :class="{
-                            'is-valid': validate.author,
-                            'is-invalid': (!validate.author&&focusdate.author),
+                            'is-valid': validate.name,
+                            'is-invalid': (!validate.name&&focusdate.name),
                       }"
                     />
                     <!-- <div class="valid-feedback">사용 가능 합니다.</div> -->
                     <div class="invalid-feedback">이름을 똑바로 입력하세요.</div>
                     </div>
+
                     <div>
                       <label for="personTel">전화번호</label>
                     <input
@@ -132,30 +133,6 @@
                     />
                     <!-- <div class="valid-feedback">사용 가능 합니다.</div> -->
                     <div class="invalid-feedback">전화번호를 똑바로 입력하세요.</div>
-                    </div>
-                  </div>
-                  <div class="shop-details-price">
-                    <h2 class="price">동물 정보</h2>
-                    <h5 class="stock-status">- Animal</h5>
-                  </div>
-                  <div class="shop-details-dimension">
-                    <div>
-                                          <label for="animalName">이름</label>
-                    <input
-                      id="animalName"
-                      type="text"
-                      v-model="miss.name"
-                      class="form-control"
-                      placeholder="이름을 입력해주세요."
-                      @input="validate.name = miss.name.length > 0 ? true : false"
-                      @focus="focusdate.name = true"
-                      :class="{
-                            'is-valid': validate.name,
-                            'is-invalid': (!validate.name&&focusdate.name),
-                      }"
-                    />
-                    <!-- <div class="valid-feedback">사용 가능 합니다.</div> -->
-                    <div class="invalid-feedback">이름을 똑바로 입력하세요.</div>
                     </div>
 
                     <div>
@@ -373,7 +350,7 @@
 <script>
 import axios from 'axios'
 const session = window.sessionStorage;
-
+const userInfo = JSON.parse(session.getItem('userInfo')) 
 export default {
   name: "App",
   components: {},
@@ -391,7 +368,7 @@ export default {
         age: "",
         sexCd: "",
         neuterYn: "",
-        author: "",
+        author: userInfo.no,
         careTel: "",
         happenDt: "",
         happenGugun: "",
@@ -406,7 +383,6 @@ export default {
         age: false,
         sexCd: false,
         neuterYn: false,
-        author: false,
         careTel: false,
         happenDt: false,
         happenGugun: false,
@@ -419,7 +395,6 @@ export default {
         age: false,
         sexCd: false,
         neuterYn: false,
-        author: false,
         careTel: false,
         happenDt: false,
         happenGugun: false,
@@ -428,12 +403,13 @@ export default {
      }
   },
   created() {
+    console.log(this.miss)
     if(this.no != null){
       this.selectMiss();
     }
   },
   methods:{
-        selectMiss(){
+    selectMiss(){
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -454,7 +430,7 @@ export default {
     },
     check(){
       if (!this.validate.name|| !this.validate.kindCd|| !this.validate.colorCd || !this.validate.age || !this.validate.sexCd || this.miss.profile == "" ||
-        !this.validate.happenGugun|| !this.validate.neuterYn|| !this.validate.author || !this.validate.careTel ||  !this.validate.happenPlace){
+        !this.validate.happenGugun|| !this.validate.neuterYn|| this.miss.author != null || !this.validate.careTel ||  !this.validate.happenPlace){
           return true;
       }
     },
@@ -465,7 +441,6 @@ export default {
         this.miss.age= ""
         this.miss.sexCd= ""
         this.miss.neuterYn= ""
-        this.miss.author= ""
         this.miss.careTel= ""
         this.miss.happenDt= ""
         this.miss.happenGugun= ""
@@ -478,7 +453,6 @@ export default {
         this.focusdate.age = this.validate.age = false
         this.focusdate.sexCd = this.validate.sexCd = false
         this.focusdate.neuterYn = this.validate.neuterYn = false
-        this.focusdate.author = this.validate.author = false
         this.focusdate.careTel = this.validate.careTel = false
         this.focusdate.happenDt = this.validate.happenDt = false
         this.focusdate.happenGugun = this.validate.happenGugun = false

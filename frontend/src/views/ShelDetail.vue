@@ -149,20 +149,9 @@
                     <label for="animalnoticeSdt">공고기간</label>
                     <div>
                         <input
-                          style="width : 272.5px; float: left"
                           id="animalnoticeSdt"
                           type="text"
-                          v-model="miss.noticeSdt"
-                          class="form-control"
-                          readonly
-                        />
-                    </div>
-                    <div>
-                        <input
-                         style="width : 272.5px;"
-                          id="animalnoticeSdt"
-                          type="text"
-                          v-model="miss.noticeEdt"
+                          v-model="noticedt"
                           class="form-control"
                           readonly
                         />
@@ -208,17 +197,17 @@
                   </div>
                   <div class="shop-details-dimension">
                     <label for="animalHappenDay">관할기관</label>
-                    {{miss.orgNm}} <br>
-                    <!-- <input
+                    <!-- {{miss.orgNm}} <br> -->
+                    <input
                       id="animalHappenDay"
                       type="text"
                       v-model="miss.orgNm"
                       class="form-control"
                       readonly
-                    /> -->
+                    />
                     <label for="animalHappenPlace">담당자</label>
-                     {{miss.chargeNm}} <br>
-                    <!-- <div>
+                     <!-- {{miss.chargeNm}} <br> -->
+                    <div>
                         <input
                           id="animalHappenPlace"
                           type="text"
@@ -226,18 +215,18 @@
                           class="form-control"
                           readonly
                         />
-                    </div> -->
+                    </div>
                     <label for="animalnoticeSdt">전화번호</label>
-                     {{miss.officetel}} <br>
-                    <!-- <div>
+                     <!-- {{miss.officeTel}} <br> -->
+                    <div>
                         <input
                           id="animalnoticeSdt"
                           type="text"
-                          v-model="miss.officetel"
+                          v-model="miss.officeTel"
                           class="form-control"
                           readonly
                         />
-                    </div> -->
+                    </div>
                   </div>
                   
 
@@ -271,35 +260,11 @@ export default {
   components: {},
   data: function(){
      return {
-       miss: {
-        no : "1173504",
-        desertionNo : "411314202200001", 
-        filename : "http://www.animal.go.kr/files/shelter/2021/12/202201011301749_s.jpg", 
-        happenDt : "20220101", 
-        happenPlace : "목2동시장골목도로변", 
-        kindCd : "[개] 말티즈", 
-        colorCd : "흰", 
-        age : "2017(년생)", 
-        weight : "3.4(Kg)", 
-        noticeNo : "서울-양천-2022-00001", 
-        noticeSdt : "20220101", 
-        noticeEdt : "20220111", 
-        popfile : "http://www.animal.go.kr/files/shelter/2021/12/202201011301749.jpg", 
-        processState : "종료(반환)", 
-        sexCd : "M", 
-        neuterYn : "N", 
-        specialMark : "치석있으며미용하지않은상태이고잔류치있으며온순하고잘따르나약간경계심있음", 
-        careNm : "강현림동물병원", 
-        careTel : "02-2642-9159", 
-        careAddr : "서울특별시 양천구 등촌로 160 (목동) 1층", 
-        orgNm : "서울특별시 양천구", 
-        chargeNm : "양천구청", 
-        officetel: "02-2620-4918",
-       }, 
+       miss: {}, 
+       noticedt: "",
      }
   },
   created() {
-    alert(this.no)
     this.selectShel();
   },
   methods:{
@@ -315,7 +280,8 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 
         console.log(res);
-        this.miss = res; // 여기 수정
+        this.miss = res.data; // 여기 수정
+        this.noticedt = this.miss.noticeSdt +" ~ " + this.miss.noticeEdt;
       }).catch((error) => {
         console.log(error);
       }).then(() => {
