@@ -78,7 +78,7 @@
                     <input
                       id="personName"
                       type="text"
-                      v-model="miss.author"
+                      v-model="miss.authorName"
                       class="form-control"
                       readonly
                     />
@@ -298,8 +298,7 @@ export default {
   components: {},
   data: function(){
      return {
-       miss: {
-       }, 
+       miss: { }, 
        misslist:[],
      }
   },
