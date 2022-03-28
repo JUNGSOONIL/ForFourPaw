@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,5 +28,12 @@ public class MissMatchController {
 	@PostMapping("/kmeans")
 	public List<DatasetDto> matching(@RequestBody Map<String, String> map) {
 		return service.matching(map);
+	}
+	
+	@GetMapping("kmeans")
+	public String test() {
+		String path = System.getProperty("user.dir"); 
+		System.out.println("현재 작업 경로: " + path);
+		return path;
 	}
 }
