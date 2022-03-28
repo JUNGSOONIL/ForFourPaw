@@ -149,20 +149,9 @@
                     <label for="animalnoticeSdt">공고기간</label>
                     <div>
                         <input
-                          style="width : 272.5px; float: left"
                           id="animalnoticeSdt"
                           type="text"
-                          v-model="miss.noticeSdt"
-                          class="form-control"
-                          readonly
-                        />
-                    </div>
-                    <div>
-                        <input
-                         style="width : 272.5px;"
-                          id="animalnoticeSdt"
-                          type="text"
-                          v-model="miss.noticeEdt"
+                          v-model="noticedt"
                           class="form-control"
                           readonly
                         />
@@ -208,17 +197,17 @@
                   </div>
                   <div class="shop-details-dimension">
                     <label for="animalHappenDay">관할기관</label>
-                    {{miss.orgNm}} <br>
-                    <!-- <input
+                    <!-- {{miss.orgNm}} <br> -->
+                    <input
                       id="animalHappenDay"
                       type="text"
                       v-model="miss.orgNm"
                       class="form-control"
                       readonly
-                    /> -->
+                    />
                     <label for="animalHappenPlace">담당자</label>
-                     {{miss.chargeNm}} <br>
-                    <!-- <div>
+                     <!-- {{miss.chargeNm}} <br> -->
+                    <div>
                         <input
                           id="animalHappenPlace"
                           type="text"
@@ -226,18 +215,18 @@
                           class="form-control"
                           readonly
                         />
-                    </div> -->
+                    </div>
                     <label for="animalnoticeSdt">전화번호</label>
-                     {{miss.officeTel}} <br>
-                    <!-- <div>
+                     <!-- {{miss.officeTel}} <br> -->
+                    <div>
                         <input
                           id="animalnoticeSdt"
                           type="text"
-                          v-model="miss.officetel"
+                          v-model="miss.officeTel"
                           class="form-control"
                           readonly
                         />
-                    </div> -->
+                    </div>
                   </div>
                   
 
@@ -272,6 +261,7 @@ export default {
   data: function(){
      return {
        miss: {}, 
+       noticedt: "",
      }
   },
   created() {
@@ -291,6 +281,7 @@ export default {
         this.$store.dispatch('login/accessTokenRefresh', res) 
         console.log(res);
         this.miss = res.data; // 여기 수정
+        this.noticedt = this.miss.noticeSdt +" ~ " + this.miss.noticeEdt;
       }).catch((error) => {
         console.log(error);
       }).then(() => {
