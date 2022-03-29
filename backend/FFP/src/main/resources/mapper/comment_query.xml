@@ -15,7 +15,7 @@
         where co.no = #{no} and mc.comment_no = #{no}
     </select>
 
-    <insert id="write" parameterType="com.ssafy.FFP.Dto.CommentDto">
+    <insert id="create" parameterType="com.ssafy.FFP.Dto.CommentDto">
         insert into comment(descr, author) values (  #{descr}, #{author})
         <selectKey keyProperty="no" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID()
