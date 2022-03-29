@@ -19,6 +19,9 @@ public class MissnimalServiceImpl implements MissnimalService{
     @Autowired
     S3Dao s3Dao;
 
+    @Autowired
+    S3Service s3Service;
+
     @Override
     public MissnimalDto select(int no) {
         MissnimalDto missnimalDto = missnimalDao.select(no);
@@ -29,17 +32,20 @@ public class MissnimalServiceImpl implements MissnimalService{
     public int create(MissnimalDto missnimalDto, S3Dto img) {
         missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.create(missnimalDto);
-        missnimalDao.relation(img.getNo(), result);
+        missnimalDao.relation(img.getNo(), missnimalDto.getNo());
         return result;
     }
 
     @Override
     public int update(MissnimalDto missnimalDto, S3Dto img) {
-        S3Dto latest = s3Dao.selectByLink(missnimalDto.getProfile());
-        s3Dao.deleteFile(latest.getImgName());
-        s3Dao.deleteByNo(latest.getNo());
-
-        missnimalDto.setProfile(img.getImgLink());
+        if(img != null) {
+            S3Dto latest = s3Dao.selectByLink(missnimalDto.getProfile());
+            s3Service.deleteFile(latest.getImgName());
+            missnimalDto.setProfile(img.getImgLink());
+        } else {
+            MissnimalDto raw = missnimalDao.select(missnimalDto.getNo());
+            missnimalDto.setProfile(raw.getProfile());
+        }
         int result = missnimalDao.update(missnimalDto);
         return result;
     }
