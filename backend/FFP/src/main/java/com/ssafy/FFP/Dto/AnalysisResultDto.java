@@ -22,7 +22,7 @@ public class AnalysisResultDto {
     public List<AnalysisDto> getList() { return list; }
     public void setList(List<AnalysisDto> list) { this.list = list; }
 
-    // 날짜 통계
+    // 월별 통게
     private List<AnalysisDto> datelist;
     public List<AnalysisDto> getDatelist() {
         return datelist;
@@ -53,6 +53,11 @@ public class AnalysisResultDto {
     private List<AnalysisDto> regionlist;
     public List<AnalysisDto> getRegionlist() { return regionlist; }
     public void setRegionlist(List<AnalysisDto> regionlist) { this.regionlist = regionlist; }
+
+    // 년도별 통계
+    private List<AnalysisDto> yearlist;
+    public List<AnalysisDto> getYearlist() { return yearlist; }
+    public void setYearlist(List<AnalysisDto> yearlist) { this.yearlist = yearlist; }
 
     @Override
     public String toString() {
