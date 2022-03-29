@@ -103,4 +103,18 @@ public class ShelnimalController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
         }
     }
+    
+    // 로그인시 메인페이지 유기동물 추천
+    @GetMapping("/shel/view/login/{no}")
+    public ResponseEntity<?> mainListLogin(){
+    	System.out.println("mainList : 로그인");
+        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
+
+        if(shelnimalDtos != null) {
+            return ResponseEntity.ok().body(shelnimalDtos);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
 }
