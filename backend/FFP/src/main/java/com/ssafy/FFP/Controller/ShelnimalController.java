@@ -45,6 +45,20 @@ public class ShelnimalController {
         }
     }
 
+    // 특정 공고 조회
+    @GetMapping("/shel/detail/notlogin/{no}")
+    public ResponseEntity<?> selectByNotLogin(@PathVariable String no){
+        int shelNo = Integer.parseInt(no);
+        ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
+
+        if(shelnimalDto != null) {
+            return ResponseEntity.ok().body(shelnimalDto);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
+
     // 공고일 종료일이 최소 오늘인 공고 목록 조회
     @GetMapping("/shel")
     public ResponseEntity<?> list(){
