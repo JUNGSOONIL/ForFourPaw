@@ -32,8 +32,22 @@ public class ShelnimalController {
     ShelnimalService shelnimalService;
 
     // 특정 공고 조회
-    @GetMapping("/shel/{no}")
+    @GetMapping("/shel/detail/{no}")
     public ResponseEntity<?> select(@PathVariable String no){
+        int shelNo = Integer.parseInt(no);
+        ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
+
+        if(shelnimalDto != null) {
+            return ResponseEntity.ok().body(shelnimalDto);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
+
+    // 특정 공고 조회
+    @GetMapping("/shel/detail/notlogin/{no}")
+    public ResponseEntity<?> selectByNotLogin(@PathVariable String no){
         int shelNo = Integer.parseInt(no);
         ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
 
