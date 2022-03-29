@@ -1,7 +1,9 @@
 package com.ssafy.FFP.Service;
 
 import com.ssafy.FFP.Dao.MissnimalDao;
+import com.ssafy.FFP.Dao.S3Dao;
 import com.ssafy.FFP.Dto.MissnimalDto;
+import com.ssafy.FFP.Dto.S3Dto;
 import com.ssafy.FFP.Dto.SearchDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,9 @@ public class MissnimalServiceImpl implements MissnimalService{
     @Autowired
     MissnimalDao missnimalDao;
 
+    @Autowired
+    S3Dao s3Dao;
+
     @Override
     public MissnimalDto select(int no) {
         MissnimalDto missnimalDto = missnimalDao.select(no);
@@ -21,13 +26,20 @@ public class MissnimalServiceImpl implements MissnimalService{
     }
 
     @Override
-    public int create(MissnimalDto missnimalDto) {
+    public int create(MissnimalDto missnimalDto, S3Dto img) {
+        missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.create(missnimalDto);
+        missnimalDao.relation(img.getNo(), result);
         return result;
     }
 
     @Override
-    public int update(MissnimalDto missnimalDto) {
+    public int update(MissnimalDto missnimalDto, S3Dto img) {
+        S3Dto latest = s3Dao.selectByLink(missnimalDto.getProfile());
+        s3Dao.deleteFile(latest.getImgName());
+        s3Dao.deleteByNo(latest.getNo());
+
+        missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.update(missnimalDto);
         return result;
     }
