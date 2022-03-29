@@ -259,13 +259,15 @@
               <div v-for="(miss, index) in misslist.slice(0,4)" v-bind:key="index" class="col-lg-3">
                 <div class="shop-item mb-55">
                   <div class="shop-thumb">
-                    <a href="shop-details.html"
-                      ><img :src=miss.popfile alt="" style="width:278px; height: 268px; border-radius: 70%"
-                    /></a>
+                     <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                       <img :src=miss.popfile alt="" style="width:278px; height: 268px; border-radius: 70%"/>
+                      </router-link>
                   </div>
                   <div class="shop-content">
                     <h5 class="title">
-                      <a href="shop-details.html">{{miss.orgNm}} {{miss.happenPlace}}</a>
+                      <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                        {{miss.orgNm}} {{miss.happenPlace}}
+                      </router-link>
                     </h5>
                     <div class="shop-content-bottom">
                       <!-- <span class="price">{{miss.careNm}}</span> -->
