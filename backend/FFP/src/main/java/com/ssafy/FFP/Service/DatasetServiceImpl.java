@@ -186,7 +186,7 @@ public class DatasetServiceImpl implements DatasetService {
 				if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
 					br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 				} else {
-					br = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+					return -1;
 				}
 				String line;
 				String str = "";
@@ -194,6 +194,8 @@ public class DatasetServiceImpl implements DatasetService {
 					str += line + "\n";
 				}
 				try {
+					if(str.contains("SERVICE ERROR"))
+						return -1;
 					JSONParser jsonParse = new JSONParser(); // JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.
 					JSONObject jsonObject = (JSONObject) jsonParse.parse(str);
 					JSONObject response = (JSONObject) jsonObject.get("response");
@@ -206,34 +208,34 @@ public class DatasetServiceImpl implements DatasetService {
 					for (int i = 0; i < item.size(); i++) {
 						DatasetDto dto = new DatasetDto();
 						JSONObject itembody = (JSONObject) item.get(i);
-						dto.setDesertionNo(itembody.get("desertionNo").toString());
-						dto.setFilename(itembody.get("filename").toString());
-						dto.setHappenDt(itembody.get("happenDt").toString());
-						dto.setHappenPlace(itembody.get("happenPlace").toString());
-						dto.setKindCd(itembody.get("kindCd").toString());
-						dto.setColorCd(itembody.get("colorCd") != null ? itembody.get("colorCd").toString() : "");
-						dto.setAge(itembody.get("age").toString());
-						dto.setWeight(itembody.get("weight").toString());
-						dto.setNoticeNo(itembody.get("noticeNo") != null ? itembody.get("noticeNo").toString() : "");
-						dto.setNoticeSdt(itembody.get("noticeSdt").toString());
-						dto.setNoticeEdt(itembody.get("noticeEdt").toString());
-						dto.setPopfile(itembody.get("popfile").toString());
-						dto.setProcessState(itembody.get("processState") != null ? itembody.get("processState").toString() : "");
-						dto.setSexCd(itembody.get("sexCd").toString());
-						dto.setNeuterYn(itembody.get("neuterYn").toString());
-						dto.setSpecialMark(itembody.get("specialMark") != null ? itembody.get("specialMark").toString() : "");
-						dto.setCareNm(itembody.get("careNm").toString());
-						dto.setCareTel(itembody.get("careTel").toString());
-						dto.setCareAddr(itembody.get("careAddr").toString());
-						dto.setOrgNm(itembody.get("orgNm").toString());
-						dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "");
-						dto.setOfficetel(itembody.get("officetel").toString());
+						dto.setDesertionNo(itembody.get("desertionNo") != null ? itembody.get("desertionNo").toString() : "-");
+						dto.setFilename(itembody.get("filename") != null ? itembody.get("filename").toString() : "-");
+						dto.setHappenDt(itembody.get("happenDt") != null ? itembody.get("happenDt").toString() : "-");
+						dto.setHappenPlace(itembody.get("happenPlace") != null ? itembody.get("happenPlace").toString() : "-");
+						dto.setKindCd(itembody.get("kindCd") != null ? itembody.get("kindCd").toString() : "-");
+						dto.setColorCd(itembody.get("colorCd") != null ? itembody.get("colorCd").toString() : "-");
+						dto.setAge(itembody.get("age") != null ? itembody.get("age").toString() : "-");
+						dto.setWeight(itembody.get("weight") != null ? itembody.get("weight").toString() : "-");
+						dto.setNoticeNo(itembody.get("noticeNo") != null ? itembody.get("noticeNo").toString() : "-");
+						dto.setNoticeSdt(itembody.get("noticeSdt") != null ? itembody.get("noticeSdt").toString() : "-");
+						dto.setNoticeEdt(itembody.get("noticeEdt") !=null ? itembody.get("noticeEdt").toString() : "-");
+						dto.setPopfile(itembody.get("popfile") != null ? itembody.get("popfile").toString() : "-");
+						dto.setProcessState(itembody.get("processState") != null ? itembody.get("processState").toString() : "-");
+						dto.setSexCd(itembody.get("sexCd") != null ? itembody.get("sexCd").toString() : "-");
+						dto.setNeuterYn(itembody.get("neuterYn") != null ? itembody.get("neuterYn").toString() : "-");
+						dto.setSpecialMark(itembody.get("specialMark") != null ? itembody.get("specialMark").toString() : "-");
+						dto.setCareNm(itembody.get("careNm") != null ? itembody.get("careNm").toString() : "-");
+						dto.setCareTel(itembody.get("careTel") != null ? itembody.get("careTel").toString() : "-");
+						dto.setCareAddr(itembody.get("careAddr") != null ? itembody.get("careAddr").toString() : "-");
+						dto.setOrgNm(itembody.get("orgNm") != null ? itembody.get("orgNm").toString() : "-");
+						dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "-");
+						dto.setOfficetel(itembody.get("officetel") != null ? itembody.get("officetel").toString() : "-");
 						list.add(dto);
 					}
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
-				result += datasetDao.DataInsert(list);
+				result += datasetDao.DataUpdate(list);
 				System.out.println(result);
 				br.close();
 				conn.disconnect();

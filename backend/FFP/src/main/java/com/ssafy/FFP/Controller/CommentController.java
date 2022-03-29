@@ -26,8 +26,6 @@ public class CommentController {
     public ResponseEntity<Integer> create(@RequestBody CommentDto commentDto) {
 
         if (commentService.create(commentDto) == SUCCESS) {
-
-
             return new ResponseEntity<Integer>(SUCCESS, HttpStatus.OK);
         } else {
             System.out.println("댓글 작성 실패");
