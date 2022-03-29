@@ -144,12 +144,6 @@
                       class="form-control"
                       readonly
                     />
-                    <!-- <br>
-                    <label for="animalneuterY">Y</label>
-                    <input type="radio" name="neuter" id="animalneuterY" value="Y" v-model="miss.neuterYn">
-                    <label for="animalneuterN">N</label>
-                    <input type="radio" name="neuter" id="animalneuterN" value="N" v-model="miss.neuterYn">
-                    <br> -->
                     <label for="animalHappenDay">실종날짜</label>
                     <input
                       id="animalHappenDay"
@@ -254,34 +248,63 @@
                         포포포가 찾아드려요!
                       </h2>
                     </div>
+                    <div class="row related-product-active">
+                    <!-- carousel-area-start -->
+                      <section class="adoption-area-two pt-110 pb-110">
+                        <div class="container custom-container">
+                          <div class="adopt-active">
+                            <Slick ref="slick" :options="slickOptions">
+                              <div
+                                v-for="(miss, index) in misslist.slice(0,5)" v-bind:key="index"
+                                class="adoption-item"
+                              >
+                                <div class="adopt-thumb">
+                                   <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                                    <img :src="miss.popfile" alt="" style="width:355px; height: 355px;" />
+                                  </router-link>
+                                </div>
+                                <div class="adopt-content">
+                                  <h3 class="title">
+                                    {{miss.orgNm}} {{miss.happenPlace}}
+                                  </h3>
+                                  <p>
+                                    보호기관 : {{miss.careTel}}
+                                  </p>
+                                </div>
+                              </div>
+                            </Slick>
+                          </div>
+                        </div>
+                      </section>
+                      <!-- carousel-area-end -->
 
-            <div class="row related-product-active">
-              <div v-for="(miss, index) in misslist.slice(0,4)" v-bind:key="index" class="col-lg-3">
-                <div class="shop-item mb-55">
-                  <div class="shop-thumb">
-                     <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                       <img :src=miss.popfile alt="" style="width:278px; height: 268px; border-radius: 70%"/>
-                      </router-link>
-                  </div>
-                  <div class="shop-content">
-                    <h5 class="title">
-                      <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                        {{miss.orgNm}} {{miss.happenPlace}}
-                      </router-link>
-                    </h5>
-                    <div class="shop-content-bottom">
-                      <!-- <span class="price">{{miss.careNm}}</span> -->
-                      <span class="price">보호기관 : {{miss.careTel}}</span>
-                      <span class="add-cart">
-                        <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                          상세보기
-                        </router-link>
-                      </span>
+
+
+                      <!-- <div v-for="(miss, index) in misslist.slice(0,4)" v-bind:key="index" class="col-lg-3">
+                        <div class="shop-item mb-55">
+                          <div class="shop-thumb">
+                            <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                              <img :src=miss.popfile alt="" style="width:355px; height: 355px; border-radius: 70%"/>
+                              </router-link>
+                          </div>
+                          <div class="shop-content">
+                            <h5 class="title">
+                              <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                                {{miss.orgNm}} {{miss.happenPlace}}
+                              </router-link>
+                            </h5>
+                            <div class="shop-content-bottom">
+                              <span class="price">보호기관 : {{miss.careTel}}</span>
+                              <span class="add-cart">
+                                <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                                  상세보기
+                                </router-link>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div> -->
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
                   </div>
 
                   <div
@@ -291,82 +314,6 @@
                     aria-labelledby="comment-tab"
                   >
                     <div class="row related-product-active">
-                       <!-- <div class="col-6">
-                         <div id="test"
-                          style="
-                            border: 2px solid black;
-                            padding: 10px;
-                            width: 586px;
-                            height: 180px;
-                            overflow: auto;
-                          ">
-                         </div>
-                       </div>
-
-                       <div class="col-6">
-                         <div
-                          style="
-                            border: 2px solid black;
-                            padding: 10px;
-                            width: 586px;
-                            height: 180px;
-                          ">
-                            <label for="comment_input" style="float:left; font-size:17px; margin-top:6px;">댓글</label>
-                            <input
-                              id="comment_input"
-                              type="text"
-                              class="form-control"
-                              style="width: 400px; float:left; margin: 0px 10px"
-                              readonly
-                            />
-                            <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;">
-                              작성
-                              <img src="img/icon/w_pawprint.png" alt="" />
-                            </p>
-                         </div>
-                       </div> -->
-                      <!-- <div style="position: absolute;top: 50%;left: 50%;">
-                        <div>
-                          <div 
-                          id="test"
-                          :style="commenntopen">
-                            <div v-for="(com, index) in commentlist" v-bind:key="index">
-                              {{com.no}} , {{com.author}} , {{com.descr}} , {{com.write_time}}
-                            </div>
-                          </div>
-                        </div>
-
-                        <div>
-                          <div class="shop-details-price" style="margin:3px; float:right;">
-                              <h5 class="stock-status" @click="updatecomment()">더보기</h5>
-                            </div>
-                        </div>
-                        <br>
-                        <div>
-                          <div style="
-                            border: 2px;
-                            padding: 4px 12px;
-                            height: 50px;
-                          ">
-                          <label for="comment_input" style="float:left; font-size:17px; margin-top:6px;">댓글</label>
-                            <input
-                              id="comment_input"
-                              type="text"
-                              class="form-control"
-                              style="width: 620px; float:left; margin: 0px 10px"
-                              readonly
-                            />
-                            <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;">
-                              작성
-                              <img src="img/icon/w_pawprint.png" alt="" />
-                            </p>
-                          </div>
-                        </div>
-                      </div> -->
-
-
-
-
 
                         <div class="col-12" style="margin-top : 10px; ">
                           <div 
@@ -423,9 +370,6 @@
               </div>
             </div>
           </div>
-          <!-- <div class="related-products-wrap">
-            
-          </div> -->
         </div>
       </section>
       <!-- shop-details-area-end -->
@@ -436,16 +380,19 @@
 
 <script>
 import axios from 'axios';
+import Slick from "vue-slick";
 const session = window.sessionStorage;
 export default {
   name: "App",
+  components: {
+    Slick,
+  },
   props:{
     no:{
       default : 2,
       type:Number,
     },
   },
-  components: {},
   data: function(){
      return {
        miss: { },
@@ -458,6 +405,56 @@ export default {
          toggle : false,
        },
        misslist:[],
+        slickOptions: {
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        autoplay: false,
+        arrows: true,
+        autoplaySpeed: 3000,
+        prevArrow:
+          '<button type="button" class="slick-prev"><img src="img/icon/arrow.png" /></button>',
+        nextArrow:
+          '<button type="button" class="slick-next"><img src="img/icon/arrow.png" /></button>',
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+            },
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              speed: 1000,
+            },
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              arrows: false,
+              speed: 1000,
+            },
+          },
+          {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              speed: 1000,
+            },
+          },
+        ],
+      },
      }
   },
   created() {
