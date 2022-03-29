@@ -100,11 +100,11 @@
                               >실종동물 상세</router-link
                             >
                           </li>
-                          <li>
+                          <!-- <li>
                             <router-link to="/shelDetail"
                               >유기동물 상세</router-link
                             >
-                          </li>
+                          </li> -->
                           
                         </ul>
                       </li>
