@@ -5,8 +5,8 @@
     <select id="list" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
         select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo
         from comment co, miss_comment mc
-        where co.no = fc.commentNo and mc.miss_no = #{missNo}
-        order by date desc
+        where co.no = mc.comment_no and mc.miss_no = #{missNo}
+        order by co.write_time desc
     </select>
 
     <select id="read" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
