@@ -3,16 +3,16 @@
 <mapper namespace="com.ssafy.FFP.Dao.CommentDao">
 
     <select id="list" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
-        select co.no, co.descr, co.author, co.write_time as writeTime
-        from comment co, feed_comment fc
-        where co.no = fc.commentNo and fc.feedNo = #{feedNo}
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo
+        from comment co, miss_comment mc
+        where co.no = fc.commentNo and mc.miss_no = #{missNo}
         order by date desc
     </select>
 
     <select id="read" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
-        select co.no, co.descr, co.author, co.write_time as writeTime, fc.feedNo
-        from comment co, feed_comment fc
-        where co.no = #{no} and fc.commentNo = #{no}
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo
+        from comment co, miss_comment mc
+        where co.no = #{no} and mc.comment_no = #{no}
     </select>
 
     <insert id="write" parameterType="com.ssafy.FFP.Dto.CommentDto">
