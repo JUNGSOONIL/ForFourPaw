@@ -15,8 +15,8 @@ public class CommentServiceImpl implements CommentService{
 
     @Override
     public int create(CommentDto commentDto) {
-        int commentNo = commentDao.create(commentDto);
-        int result = commentDao.relation(commentNo, commentDto.getMissNo());
+        commentDao.create(commentDto);
+        int result = commentDao.relation(commentDto.getNo(), commentDto.getMissNo());
         return result;
     }
 
