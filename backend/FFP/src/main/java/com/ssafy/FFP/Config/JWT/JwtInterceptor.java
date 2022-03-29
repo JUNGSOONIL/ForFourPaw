@@ -1,6 +1,7 @@
 package com.ssafy.FFP.Config.JWT;
 
 import com.google.gson.Gson;
+import com.ssafy.FFP.Dto.JWTDecodeDto;
 import com.ssafy.FFP.Dto.UserDto;
 import com.ssafy.FFP.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,14 +54,16 @@ public class JwtInterceptor implements HandlerInterceptor {
                 String accessTokenDecode = jwtService.decode(atJwtToken);
                 System.out.println("accessDto : " + accessTokenDecode);
                 Gson gson = new Gson();
-                UserDto jwtPayload = gson.fromJson(accessTokenDecode, UserDto.class);
+                JWTDecodeDto jwtPayload = gson.fromJson(accessTokenDecode, JWTDecodeDto.class);
 
-                String refreshTokenInDBMS = userService.selectRefreshToken(jwtPayload.getEmail());
+                System.out.println(jwtPayload.getUserInfo().getEmail());
+                String refreshTokenInDBMS = userService.selectRefreshToken(jwtPayload.getUserInfo().getEmail());
+                System.out.println(refreshTokenInDBMS);
 
                 if(refreshTokenInDBMS.equals(atJwtRefreshToken)) {
                     System.out.println("일치합니다!!!");
                    // String accessJws = jwtService.createJws(30, jwtPayload.getUserInfo());
-                    String accessJws = jwtService.createAccess(jwtPayload.getEmail());
+                    String accessJws = jwtService.createAccess(jwtPayload.getUserInfo().getEmail());
                     response.addHeader("at-jwt-access-token", accessJws);
 
                 }else {
