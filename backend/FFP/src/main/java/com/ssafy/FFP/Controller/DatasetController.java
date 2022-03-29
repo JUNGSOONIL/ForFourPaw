@@ -2,6 +2,7 @@ package com.ssafy.FFP.Controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
 
 import com.ssafy.FFP.Service.DatasetService;
@@ -21,8 +22,9 @@ public class DatasetController {
 		return Service.DataInsert();
 	}
 	
-	@PutMapping("/dataset")
-	public int DatasetUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
-		return Service.DataUpdate();
+//	@PutMapping("/dataset")
+	@Scheduled(cron = "0 0 4 * * *",zone = "Asia/Seoul")
+	public void DatasetUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
+		System.out.println(Service.DataUpdate());
 	}
 }
