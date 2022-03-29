@@ -49,29 +49,8 @@
                   <div class="shop-showing-result">
                     <p> 없으면 뭔가 허전한 부분 </p>
                   </div>
-                  <div class="shop-show-list">
-                    <form action="#">
-                      <label for="show">Show</label>
-                      <select id="show" class="selected">
-                        <option value="">08</option>
-                        <option value="">12</option>
-                        <option value="">16</option>
-                        <option value="">18</option>
-                        <option value="">20</option>
-                      </select>
-                    </form>
-                  </div>
-                  <div class="shop-short-by">
-                    <form action="#">
-                      <label for="shortBy">Sort By</label>
-                      <select id="shortBy" class="selected">
-                        <option value="">Sort by latest</option>
-                        <option value="">Low to high</option>
-                        <option value="">High to low</option>
-                        <option value="">Popularity</option>
-                      </select>
-                    </form>
-                  </div>
+                  
+                  
                 </div>
 
                 <div class="row justify-content-center">
@@ -90,7 +69,7 @@
                 </div> 
                 
                 <div class="row justify-content-center">
-                  <div><h1> 날짜별 통계 </h1></div>
+                  <div><h1> 월별 통계 </h1></div>
                   <div>
 
                   </div>
@@ -101,6 +80,21 @@
                     <canvas id="Chart_date" style="width:100% height:100%"></canvas>
                   </div>
                 </div>
+
+
+                <div class="row justify-content-center">
+                  <div><h1> 연도별 통계 </h1></div>
+                  <div>
+
+                  </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                  <div class="col" style="background-color:white">
+                    <canvas id="Chart_year" style="width:100% height:100%"></canvas>
+                  </div>
+                </div>
+
 
                 <div class="row justify-content-center">
                   <div><h1> 품종 별 WORD CLOUD </h1></div>
@@ -120,125 +114,30 @@
                   <div>
                   </div>
                 </div>
-                
+
                 <div class="row justify-content-center">
-                  <div class="col" style="background-color:white width:100% height:100%">
-                    <div id="kind_wordcloud"></div>
+                  <div class="col" style="background-color:white">
+                    <canvas id="Chart_region" style="width:100% height:100%"></canvas>
                   </div>
                 </div> 
-
-
-                <div class="row justify-content-center">
-
-
-                  <div class="col-lg-4 col-sm-6">
-
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-
-                        <a href="shop-details.html"
-                          ><img src="img/product/shop_item01.jpg" alt=""
-                        /></a>
-                        
-                      </div>
-                      <div class="shop-content">
-                        <span> CHART </span>
-                        <h4 class="title">
-                          <a href="shop-details.html">무게 별 유기동물 수</a>
-                        </h4>
-                        <div class="shop-content-bottom">
-                          <span>2007 ~ 2021</span>
-                        </div>
-                      </div>
-                      
-                    </div>
-                  </div>
-                  
-                  <div class="col-lg-4 col-sm-6">
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <a href="shop-details.html"
-                          ><img src="img/product/shop_item02.jpg" alt=""
-                        /></a>
-                      </div>
-                      <div class="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 class="title">
-                          <a href="shop-details.html">Squeaky Dog</a>
-                        </h4>
-                        <div class="shop-content-bottom">
-                          <span class="price">$19.00</span>
-                          <span class="add-cart"
-                            ><a href="shop-details.html">ADD +</a></span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6">
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <a href="shop-details.html"
-                          ><img src="img/product/shop_item03.jpg" alt=""
-                        /></a>
-                      </div>
-                      <div class="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 class="title">
-                          <a href="shop-details.html">Pet Knit Knacks</a>
-                        </h4>
-                        <div class="shop-content-bottom">
-                          <span class="price">$29.00</span>
-                          <span class="add-cart"
-                            ><a href="shop-details.html">ADD +</a></span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                </div>
 
                 <!-- 메인 그리드 끝 -->
                 <div class="shop-page-meta">
                   <div class="shop-grid-menu">
-                    <ul>
-                      <li class="active">
-                        <a href="#"><i class="fas fa-th"></i></a>
-                      </li>
-                      <li>
-                        <a href="#"><i class="fas fa-list"></i></a>
-                      </li>
-                    </ul>
+                    
                   </div>
                   <div class="shop-showing-result">
-                    <p>Total Items 1-12 of 13</p>
+
                   </div>
                   <div class="shop-show-list">
-                    <form action="#">
-                      <label for="bottomShow">Show</label>
-                      <select id="bottomShow" class="selected">
-                        <option value="">08</option>
-                        <option value="">12</option>
-                        <option value="">16</option>
-                        <option value="">18</option>
-                        <option value="">20</option>
-                      </select>
-                    </form>
+
                   </div>
                   <div class="shop-pagination">
-                    <ul>
-                      <li class="active"><a href="shop.html">1</a></li>
-                      <li><a href="shop.html">2</a></li>
-                      <li>
-                        <a href="shop.html"
-                          ><i class="fas fa-angle-double-right"></i
-                        ></a>
-                      </li>
-                    </ul>
+                    
                   </div>
                 </div>
-              </div>x
+
+              </div>
             </div>
 
         </div>
@@ -266,12 +165,13 @@ export default  {
         return {
             Chart_Weight : null,
             Chart_Date : null,
+            Chart_year : null,
+            Chart_region : null,
             words : [],
         }
     },
     mounted() {
         console.log("[system] mounted! ");
-        this.chart_test();
     },
     methods : {
         // 테스트용
@@ -313,7 +213,6 @@ export default  {
                 // console.log(templaabels);
                 // console.log(tempdata);
                 const ctx = document.getElementById('Chart_weight').getContext('2d');
-                this.Chart_Weight.destroy();
                 this.Chart_Weight = new Chart( ctx, {
                     type: 'bar',
                     data: {
@@ -360,6 +259,33 @@ export default  {
                         }
                     }
                 });
+
+                // 연도별 통계
+                templaabels = [];
+                tempdata = [];
+                res.data.yearlist.forEach(element => {
+                    templaabels.push( (element.key) + " 년" );
+                    tempdata.push(element.value);
+                });
+                const ctx3 = document.getElementById('Chart_year').getContext('2d');
+                this.Chart_year = new Chart( ctx3, {
+                    type: 'bar',
+                    data: {
+                        labels : templaabels ,
+                        datasets: [{
+                            label: '# of Votes',
+                            data : tempdata,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
                 
                 // 품종 정리
                 res.data.kindlist2.forEach( element => {
@@ -371,7 +297,34 @@ export default  {
                 this.kindwordcloudload();
                 // console.log("words리스트");
                 // console.log(this.words);
-                
+
+                // 지역
+                //Chart_region
+                templaabels = [];
+                tempdata = [];
+                res.data.regionlist.forEach(element => {
+                    templaabels.push( (element.key)  );
+                    tempdata.push(element.value);
+                });
+                const ctx4 = document.getElementById('Chart_region').getContext('2d');
+                this.Chart_region = new Chart( ctx4, {
+                    type: 'bar',
+                    data: {
+                        labels : templaabels ,
+                        datasets: [{
+                            label: '# of Votes',
+                            data : tempdata,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
 
 
                 console.log("[system] 통신 완료");
@@ -383,52 +336,12 @@ export default  {
             });
         
         },
-        chart_test(){
-            const ctx = document.getElementById('Chart_weight').getContext('2d');
-            // const ctx2 = document.getElementById('myChart2').getContext('2d');
-
-            this.Chart_Weight = new Chart( ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                    datasets: [{
-                        label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true
-                        }
-                    }
-                }
-            });
-
-        },
         // word cloud test
         kindwordcloudload(){
           const cloud = require("d3-cloud");
           cloud()
               .words(this.words)
-              .size(["1200", "1500"])
+              .size(["1200", "1400"])
               .padding(1)
               .font("Impact")
               // .rotate 단어돌리기
@@ -454,7 +367,7 @@ export default  {
           
           const d3 = require("d3");
           const width = 1200;
-          const height = 1500;
+          const height = 1400;
           d3.select("#kind_wordcloud")
             .append("svg")
             .attr("width", width)
