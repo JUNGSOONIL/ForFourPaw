@@ -183,7 +183,7 @@
           </div>
           <div class="row">
             <div class="col-12">
-              <div class="product-desc-wrap">
+              <div class="product-desc-wrap" style="padding-top : 15px;">
                 <ul class="nav nav-tabs" id="myTabTwo" role="tablist">
                   <li class="nav-item">
                     <a
@@ -209,6 +209,18 @@
                       >매칭</a
                     >
                   </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      id="comment-tab"
+                      data-toggle="tab"
+                      href="#comment"
+                      role="tab"
+                      aria-controls="comment"
+                      aria-selected="true"
+                      >댓글</a
+                    >
+                  </li>
                 </ul>
                 
                 <div class="tab-content" id="myTabContentTwo">
@@ -229,6 +241,7 @@
                       </p>
                     </div>
                   </div>
+
                   <div
                     class="tab-pane fade show"
                     id="details"
@@ -268,6 +281,142 @@
               </div>
             </div>
                   </div>
+
+                  <div
+                    class="tab-pane fade show"
+                    id="comment"
+                    role="tabpanel"
+                    aria-labelledby="comment-tab"
+                  >
+                    <div class="row related-product-active">
+                       <!-- <div class="col-6">
+                         <div id="test"
+                          style="
+                            border: 2px solid black;
+                            padding: 10px;
+                            width: 586px;
+                            height: 180px;
+                            overflow: auto;
+                          ">
+                         </div>
+                       </div>
+
+                       <div class="col-6">
+                         <div
+                          style="
+                            border: 2px solid black;
+                            padding: 10px;
+                            width: 586px;
+                            height: 180px;
+                          ">
+                            <label for="comment_input" style="float:left; font-size:17px; margin-top:6px;">댓글</label>
+                            <input
+                              id="comment_input"
+                              type="text"
+                              class="form-control"
+                              style="width: 400px; float:left; margin: 0px 10px"
+                              readonly
+                            />
+                            <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;">
+                              작성
+                              <img src="img/icon/w_pawprint.png" alt="" />
+                            </p>
+                         </div>
+                       </div> -->
+                      <!-- <div style="position: absolute;top: 50%;left: 50%;">
+                        <div>
+                          <div 
+                          id="test"
+                          :style="commenntopen">
+                            <div v-for="(com, index) in commentlist" v-bind:key="index">
+                              {{com.no}} , {{com.author}} , {{com.descr}} , {{com.write_time}}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div class="shop-details-price" style="margin:3px; float:right;">
+                              <h5 class="stock-status" @click="updatecomment()">더보기</h5>
+                            </div>
+                        </div>
+                        <br>
+                        <div>
+                          <div style="
+                            border: 2px;
+                            padding: 4px 12px;
+                            height: 50px;
+                          ">
+                          <label for="comment_input" style="float:left; font-size:17px; margin-top:6px;">댓글</label>
+                            <input
+                              id="comment_input"
+                              type="text"
+                              class="form-control"
+                              style="width: 620px; float:left; margin: 0px 10px"
+                              readonly
+                            />
+                            <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;">
+                              작성
+                              <img src="img/icon/w_pawprint.png" alt="" />
+                            </p>
+                          </div>
+                        </div>
+                      </div> -->
+
+
+
+
+
+                        <div class="col-12" style="margin-top : 10px; ">
+                          <div 
+                          id="test"
+                          :style="commenntopen">
+
+                            <div v-for="(com, index) in commentlistslice" v-bind:key="index">
+                              <img style="float:left;" id="comment_img" :src="com.profile_img" alt="">
+                              <h4 style="float:left; margin:0px">{{com.authorNickName}}</h4>
+                              <div v-if="com.author == userInfoNo()" id="setting" style="cursor: pointer; float:right;" @click="commentdelete(com.no)">
+                                <i style="margin-top:5px" class="fas fa-trash"></i>
+                              </div>
+                              <p style="float:right;"> {{com.writeTime.substring(0,10)}} &nbsp; </p>
+                              <br>
+                              <br>
+                              <p style="margin-left:50px; margin-bottom:5px;">{{com.descr}}</p> 
+                              &nbsp;&nbsp;&nbsp;&nbsp; 
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                          <div class="shop-details-price" style="margin:3px; float:right; cursor: pointer;">
+                              <h5 class="stock-status" v-if="(!commentstyle.toggle && commentlist.length > 2)" @click="updatecomment()">더보기</h5>
+                              <h5 class="stock-status" v-if="(commentstyle.toggle && commentlist.length > 2)" @click="updatecomment()">접기</h5>
+                            </div>
+                        </div>
+                  
+                        <div class="col-12">
+                          <div style="
+                            border: 2px;
+                            padding: 4px 12px;
+                            height: 50px;
+                          ">
+                          <label for="comment_input" style="float:left; font-size:17px; margin-top:6px;">댓글</label>
+                            <input
+                              id="comment_input"
+                              type="text"
+                              v-model="commentdescr"
+                              class="form-control"
+                              style="width: 1037px; float:left; margin: 0px 10px"
+                              @keyup.enter="commentinset"
+                            />
+                            <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;"
+                            @click="commentinset">
+                              작성
+                              <img src="img/icon/w_pawprint.png" alt="" />
+                            </p>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -284,9 +433,8 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from 'axios';
 const session = window.sessionStorage;
-
 export default {
   name: "App",
   props:{
@@ -298,14 +446,113 @@ export default {
   components: {},
   data: function(){
      return {
-       miss: { }, 
+       miss: { },
+       commentdescr: "",
+       commentlist:[],
+       commentlistslice : [],
+       commentstyle: {
+         height : '190px',
+         overflow : 'hidden ',
+         toggle : false,
+       },
        misslist:[],
      }
   },
   created() {
     this.selectMiss();
+    this.commentselect();
+  },
+  computed:{
+    commenntopen(){
+      return {
+        border : '2px',
+        padding : '4px 12px',
+        height : this.commentstyle.height,
+        overflow: this.commentstyle.overflow,
+      }
+    },
   },
   methods:{
+    userInfoNo(){
+      return JSON.parse(session.getItem('userInfo')).no
+    },
+    commentselect(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      axios({
+          method: 'get',
+          url: '/api/comments/' + this.no, //여기 수정
+          headers: headers,  
+        }).then((res) => {
+          this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
+          this.commentlist = res.data
+          console.log(res)
+        }).catch((error) => {
+          console.log(error);
+        }).then(() => {
+          console.log('commentselect End!!');
+          this.commentlistslice = this.commentlist.slice(0,2);
+      });
+    },
+    commentinset(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      let data = {
+        author : this.userInfoNo(),
+        missNo : this.no,
+        descr : this.commentdescr,
+      };
+      axios({
+          method: 'post',
+          url: '/api/comments', //여기 수정
+          data: data, 
+          headers: headers,  
+        }).then((res) => {
+          this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
+          this.$alertify.success("작성 완료했습니다.");
+          this.commentdescr = ""
+          this.commentselect();
+        }).catch((error) => {
+          console.log(error);
+        }).then(() => {
+          console.log('commentinset End!!');
+      });
+    },
+    commentdelete(el){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      axios({
+          method: 'delete',
+          url: '/api/comments/' + el, //여기 수정
+          headers: headers,  
+        }).then((res) => {
+          this.$store.dispatch('login/accessTokenRefresh', res) 
+           this.$alertify.success("삭제 완료했습니다.");
+           this.commentselect();
+        }).catch((error) => {
+          console.log(error);
+        }).then(() => {
+          console.log('commentdelete End!!');
+      });
+    },
+    updatecomment(){
+      if(this.commentstyle.toggle){
+        this.commentstyle.height = '190px'
+        this.commentstyle.overflow = 'hidden'
+        this.commentlistslice = this.commentlist.slice(0,2);
+      }else{
+        this.commentstyle.height = '285px'
+        this.commentstyle.overflow = 'auto'
+        this.commentlistslice = this.commentlist;
+      }
+      this.commentstyle.toggle = !this.commentstyle.toggle;
+    },
     match(){
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
@@ -370,5 +617,19 @@ export default {
 }
 #test::-webkit-scrollbar-track {
   background-color: white; /*스크롤바 트랙 색상*/
+}
+#comment_img{
+  width: 2.5rem;
+  height: 2.5rem; 
+  border-radius: 50%;
+  margin-right:0.4rem;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+#setting {
+  width: 1%;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 </style>
