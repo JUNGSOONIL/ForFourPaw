@@ -117,4 +117,32 @@ public class MissnimalController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
         }
     }
+
+    // 글 수정
+    @PutMapping("/miss")
+    public ResponseEntity<?> update(
+            @RequestPart(value="missData") MissnimalDto missnimalDto,
+            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
+
+        System.out.println(missnimalDto.toString());
+        List<Integer> imgNo = new ArrayList<>();
+        if(multipartFile != null){
+            imgNo = s3Service.uploadFile(multipartFile);
+        }
+
+        List<S3Dto> imgs = new ArrayList<>();
+        for (int no : imgNo) {
+            System.out.println("no: " + no);
+            imgs.add(s3Service.select(no));
+        }
+
+        int result = missnimalService.update(missnimalDto, imgs.get(0));
+
+        if(result != 0) {
+            return ResponseEntity.ok().body(result);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
+        }
+    }
 }
