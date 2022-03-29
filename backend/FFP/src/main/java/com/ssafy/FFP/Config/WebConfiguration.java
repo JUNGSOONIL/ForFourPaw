@@ -33,7 +33,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .excludePathPatterns("/kapi.kakao.com/**")
                 .excludePathPatterns("/error/**")
                 .excludePathPatterns("/shel/view/notlogin")
-                .excludePathPatterns("/shel/**");
+                .excludePathPatterns("/shel/detail/**");
 
     }
   
