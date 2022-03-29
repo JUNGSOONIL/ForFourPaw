@@ -98,10 +98,34 @@
                 
                 <div class="row justify-content-center">
                   <div class="col" style="background-color:white">
-                    <canvas id="myChart2" style="width:100% height:100%"></canvas>
+                    <canvas id="Chart_date" style="width:100% height:100%"></canvas>
                   </div>
                 </div>
 
+                <div class="row justify-content-center">
+                  <div><h1> 품종 별 WORD CLOUD </h1></div>
+                  <div>
+                  </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                  <div class="col" style="background-color:white width:100% height:100%">
+                    <div id="kind_wordcloud"></div>
+                  </div>
+                </div> 
+
+
+                <div class="row justify-content-center">
+                  <div><h1> 지역별 통계 </h1></div>
+                  <div>
+                  </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                  <div class="col" style="background-color:white width:100% height:100%">
+                    <div id="kind_wordcloud"></div>
+                  </div>
+                </div> 
 
 
                 <div class="row justify-content-center">
@@ -172,73 +196,10 @@
                       </div>
                     </div>
                   </div>
-                  <div class="col-lg-4 col-sm-6">
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <a href="shop-details.html"
-                          ><img src="img/product/shop_item04.jpg" alt=""
-                        /></a>
-                      </div>
-                      <div class="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 class="title">
-                          <a href="shop-details.html">Yoda Carriage</a>
-                        </h4>
-                        <div class="shop-content-bottom">
-                          <span class="price">$49.00</span>
-                          <span class="add-cart"
-                            ><a href="shop-details.html">ADD +</a></span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6">
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <a href="shop-details.html"
-                          ><img src="img/product/shop_item05.jpg" alt=""
-                        /></a>
-                      </div>
-                      <div class="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 class="title">
-                          <a href="shop-details.html">Pet Carriage</a>
-                        </h4>
-                        <div class="shop-content-bottom">
-                          <span class="price">$09.00</span>
-                          <span class="add-cart"
-                            ><a href="shop-details.html">ADD +</a></span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-4 col-sm-6">
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <a href="shop-details.html"
-                          ><img src="img/product/shop_item06.jpg" alt=""
-                        /></a>
-                      </div>
-                      <div class="shop-content">
-                        <span>Dog toy’s</span>
-                        <h4 class="title">
-                          <a href="shop-details.html">Squeaky Dog</a>
-                        </h4>
-                        <div class="shop-content-bottom">
-                          <span class="price">$16.00</span>
-                          <span class="add-cart"
-                            ><a href="shop-details.html">ADD +</a></span
-                          >
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  
                   
                 </div>
+
+                <!-- 메인 그리드 끝 -->
                 <div class="shop-page-meta">
                   <div class="shop-grid-menu">
                     <ul>
@@ -277,7 +238,7 @@
                     </ul>
                   </div>
                 </div>
-              </div>
+              </div>x
             </div>
 
         </div>
@@ -296,12 +257,16 @@ import axios from 'axios'
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
+
 export default  {
     name : 'AnalysisView',
+    components : {
+    }, 
     data : function() {
         return {
             Chart_Weight : null,
-            Chart_Date : null
+            Chart_Date : null,
+            words : [],
         }
     },
     mounted() {
@@ -312,7 +277,7 @@ export default  {
         // 테스트용
         test() {
 
-            console.log("[system] 테스트 통신 시작");
+            console.log("[system] 차트 불러오기 ");
 
             // let headers = {
             //     'at-jwt-access-token': session.getItem('at-jwt-access-token'),
@@ -342,15 +307,13 @@ export default  {
                     tempdata.push(element.value);
                 });
                 
+                // 무게 무게별 동물 데이터 불러오기
                 templaabels[0] = "1 Kg 미만";
                 templaabels[templaabels.length -1] = "10 Kg 이상";
-                
-                console.log(templaabels);
-                console.log(tempdata);
-
+                // console.log(templaabels);
+                // console.log(tempdata);
                 const ctx = document.getElementById('Chart_weight').getContext('2d');
                 this.Chart_Weight.destroy();
-
                 this.Chart_Weight = new Chart( ctx, {
                     type: 'bar',
                     data: {
@@ -358,22 +321,6 @@ export default  {
                         datasets: [{
                             label: '# of Votes',
                             data : tempdata,
-                            // backgroundColor: [
-                            //     'rgba(255, 99, 132, 0.2)',
-                            //     'rgba(54, 162, 235, 0.2)',
-                            //     'rgba(255, 206, 86, 0.2)',
-                            //     'rgba(75, 192, 192, 0.2)',
-                            //     'rgba(153, 102, 255, 0.2)',
-                            //     'rgba(255, 159, 64, 0.2)'
-                            // ],
-                            // borderColor: [
-                            //     'rgba(255, 99, 132, 1)',
-                            //     'rgba(54, 162, 235, 1)',
-                            //     'rgba(255, 206, 86, 1)',
-                            //     'rgba(75, 192, 192, 1)',
-                            //     'rgba(153, 102, 255, 1)',
-                            //     'rgba(255, 159, 64, 1)'
-                            // ],
                             borderWidth: 1
                         }]
                     },
@@ -385,9 +332,49 @@ export default  {
                         }
                     }
                 });
+                
+                // 날짜별 chart_date
+                // 차트가 없을 땐 v-show로 이미지를 보여주던가 해도 괜찮을 듯
+                templaabels = [];
+                tempdata = [];
+                res.data.datelist.forEach(element => {
+                    templaabels.push( ( Number(element.key) + 1) + " 월");
+                    tempdata.push(element.value);
+                });
+                const ctx2 = document.getElementById('Chart_date').getContext('2d');
+                this.Chart_Date = new Chart( ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels : templaabels ,
+                        datasets: [{
+                            label: '# of Votes',
+                            data : tempdata,
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+                
+                // 품종 정리
+                res.data.kindlist2.forEach( element => {
+                    if ( 120000 < element.value ) element.value = 130000
+                    else if ( 200 >  element.value) element.value = 200
+                    this.words.push( { text: element.key , size: element.value } );
+                });
+
+                this.kindwordcloudload();
+                // console.log("words리스트");
+                // console.log(this.words);
+                
 
 
-                console.log("통신 완료");
+                console.log("[system] 통신 완료");
            
            }).catch((error) => {
                 console.log(error);
@@ -436,6 +423,75 @@ export default  {
             });
 
         },
+        // word cloud test
+        kindwordcloudload(){
+          const cloud = require("d3-cloud");
+          cloud()
+              .words(this.words)
+              .size(["1200", "1500"])
+              .padding(1)
+              .font("Impact")
+              // .rotate 단어돌리기
+              .rotate ( function(  ) { 
+                // return (~~(Math.random() * 6) - 3) * 1;
+                // if ( d.size > 55920) return 90;
+                // else 
+                return 0; 
+                })
+              .fontSize( function (d) { return (Math.sqrt(d.size) * 0.8 ); })
+              // .fontSize(function (d) {
+              //       return wordScale(d.frequency);
+              //   })
+              // end는 모든 단어를 다 위치 시킬 때 발생
+              .on("end", this.end)
+              .spiral("archimedean")
+              .start()
+              .stop();
+          
+          
+        },
+        end(words){
+          
+          const d3 = require("d3");
+          const width = 1200;
+          const height = 1500;
+          d3.select("#kind_wordcloud")
+            .append("svg")
+            .attr("width", width)
+            .attr( "height", height )
+            // 출력크기
+            .style("background", "white")
+            .append("g")
+            // g를 중심에서 단어를 그리기 때문에 g를 svg중심으로 이동한다.
+            .attr("transform", "translate(" +  width/2 + "," + height/2+ ")")
+            .style("fill", function ( d ) {
+                        // if ( d.size > 55920) return ( "#506230" );
+                        // else 
+                        console.log(d);
+                        return ( "#000000");
+                    })
+            .selectAll("text")
+            .data(words)
+            .enter()
+            .append("text")
+            // .style("fill-opacity", .5) // 투명도
+            .style("font-size" , (d) => {
+              // if ( d.size)
+              return d.size + "px";
+            })
+            .style("font-family", "Impact")
+            .attr("text-anchor", "middle")
+            .attr("transform", (d) => {
+              return "translate(" + [d.x, d.y] + ")rotate( " + d.rotate + ")";
+            })
+            .text( (d) => d.text );
+        
+
+        },
+        // wordcloudload2( aaa , bbb) {
+        //   aaa = this.aaa;
+        //   bbb = this.bbb;
+        // },
         
         
 
@@ -444,7 +500,6 @@ export default  {
 
 }
 </script>
-
 <style>
 #app {
 }
