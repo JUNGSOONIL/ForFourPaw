@@ -9,7 +9,7 @@
         </selectKey>
     </insert>
 
-    <delete id="delete" parameterType="string">
+    <delete id="deleteFile" parameterType="string">
         delete from img where img_name = #{imgName}
     </delete>
 
