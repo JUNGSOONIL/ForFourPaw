@@ -29,7 +29,7 @@ public class MissnimalServiceImpl implements MissnimalService{
     public int create(MissnimalDto missnimalDto, S3Dto img) {
         missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.create(missnimalDto);
-        missnimalDao.relation(img.getNo(), result);
+        missnimalDao.relation(img.getNo(), missnimalDto.getNo());
         return result;
     }
 
@@ -40,9 +40,10 @@ public class MissnimalServiceImpl implements MissnimalService{
             s3Dao.deleteFile(latest.getImgName());
             s3Dao.deleteByNo(latest.getNo());
             missnimalDto.setProfile(img.getImgLink());
+        } else {
+            MissnimalDto raw = missnimalDao.select(missnimalDto.getNo());
+            missnimalDto.setProfile(raw.getProfile());
         }
-        MissnimalDto raw = missnimalDao.select(missnimalDto.getNo());
-        missnimalDto.setProfile(raw.getProfile());
         int result = missnimalDao.update(missnimalDto);
         return result;
     }
