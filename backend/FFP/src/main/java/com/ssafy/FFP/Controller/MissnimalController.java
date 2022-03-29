@@ -36,7 +36,7 @@ public class MissnimalController {
     public ResponseEntity<?> select(@PathVariable String no){
         int missNo = Integer.parseInt(no);
         MissnimalDto missnimalDto = missnimalService.select(missNo);
-
+        System.out.println("missDto : " + missnimalDto);
         if(missnimalDto != null) {
             return ResponseEntity.ok().body(missnimalDto);
         }
@@ -109,6 +109,40 @@ public class MissnimalController {
         }
 
         int result = missnimalService.create(missnimalDto, imgs.get(0));
+
+        if(result != 0) {
+            return ResponseEntity.ok().body(result);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
+        }
+    }
+
+    // 글 수정
+    @PutMapping("/miss")
+    public ResponseEntity<?> update(
+            @RequestPart(value="missData") MissnimalDto missnimalDto,
+            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
+
+        System.out.println(missnimalDto.toString());
+        int result = 0;
+        if(multipartFile != null) {
+            List<Integer> imgNo = new ArrayList<>();
+            if (multipartFile != null) {
+                imgNo = s3Service.uploadFile(multipartFile);
+            }
+
+            List<S3Dto> imgs = new ArrayList<>();
+            for (int no : imgNo) {
+                System.out.println("no: " + no);
+                imgs.add(s3Service.select(no));
+            }
+
+            result = missnimalService.update(missnimalDto, imgs.get(0));
+        }
+        else {
+            result = missnimalService.update(missnimalDto, null);
+        }
 
         if(result != 0) {
             return ResponseEntity.ok().body(result);
