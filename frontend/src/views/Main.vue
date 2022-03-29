@@ -529,9 +529,9 @@
                 <div class="adoption-shop-item">
                   <div class="adoption-shop-thumb">
                     <img style="width : 380px; height : 381px" :src="shelnimal.popfile" alt="" />
-                    <a href="shop-details.html" class="btn"
+                    <router-link :to="{ name: 'ShelDetail', params: { no: shelnimal.no },}" class="btn"
                       >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                    /></a>
+                    /></router-link>
                   </div>
                   <div class="adoption-shop-content">
                     <h4 class="title">
@@ -547,7 +547,7 @@
                     <div class="adoption-rating">
                       <ul>
                         <li><i class="fas fa-coins"></i> 특징</li>
-                        <li> {{shelnimal.specialMark}}</li>
+                        <li style="text-align: right; width:220px;"> {{shelnimal.specialMark}}</li>
                       </ul>
                     </div>
                   </div>
@@ -987,13 +987,18 @@ export default {
       console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
     },
-    shelimalDetail() {
-      console.log("유기동물 상세 페이지");
-      this.$store.dispatch();
-    }
+    shelimalListLogin() {
+      console.log("로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalListLogin");
+    },
+    
   },
   mounted() {
-    this.shelimalList()
+    if(this.$store.state["login"].isLogin == false){
+      this.shelimalList()
+    }else {
+      this.shelimalListLogin()
+    }
   }
 };
 </script>
