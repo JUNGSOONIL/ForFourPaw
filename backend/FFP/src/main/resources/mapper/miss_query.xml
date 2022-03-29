@@ -50,7 +50,31 @@
             parameterType="com.ssafy.FFP.Dto.MissnimalDto">
         insert into missnimal(name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile)
         values (#{name}, #{kindCd}, #{colorCd}, #{age}, #{sexCd}, #{neuterYn}, #{author}, #{careTel}, #{happenDt}, #{happenPlace}, #{descr}, #{profile})
+        <selectKey keyProperty="no" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
     </insert>
+
+    <insert id="relation" parameterType="map">
+        insert into miss_img(imgNo, missNo)
+        values (#{imgNo}, #{missNo})
+    </insert>
+
+    <update id="update" parameterType="com.ssafy.FFP.Dto.MissnimalDto">
+        update missnimal
+            set name = #{name},
+            kindCd = #{kindCd},
+            colorCd = #{colorCd},
+            age = #{age},
+            sexCd = #{sexCd},
+            neuterYn = #{neuterYn},
+            careTel = #{careTel},
+            happenDt = #{happenDt},
+            happenPlace = #{happenPlace},
+            descr = #{descr},
+            profile = #{profile}
+        where no = #{no}
+    </update>
 
     <delete id="delete" parameterType="int">
         delete from missnimal where

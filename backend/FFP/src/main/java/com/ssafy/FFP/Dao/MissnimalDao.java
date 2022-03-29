@@ -17,4 +17,8 @@ public interface MissnimalDao {
     public List<MissnimalDto> list(String sdt);
     public List<MissnimalDto> match(int userNo);
     public List<MissnimalDto> find(SearchDto searchDto);
+
+    public int relation(
+            @Param("imgNo") int imgNo,
+            @Param("missNo") int missNo);
 }
