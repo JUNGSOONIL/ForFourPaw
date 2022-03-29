@@ -7,49 +7,13 @@
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
-    <button class="scroll-top scroll-to-target" data-target="html">
+    <button class="scroll-top scroll-to-target" onclick="window.scrollTo(0,0);">
       <i class="fas fa-angle-up"></i>
     </button>
     <!-- Scroll-top-end-->
 
     <!-- header-area -->
     <header>
-      <!-- <div class="header-top-area">
-        <div class="container custom-container">
-          <div class="row align-items-center">
-            <div class="col-md-7">
-              <div class="header-top-left">
-                <ul>
-                  <li>Call us: 747-800-9880</li>
-                  <li>
-                    <i class="far fa-clock"></i>Opening Hours: 7:00 am - 9:00 pm
-                    (Mon - Sun)
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="header-top-right">
-                <ul class="header-top-social">
-                  <li class="follow">Follow :</li>
-                  <li>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div id="sticky-header" class="menu-area">
         <div class="container custom-container">
           <div class="row">
@@ -88,7 +52,9 @@
 
                         <ul class="submenu">
                           <li>
-                            <router-link to="/shop">Our Shop</router-link>
+                            <router-link to="/missList"
+                              >실종동물 목록</router-link
+                            >
                           </li>
                           <li>
                             <router-link to="/missWrite"
@@ -105,7 +71,6 @@
                               >유기동물 상세</router-link
                             >
                           </li> -->
-                          
                         </ul>
                       </li>
                       <li><router-link to="/dogList">Dog List</router-link></li>

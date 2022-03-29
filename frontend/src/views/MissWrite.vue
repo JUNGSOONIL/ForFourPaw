@@ -310,9 +310,9 @@
                   </div>
                 </div>
                 <div class="d-md-flex justify-content-md-end">
-                  <span>
+                  <span v-if="no == null">
                     <li class="header-btn" style="margin: 1px" @click="reset">
-                      <p class="btn">
+                      <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         취소
                         <img src="img/icon/w_pawprint.png" alt="" />
                       </p>
@@ -321,16 +321,24 @@
                   </span>
                   <span v-if="no == null">
                     <li class="header-btn" style="margin: 1px;" @click="insertMiss">
-                      <p class="btn">
+                      <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         작성
                         <img src="img/icon/w_pawprint.png" alt="" />
                       </p>
                     </li>
                   </span>
-                  <span v-else>
-                    <li class="header-btn" style="margin: 1px;" @click="insertMiss">
-                      <p class="btn">
+                  <span v-if="no != null">
+                    <li class="header-btn" style="margin: 1px;" @click="updateMiss">
+                      <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         수정
+                        <img src="img/icon/w_pawprint.png" alt="" />
+                      </p>
+                    </li>
+                  </span>
+                   <span v-if="no != null">
+                    <li class="header-btn" style="margin: 1px;" @click="deleteMiss">
+                      <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
+                        삭제
                         <img src="img/icon/w_pawprint.png" alt="" />
                       </p>
                     </li>
@@ -402,7 +410,6 @@ export default {
      }
   },
   created() {
-    console.log(this.miss)
     if(this.no != null){
       this.selectMiss();
     }
@@ -415,11 +422,14 @@ export default {
       };
       axios({
         method: 'get',
-        url: '/api/qss/list' + this.no, // 이부분 수정해야함
+        url: '/api/miss/' + this.no, // 이부분 수정해야함
         headers: headers,
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
-        this.miss = res // 이부분도 수정
+        this.miss = res.data // 이부분도 수정
+        const arr = this.miss.happenPlace.split(" ")
+        this.miss.happenGugun = arr[0];
+        this.miss.happenPlace = this.miss.happenPlace.substring(arr[0].length+1)
         // 여기서 벨류 체크 부분도 수정될듯?
       }).catch((error) => {
         console.log(error);
@@ -430,6 +440,12 @@ export default {
     check(){
       if (!this.validate.name|| !this.validate.kindCd|| !this.validate.colorCd || !this.validate.age || !this.validate.sexCd || this.miss.profile == "" ||
         !this.validate.happenGugun|| !this.validate.neuterYn || !this.validate.careTel ||  !this.validate.happenPlace){
+          return true;
+      }
+    },
+    updatecheck(){
+      if (this.miss.name == ""|| this.miss.kindCd ==""|| this.miss.colorCd =="" || this.miss.age =="" || this.miss.sexCd =="" || this.miss.profile == "" ||
+        this.miss.happenGugun == ""|| this.miss.neuterYn =="" || this.miss.careTel =="" ||  this.miss.happenPlace ==""){
           return true;
       }
     },
@@ -460,7 +476,6 @@ export default {
     imgUpload() {
       this.miss.profile = null;
       this.miss.profile = URL.createObjectURL(this.$refs.animalImg.files[0]);
-      console.log(this.miss.profile)
     },
     insertMiss(){
       if(this.check() === true){
@@ -468,7 +483,6 @@ export default {
         return
       }
       const userInfo = JSON.parse(session.getItem('userInfo'))
-      console.log(this.miss)
       
       let headers = {
         'Content-Type': 'multipart/form-data',
@@ -478,7 +492,7 @@ export default {
 
       const formData = new FormData();
       formData.append("multipartFile", this.$refs.animalImg.files[0]);
-      console.log(this.$refs.animalImg.files[0].image)
+
       let data = {
         name : this.miss.name,
         kindCd : this.miss.kindCd,
@@ -509,11 +523,84 @@ export default {
         this.$store.dispatch('login/accessTokenRefresh', res)
         console.log(res);
         this.$alertify.success("작성 완료했습니다.");
-        this.$route.push("/");
+        this.$route.go(-1)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
-        console.log('getQSSList End!!');
+        console.log('insertMiss End!!');
+      });
+    },
+    updateMiss(){
+      if(this.updatecheck() === true){
+        this.$alertify.error("똑바로 입력하세요");
+        return
+      }
+      const userInfo = JSON.parse(session.getItem('userInfo'))
+      
+      let headers = {
+        'Content-Type': 'multipart/form-data',
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+
+      const formData = new FormData();
+      formData.append("multipartFile", this.$refs.animalImg.files[0]);
+
+      let data = {
+        no : this.no,
+        name : this.miss.name,
+        kindCd : this.miss.kindCd,
+        colorCd: this.miss.colorCd,
+        age: this.miss.age,
+        sexCd: this.miss.sexCd,
+        neuterYn: this.miss.neuterYn,
+        author: userInfo.no,
+        careTel: this.miss.careTel,
+        happenDt: this.miss.happenDt,
+        happenPlace: this.miss.happenGugun+" "+this.miss.happenPlace,
+        descr: this.miss.descr,
+      };
+      console.log(data)
+      console.log(this.$refs.animalImg.files[0])
+      formData.append(
+        "missData",
+        new Blob([JSON.stringify(data)], { type: "application/json" })
+      );
+
+      axios({
+        method: 'put',
+        url: '/api/miss', // 이부분 수정해야함
+        data: formData,
+        headers: headers,
+      }).then((res) => {
+
+        this.$store.dispatch('login/accessTokenRefresh', res)
+        this.$alertify.success("수정 완료했습니다.");
+        this.$route.push({ name: 'ShelDetail', params: { no: this.no }});
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('updateMiss End!!');
+      });
+    },
+    deleteMiss(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+
+      axios({
+        method: 'delete',
+        url: '/api/miss/' + this.no, 
+        headers: headers,
+      }).then((res) => {
+        this.$store.dispatch('login/accessTokenRefresh', res)
+        this.$alertify.success("삭제 완료했습니다.");
+        this.$route.go(-1)
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('deleteMiss End!!');
       });
     },
     validTel(){
