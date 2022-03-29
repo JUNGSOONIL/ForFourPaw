@@ -987,14 +987,17 @@ export default {
       console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
     },
-    shelimalDetail() {
-      console.log("유기동물 상세 페이지");
-      this.$store.dispatch();
-    }
+    shelimalListLogin() {
+      console.log("로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalListLogin");
+    },
+    
   },
   mounted() {
     if(this.$store.state["login"].isLogin == false){
       this.shelimalList()
+    }else {
+      this.shelimalListLogin()
     }
   }
 };
