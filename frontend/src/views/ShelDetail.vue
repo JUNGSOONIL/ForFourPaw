@@ -275,7 +275,7 @@ export default {
     };
     axios({
         method: 'get',
-        url: '/api/shel/' + this.no, // 여기 수정
+        url: '/api/shel/detail/' + this.no, // 여기 수정
         headers: headers, 
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 

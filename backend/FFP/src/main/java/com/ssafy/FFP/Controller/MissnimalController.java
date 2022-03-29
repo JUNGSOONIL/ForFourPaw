@@ -151,4 +151,16 @@ public class MissnimalController {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
         }
     }
+    
+    @DeleteMapping("/miss/{no}")
+    public ResponseEntity<?> delete(@PathVariable String no){
+        int missNo = Integer.parseInt(no);
+
+        if (missnimalService.delete(missNo) != 0) {
+            return ResponseEntity.ok().body(1);
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "삭제에 실패했습니다.");
+        }
+                
+    }
 }

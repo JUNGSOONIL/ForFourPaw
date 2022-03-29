@@ -16,6 +16,7 @@ import SocialLogin from "@/views/accounts/SocialLogin.vue";
 import LogoutPage from "@/views/accounts/LogoutPage.vue";
 import MoreInfo from "@/views/accounts/MoreInfo.vue";
 import Analysis_Region from "@/views/analysis/Analysis_Region.vue";
+import MissList from "@/views/MissList.vue";
 
 export default new VueRouter({
   mode: "history",
@@ -36,6 +37,11 @@ export default new VueRouter({
       path: "/shopDetail",
       component: ShopDetail,
     },
+    {
+      name: "MissList",
+      path: "/missList",
+      component: MissList,
+    },
 
     {
       name: "MissDetail",
@@ -50,7 +56,7 @@ export default new VueRouter({
       component: ShelDetail,
       props: true,
     },
-    
+
     {
       name: "MissWrite",
       path: "/missWrite",
