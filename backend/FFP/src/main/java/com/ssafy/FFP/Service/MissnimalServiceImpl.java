@@ -35,11 +35,14 @@ public class MissnimalServiceImpl implements MissnimalService{
 
     @Override
     public int update(MissnimalDto missnimalDto, S3Dto img) {
-        S3Dto latest = s3Dao.selectByLink(missnimalDto.getProfile());
-        s3Dao.deleteFile(latest.getImgName());
-        s3Dao.deleteByNo(latest.getNo());
-
-        missnimalDto.setProfile(img.getImgLink());
+        if(img != null) {
+            S3Dto latest = s3Dao.selectByLink(missnimalDto.getProfile());
+            s3Dao.deleteFile(latest.getImgName());
+            s3Dao.deleteByNo(latest.getNo());
+            missnimalDto.setProfile(img.getImgLink());
+        }
+        MissnimalDto raw = missnimalDao.select(missnimalDto.getNo());
+        missnimalDto.setProfile(raw.getProfile());
         int result = missnimalDao.update(missnimalDto);
         return result;
     }
