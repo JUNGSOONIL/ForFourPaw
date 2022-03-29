@@ -48,4 +48,14 @@ public class S3Dto {
     public void setImgLink(String imgLink) {
         this.imgLink = imgLink;
     }
+
+    @Override
+    public String toString() {
+        return "S3Dto{" +
+                "no=" + no +
+                ", targetNo=" + targetNo +
+                ", imgName='" + imgName + '\'' +
+                ", imgLink='" + imgLink + '\'' +
+                '}';
+    }
 }

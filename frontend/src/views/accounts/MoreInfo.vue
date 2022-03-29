@@ -74,7 +74,6 @@
                           <option value="경상북도">경상북도</option>
                           <option value="경상남도">경상남도</option>
                           <option value="제주특별자치도">제주특별자치도</option>
-                          <!-- <option :value="18" selected>선택</option> -->
                         </select>
                       </div>
                     </div>
@@ -175,11 +174,7 @@ export default {
         nickname: this.nickname,
         addrs: this.addrs,
       };
-      if (
-        this.isNickNameValid &&
-        this.isNickNameDBValid &&
-        this.addrs != ""
-      ) {
+      if (this.isNickNameValid && this.isNickNameDBValid && this.addrs != "") {
         console.log("send");
         axios({
           method: "put",
@@ -195,9 +190,9 @@ export default {
             console.log(error);
           });
       } else {
-        console.log(this.isNickNameValid)
-        console.log(this.isNickNameDBValid)
-        console.log(this.addrs)
+        console.log(this.isNickNameValid);
+        console.log(this.isNickNameDBValid);
+        console.log(this.addrs);
         this.$alertify.error("정보를 수정할 수 없습니다");
       }
     },

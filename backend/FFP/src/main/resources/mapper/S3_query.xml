@@ -9,7 +9,7 @@
         </selectKey>
     </insert>
 
-    <delete id="delete" parameterType="string">
+    <delete id="deleteFile" parameterType="string">
         delete from img where img_name = #{imgName}
     </delete>
 
@@ -32,7 +32,7 @@
     <select id="selectByLink" parameterType="string" resultType="com.ssafy.FFP.Dto.S3Dto">
         select no, img_link as imgLink, img_name as imgName
         from img
-        where imgLink = #{imgLink}
+        where img_link = #{imgLink}
     </select>
     
     <update id="updateimg">
