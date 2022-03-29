@@ -18,7 +18,7 @@
 	</insert>
 	
 	<insert id="DataUpdate" parameterType="java.util.List">
-		INSERT IGNORE INTO dataset(desertionNo, filename, happenDt, happenPlace, kindCd,
+		INSERT INTO dataset(desertionNo, filename, happenDt, happenPlace, kindCd,
        colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd,
        neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel)
 		VALUES
@@ -30,5 +30,6 @@
        		#{item.careTel}, #{item.careAddr}, #{item.orgNm}, #{item.chargeNm}, #{item.officetel}
 			)
 		</foreach>
+		ON DUPLICATE KEY UPDATE processState = values(processState)
 	</insert>
 </mapper>
