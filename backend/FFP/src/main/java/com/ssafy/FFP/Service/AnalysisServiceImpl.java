@@ -160,7 +160,8 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .groupBy("kind")
                 .count();
         re = re.orderBy(desc("count"));
-
+        
+        System.out.println("품종별 통계");
         re.show(200);
         HM = new HashMap<String,Long>();
 
@@ -169,11 +170,11 @@ public class AnalysisServiceImpl implements  AnalysisService {
             long value = (long) now.get(1);
             if ( value >= 20 ){
                 if ( temp.length() < 1 ||temp.equals("길고양이") || temp.equals("믹스묘") || temp.equals("고양이") || temp.equals("코숏") || temp.equals("혼합") || temp.equals("한국고양이") ){
-                    temp = "코리안 숏헤어";
+                    temp = "코숏";
                 } else if ( temp.equals("혼종") || temp.equals("발바리")
-                        || temp.equals("mix") || temp.equals("믹스") || temp.equals("혼합종")
-                        || temp.equals("믹스견") || temp.equals("잡종") || temp.equals("강아지") ) {
-                    temp = "믹스견";
+                        || temp.equals("mix") || temp.equals("믹스") || temp.equals("혼합종") || temp.equals("잡견")
+                        || temp.equals("믹스견") || temp.equals("잡종") || temp.equals("강아지") || temp.equals("잡종견") ) {
+                    temp = "믹스";
                 }
                 // 데이터에 넣기
                 HM.put(temp, HM.getOrDefault(temp, (long) 0) + value);
@@ -182,8 +183,9 @@ public class AnalysisServiceImpl implements  AnalysisService {
 
         ArrayList<AnalysisDto> kind_list2 = new ArrayList<AnalysisDto>();
         for ( Entry<String, Long> entry : HM.entrySet()) {
-            kind_list2.add( new AnalysisDto( entry.getKey(), entry.getValue() ));
-//            System.out.println("[Key]:" + entry.getKey() + " [Value]:" + entry.getValue());
+//            if ( entry.getValue() > 80 )
+                kind_list2.add( new AnalysisDto( entry.getKey(), entry.getValue() ));
+            System.out.println("[Key]:" + entry.getKey() + " [Value]:" + entry.getValue());
         }
         result.setKindlist2(kind_list2);
 
@@ -194,7 +196,7 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .groupBy("region")
                 .count();
         re = re.orderBy(desc("count"));
-        re.show(100);
+//        re.show(100);
 
         list = new ArrayList<AnalysisDto>();
         re.foreach( now -> {
@@ -205,6 +207,28 @@ public class AnalysisServiceImpl implements  AnalysisService {
             }
         });
         result.setRegionlist(list);
+
+        // 연도 통계
+        System.out.println("[system] 연도 통계");
+        //SELECT substring(noticeSdt, 1, 4) AS y , COUNT(substring(noticeSdt, 1, 4)) AS "카운트"
+        //FROM dataset
+        //GROUP BY y;
+        df.createOrReplaceTempView("animal");
+        Dataset<Row> sqlDF = spark.sql(" " +
+                " SELECT substring(noticeSdt, 1, 4) AS y, COUNT(substring(noticeSdt, 1, 4)) AS COUNT" +
+                " FROM animal " +
+                " GROUP BY y " +
+                " ORDER BY y; ");
+        sqlDF.show();
+
+        list = new ArrayList<AnalysisDto>();
+        sqlDF.foreach( now -> {
+            if ( 30 <= (long) now.get(1) ) {
+                list.add(new AnalysisDto( (String) now.get(0), (long) now.get(1) ));
+            }
+        });
+        result.setYearlist(list);
+
 
         // 여기서 실행
         return result;
