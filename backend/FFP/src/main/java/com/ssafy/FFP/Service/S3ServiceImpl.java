@@ -103,6 +103,24 @@ public class S3ServiceImpl implements S3Service {
         s3Dao.deleteFile(fileName);
     }
 
+    @Override
+    public S3Dto select(int no) {
+        S3Dto img = s3Dao.select(no);
+        return img;
+    }
+
+    @Override
+    public S3Dto selectByName(String imgName) {
+        S3Dto img = s3Dao.selectByName(imgName);
+        return img;
+    }
+
+    @Override
+    public S3Dto selectByLink(String imgLink) {
+        S3Dto img = s3Dao.selectByLink(imgLink);
+        return img;
+    }
+
     private String createFileName(String fileName) { // 먼저 파일 업로드 시, 파일명을 난수화하기 위해 random으로 돌립니다.
         return UUID.randomUUID().toString().concat(getFileExtension(fileName));
     }

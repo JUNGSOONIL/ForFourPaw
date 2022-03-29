@@ -78,7 +78,7 @@ public class UserController {
         HttpHeaders res = new HttpHeaders();
 
         if(userService.userUpdate(changeuserDto) == SUCCESS) { // 기존정보와 입력받은 정보를 비교해서 새로 갱신
-            UserDto userDto = userService.userSelectByEmail(changeuserDto.getEmail());
+            UserDto userDto = userService.userSelect(changeuserDto.getNo());
             String accessToken = jwtService.createAccess(userDto.getEmail());
             System.out.println("==============업데이트 엑세스 토큰 ==========" + "\n" + accessToken);
             res.add("at-jwt-access-token", accessToken);
