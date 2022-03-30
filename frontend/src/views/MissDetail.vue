@@ -315,8 +315,8 @@
 
                         <div class="col-12">
                           <div class="shop-details-price" style="margin:3px; float:right; cursor: pointer;">
-                              <h5 class="stock-status" v-if="(!commentstyle.toggle && commentlist.length > 2)" @click="updatecomment()">더보기</h5>
-                              <h5 class="stock-status" v-if="(commentstyle.toggle && commentlist.length > 2)" @click="updatecomment()">접기</h5>
+                              <h5 class="stock-status" v-if="(!commentstyle.toggle && commentlist!= null && commentlist.length > 2)" @click="updatecomment()">더보기</h5>
+                              <h5 class="stock-status" v-if="(commentstyle.toggle && commentlist != null && commentlist.length > 2)" @click="updatecomment()">접기</h5>
                             </div>
                         </div>
                   
@@ -419,6 +419,8 @@ export default {
       return JSON.parse(session.getItem('userInfo')).no
     },
     commentselect(){
+      this.commentlist = null;
+      this.commentlistslice = null;
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -435,7 +437,12 @@ export default {
           console.log(error);
         }).then(() => {
           console.log('commentselect End!!');
-          this.commentlistslice = this.commentlist.slice(0,2);
+          if(this.commentlist.length == 0){
+            this.commentstyle.height = "50px"
+          }else{
+            this.commentstyle.height = "190px"
+            this.commentlistslice = this.commentlist.slice(0,2);
+          }
       });
     },
     commentinset(){
