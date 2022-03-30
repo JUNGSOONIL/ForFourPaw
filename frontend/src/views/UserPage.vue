@@ -1,0 +1,365 @@
+<template>
+  <div id="app">
+            <main>
+
+            <section class="breadcrumb-area breadcrumb-bg" style="background-image: url('/img/bg/banner6.jpg')">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="breadcrumb-content">
+                                <h2 class="title">마이 페이지</h2>
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item">
+                                          <router-link to="/">홈</router-link>
+                                        </li>
+                                        <li class="breadcrumb-item active" aria-current="page">
+                                          유저
+                                        </li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section v-if="!check" class="contact-area">
+                <div class="container">
+                    <div class="container-inner-wrap">
+                        <div class="row justify-content-center justify-content-lg-between" style=" border: 1px solid gray; border-radius: 40px; padding:15px">
+                            <div class="col-lg-6 col-md-8 order-2 order-lg-0">
+                                <h3 class="title">프로필</h3>
+                                <div class="contact-wrap-content">
+                                    <form action="#" class="contact-form">
+                                        <div class="form-grp">
+                                            <label for="name">이름</label>
+                                            <input type="text" id="name" v-model="userInfo.name" readonly>
+                                        </div>
+                                        <div class="form-grp">
+                                            <label for="nickname">닉네임</label>
+                                            <input type="text" id="nickname"  v-model="userInfo.nickname" readonly>
+                                        </div>
+                                        <div class="form-grp">
+                                            <label for="email">이메일 <span></span></label>
+                                            <input type="text" id="email"  v-model="userInfo.email" readonly>
+                                        </div>
+                                        <div class="form-grp">
+                                            <label for="addrs">거주지역 <span></span></label>
+                                            <input type="text" id="addrs"  v-model="userInfo.addrs" readonly>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-8 pt-80" >
+                                <div class="contact-info-wrap" style="padding:38px">
+                                    <div>
+                                        <img :src="userInfo.profileImg" style="width:326px; height:297px;  border: 1px solid gray; border-radius:50% " alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="d-md-flex justify-content-md-end">
+                              <span>
+                                <li class="header-btn" style="margin: 1px;" @click="check = !check">
+                                  <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
+                                    편집
+                                    <img src="/img/icon/w_pawprint.png" alt="" />
+                                  </p>
+                                </li>
+                              </span>
+                          </div>
+                    </div>
+                </div>
+            </section>
+
+            <section v-if="check" class="contact-area">
+                <div class="container">
+                    <div class="container-inner-wrap">
+                        <div class="row justify-content-center justify-content-lg-between" style=" border: 1px solid gray; border-radius: 40px; padding:15px">
+                            <div class="col-lg-6 col-md-8 order-2 order-lg-0">
+                                <h3 class="title">프로필</h3>
+                                <div class="contact-wrap-content">
+                                    <form action="#" class="contact-form">
+                                      <div>
+                                        <label for="name">이름</label>
+                                        <input id="name" type="text" v-model="userInfo.name" class="form-control" @input="koreanickname"
+                                         :class="{'is-valid': (userInfo.name!=null && userInfo.name.length >=3) , 'is-invalid': (userInfo.name==null || userInfo.name.length <3),}" />
+                                        <div class="invalid-feedback">이름을 똑바로 입력하세요.</div>
+                                      </div>
+
+                                      <div>
+                                        <label for="nickname">닉네임</label>
+                                        <input id="nickname" type="text" v-model="userInfo.nickname" class="form-control" @input="validateDBNickName"
+                                         :class="{'is-valid': (userInfo.nickname!=null && userInfo.nickname.length >=3 && nicknamecheck) , 'is-invalid': (userInfo.nickname==null || userInfo.nickname.length <3 || !nicknamecheck),}" />
+                                        <div class="invalid-feedback">닉네임이 이미 사용중이거나 3글자 이상 입력하세요</div>
+                                      </div>
+
+                                      <div>
+                                        <label for="email">이메일</label>
+                                        <input id="email" type="text" v-model="userInfo.email" class="form-control" readonly/>
+                                      </div>                                      
+
+                                      <div>
+                                        <label for="addrs">거주지역</label>
+                                        <select
+                                          v-model="userInfo.addrs"
+                                          class="form-control"
+                                          name="addrs"
+                                          :class="{'is-valid': (userInfo.addrs != null && userInfo.addrs.length != 0),
+                                          'is-invalid': (userInfo.addrs == null || userInfo.addrs.length ==0), }" >
+                                          <option value="서울특별시">서울특별시</option>
+                                          <option value="부산광역시">부산광역시</option>
+                                          <option value="대구광역시">대구광역시</option>
+                                          <option value="인천광역시">인천광역시</option>
+                                          <option value="광주광역시">광주광역시</option>
+                                          <option value="대전광역시">대전광역시</option>
+                                          <option value="울산광역시">울산광역시</option>
+                                          <option value="세종특별자치시">세종특별자치시</option>
+                                          <option value="경기도">경기도</option>
+                                          <option value="강원도">강원도</option>
+                                          <option value="충청북도">충청북도</option>
+                                          <option value="충청남도">충청남도</option>
+                                          <option value="전라북도">전라북도</option>
+                                          <option value="전라남도">전라남도</option>
+                                          <option value="경상북도">경상북도</option>
+                                          <option value="경상남도">경상남도</option>
+                                          <option value="제주특별자치도">제주특별자치도</option>
+                                        </select>
+                                        <div class="invalid-feedback">거주지역을 선택해주세요</div>
+                                      </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-xl-5 col-lg-6 col-md-8 " >
+                                <div class="contact-info-wrap" style="padding:38px">
+                                    <div>
+                                         <label for="file" ><img
+                                          :src="userInfo.profileImg"
+                                          alt=""
+                                          id="default-img"
+                                          style="width:326px; height:297px;  border: 1px solid gray; border-radius:50% "
+                                    /></label>
+                                      <input
+                                        style="display: none"
+                                        type="file"
+                                        id="file"
+                                        accept="image/*"
+                                        @change="imgUpload"
+                                        ref="userimg"
+                                      />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="d-md-flex justify-content-md-end">
+                              <span >
+                                <li class="header-btn" style="margin: 1px" @click="toggle">
+                                  <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
+                                    취소
+                                    <img src="/img/icon/w_pawprint.png" alt="" />
+                                  </p>
+                                </li>
+                              </span>
+                              <span>
+                                <li class="header-btn" style="margin: 1px;" @click="updateuser">
+                                  <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
+                                    수정
+                                    <img src="/img/icon/w_pawprint.png" alt="" />
+                                  </p>
+                                </li>
+                              </span>
+                              <span>
+                                <li class="header-btn" style="margin: 1px;" @click="deleteuser">
+                                  <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
+                                    삭제
+                                    <img src="/img/icon/w_pawprint.png" alt="" />
+                                  </p>
+                                </li>
+                              </span>
+                          </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="contact-area pt-10 pb-20">
+              <div class="container">
+                <div class="container-inner-wrap">
+                  <div class="row " style=" border: 1px solid gray; border-radius: 40px; padding:15px">
+                    <h3 class="title">내가 작성한 글</h3>
+                    <table class="table align-items-center mb-0 table-hover">
+                      <thead>
+                        <tr>
+                          <th class=" text-center" width="150">
+                            #
+                          </th>
+                          <th class=" text-center">
+                            내용
+                          </th>
+                          <th class="text-center" width="250">
+                            작성일시
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr
+                          style="cursor: pointer"
+                          v-for="(board, index) in 4"
+                          v-bind:key="index"
+                          @click="pagemove(index+1)"
+                          class="text-center text-secondary font-weight-bold">
+                          <td>{{ index+1 }}</td>
+                          <td>여기 뭐쓰지</td>
+                          <td>2022 - 03 - 30</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+        </main>
+  </div>
+</template>
+
+<script type="text/Javascript" charset="UTF-8">
+import axios from 'axios'
+const session = window.sessionStorage;
+export default {
+  name: "App",
+  components: {},
+  data: function(){
+     return {
+       check : false,
+       nicknamecheck : true,
+       userInfo:{
+         no : "",
+         name : "",
+         nickname : "",
+         email : "",
+         addrs : "",
+         profileImg : "",
+       }
+     }
+  },
+  created() {
+    this.userInfo = JSON.parse(session.getItem('userInfo'))
+  },
+  methods:{
+    pagemove(el){
+      this.$router.push({ name: 'MissDetail', params: { no: el }})
+    },
+    toggle(){
+      this.check = !this.check
+      this.userInfo = JSON.parse(session.getItem('userInfo'))
+    },
+    updatecheck(){
+        if(this.userInfo.no == "" || this.userInfo.name == "" || this.userInfo.nickname == "" ||  this.userInfo.addrs == "" ||
+        this.userInfo.no.length == 0 || this.userInfo.name.length == 0 || this.userInfo.nickname.length == 0 || this.userInfo.addrs.length == 0){
+          return true
+        }
+    },
+    imgUpload() {
+      this.userInfo.profileImg = null;
+      this.userInfo.profileImg = URL.createObjectURL(this.$refs.userimg.files[0]);
+    },
+    koreanickname(el){
+      this.userInfo.name = el.target.value
+    },
+    validateDBNickName(el) {
+      this.userInfo.nickname = el.target.value
+      if(this.userInfo.nickname == JSON.parse(session.getItem('userInfo')).nickname){
+        this.nicknamecheck = true;
+        return
+      }
+      if (this.userInfo.nickname.length >= 3 ) {
+        let headers = {
+          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
+          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
+        };
+        axios({
+          method: "get",
+          url: '/api/users/checkByNickname/'+this.userInfo.nickname,
+          headers: headers, 
+        })
+          .then((res) => {
+            this.$store.dispatch("login/accessTokenRefresh", res); 
+            this.nicknamecheck = true;
+          })
+          .catch((error) => {
+            console.log(error);
+            this.nicknamecheck = false;
+          });
+      }
+    },
+    updateuser(){
+      if(this.updatecheck() === true){
+        this.$alertify.error("똑바로 입력하세요");
+        return
+      }
+      let headers = {
+        'Content-Type': 'multipart/form-data',
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+
+      const formData = new FormData();
+      formData.append("multipartFile", this.$refs.userimg.files[0]);
+
+      let data = { // 데이터 다전송?
+         no : this.userInfo.no,
+         name : this.userInfo.name,
+         nickname : this.userInfo.nickname,
+         email : this.userInfo.email,
+         addrs : this.userInfo.addrs,
+      };
+      formData.append(
+        "missData",
+        new Blob([JSON.stringify(data)], { type: "application/json" })
+      );
+      axios({
+        method: 'put',
+        url: '/api/users', 
+        data: formData,
+        headers: headers,
+      }).then((res) => {
+        this.$store.dispatch('login/accessTokenRefresh', res) // 이거도 이거 아닐듯
+        this.$alertify.success("수정 완료했습니다.");
+        this.$router.push("/");
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('updateuser End!!');
+      });
+    },
+    deleteuser(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      axios({
+        method: 'delete',
+        url: '/api/user/' + this.userInfo.no, 
+        headers: headers,
+      }).then((res) => {
+        this.$store.dispatch('login/accessTokenRefresh', res) // 이거는?
+        this.$alertify.success("탈퇴 완료했습니다.");
+        this.$store.commit("login/SET_LOGOUT");
+        session.clear();
+        this.$router.pust("/")
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('deleteuser End!!');
+      });
+    },
+  },
+};
+</script>
+
+<style scoped>
+#app{
+
+}
+</style>
