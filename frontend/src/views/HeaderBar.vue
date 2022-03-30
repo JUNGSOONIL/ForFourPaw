@@ -174,6 +174,11 @@
                           </li>
                         </ul>
                       </li> -->
+                      <li class="header-btn" style="margin: 1px" v-if="isLoginGetters">
+                        <router-link to="/userPage" class="btn" style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;">
+                          내정보<img src="/img/icon/w_pawprint.png" alt=""
+                        /></router-link>
+                    </li>
                       <li class="header-btn" v-if="!isLoginGetters">
                         <router-link to="/socialLogin" class="btn"
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
