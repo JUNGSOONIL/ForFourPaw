@@ -523,7 +523,7 @@ export default {
         this.$store.dispatch('login/accessTokenRefresh', res)
         console.log(res);
         this.$alertify.success("작성 완료했습니다.");
-        this.$route.go(-1)
+        this.$router.go(-1)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
@@ -576,7 +576,7 @@ export default {
 
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("수정 완료했습니다.");
-        this.$route.push({ name: 'ShelDetail', params: { no: this.no }});
+        this.$router.push({ name: 'ShelDetail', params: { no: this.no }});
       }).catch((error) => {
         console.log(error);
       }).then(() => {
@@ -596,7 +596,7 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("삭제 완료했습니다.");
-        this.$route.go(-1)
+        this.$router.go(-1)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
