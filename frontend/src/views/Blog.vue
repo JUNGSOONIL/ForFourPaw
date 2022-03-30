@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -37,7 +37,7 @@
               <div class="standard-blog-item">
                 <div class="standard-blog-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_thumb01.jpg" alt=""
+                    ><img src="/img/blog/blog_thumb01.jpg" alt=""
                   /></a>
                 </div>
                 <div class="standard-blog-content">
@@ -65,14 +65,14 @@
                     hunter–gatherers.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
               <div class="standard-blog-item">
                 <div class="standard-blog-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_thumb02.jpg" alt=""
+                    ><img src="/img/blog/blog_thumb02.jpg" alt=""
                   /></a>
                 </div>
                 <div class="standard-blog-content">
@@ -100,14 +100,14 @@
                     hunter–gatherers.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
               <div class="standard-blog-item">
                 <div class="standard-blog-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_thumb03.jpg" alt=""
+                    ><img src="/img/blog/blog_thumb03.jpg" alt=""
                   /></a>
                 </div>
                 <div class="standard-blog-content">
@@ -135,7 +135,7 @@
                     hunter–gatherers.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
@@ -191,7 +191,7 @@
                       <li>
                         <div class="rc-post-thumb">
                           <a href="blog-details.html"
-                            ><img src="img/blog/rc_post_thumb01.jpg" alt=""
+                            ><img src="/img/blog/rc_post_thumb01.jpg" alt=""
                           /></a>
                         </div>
                         <div class="rc-post-content">
@@ -214,7 +214,7 @@
                       <li>
                         <div class="rc-post-thumb">
                           <a href="blog-details.html"
-                            ><img src="img/blog/rc_post_thumb02.jpg" alt=""
+                            ><img src="/img/blog/rc_post_thumb02.jpg" alt=""
                           /></a>
                         </div>
                         <div class="rc-post-content">
@@ -239,7 +239,7 @@
                 </div>
                 <div class="widget sidebar-newsletter">
                   <div class="sn-icon">
-                    <img src="img/icon/sn_icon.png" alt="" />
+                    <img src="/img/icon/sn_icon.png" alt="" />
                   </div>
                   <div class="sn-title">
                     <h4 class="title">Subscribe Newsletter</h4>

@@ -29,6 +29,7 @@ const mutations = {
 const actions = { 
     
     mainShelnimalList(context) { 
+      
         // let headers = {
         //     'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         //     'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -48,12 +49,11 @@ const actions = {
             
           }).catch((error) => {
             console.log(error);
-          }).then(() => {
-            console.log('getQSSList End!!');
-          });
+          })
         },
 
         mainShelnimalListLogin(context) { 
+          
             let headers = {
                 'at-jwt-access-token': session.getItem('at-jwt-access-token'),
                 'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -73,9 +73,7 @@ const actions = {
                 
               }).catch((error) => {
                 console.log(error);
-              }).then(() => {
-                console.log('getQSSList End!!');
-              });
+              })
             },
 
         

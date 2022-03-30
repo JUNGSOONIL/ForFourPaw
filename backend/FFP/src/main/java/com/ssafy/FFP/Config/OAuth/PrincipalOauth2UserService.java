@@ -111,6 +111,7 @@ public class PrincipalOauth2UserService {
             sb.append("grant_type=authorization_code");
             sb.append("&client_id=8f6cc36f143aeef41e87ebc8f6a766ef");  //본인이 발급받은 rest api key
             sb.append("&redirect_uri=https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin");     // 본인이 설정해 놓은 경로
+            //sb.append("&redirect_uri=http://localhost:5500/socialLogin/KaKaoLogin");     // 본인이 설정해 놓은 경로
             sb.append("&code=" + authorize_code);
             bw.write(sb.toString());
             bw.flush();
