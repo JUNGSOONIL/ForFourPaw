@@ -32,27 +32,29 @@
                                 <h3 class="title">프로필</h3>
                                 <div class="contact-wrap-content">
                                     <form action="#" class="contact-form">
-                                        <div class="form-grp">
+                                        <div class="form-grp" style="margin-bottom:20px">
                                             <label for="name">이름</label>
                                             <input type="text" id="name" v-model="userInfo.name" readonly>
                                         </div>
-                                        <div class="form-grp">
+                                        <div class="form-grp" style="margin-bottom:20px">
                                             <label for="nickname">닉네임</label>
                                             <input type="text" id="nickname"  v-model="userInfo.nickname" readonly>
                                         </div>
-                                        <div class="form-grp">
-                                            <label for="email">이메일 <span></span></label>
+                                        <div class="form-grp" style="margin-bottom:20px">
+                                            <label for="email">이메일</label>
                                             <input type="text" id="email"  v-model="userInfo.email" readonly>
                                         </div>
-                                        <div class="form-grp">
-                                            <label for="addrs">거주지역 <span></span></label>
+                                        <div class="form-grp" style="margin-bottom:20px">
+                                            <label for="addrs">거주지역 </label>
                                             <input type="text" id="addrs"  v-model="userInfo.addrs" readonly>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-6 col-md-8 pt-80" >
+                            <div class="col-xl-5 col-lg-6 col-md-8 pt-40 " >
+                              <label style="color:#0a303a">프로필 이미지 </label>
                                 <div class="contact-info-wrap" style="padding:38px">
+                                  
                                     <div>
                                         <img :src="userInfo.profileImg" style="width:326px; height:297px;  border: 1px solid gray; border-radius:50% " alt="">
                                     </div>
@@ -81,26 +83,26 @@
                                 <h3 class="title">프로필</h3>
                                 <div class="contact-wrap-content">
                                     <form action="#" class="contact-form">
-                                      <div>
+                                      <div class="mb-35">
                                         <label for="name">이름</label>
                                         <input id="name" type="text" v-model="userInfo.name" class="form-control" @input="koreanickname"
                                          :class="{'is-valid': (userInfo.name!=null && userInfo.name.length >=3) , 'is-invalid': (userInfo.name==null || userInfo.name.length <3),}" />
                                         <div class="invalid-feedback">이름을 똑바로 입력하세요.</div>
                                       </div>
 
-                                      <div>
+                                      <div class="mb-35">
                                         <label for="nickname">닉네임</label>
                                         <input id="nickname" type="text" v-model="userInfo.nickname" class="form-control" @input="validateDBNickName"
                                          :class="{'is-valid': (userInfo.nickname!=null && userInfo.nickname.length >=3 && nicknamecheck) , 'is-invalid': (userInfo.nickname==null || userInfo.nickname.length <3 || !nicknamecheck),}" />
                                         <div class="invalid-feedback">닉네임이 이미 사용중이거나 3글자 이상 입력하세요</div>
                                       </div>
 
-                                      <div>
+                                      <div class="mb-35">
                                         <label for="email">이메일</label>
                                         <input id="email" type="text" v-model="userInfo.email" class="form-control" readonly/>
                                       </div>                                      
 
-                                      <div>
+                                      <div class="mb-35">
                                         <label for="addrs">거주지역</label>
                                         <select
                                           v-model="userInfo.addrs"
@@ -131,8 +133,9 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-6 col-md-8 " >
-                                <div class="contact-info-wrap" style="padding:38px">
+                            <div class="col-xl-5 col-lg-6 col-md-8 pt-40" >
+                              <label >프로필 이미지 </label>
+                                <div class="contact-info-wrap" style="padding:38px ">
                                     <div>
                                          <label for="file" ><img
                                           :src="userInfo.profileImg"
