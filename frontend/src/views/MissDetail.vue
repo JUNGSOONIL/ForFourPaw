@@ -556,6 +556,7 @@ export default {
       this.commentstyle.toggle = !this.commentstyle.toggle;
     },
     match(){
+      this.$store.commit('loading/load', true);
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -576,9 +577,7 @@ export default {
         this.misslist = res.data;
       }).catch((error) => {
         console.log(error);
-      }).then(() => {
-        console.log('kmeans End!!');
-      });
+      }).finally(() => this.$store.commit('loading/load', false))
     },
     selectMiss(){
       let headers = {
