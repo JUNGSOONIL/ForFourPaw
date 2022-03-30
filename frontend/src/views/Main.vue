@@ -1053,9 +1053,9 @@ export default {
         arrows: true,
         autoplaySpeed: 3000,
         prevArrow:
-          '<button type="button" class="slick-prev"><img src="img/icon/arrow.png" /></button>',
+          '<button type="button" class="slick-prev"><img src="/img/icon/arrow.png" /></button>',
         nextArrow:
-          '<button type="button" class="slick-next"><img src="img/icon/arrow.png" /></button>',
+          '<button type="button" class="slick-next"><img src="/img/icon/arrow.png" /></button>',
         slidesToShow: 4,
         slidesToScroll: 1,
         responsive: [
