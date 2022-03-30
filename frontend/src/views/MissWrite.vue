@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/banner6.jpg')"
+        style="background-image: url('/img/bg/banner6.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -314,7 +314,7 @@
                     <li class="header-btn" style="margin: 1px" @click="reset">
                       <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         취소
-                        <img src="img/icon/w_pawprint.png" alt="" />
+                        <img src="/img/icon/w_pawprint.png" alt="" />
                       </p>
                       
                     </li>
@@ -323,7 +323,7 @@
                     <li class="header-btn" style="margin: 1px;" @click="insertMiss">
                       <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         작성
-                        <img src="img/icon/w_pawprint.png" alt="" />
+                        <img src="/img/icon/w_pawprint.png" alt="" />
                       </p>
                     </li>
                   </span>
@@ -331,7 +331,7 @@
                     <li class="header-btn" style="margin: 1px;" @click="updateMiss">
                       <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         수정
-                        <img src="img/icon/w_pawprint.png" alt="" />
+                        <img src="/img/icon/w_pawprint.png" alt="" />
                       </p>
                     </li>
                   </span>
@@ -339,7 +339,7 @@
                     <li class="header-btn" style="margin: 1px;" @click="deleteMiss">
                       <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                         삭제
-                        <img src="img/icon/w_pawprint.png" alt="" />
+                        <img src="/img/icon/w_pawprint.png" alt="" />
                       </p>
                     </li>
                   </span>

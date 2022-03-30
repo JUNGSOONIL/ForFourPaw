@@ -9,7 +9,7 @@
               <div class="footer-widget">
                 <div class="f-logo">
                   <a href="index.html"
-                    ><img src="img/logo/paw_logo_2line.png" alt=""
+                    ><img src="/img/logo/paw_logo_2line.png" alt=""
                   /></a>
                 </div>
                 <div class="footer-text">
@@ -86,32 +86,32 @@
                   <ul>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img01.png" alt=""
+                        ><img src="/img/images/insta_img01.png" alt=""
                       /></a>
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img02.png" alt=""
+                        ><img src="/img/images/insta_img02.png" alt=""
                       /></a>
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img03.png" alt=""
+                        ><img src="/img/images/insta_img03.png" alt=""
                       /></a>
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img04.png" alt=""
+                        ><img src="/img/images/insta_img04.png" alt=""
                       /></a>
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img05.png" alt=""
+                        ><img src="/img/images/insta_img05.png" alt=""
                       /></a>
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img06.png" alt=""
+                        ><img src="/img/images/insta_img06.png" alt=""
                       /></a>
                     </li>
                   </ul>
@@ -121,10 +121,10 @@
           </div>
         </div>
         <div class="footer-shape">
-          <img src="img/images/footer_shape01.png" alt="" />
+          <img src="/img/images/footer_shape01.png" alt="" />
         </div>
         <div class="footer-shape shape-two">
-          <img src="img/images/footer_shape02.png" alt="" />
+          <img src="/img/images/footer_shape02.png" alt="" />
         </div>
       </div>
       <div class="copyright-area">
@@ -146,20 +146,20 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <img src="img/icon/united-states.png" alt="" /> English
+                    <img src="/img/icon/united-states.png" alt="" /> English
                   </button>
                   <div
                     class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton2"
                   >
                     <a class="dropdown-item" href="index.html"
-                      ><img src="img/icon/russia.png" alt="" />Russia</a
+                      ><img src="/img/icon/russia.png" alt="" />Russia</a
                     >
                     <a class="dropdown-item" href="index.html"
-                      ><img src="img/icon//thailand.png" alt="" />Thailand</a
+                      ><img src="/img/icon//thailand.png" alt="" />Thailand</a
                     >
                     <a class="dropdown-item" href="index.html"
-                      ><img src="img/icon/india.png" alt="" />India</a
+                      ><img src="/img/icon/india.png" alt="" />India</a
                     >
                   </div>
                 </div>
