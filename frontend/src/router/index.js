@@ -20,6 +20,7 @@ import MissList from "@/views/MissList.vue";
 
 export default new VueRouter({
   mode: "history",
+  base: process.env.BASE_URL,
   routes: [
     {
       path: "/",

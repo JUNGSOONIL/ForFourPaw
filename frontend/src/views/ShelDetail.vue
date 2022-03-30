@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/banner3.jpg')"
+        style="background-image: url('/img/bg/banner3.jpg')"
       >
         <div class="container">
           <div class="row">

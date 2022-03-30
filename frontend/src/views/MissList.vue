@@ -70,10 +70,10 @@
                   </div>
                 </form>
                 <div class="newsletter-shape">
-                  <img src="img/images/newsletter_shape01.png" alt="" />
+                  <img src="/img/images/newsletter_shape01.png" alt="" />
                 </div>
                 <div class="newsletter-shape shape-two">
-                  <img src="img/images/newsletter_shape02.png" alt="" />
+                  <img src="/img/images/newsletter_shape02.png" alt="" />
                 </div>
               </div>
             </div>
@@ -95,7 +95,7 @@
               >
                 <div class="adopt-thumb">
                   <router-link to="/">
-                    <img src="img/images/adop_img01.png" alt="" />
+                    <img src="/img/images/adop_img01.png" alt="" />
                   </router-link>
                 </div>
                 <div class="adopt-content">
@@ -138,9 +138,9 @@ export default {
         arrows: true,
         autoplaySpeed: 3000,
         prevArrow:
-          '<button type="button" class="slick-prev"><img src="img/icon/arrow.png" /></button>',
+          '<button type="button" class="slick-prev"><img src="/img/icon/arrow.png" /></button>',
         nextArrow:
-          '<button type="button" class="slick-next"><img src="img/icon/arrow.png" /></button>',
+          '<button type="button" class="slick-next"><img src="/img/icon/arrow.png" /></button>',
         slidesToShow: 4,
         slidesToScroll: 1,
         responsive: [
