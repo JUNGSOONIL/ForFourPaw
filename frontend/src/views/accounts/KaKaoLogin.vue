@@ -45,7 +45,7 @@ export default {
           );
 
           this.$store.dispatch("login/allTokenRefresh", res);
-
+          this.$store.commit("login/SET_LOGIN");
           this.sendToken();
           const info = this.$store.getters["login/userInfo"];
           if (info.addrs === null) {
@@ -57,8 +57,7 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-        })
-
+        });
     },
 
     sendToken() {
