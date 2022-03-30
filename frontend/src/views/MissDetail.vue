@@ -225,14 +225,14 @@
                     aria-labelledby="details-tab"
                   >
                     <div class="product-desc-content">
-                      <p>
+                      <h5 >
                         「동물보호법」 제17조, 시행령7조 및 동법 시행규칙 제20조에 따라 유기·유실동물을 보호하고 있는 경우에는 소유자 등이
-보호조치 사실을 알 수 있도록 7일 동안 공고하여야 합니다.
-공고 중인 동물 소유자는 해당 시군구 및 동물보호센터에 문의하시어 동물을 찾아가시기 바랍니다.
-다만, 「동물보호법」 제19조 및 동법 시행규칙 제21조에 따라 소유자에게 보호비용이 청구될 수 있습니다.
-또한 「동물보호법」 제17조에 따른 공고가 있는 날부터 10일이 경과하여도 소유자 등을 알 수 없는 경우에는
-「유실물법」 제12조 및 「민법」 제253조의 규정에도 불구하고 해당 시·도지사 또는 시장·군수·구청장이 그 동물의 소유권을 취득하게 됩니다.
-                      </p>
+                          보호조치 사실을 알 수 있도록 7일 동안 공고하여야 합니다.
+                          공고 중인 동물 소유자는 해당 시군구 및 동물보호센터에 문의하시어 동물을 찾아가시기 바랍니다.
+                          다만, 「동물보호법」 제19조 및 동법 시행규칙 제21조에 따라 소유자에게 보호비용이 청구될 수 있습니다.
+                          또한 「동물보호법」 제17조에 따른 공고가 있는 날부터 10일이 경과하여도 소유자 등을 알 수 없는 경우에는 
+                          「유실물법」 제12조 및 「민법」 제253조의 규정에도 불구하고 해당 시·도지사 또는 시장·군수·구청장이 그 동물의 소유권을 취득하게 됩니다.
+                      </h5>
                     </div>
                   </div>
 
@@ -242,49 +242,28 @@
                     role="tabpanel"
                     aria-labelledby="details-tab"
                   >
-                    <div class="product-desc-content">
-                      <h2>
+                    <div v-if="matchend" class="product-desc-content">
+                      <h2 v-if="misslistslice.length != 0">
                         혹시 이 동물은 아니신가요? <br>
                         포포포가 찾아드려요!
                       </h2>
+                      <h2 v-else>
+                        죄송합니다 현재 매칭되는 동물이 없어요. <br>
+                        더욱 더 노력하는 포포포가 될게요!
+                      </h2>
                     </div>
-                    <div class="row related-product-active">
-                    <!-- carousel-area-start -->
-                      <section class="adoption-area-two pt-110 pb-110">
-                        <div class="container custom-container">
-                          <div class="adopt-active">
-                            <Slick ref="slick" :options="slickOptions">
-                              <div
-                                v-for="(miss, index) in misslist.slice(0,5)" v-bind:key="index"
-                                class="adoption-item"
-                              >
-                                <div class="adopt-thumb">
-                                   <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                                    <img :src="miss.popfile" alt="" style="width:355px; height: 355px;" />
-                                  </router-link>
-                                </div>
-                                <div class="adopt-content">
-                                  <h3 class="title">
-                                    {{miss.orgNm}} {{miss.happenPlace}}
-                                  </h3>
-                                  <p>
-                                    보호기관 : {{miss.careTel}}
-                                  </p>
-                                </div>
-                              </div>
-                            </Slick>
-                          </div>
+                    <div v-if="misslistslice.length != 0" class="row related-product-active" >
+                      <div v-if="misslistmax > 3" style="position: absolute; z-index: 1; top:295px">
+                          <p @click="imgleft" type="button" style="margin:0px; opacity : 0.7;" ><img src="img/icon/arrow2.png" style="width:60px;" /></p>
                         </div>
-                      </section>
-                      <!-- carousel-area-end -->
-
-
-
-                      <!-- <div v-for="(miss, index) in misslist.slice(0,4)" v-bind:key="index" class="col-lg-3">
-                        <div class="shop-item mb-55">
+                        <div v-if="misslistmax > 3"  style="position: absolute; z-index: 1; top:295px; right:0px">
+                          <p @click="imgright" type="button" style="margin:0px; opacity : 0.7;"><img src="img/icon/arrow4.png" style="width:60px;" /></p>
+                        </div>
+                      <div v-for="(miss, index) in misslistslice" v-bind:key="index" class="col-lg-3">
+                        <div class="shop-item mb-55" style="z-index: -1;">
                           <div class="shop-thumb">
                             <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                              <img :src=miss.popfile alt="" style="width:355px; height: 355px; border-radius: 70%"/>
+                              <img :src=miss.filename alt="" style="width:268px; height: 268px; border-radius: 50%"/>
                               </router-link>
                           </div>
                           <div class="shop-content">
@@ -303,10 +282,9 @@
                             </div>
                           </div>
                         </div>
-                      </div> -->
+                      </div>
                     </div>
                   </div>
-
                   <div
                     class="tab-pane fade show"
                     id="comment"
@@ -380,21 +358,18 @@
 
 <script>
 import axios from 'axios';
-import Slick from "vue-slick";
 const session = window.sessionStorage;
 export default {
   name: "App",
-  components: {
-    Slick,
-  },
   props:{
     no:{
-      default : 2,
+      default : 3,
       type:Number,
     },
   },
   data: function(){
      return {
+       matchend: false,
        miss: { },
        commentdescr: "",
        commentlist:[],
@@ -405,56 +380,10 @@ export default {
          toggle : false,
        },
        misslist:[],
-        slickOptions: {
-        dots: false,
-        infinite: true,
-        speed: 1000,
-        autoplay: false,
-        arrows: true,
-        autoplaySpeed: 3000,
-        prevArrow:
-          '<button type="button" class="slick-prev"><img src="img/icon/arrow.png" /></button>',
-        nextArrow:
-          '<button type="button" class="slick-next"><img src="img/icon/arrow.png" /></button>',
-        slidesToShow: 4,
-        slidesToScroll: 1,
-        responsive: [
-          {
-            breakpoint: 1200,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 1,
-              infinite: true,
-            },
-          },
-          {
-            breakpoint: 992,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              speed: 1000,
-            },
-          },
-          {
-            breakpoint: 767,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              arrows: false,
-              speed: 1000,
-            },
-          },
-          {
-            breakpoint: 575,
-            settings: {
-              slidesToShow: 1,
-              slidesToScroll: 1,
-              arrows: false,
-              speed: 1000,
-            },
-          },
-        ],
-      },
+       misslistslice:[],
+       misslistmin: 0,
+       misslistindex: 4,
+       misslistmax: 0,
      }
   },
   created() {
@@ -472,6 +401,20 @@ export default {
     },
   },
   methods:{
+    imgleft(){
+      if(this.misslistmin > 0){
+        this.misslistmin--
+        this.misslistindex--
+      }
+      this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
+    },
+    imgright(){
+      if(this.misslistindex < this.misslistmax){
+        this.misslistmin++
+        this.misslistindex++
+      }
+      this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
+    },
     userInfoNo(){
       return JSON.parse(session.getItem('userInfo')).no
     },
@@ -571,10 +514,13 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
         this.misslist = res.data;
+        this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex);
+        this.misslistmax = this.misslist.length
       }).catch((error) => {
         console.log(error);
       }).then(() => {
         console.log('kmeans End!!');
+        this.matchend = true;
       });
     },
     selectMiss(){
