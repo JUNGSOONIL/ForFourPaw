@@ -119,8 +119,8 @@ function mainSlider() {
 		dots: false,
 		fade: true,
 		arrows: true,
-		prevArrow: '<button type="button" class="slick-prev"><img src="img/icon/arrow.png" /></button>',
-		nextArrow: '<button type="button" class="slick-next"><img src="img/icon/arrow.png" /></button>',
+		prevArrow: '<button type="button" class="slick-prev"><img src="/img/icon/arrow.png" /></button>',
+		nextArrow: '<button type="button" class="slick-next"><img src="/img/icon/arrow.png" /></button>',
 		responsive: [
 			{ breakpoint: 767, settings: { dots: false, arrows: false } }
 		]
@@ -180,7 +180,7 @@ $('.breed-services-active').owlCarousel({
 	autoplay: false,
 	autoplayTimeout: 5000,
 	autoplaySpeed: 1000,
-	navText: ['<img src="img/icon/arrow.png" />', '<img src="img/icon/arrow.png" />'],
+	navText: ['<img src="/img/icon/arrow.png" />', '<img src="/img/icon/arrow.png" />'],
 	nav: true,
 	dots: false,
 	responsive: {
@@ -334,8 +334,8 @@ $('.adopt-active').slick({
 	autoplay: false,
 	arrows: true,
 	autoplaySpeed: 3000,
-	prevArrow: '<button type="button" class="slick-prev"><img src="img/icon/arrow.png" /></button>',
-	nextArrow: '<button type="button" class="slick-next"><img src="img/icon/arrow.png" /></button>',
+	prevArrow: '<button type="button" class="slick-prev"><img src="/img/icon/arrow.png" /></button>',
+	nextArrow: '<button type="button" class="slick-next"><img src="/img/icon/arrow.png" /></button>',
 	slidesToShow: 4,
 	slidesToScroll: 1,
 	responsive: [

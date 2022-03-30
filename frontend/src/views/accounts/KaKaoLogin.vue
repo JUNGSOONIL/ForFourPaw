@@ -48,7 +48,7 @@ export default {
 
           this.sendToken();
           const info = this.$store.getters["login/userInfo"];
-          if (info.addrs == null) {
+          if (info.addrs === null) {
             this.$router.push("/moreInfo");
           } else {
             // this.$store.commit("loginConfirmModalActivate");
@@ -58,9 +58,7 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("getQSSList End!!");
-        });
+
     },
 
     sendToken() {

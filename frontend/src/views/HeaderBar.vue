@@ -2,7 +2,7 @@
   <div id="app">
     <!-- Preloader -->
     <div id="preloader">
-      <img src="img/preloader.gif" alt="" />
+      <img src="/img/preloader.gif" alt="" />
     </div>
     <!-- Preloader-end -->
 
@@ -23,7 +23,7 @@
                 <nav class="menu-nav show">
                   <div class="logo">
                     <router-link to="/"
-                      ><img src="img/logo/paw_logo_2line.png" alt=""
+                      ><img src="/img/logo/paw_logo_2line.png" alt=""
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
@@ -129,7 +129,7 @@
                           <li class="d-flex align-items-start">
                             <div class="cart-img">
                               <a href="#"
-                                ><img src="img/product/cart_p01.jpg" alt=""
+                                ><img src="/img/product/cart_p01.jpg" alt=""
                               /></a>
                             </div>
                             <div class="cart-content">
@@ -146,7 +146,7 @@
                           <li class="d-flex align-items-start">
                             <div class="cart-img">
                               <a href="#"
-                                ><img src="img/product/cart_p02.jpg" alt=""
+                                ><img src="/img/product/cart_p02.jpg" alt=""
                               /></a>
                             </div>
                             <div class="cart-content">
@@ -176,12 +176,12 @@
                       </li> -->
                       <li class="header-btn" v-if="!isLoginGetters">
                         <router-link to="/socialLogin" class="btn"
-                          >로그인<img src="img/icon/w_pawprint.png" alt=""
+                          >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link to="/moreInfo" class="btn"
-                          >추가정보<img src="img/icon/w_pawprint.png" alt=""
+                          >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
@@ -189,7 +189,7 @@
                           to="/logoutPage"
                           class="btn"
                           @click.native="logout"
-                          >로그아웃<img src="img/icon/w_pawprint.png" alt=""
+                          >로그아웃<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                     </ul>
@@ -202,7 +202,7 @@
                   <div class="close-btn"><i class="fas fa-times"></i></div>
                   <div class="nav-logo">
                     <a href="index.html"
-                      ><img src="img/logo/logo.png" alt="" title=""
+                      ><img src="/img/logo/logo.png" alt="" title=""
                     /></a>
                   </div>
                   <div class="menu-outer">
@@ -238,7 +238,7 @@
         </div>
         <div
           class="header-shape"
-          style="background-image: url('img/bg/header_shape.png')"
+          style="background-image: url('/img/bg/header_shape.png')"
         ></div>
       </div>
       <!-- header-search -->

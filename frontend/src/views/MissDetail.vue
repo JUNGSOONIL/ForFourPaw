@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/banner3.jpg')"
+        style="background-image: url('/img/bg/banner3.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -321,7 +321,7 @@
                             />
                             <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;">
                               작성
-                              <img src="img/icon/w_pawprint.png" alt="" />
+                              <img src="/img/icon/w_pawprint.png" alt="" />
                             </p>
                          </div>
                        </div> -->
@@ -358,7 +358,7 @@
                             />
                             <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;">
                               작성
-                              <img src="img/icon/w_pawprint.png" alt="" />
+                              <img src="/img/icon/w_pawprint.png" alt="" />
                             </p>
                           </div>
                         </div>
@@ -413,7 +413,7 @@
                             <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px; float:left;"
                             @click="commentinset">
                               작성
-                              <img src="img/icon/w_pawprint.png" alt="" />
+                              <img src="/img/icon/w_pawprint.png" alt="" />
                             </p>
                           </div>
                         </div>
