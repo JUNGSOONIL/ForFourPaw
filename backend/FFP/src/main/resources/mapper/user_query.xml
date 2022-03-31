@@ -15,6 +15,14 @@
 		where no = #{no}
 	</select>
 
+	<select id="userSelectOnMiss" parameterType="int"
+			resultType="com.ssafy.FFP.Dto.MissnimalDto">
+		select m.no, m.name, m.kindCd, m.colorCd, m.age, m.sexCd, m.neuterYn, m.author, m.careTel, m.happenDt,
+			   m.happenPlace, m.descr, m.profile, u.name as authorName, m.write_time as writeTime
+		from user u, missnimal m
+		where u.no = #{userNo} and m.author = u.no
+	</select>
+
 	<select id="userSelectByEmail" parameterType="string"
 			resultType="com.ssafy.FFP.Dto.UserDto">
 		select no, email, nickname, name, profile_img as profileImg, addrs
@@ -44,7 +52,7 @@
 	<update id="userUpdate"
 			parameterType="com.ssafy.FFP.Dto.UserDto">
 		update ffp.user
-		set nickname = #{nickname}, name = #{name}, addrs = #{addrs}
+		set nickname = #{nickname}, name = #{name}, addrs = #{addrs}, profile_img = #{profileImg}
 		where no = #{no}
 	</update>
 

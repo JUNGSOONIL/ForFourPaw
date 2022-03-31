@@ -1,8 +1,12 @@
 package com.ssafy.FFP.Service;
 
 
+import com.ssafy.FFP.Dao.S3Dao;
 import com.ssafy.FFP.Dao.UserDao;
+import com.ssafy.FFP.Dto.MissnimalDto;
+import com.ssafy.FFP.Dto.S3Dto;
 import com.ssafy.FFP.Dto.UserDto;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,6 +19,12 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UserDao userDao;
+
+    @Autowired
+    S3Service s3Service;
+
+    @Autowired
+    S3Dao s3Dao;
 
     private static final int SUCCESS = 1;
     private static final int FAIL = -1;
@@ -41,6 +51,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public List<MissnimalDto> userSelectOnMiss(int userNo) {
+        List<MissnimalDto> missnimalDtos = userDao.userSelectOnMiss(userNo);
+        return missnimalDtos;
+    }
+
+    @Override
     public int duplicateEmail(String email) { // 이메일 중복 체크
         if (userDao.duplicateEmail(email) == 0) // 사용가능
             return SUCCESS;
@@ -64,11 +80,18 @@ public class UserServiceImpl implements UserService{
             return FAIL;
     }
 
-    public int userUpdate(UserDto userDto) { // 회원 수정
-        if (userDao.userUpdate(userDto) == SUCCESS) // 변경된 기존 유저정보를 가지고 db내용을 변경함
-            return SUCCESS;
-        else // 실패
-            return FAIL;
+    public int userUpdate(UserDto userDto, S3Dto img) { // 회원 수정
+        UserDto raw = userDao.userSelect(userDto.getNo());
+        if(img != null) {
+            S3Dto latest = s3Dao.selectByLink(raw.getProfileImg());
+            System.out.println("latest : " + latest.toString());
+            if(latest.getNo() != 10) s3Service.deleteFile(latest.getImgName());
+            userDto.setProfileImg(img.getImgLink());
+        } else {
+            userDto.setProfileImg(raw.getProfileImg());
+        }
+        int result = userDao.userUpdate(userDto);
+        return result;
     }
 
     @Override
