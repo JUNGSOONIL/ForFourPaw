@@ -15,9 +15,7 @@ import Blog from "@/views/Blog.vue";
 import SocialLogin from "@/views/accounts/SocialLogin.vue";
 import LogoutPage from "@/views/accounts/LogoutPage.vue";
 import MoreInfo from "@/views/accounts/MoreInfo.vue";
-import Analysis_Region from "@/views/analysis/Analysis_Region.vue";
-import MissList from "@/views/MissList.vue";
-import UserPage from "@/views/UserPage.vue";
+import AnalysisView from "@/views/analysis/AnalysisView.vue";
 
 export default new VueRouter({
   mode: "history",
@@ -121,11 +119,10 @@ export default new VueRouter({
       path: "/moreInfo",
       component: MoreInfo,
     },
-
     {
-      name: "Analysis_Region",
-      path: "/Analysis_Region",
-      component: Analysis_Region,
+      name: "AnalysisView",
+      path: "/AnalysisView",
+      component: AnalysisView,
     },
   ],
 
