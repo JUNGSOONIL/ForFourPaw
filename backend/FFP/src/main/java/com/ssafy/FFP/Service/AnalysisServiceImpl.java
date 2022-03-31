@@ -33,8 +33,8 @@ public class AnalysisServiceImpl implements  AnalysisService {
         System.out.println("[System] Spark 데이터 분석");
 
 //        String logFile = "src/main/resources/data/dataset.csv";
-        String logFile = "/home/ubuntu/docker-volume/jenkins/workspace/FFP/backend/FFP/src/main/resources/data/dataset.csv";
-
+//        String logFile = "/home/ubuntu/docker-volume/jenkins/workspace/FFP/backend/FFP/src/main/resources/data/dataset.csv";
+        String logFile = "/../../../../../main/resources/data/dataset.csv";
 
         SparkSession spark = SparkSession.builder()
                 .appName("simple app")
