@@ -125,18 +125,24 @@ public class MissnimalController {
             @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
 
         System.out.println(missnimalDto.toString());
-        List<Integer> imgNo = new ArrayList<>();
-        if(multipartFile != null){
-            imgNo = s3Service.uploadFile(multipartFile);
-        }
+        int result = 0;
+        if(multipartFile != null) {
+            List<Integer> imgNo = new ArrayList<>();
+            if (multipartFile != null) {
+                imgNo = s3Service.uploadFile(multipartFile);
+            }
 
-        List<S3Dto> imgs = new ArrayList<>();
-        for (int no : imgNo) {
-            System.out.println("no: " + no);
-            imgs.add(s3Service.select(no));
-        }
+            List<S3Dto> imgs = new ArrayList<>();
+            for (int no : imgNo) {
+                System.out.println("no: " + no);
+                imgs.add(s3Service.select(no));
+            }
 
-        int result = missnimalService.update(missnimalDto, imgs.get(0));
+            result = missnimalService.update(missnimalDto, imgs.get(0));
+        }
+        else {
+            result = missnimalService.update(missnimalDto, null);
+        }
 
         if(result != 0) {
             return ResponseEntity.ok().body(result);
@@ -144,5 +150,17 @@ public class MissnimalController {
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
         }
+    }
+    
+    @DeleteMapping("/miss/{no}")
+    public ResponseEntity<?> delete(@PathVariable String no){
+        int missNo = Integer.parseInt(no);
+
+        if (missnimalService.delete(missNo) != 0) {
+            return ResponseEntity.ok().body(1);
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "삭제에 실패했습니다.");
+        }
+                
     }
 }

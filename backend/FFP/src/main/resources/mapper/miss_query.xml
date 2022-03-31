@@ -2,24 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.FFP.Dao.MissnimalDao">
 
+    <select id="selectByUser" parameterType="map"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select m.no, m.name, m.kindCd, m.colorCd, m.age, m.sexCd, m.neuterYn, m.author, m.careTel, m.happenDt,
+        m.happenPlace, m.descr, m.profile, u.name as authorName, m.write_time as writeTime
+        from ffp.missnimal m, ffp.user u
+        where m.no = #{no} and u.no = #{userNo}
+    </select>
+
     <select id="select" parameterType="map"
             resultType="com.ssafy.FFP.Dto.MissnimalDto">
         select m.no, m.name, m.kindCd, m.colorCd, m.age, m.sexCd, m.neuterYn, m.author, m.careTel, m.happenDt,
-               m.happenPlace, m.descr, m.profile, u.name as authorName
+               m.happenPlace, m.descr, m.profile, u.name as authorName, m.write_time as writeTime
         from ffp.missnimal m, ffp.user u
         where m.no = #{no} and u.no = m.author
     </select>
 
     <select id="list" parameterType="String"
             resultType="com.ssafy.FFP.Dto.MissnimalDto">
-        select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile
+        select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile,
+               write_time as writeTime
         from missnimal
         ORDER BY no DESC
     </select>
 
     <select id="find" parameterType="int"
             resultType="com.ssafy.FFP.Dto.MissnimalDto">
-        select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile
+        select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile,
+               m.write_time as writeTime
         from missnimal
         WHERE no is not null
         <if test ="kindCd != null">
@@ -56,7 +66,7 @@
     </insert>
 
     <insert id="relation" parameterType="map">
-        insert into miss_img(imgNo, missNo)
+        insert into miss_img(img_no, miss_no)
         values (#{imgNo}, #{missNo})
     </insert>
 
