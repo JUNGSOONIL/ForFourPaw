@@ -772,7 +772,10 @@
 
 <script>
 import axios from 'axios';
+<<<<<<< HEAD
 const session = window.sessionStorage;
+=======
+>>>>>>> feature/mainpageFE
 // import Slick from "vue-slick";
 export default {
   name: "App",
@@ -854,6 +857,7 @@ export default {
       this.$store.dispatch("mainView/mainShelnimalListLogin");
     },
     selectmaincnt(){
+<<<<<<< HEAD
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -865,6 +869,14 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 
         this.maincnt = res.data; 
+=======
+    axios({
+        method: 'get',
+        url: '/api/dataset/',
+      }).then((res) => {
+        this.maincnt = res.data; 
+        console.log(res.data)
+>>>>>>> feature/mainpageFE
       }).catch((error) => {
         console.log(error);
       }).then(() => {
