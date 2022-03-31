@@ -36,6 +36,7 @@ public class DatasetController {
 
 	}
 
+	@Scheduled(cron = "0 0 0/1 * * *",zone = "Asia/Seoul")
 	public void Datasetadd() { // 실시간 데이터 추가
 		Service.DataAdd();
 	}
