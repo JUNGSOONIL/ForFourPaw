@@ -6,17 +6,19 @@ public class UserDto {
     private String name;
     private String nickname;
     private String email;
+    private String addrs;
     private String profileImg;
     private String refreshToken;
 
     public UserDto() {
     }
 
-    public UserDto(int no, String name, String nickname, String email, String profileImg, String refreshToken) {
+    public UserDto(int no, String name, String nickname, String email, String addrs, String profileImg, String refreshToken) {
         this.no = no;
         this.name = name;
         this.nickname = nickname;
         this.email = email;
+        this.addrs = addrs;
         this.profileImg = profileImg;
         this.refreshToken = refreshToken;
     }
@@ -67,5 +69,26 @@ public class UserDto {
 
     public void setRefreshToken(String refreshToken) {
         this.refreshToken = refreshToken;
+    }
+
+    public String getAddrs() {
+        return addrs;
+    }
+
+    public void setAddrs(String addrs) {
+        this.addrs = addrs;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", addrs='" + addrs + '\'' +
+                ", profileImg='" + profileImg + '\'' +
+                ", refreshToken='" + refreshToken + '\'' +
+                '}';
     }
 }

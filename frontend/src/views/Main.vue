@@ -7,7 +7,7 @@
         <div class="slider-active">
           <div
             class="single-slider slider-bg d-flex align-items-center"
-            style="background-image: url('img/slider/slider_bg01.jpg')"
+            style="background-image: url('/img/slider/slider_bg01.jpg')"
           >
             <div class="container custom-container">
               <div class="row">
@@ -40,7 +40,7 @@
                       data-animation="fadeInUpBig"
                       data-delay=".6s"
                       data-duration="1.2s"
-                      >View More <img src="img/icon/w_pawprint.png" alt=""
+                      >View More <img src="/img/icon/w_pawprint.png" alt=""
                     /></a>
                   </div>
                 </div>
@@ -49,7 +49,7 @@
           </div>
           <!-- <div
             class="single-slider slider-bg d-flex align-items-center"
-            style="background-image: url('img/slider/slider_bg02.jpg')"
+            style="background-image: url('/img/slider/slider_bg02.jpg')"
           >
             <div class="container custom-container">
               <div class="row">
@@ -82,7 +82,7 @@
                       data-animation="fadeInUpBig"
                       data-delay=".6s"
                       data-duration="1.2s"
-                      >View More <img src="img/icon/w_pawprint.png" alt=""
+                      >View More <img src="/img/icon/w_pawprint.png" alt=""
                     /></a>
                   </div>
                 </div>
@@ -91,10 +91,10 @@
           </div> -->
         </div>
         <div class="slider-shape">
-          <img src="img/slider/slider_shape01.png" alt="" />
+          <img src="/img/slider/slider_shape01.png" alt="" />
         </div>
         <div class="slider-shape shape-two">
-          <img src="img/slider/slider_shape02.png" alt="" />
+          <img src="/img/slider/slider_shape02.png" alt="" />
         </div>
       </section>
       <!-- slider-area-end -->
@@ -168,7 +168,7 @@
       <!-- counter-area -->
       <section
         class="counter-area counter-bg"
-        style="background-image: url('img/bg/counter_bg.jpg')"
+        style="background-image: url('/img/bg/counter_bg.jpg')"
       >
         <div class="container">
           <div class="row justify-content-center">
@@ -227,7 +227,7 @@
           >
             <div class="col-xl-7 col-lg-6 col-md-10 order-0 order-lg-2">
               <div class="adoption-img">
-                <img src="img/images/adoption_img.jpg" alt="" />
+                <img src="/img/images/adoption_img.jpg" alt="" />
               </div>
             </div>
             <div class="col-xl-5 col-lg-6">
@@ -242,14 +242,14 @@
                   information.
                 </p>
                 <a href="adoption.html" class="btn"
-                  >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                  >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                 /></a>
               </div>
             </div>
           </div>
         </div>
         <div class="adoption-shape">
-          <img src="img/images/adoption_shape.png" alt="" />
+          <img src="/img/images/adoption_shape.png" alt="" />
         </div>
       </section>
       <!-- adoption-area-end -->
@@ -261,7 +261,7 @@
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Service to Breeds</h5>
                 <h2 class="title">Most Popular Dog Breed</h2>
@@ -278,7 +278,7 @@
               <div class="breed-services-active owl-carousel">
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img01.jpg" alt="" />
+                    <img src="/img/images/breed_services_img01.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -288,7 +288,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img02.jpg" alt="" />
+                    <img src="/img/images/breed_services_img02.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -298,7 +298,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img03.jpg" alt="" />
+                    <img src="/img/images/breed_services_img03.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -308,7 +308,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img04.jpg" alt="" />
+                    <img src="/img/images/breed_services_img04.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -321,7 +321,7 @@
             <div class="col-lg-4 col-md-6">
               <div
                 class="breed-services-info"
-                style="background-image: url('img/bg/breed_services_bg.jpg')"
+                style="background-image: url('/img/bg/breed_services_bg.jpg')"
               >
                 <h5 class="sub-title">Dog Breeder</h5>
                 <h3 class="title">Available for Breed</h3>
@@ -330,17 +330,17 @@
                   (view at Chewy), which provid dogs
                 </p>
                 <a href="dog-list.html" class="btn"
-                  >More Pets <img src="img/icon/w_pawprint.png" alt=""
+                  >More Pets <img src="/img/icon/w_pawprint.png" alt=""
                 /></a>
               </div>
             </div>
           </div>
         </div>
         <div class="breed-services-shape">
-          <img src="img/images/breed_services_shape01.png" alt="" />
+          <img src="/img/images/breed_services_shape01.png" alt="" />
         </div>
         <div class="breed-services-shape shape-two">
-          <img src="img/images/breed_services_shape02.png" alt="" />
+          <img src="/img/images/breed_services_shape02.png" alt="" />
         </div>
       </section>
       <!-- breeds-services-end -->
@@ -351,8 +351,8 @@
           <div class="row align-items-center">
             <div class="col-lg-6">
               <div class="faq-img-wrap">
-                <img src="img/images/faq_tv.png" class="img-frame" alt="" />
-                <img src="img/images/faq_img.png" class="main-img" alt="" />
+                <img src="/img/images/faq_tv.png" class="img-frame" alt="" />
+                <img src="/img/images/faq_img.png" class="main-img" alt="" />
                 <a
                   href="https://www.youtube.com/watch?v=XdFfCPK5ycw"
                   class="popup-video"
@@ -456,7 +456,7 @@
           </div>
         </div>
         <div class="faq-shape">
-          <img src="img/images/faq_shape.png" alt="" />
+          <img src="/img/images/faq_shape.png" alt="" />
         </div>
       </section>
       <!-- faq-area-end -->
@@ -467,37 +467,37 @@
           <div class="row brand-active">
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item01.png" alt="img" />
+                <img src="/img/brand/brand_item01.png" alt="img" />
               </div>
             </div>
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item02.png" alt="img" />
+                <img src="/img/brand/brand_item02.png" alt="img" />
               </div>
             </div>
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item03.png" alt="img" />
+                <img src="/img/brand/brand_item03.png" alt="img" />
               </div>
             </div>
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item04.png" alt="img" />
+                <img src="/img/brand/brand_item04.png" alt="img" />
               </div>
             </div>
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item05.png" alt="img" />
+                <img src="/img/brand/brand_item05.png" alt="img" />
               </div>
             </div>
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item06.png" alt="img" />
+                <img src="/img/brand/brand_item06.png" alt="img" />
               </div>
             </div>
             <div class="col-12">
               <div class="brand-item">
-                <img src="img/brand/brand_item03.png" alt="img" />
+                <img src="/img/brand/brand_item03.png" alt="img" />
               </div>
             </div>
           </div>
@@ -505,9 +505,9 @@
       </div>
       <!-- brand-area-end -->
 
-      <!-- adoption-shop-area -->
-      <section class="adoption-shop-area">
-        <div class="container">
+      <!-- carousel-area-start -->
+      <section class="adoption-area-two pt-110 pb-110">
+        <div class="container custom-container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
@@ -524,43 +524,83 @@
               </div>
             </div>
           </div>
+          <div class="adopt-active">
+            <Slick ref="slick" :options="slickOptions">
+              <!-- v-for 형태 -->
+              <div
+                v-for="(shelnimal, index) in this.$store.state[`mainView`].shelnimal.list" 
+                v-bind:key="index"
+                class="adoption-item"
+              >
+                <div class="adopt-thumb">
+                  <router-link :to="{ name: 'ShelDetail', params: { no: shelnimal.no },}">
+                    <img style="width : 353px; height : 353px" :src="shelnimal.popfile" alt="" />
+                  </router-link>
+                </div>
+                <div class="adopt-content">
+                  <h3 class="title">
+                  </h3>
+                  <p>
+                    품종 : {{ shelnimal.kindCd }}<br />
+                    발견장소 : {{ shelnimal.happenPlace}}
+                  </p>
+                </div>
+              </div>
+            </Slick>
+          </div>
+        </div>
+      </section>
+      <!-- carousel-area-end -->
+
+      <!-- adoption-shop-area -->
+      <section class="adoption-shop-area">
+        <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
+            <div class="col-xl-7 col-lg-9">
+              <div class="section-title text-center mb-65">
+                <div class="section-icon">
+                  <img src="/img/icon/pawprint.png" alt="" />
+                </div>
+                <h5 class="sub-title">Meet the animals</h5>
+                <h2 class="title">Puppies Waiting for Adoption</h2>
+                <p>
+                  The best overall dog DNA test is Embark Breed & Health Kit
+                  (view at Chewy), which provides you with a breed brwn and
+                  information Most dogs
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6" v-for="(shelnimal, index) in this.$store.state[`mainView`].shelnimal.list" v-bind:key="index">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb01.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
+                  <img style="width : 380px; height : 381px" :src="shelnimal.popfile" alt="" />
+                  <router-link :to="{ name: 'ShelDetail', params: { no: shelnimal.no },}" class="btn"
                     >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
+                  /></router-link>
                 </div>
                 <div class="adoption-shop-content">
                   <h4 class="title">
-                    <a href="shop-details.html">Mister Tartosh</a>
                   </h4>
                   <div class="adoption-meta">
                     <ul>
                       <li>
-                        <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
+                        <i class="fas fa-cog"></i><a href="#">{{shelnimal.kindCd}}</a>
                       </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
+                      <li><i class="far fa-calendar"></i>{{shelnimal.age}}</li>
                     </ul>
                   </div>
                   <div class="adoption-rating">
                     <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
+                      <li><i class="fas fa-coins"></i> 특징</li>
+                      <li style="text-align: right; width:220px;"> {{shelnimal.specialMark}}</li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+            <!-- <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
                   <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
@@ -734,7 +774,7 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
@@ -747,7 +787,7 @@
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Testimonials</h5>
                 <h2 class="title">Our Happy Customers</h2>
@@ -763,7 +803,7 @@
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar01.png" alt="" />
+                  <img src="/img/images/testi_avatar01.png" alt="" />
                 </div>
                 <div class="testi-content">
                   <p>
@@ -781,7 +821,7 @@
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar02.png" alt="" />
+                  <img src="/img/images/testi_avatar02.png" alt="" />
                 </div>
                 <div class="testi-content">
                   <p>
@@ -799,7 +839,7 @@
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar01.png" alt="" />
+                  <img src="/img/images/testi_avatar01.png" alt="" />
                 </div>
                 <div class="testi-content">
                   <p>
@@ -817,7 +857,7 @@
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar02.png" alt="" />
+                  <img src="/img/images/testi_avatar02.png" alt="" />
                 </div>
                 <div class="testi-content">
                   <p>
@@ -844,7 +884,7 @@
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Our News</h5>
                 <h2 class="title">Latest News Update</h2>
@@ -861,7 +901,7 @@
               <div class="blog-post-item mb-50">
                 <div class="blog-post-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_post_thumb01.jpg" alt=""
+                    ><img src="/img/blog/blog_post_thumb01.jpg" alt=""
                   /></a>
                   <div class="blog-post-tag">
                     <a href="#"><i class="flaticon-bookmark-1"></i>Sharped</a>
@@ -882,7 +922,7 @@
                     at Chewy.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
@@ -891,7 +931,7 @@
               <div class="blog-post-item mb-50">
                 <div class="blog-post-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_post_thumb02.jpg" alt=""
+                    ><img src="/img/blog/blog_post_thumb02.jpg" alt=""
                   /></a>
                   <div class="blog-post-tag">
                     <a href="#"><i class="flaticon-bookmark-1"></i>Creative</a>
@@ -912,7 +952,7 @@
                     at Chewy.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
@@ -921,7 +961,7 @@
               <div class="blog-post-item mb-50">
                 <div class="blog-post-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_post_thumb03.jpg" alt=""
+                    ><img src="/img/blog/blog_post_thumb03.jpg" alt=""
                   /></a>
                   <div class="blog-post-tag">
                     <a href="#"><i class="flaticon-bookmark-1"></i>Business</a>
@@ -942,7 +982,7 @@
                     at Chewy.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
@@ -969,10 +1009,10 @@
                   </form>
                 </div>
                 <div class="newsletter-shape">
-                  <img src="img/images/newsletter_shape01.png" alt="" />
+                  <img src="/img/images/newsletter_shape01.png" alt="" />
                 </div>
                 <div class="newsletter-shape shape-two">
-                  <img src="img/images/newsletter_shape02.png" alt="" />
+                  <img src="/img/images/newsletter_shape02.png" alt="" />
                 </div>
               </div>
             </div>
@@ -986,9 +1026,116 @@
 </template>
 
 <script>
+import Slick from "vue-slick";
 export default {
   name: "App",
-  components: {},
+  components: {
+    Slick,
+  },
+  methods : {
+    shelimalList() {
+      console.log("비로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalList");
+    },
+    shelimalListLogin() {
+      console.log("로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalListLogin");
+    },
+    
+  },
+  data() {
+    return {
+      slickOptions: {
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        autoplay: false,
+        arrows: true,
+        autoplaySpeed: 3000,
+        prevArrow:
+          '<button type="button" class="slick-prev"><img src="/img/icon/arrow.png" /></button>',
+        nextArrow:
+          '<button type="button" class="slick-next"><img src="/img/icon/arrow.png" /></button>',
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+            },
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              speed: 1000,
+            },
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              arrows: false,
+              speed: 1000,
+            },
+          },
+          {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              speed: 1000,
+            },
+          },
+        ],
+      },
+      list: [
+        {
+          no: 1,
+          name: "이름1",
+          kind: "종1",
+          miss_addr: "지역1",
+        },
+        {
+          no: 2,
+          name: "이름2",
+          kind: "종2",
+          miss_addr: "지역2",
+        },
+        {
+          no: 3,
+          name: "이름3",
+          kind: "종3",
+          miss_addr: "지역3",
+        },
+        {
+          no: 4,
+          name: "이름4",
+          kind: "종4",
+          miss_addr: "지역4",
+        },
+        {
+          no: 5,
+          name: "이름5",
+          kind: "종5",
+          miss_addr: "지역5",
+        },
+      ],
+    };
+  },
+  mounted() {
+    if(this.$store.state["login"].isLogin == false){
+      this.shelimalList()
+    }else {
+      this.shelimalListLogin()
+    }
+  }
 };
 </script>
 

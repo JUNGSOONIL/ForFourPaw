@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.DatasetDao">
+
+	<insert id="DataInsert" parameterType="java.util.List">
+		INSERT INTO dataset(desertionNo, filename, happenDt, happenPlace, kindCd,
+       colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd,
+       neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel)
+		VALUES
+		<foreach item="item" separator=" , " collection="list">
+			(
+			#{item.desertionNo}, #{item.filename}, #{item.happenDt}, #{item.happenPlace}, #{item.kindCd},
+       		#{item.colorCd}, #{item.age}, #{item.weight}, #{item.noticeNo}, #{item.noticeSdt}, #{item.noticeEdt}, 
+       		#{item.popfile}, #{item.processState}, #{item.sexCd}, #{item.neuterYn}, #{item.specialMark}, #{item.careNm}, 
+       		#{item.careTel}, #{item.careAddr}, #{item.orgNm}, #{item.chargeNm}, #{item.officetel}
+			)
+		</foreach>
+	</insert>
+	
+	<insert id="DataUpdate" parameterType="java.util.List">
+		INSERT INTO dataset(desertionNo, filename, happenDt, happenPlace, kindCd,
+       colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd,
+       neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel)
+		VALUES
+		<foreach item="item" separator=" , " collection="list">
+			(
+			#{item.desertionNo}, #{item.filename}, #{item.happenDt}, #{item.happenPlace}, #{item.kindCd},
+       		#{item.colorCd}, #{item.age}, #{item.weight}, #{item.noticeNo}, #{item.noticeSdt}, #{item.noticeEdt}, 
+       		#{item.popfile}, #{item.processState}, #{item.sexCd}, #{item.neuterYn}, #{item.specialMark}, #{item.careNm}, 
+       		#{item.careTel}, #{item.careAddr}, #{item.orgNm}, #{item.chargeNm}, #{item.officetel}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE processState = values(processState)
+	</insert>
+</mapper>
