@@ -29,6 +29,12 @@ public class MissnimalServiceImpl implements MissnimalService{
     }
 
     @Override
+    public List<MissnimalDto> selectByUser(int no) {
+        List<MissnimalDto> missnimalDtos = missnimalDao.selectByUser(no);
+        return missnimalDtos;
+    }
+
+    @Override
     public int create(MissnimalDto missnimalDto, S3Dto img) {
         missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.create(missnimalDto);
