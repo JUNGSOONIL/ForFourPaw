@@ -186,7 +186,7 @@
             </section>
 
             <section class="contact-area pt-10 pb-20">
-              <div v-if="boardlist != null" class="container">
+              <div v-if="boardlist.length != 0" class="container">
                 <div class="container-inner-wrap">
                   <div class="row " style=" border: 1px solid gray; border-radius: 40px; padding:15px">
                     <h3 class="title">내가 작성한 글</h3>
@@ -263,8 +263,9 @@ export default {
         headers: headers,
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
-        console.log(res)
+        console.log(res.data)
         this.boardlist = res.data
+        console.log(this.boardlist)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
