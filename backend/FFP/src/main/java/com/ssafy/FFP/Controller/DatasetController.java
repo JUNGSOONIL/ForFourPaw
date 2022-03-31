@@ -28,6 +28,10 @@ public class DatasetController {
 		return Service.DataSelect();
 	}
 	
+	public void Datasetadd() { // 실시간 데이터 추가
+		Service.DataAdd();
+	}
+	
 	@PutMapping("/dataset")
 	public int DatasetUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
 		return Service.DataUpdate();
