@@ -23,8 +23,8 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     }
 
     @Override
-    public List<ShelnimalDto> list(int sdt) {
-        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt);
+    public List<ShelnimalDto> list(int sdt, int offset) {
+        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt, offset);
         return shelnimalDtos;
 
     }
@@ -36,7 +36,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     }
 
     @Override
-    public List<ShelnimalDto> find(SearchDto searchDto) {
+    public List<DatasetDto> find(SearchDto searchDto) {
         return shelnimalDao.find(searchDto);
     }
 
@@ -45,5 +45,13 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 		String processState = "보호중";
 		List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
 		return shelnimalDtos;
+	}
+
+	@Override
+	public List<String> searchList(String kind) {
+		System.out.println(kind);
+		List<String> kinds = shelnimalDao.searchList(kind);
+		System.out.println(kinds);
+		return kinds;
 	}
 }

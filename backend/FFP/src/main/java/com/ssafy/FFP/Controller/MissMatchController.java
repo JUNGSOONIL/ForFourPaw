@@ -29,11 +29,4 @@ public class MissMatchController {
 	public List<DatasetDto> matching(@RequestBody Map<String, String> map) {
 		return missMatchService.matching(map);
 	}
-	
-	@GetMapping("/kmeans")
-	public String test() {
-		String path = System.getProperty("user.dir"); 
-		System.out.println("현재 작업 경로: " + path);
-		return path;
-	}
 }

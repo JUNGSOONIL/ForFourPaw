@@ -12,7 +12,7 @@
         where no = #{no}
     </select>
 
-    <select id="list" parameterType="int"
+    <select id="list" parameterType="map"
             resultType="com.ssafy.FFP.Dto.ShelnimalDto">
         select no, desertionNo, filename, happenDt, happenPlace, kindCd,
                colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
@@ -20,10 +20,11 @@
                careAddr, orgNm, chargeNm, officetel as officeTel
         from dataset
         WHERE noticeEdt >= #{sdt} and processState = '보호중'
+        limit 9 offset #{offset}
     </select>
 
-    <select id="find" parameterType="int"
-            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+    <select id="find" parameterType="com.ssafy.FFP.Dto.SearchDto"
+            resultType="com.ssafy.FFP.Dto.DatasetDto">
         select no, desertionNo, filename, happenDt, happenPlace, kindCd,
                colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
                processState, sexCd, neuterYn, specialMark, careNm, careTel,
@@ -63,6 +64,8 @@
         <if test ="careNm != null">
             AND careNm &gt; #{careNm}
         </if>
+        limit 9 offset #{offset}
+
     </select>
     
     <select id="mainList" parameterType="String" resultType="com.ssafy.FFP.Dto.DatasetDto">
@@ -70,6 +73,13 @@
         from dataset
         where processState = #{processState}
         ORDER BY RAND() LIMIT 6
+    </select>
+    
+    <select id="searchList" parameterType="String" resultType="String">
+        select kindCd
+        from dataset
+        WHERE kindCd like CONCAT('%',#{kindCd},'%')
+        group by kindCd
     </select>
 
 </mapper>

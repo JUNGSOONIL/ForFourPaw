@@ -7,7 +7,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="section-title mb-65">
               <div class="text-center">
-                <img src="img/logo/character.png" width="500" alt="" />
+                <img src="/img/logo/character.png" width="500" alt="" />
               </div>
               <div class="text-center">
                 <h5 class="sub-title">로그아웃 완료</h5>

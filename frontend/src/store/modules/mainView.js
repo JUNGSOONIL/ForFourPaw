@@ -29,6 +29,7 @@ const mutations = {
 const actions = { 
     
     mainShelnimalList(context) { 
+      
         // let headers = {
         //     'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         //     'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -48,12 +49,11 @@ const actions = {
             
           }).catch((error) => {
             console.log(error);
-          }).then(() => {
-            console.log('getQSSList End!!');
-          });
+          })
         },
 
         mainShelnimalListLogin(context) { 
+          
             let headers = {
                 'at-jwt-access-token': session.getItem('at-jwt-access-token'),
                 'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -65,7 +65,7 @@ const actions = {
                 headers: headers,  // 넣는거 까먹지 마세요
               }).then((res) => {
         
-                this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서 상황에 따라서 메서드가 다르다
+                this.dispatch('login/accessTokenRefresh', res) // 상황에 따라서 메서드가 다르다
                 
                 console.log(res);
     
@@ -73,9 +73,7 @@ const actions = {
                 
               }).catch((error) => {
                 console.log(error);
-              }).then(() => {
-                console.log('getQSSList End!!');
-              });
+              })
             },
 
         
