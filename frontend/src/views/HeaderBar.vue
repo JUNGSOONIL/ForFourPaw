@@ -63,17 +63,7 @@
                         </ul>
                       </li>
                       <li class="menu-item-has-children">
-                        <router-link to="/shop">통계</router-link>
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/Analysis_Region">지역 통계</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
+                        <router-link to="/analysisview">데이터 분석</router-link>
                       </li>
                       <!-- <li><a href="adoption.html">Adoption</a></li> -->
                       <!-- <li class="menu-item-has-children">
