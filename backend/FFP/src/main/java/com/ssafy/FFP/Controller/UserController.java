@@ -121,6 +121,7 @@ public class UserController {
             UserDto userDto = userService.userSelect(user.getNo());
             String accessToken = jwtService.createAccess(userDto.getEmail());
             System.out.println("==============업데이트 엑세스 토큰 ==========" + "\n" + accessToken);
+            res.clear();
             res.add("at-jwt-access-token", accessToken);
             return ResponseEntity.ok().headers(res).body(userDto);
         }else {
