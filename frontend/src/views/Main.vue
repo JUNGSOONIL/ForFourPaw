@@ -7,7 +7,7 @@
         <div class="slider-active">
           <div
             class="single-slider slider-bg d-flex align-items-center"
-            style="background-image: url('/img/slider/slider_bg01.jpg')"
+            style="background-image: url('/img/slider/hifive.jpg')"
           >
             <div class="container custom-container">
               <div class="row">
@@ -20,7 +20,8 @@
                         data-delay=".2s"
                         data-duration="1.2s"
                       >
-                        For<span>with</span><br />Four<br />Paw
+                        <!-- For<span>with</span><br />Four<br />Paw -->
+                        For<br />Four<br />Paw
                       </h2>
                     </div>
                     <div class="slider-desc">
@@ -34,14 +35,14 @@
                         있습니다.
                       </p>
                     </div>
-                    <a
+                    <!-- <a
                       href="dog-list.html"
                       class="btn"
                       data-animation="fadeInUpBig"
                       data-delay=".6s"
                       data-duration="1.2s"
                       >View More <img src="/img/icon/w_pawprint.png" alt=""
-                    /></a>
+                    /></a> -->
                   </div>
                 </div>
               </div>
@@ -100,7 +101,7 @@
       <!-- slider-area-end -->
 
       <!-- find-area -->
-      <div class="find-area">
+      <!-- <div class="find-area">
         <div class="container custom-container">
           <div class="row">
             <div class="col-12">
@@ -162,7 +163,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- find-area-end -->
 
       <!-- counter-area -->
@@ -171,7 +172,7 @@
         style="background-image: url('/img/bg/counter_bg.jpg')"
       >
         <div class="container">
-          <div class="row justify-content-center">
+          <!-- <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8">
               <div class="counter-title text-center mb-65">
                 <h6 class="sub-title">Why Choose Us?</h6>
@@ -180,7 +181,7 @@
                 </h2>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row justify-content-center">
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
@@ -220,7 +221,7 @@
       <!-- counter-area-end -->
 
       <!-- adoption-area -->
-      <section class="adoption-area">
+      <!-- <section class="adoption-area">
         <div class="container">
           <div
             class="row align-items-center align-items-xl-end justify-content-center"
@@ -251,11 +252,11 @@
         <div class="adoption-shape">
           <img src="/img/images/adoption_shape.png" alt="" />
         </div>
-      </section>
+      </section> -->
       <!-- adoption-area-end -->
 
       <!-- breeds-services -->
-      <section class="breeds-services pt-110 pb-110">
+      <!-- <section class="breeds-services pt-110 pb-110">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
@@ -342,11 +343,11 @@
         <div class="breed-services-shape shape-two">
           <img src="/img/images/breed_services_shape02.png" alt="" />
         </div>
-      </section>
+      </section> -->
       <!-- breeds-services-end -->
 
       <!-- faq-area -->
-      <section class="faq-area faq-bg">
+      <!-- <section class="faq-area faq-bg">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6">
@@ -458,55 +459,11 @@
         <div class="faq-shape">
           <img src="/img/images/faq_shape.png" alt="" />
         </div>
-      </section>
+      </section> -->
       <!-- faq-area-end -->
 
-      <!-- brand-area -->
-      <div class="brand-area pt-80 pb-80">
-        <div class="container">
-          <div class="row brand-active">
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item01.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item02.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item03.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item04.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item05.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item06.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="/img/brand/brand_item03.png" alt="img" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- brand-area-end -->
-
       <!-- carousel-area-start -->
-      <section class="adoption-area-two pt-110 pb-110">
+      <!-- <section class="adoption-area-two pt-110 pb-110">
         <div class="container custom-container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
@@ -514,8 +471,11 @@
                 <div class="section-icon">
                   <img src="img/icon/pawprint.png" alt="" />
                 </div>
-                <h5 class="sub-title">Meet the animals</h5>
-                <h2 class="title">Puppies Waiting for Adoption</h2>
+                <h5 class="sub-title">도와주세요</h5>
+                <h2 class="title">
+                  혼자 남은 아이들을 위해 <br />
+                  함께 할 수 있는 가족이 되어주세요
+                </h2>
                 <p>
                   The best overall dog DNA test is Embark Breed & Health Kit
                   (view at Chewy), which provides you with a breed brwn and
@@ -526,30 +486,35 @@
           </div>
           <div class="adopt-active">
             <Slick ref="slick" :options="slickOptions">
-              <!-- v-for 형태 -->
               <div
-                v-for="(shelnimal, index) in this.$store.state[`mainView`].shelnimal.list" 
+                v-for="(shelnimal, index) in this.$store.state[`mainView`]
+                  .shelnimal.list"
                 v-bind:key="index"
                 class="adoption-item"
               >
                 <div class="adopt-thumb">
-                  <router-link :to="{ name: 'ShelDetail', params: { no: shelnimal.no },}">
-                    <img style="width : 353px; height : 353px" :src="shelnimal.popfile" alt="" />
+                  <router-link
+                    :to="{ name: 'ShelDetail', params: { no: shelnimal.no } }"
+                  >
+                    <img
+                      style="width: 353px; height: 353px"
+                      :src="shelnimal.popfile"
+                      alt=""
+                    />
                   </router-link>
                 </div>
                 <div class="adopt-content">
-                  <h3 class="title">
-                  </h3>
+                  <h3 class="title"></h3>
                   <p>
                     품종 : {{ shelnimal.kindCd }}<br />
-                    발견장소 : {{ shelnimal.happenPlace}}
+                    발견장소 : {{ shelnimal.happenPlace }}
                   </p>
                 </div>
               </div>
             </Slick>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- carousel-area-end -->
 
       <!-- adoption-shop-area -->
@@ -561,220 +526,63 @@
                 <div class="section-icon">
                   <img src="/img/icon/pawprint.png" alt="" />
                 </div>
-                <h5 class="sub-title">Meet the animals</h5>
-                <h2 class="title">Puppies Waiting for Adoption</h2>
-                <p>
+                <h5 class="sub-title">도와주세요</h5>
+                <h2 class="title">
+                  혼자 남은 아이들을 위해 <br />
+                  함께 할 수 있는 가족이 돼주세요
+                </h2>
+                <!-- <p>
                   The best overall dog DNA test is Embark Breed & Health Kit
                   (view at Chewy), which provides you with a breed brwn and
                   information Most dogs
-                </p>
+                </p> -->
               </div>
             </div>
           </div>
           <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6" v-for="(shelnimal, index) in this.$store.state[`mainView`].shelnimal.list" v-bind:key="index">
+            <div
+              class="col-lg-4 col-md-6"
+              v-for="(shelnimal, index) in this.$store.state[`mainView`]
+                .shelnimal.list"
+              v-bind:key="index"
+            >
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img style="width : 380px; height : 381px" :src="shelnimal.popfile" alt="" />
-                  <router-link :to="{ name: 'ShelDetail', params: { no: shelnimal.no },}" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                  <img
+                    style="width: 380px; height: 381px"
+                    :src="shelnimal.popfile"
+                    alt=""
+                  />
+                  <router-link
+                    :to="{ name: 'ShelDetail', params: { no: shelnimal.no } }"
+                    class="btn"
+                    >보러가기<img src="img/icon/w_pawprint.png" alt=""
                   /></router-link>
                 </div>
                 <div class="adoption-shop-content">
-                  <h4 class="title">
-                  </h4>
+                  <h4 class="title"></h4>
                   <div class="adoption-meta">
                     <ul>
                       <li>
-                        <i class="fas fa-cog"></i><a href="#">{{shelnimal.kindCd}}</a>
+                        <i class="fas fa-cog"></i
+                        ><a href="#">{{ shelnimal.kindCd }}</a>
                       </li>
-                      <li><i class="far fa-calendar"></i>{{shelnimal.age}}</li>
+                      <li>
+                        <i class="far fa-calendar"></i>{{ shelnimal.age }}
+                      </li>
                     </ul>
                   </div>
                   <div class="adoption-rating">
                     <ul>
                       <li><i class="fas fa-coins"></i> 특징</li>
-                      <li style="text-align: right; width:220px;"> {{shelnimal.specialMark}}</li>
+                      <li style="text-align: right; width: 220px">
+                        {{ shelnimal.specialMark }}
+                      </li>
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title"><a href="shop-details.html">Charlie</a></h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i
-                        ><a href="#">Golden Retriever</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$30</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb03.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Alessia Max</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">German Sherped</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$29</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb04.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Canadian</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">German Sherped</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$39</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb05.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Entertainment</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb06.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Dangerous</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i
-                        ><a href="#">Golden Retriever</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div> -->
           </div>
         </div>
       </section>
@@ -789,13 +597,13 @@
                 <div class="section-icon">
                   <img src="/img/icon/pawprint.png" alt="" />
                 </div>
-                <h5 class="sub-title">Testimonials</h5>
-                <h2 class="title">Our Happy Customers</h2>
-                <p>
+                <h5 class="sub-title">준비해봤어요</h5>
+                <h2 class="title">도움이 될만한 사이트를 <br />준비해봤어요</h2>
+                <!-- <p>
                   The best overall dog DNA test is Embark Breed & Health Kit
                   (view at Chewy), which provides you with a breed brwn and
                   information Most dogs
-                </p>
+                </p> -->
               </div>
             </div>
           </div>
@@ -803,72 +611,38 @@
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="/img/images/testi_avatar01.png" alt="" />
+                  <img src="/img/logo/character.png" alt="" />
                 </div>
                 <div class="testi-content">
-                  <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
-                  </p>
                   <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
+                    <h5 class="title">
+                      <a href="http://www.animal.go.kr">동물보호관리시스템</a>
+                    </h5>
                   </div>
+                  <p>
+                    농림축산식품부에서 운영하는 동물보호관리시스템 입니다.
+                    동물을 잃어버린 경우, 동물의 입양을 희망하는 경우 이용을
+                    추천드립니다.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="/img/images/testi_avatar02.png" alt="" />
+                  <img src="/img/logo/character.png" alt="" />
                 </div>
                 <div class="testi-content">
-                  <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
-                  </p>
                   <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
+                    <h5 class="title">
+                      <a href="https://mypetlife.co.kr/">비마이펫 라이프</a>
+                    </h5>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="testimonial-item">
-                <div class="testi-avatar-thumb">
-                  <img src="/img/images/testi_avatar01.png" alt="" />
-                </div>
-                <div class="testi-content">
                   <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
+                    반려동물의 건강, 행동에서부터 생활 팁까지. 다양한 지식정보
+                    콘텐츠를 전문가 및 출판사 등과 협력하여 발행하는 사이트
+                    입니다
                   </p>
-                  <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="testimonial-item">
-                <div class="testi-avatar-thumb">
-                  <img src="/img/images/testi_avatar02.png" alt="" />
-                </div>
-                <div class="testi-content">
-                  <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
-                  </p>
-                  <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -878,7 +652,7 @@
       <!-- testimonial-area-end -->
 
       <!-- blog-area -->
-      <section class="blog-area pt-110 pb-60">
+      <!-- <section class="blog-area pt-110 pb-60">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
@@ -989,50 +763,21 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- blog-area-end -->
-
-      <!-- newsletter-area -->
-      <div class="newsletter-area pb-110">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="newsletter-wrap">
-                <div class="newsletter-content">
-                  <h2 class="title">Newsletter For</h2>
-                  <p><span>*</span> Do Not Show Your Email.</p>
-                </div>
-                <div class="newsletter-form">
-                  <form action="#">
-                    <input type="email" placeholder="Enter Your Email..." />
-                    <button type="submit" class="btn">Subscribe</button>
-                  </form>
-                </div>
-                <div class="newsletter-shape">
-                  <img src="/img/images/newsletter_shape01.png" alt="" />
-                </div>
-                <div class="newsletter-shape shape-two">
-                  <img src="/img/images/newsletter_shape02.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- newsletter-area-end -->
     </main>
     <!-- main-area-end -->
   </div>
 </template>
 
 <script>
-import Slick from "vue-slick";
+// import Slick from "vue-slick";
 export default {
   name: "App",
   components: {
-    Slick,
+    // Slick,
   },
-  methods : {
+  methods: {
     shelimalList() {
       console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
@@ -1041,7 +786,6 @@ export default {
       console.log("로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalListLogin");
     },
-    
   },
   data() {
     return {
@@ -1095,47 +839,15 @@ export default {
           },
         ],
       },
-      list: [
-        {
-          no: 1,
-          name: "이름1",
-          kind: "종1",
-          miss_addr: "지역1",
-        },
-        {
-          no: 2,
-          name: "이름2",
-          kind: "종2",
-          miss_addr: "지역2",
-        },
-        {
-          no: 3,
-          name: "이름3",
-          kind: "종3",
-          miss_addr: "지역3",
-        },
-        {
-          no: 4,
-          name: "이름4",
-          kind: "종4",
-          miss_addr: "지역4",
-        },
-        {
-          no: 5,
-          name: "이름5",
-          kind: "종5",
-          miss_addr: "지역5",
-        },
-      ],
     };
   },
   mounted() {
-    if(this.$store.state["login"].isLogin == false){
-      this.shelimalList()
-    }else {
-      this.shelimalListLogin()
+    if (this.$store.state["login"].isLogin == false) {
+      this.shelimalList();
+    } else {
+      this.shelimalListLogin();
     }
-  }
+  },
 };
 </script>
 

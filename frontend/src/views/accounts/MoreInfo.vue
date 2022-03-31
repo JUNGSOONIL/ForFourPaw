@@ -184,7 +184,7 @@ export default {
         })
           .then((res) => {
             this.$store.dispatch("login/accessTokenRefreshOnUserInfo", res);
-            this.$route.push("/");
+            this.$router.push("/");
           })
           .catch((error) => {
             console.log(error);
