@@ -46,4 +46,12 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 		List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
 		return shelnimalDtos;
 	}
+
+	@Override
+	public List<String> searchList(String kind) {
+		System.out.println(kind);
+		List<String> kinds = shelnimalDao.searchList(kind);
+		System.out.println(kinds);
+		return kinds;
+	}
 }

@@ -105,7 +105,7 @@
                       v-model="miss.name"
                       class="form-control"
                       placeholder="동물 이름을 입력해주세요."
-                      @input="validate.name = miss.name.length > 0 ? true : false"
+                      @input="koreaname"
                       @focus="focusdate.name = true"
                       :class="{
                             'is-valid': validate.name,
@@ -143,7 +143,7 @@
                       v-model="miss.kindCd"
                       class="form-control"
                       placeholder="품종을 입력해주세요."
-                       @input="validate.kindCd = miss.kindCd.length > 0 ? true : false"
+                       @input="koreakind"
                       @focus="focusdate.kindCd = true"
                       :class="{
                             'is-valid': validate.kindCd,
@@ -161,8 +161,8 @@
                       type="text"
                       v-model="miss.colorCd"
                       class="form-control"
-                      placeholder="색상을 입력해주세요.(흰,검정,갈색,베이지 ...)"
-                      @input="validate.colorCd = miss.colorCd.length > 0 ? true : false"
+                      placeholder="색상을 입력해주세요.(흰색,검정,갈색,베이지 ...)"
+                      @input="koreacolor"
                       @focus="focusdate.colorCd = true"
                       :class="{
                             'is-valid': validate.colorCd,
@@ -288,7 +288,7 @@
                           v-model="miss.happenPlace"
                           class="form-control"
                           placeholder="실종장소를 입력해주세요."
-                          @input="validate.happenPlace = (miss.happenPlace.length >0 && miss.happenGugun.length > 0) ? true : false"
+                          @input="koreahappenPlace"
                           @focus="focusdate.happenPlace = true"
                       :class="{
                             'is-valid': validate.happenPlace,
@@ -415,6 +415,22 @@ export default {
     }
   },
   methods:{
+    koreaname(el){
+      this.miss.name = el.target.value
+      this.validate.name = this.miss.name.length > 0 ? true : false
+    },
+    koreakind(el){
+      this.miss.kindCd = el.target.value
+      this.validate.kindCd = this.miss.kindCd.length > 0 ? true : false
+    },
+    koreacolor(el){
+      this.miss.colorCd = el.target.value
+      this.validate.colorCd = this.miss.colorCd.length > 0 ? true : false
+    },
+    koreahappenPlace(el){
+      this.miss.happenPlace = el.target.value
+      this.validate.happenPlace = (this.miss.happenPlace.length >2 && this.miss.happenGugun.length > 0) ? true : false
+    },
     selectMiss(){
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
@@ -523,7 +539,7 @@ export default {
         this.$store.dispatch('login/accessTokenRefresh', res)
         console.log(res);
         this.$alertify.success("작성 완료했습니다.");
-        this.$route.go(-1)
+        this.$router.go(-1)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
@@ -576,7 +592,7 @@ export default {
 
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("수정 완료했습니다.");
-        this.$route.push({ name: 'ShelDetail', params: { no: this.no }});
+        this.$router.push({ name: 'ShelDetail', params: { no: this.no }});
       }).catch((error) => {
         console.log(error);
       }).then(() => {
@@ -596,7 +612,7 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("삭제 완료했습니다.");
-        this.$route.go(-1)
+        this.$router.go(-1)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
