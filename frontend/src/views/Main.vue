@@ -186,33 +186,33 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="73"></span>%
+                  <span class="odometer" data-count="73">{{maincnt.today}}</span>
                 </h2>
-                <p>dogs are first bred</p>
+                <p>오늘 추가된 유기 동물</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="259"></span>+
+                  <span class="odometer" data-count="259">{{maincnt.protect}}</span>
                 </h2>
-                <p>Most dogs are first</p>
+                <p>최근 한달 간 보호</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="39"></span>K
+                  <span class="odometer" data-count="10">{{maincnt.return}}</span>
                 </h2>
-                <p>Dog Breeding</p>
+                <p>최근 한달 간 반환</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="45"></span>+
+                  <span class="odometer" data-count="45">{{maincnt.death}}</span>
                 </h2>
-                <p>Years Of History</p>
+                <p>최근 한달 간 사망</p>
               </div>
             </div>
           </div>
@@ -771,24 +771,17 @@
 </template>
 
 <script>
+import axios from 'axios';
+const session = window.sessionStorage;
 // import Slick from "vue-slick";
 export default {
   name: "App",
   components: {
     // Slick,
   },
-  methods: {
-    shelimalList() {
-      console.log("비로그인 접속");
-      this.$store.dispatch("mainView/mainShelnimalList");
-    },
-    shelimalListLogin() {
-      console.log("로그인 접속");
-      this.$store.dispatch("mainView/mainShelnimalListLogin");
-    },
-  },
   data() {
     return {
+      maincnt:{},
       slickOptions: {
         dots: false,
         infinite: true,
@@ -841,6 +834,9 @@ export default {
       },
     };
   },
+  created(){
+    this.selectmaincnt();
+  },
   mounted() {
     if (this.$store.state["login"].isLogin == false) {
       this.shelimalList();
@@ -848,6 +844,34 @@ export default {
       this.shelimalListLogin();
     }
   },
+  methods:{
+    shelimalList() {
+      console.log("비로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalList");
+    },
+    shelimalListLogin() {
+      console.log("로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalListLogin");
+    },
+    selectmaincnt(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+    };
+    axios({
+        method: 'get',
+        url: '/api/dataset/',
+        headers: headers, 
+      }).then((res) => {
+        this.$store.dispatch('login/accessTokenRefresh', res) 
+        this.maincnt = res.data; 
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('selectmaincnt End!!');
+      });
+    },
+  }
 };
 </script>
 
