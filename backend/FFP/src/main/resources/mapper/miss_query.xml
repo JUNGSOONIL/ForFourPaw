@@ -18,12 +18,13 @@
         where m.no = #{no} and u.no = m.author
     </select>
 
-    <select id="list" parameterType="String"
+    <select id="list" parameterType="map"
             resultType="com.ssafy.FFP.Dto.MissnimalDto">
         select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile,
                write_time as writeTime
         from missnimal
         ORDER BY no DESC
+        limit 9 offset #{offset}
     </select>
 
     <select id="find" parameterType="int"
@@ -53,6 +54,7 @@
         <if test ="happenPlace != null">
             AND happenPlace = #{happenPlace}
         </if>
+        limit 9 offset #{offset}
 
     </select>
 

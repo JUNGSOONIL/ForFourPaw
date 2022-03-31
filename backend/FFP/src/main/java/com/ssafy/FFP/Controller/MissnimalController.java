@@ -46,13 +46,10 @@ public class MissnimalController {
     }
 
     // 공고일 종료일이 최소 오늘인 공고 목록 조회
-    @GetMapping("/miss")
-    public ResponseEntity<?> list(){
-        LocalDate seoulNow = LocalDate.now(ZoneId.of("Asia/Seoul"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formatedNow = seoulNow.format(formatter);
-
-        List<MissnimalDto> missnimalDtos = missnimalService.list(formatedNow);
+    @GetMapping("/misses/{offset}")
+    public ResponseEntity<?> list(@PathVariable String offset){
+        int os = Integer.parseInt(offset);
+        List<MissnimalDto> missnimalDtos = missnimalService.list(os);
 
         if(missnimalDtos != null) {
             return ResponseEntity.ok().body(missnimalDtos);

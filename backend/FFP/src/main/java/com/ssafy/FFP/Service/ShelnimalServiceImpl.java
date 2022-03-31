@@ -23,8 +23,8 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     }
 
     @Override
-    public List<ShelnimalDto> list(int sdt) {
-        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt);
+    public List<ShelnimalDto> list(int sdt, int offset) {
+        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt, offset);
         return shelnimalDtos;
 
     }
