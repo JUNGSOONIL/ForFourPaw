@@ -35,7 +35,7 @@ export default {
     methods : {
         // 테스트용
         test() {
-
+            this.$store.commit('loading/load', true);
             console.log("[system] 테스트 통신 시작");
 
             // let headers = {
@@ -59,9 +59,7 @@ export default {
            
            }).catch((error) => {
                 console.log(error);
-            }).then(() => {
-                console.log('getQSSList End!!');
-            });
+            }).finally(() => this.$store.commit('loading/load', false))
         
         },
         
