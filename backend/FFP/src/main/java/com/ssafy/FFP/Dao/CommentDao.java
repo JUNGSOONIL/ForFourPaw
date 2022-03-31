@@ -19,6 +19,6 @@ public interface CommentDao {
 
     public int relation(
             @Param("commentNo") int commentNo,
-            @Param("feedNo") int feedNo);
+            @Param("missNo") int missNo);
 
 }

@@ -78,4 +78,17 @@ public class UserDto {
     public void setAddrs(String addrs) {
         this.addrs = addrs;
     }
+
+    @Override
+    public String toString() {
+        return "UserDto{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", email='" + email + '\'' +
+                ", addrs='" + addrs + '\'' +
+                ", profileImg='" + profileImg + '\'' +
+                ", refreshToken='" + refreshToken + '\'' +
+                '}';
+    }
 }

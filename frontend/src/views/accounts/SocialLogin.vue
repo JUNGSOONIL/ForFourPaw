@@ -7,7 +7,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="section-title text-center mb-65">
               <div class="">
-                <img src="img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
+                <img src="/img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
               </div>
               <!-- <h5 class="sub-title">Welcome</h5>
               <h2 class="title">Puppies Waiting for Adoption</h2>
@@ -19,7 +19,6 @@
               <div class="comment-reply-box">
                 <h5 class="title">For Four Paw에 오신 걸 환영합니다.</h5>
 
-                <!-- OAuth 로그인 양식 맞춰서 만들기 빡세누.... -->
                 <div class="d-flex justify-content-center">
                   <div class="google-btn btn-block" @click="handleClickSignIn">
                     <div class="google-icon-wrapper btn-block">
@@ -37,45 +36,24 @@
                   </button>
                 </div> -->
                 <div>
-                  <button
+                  <!-- <button
                     type="button"
                     class="btn"
                     @click="handleClickKaKaoSignin"
                   >
                     카카오
-                  </button>
+                  </button> -->
+                  <img
+                    class="kakao-btn"
+                    src="/img/kakao_login_medium_narrow.png"
+                    @click="handleClickKaKaoSignin"
+                  />
                 </div>
-                <div v-if="!isLoginGetters">
+                <!-- <div v-if="!isLoginGetters">
                   <router-link to="/" class="btn" @click.native="login"
                     >로그인(테스트용)</router-link
                   >
-                </div>
-
-                <!-- <form action="#" class="comment-reply-form">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="form-grp">
-                        <input type="text" placeholder="Author *" />
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="form-grp">
-                        <input type="email" placeholder="Your Email *" />
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-grp">
-                    <textarea
-                      name="message"
-                      placeholder="Type Comment Here..."
-                    ></textarea>
-                  </div>
-                  <div class="form-grp checkbox-grp">
-                    <input type="checkbox" id="checkbox" />
-                    <label for="checkbox">Don’t show your email address</label>
-                  </div>
-                  <button type="submit" class="btn">Submit now</button>
-                </form> -->
+                </div> -->
               </div>
             </div>
           </div>
@@ -87,7 +65,7 @@
 
 <script>
 import axios from "axios";
-import VueJwtDecode from 'vue-jwt-decode'
+import jwt_decode from "jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -129,6 +107,7 @@ export default {
         );
         this.isSignIn = this.$gAuth.isAuthorized;
         this.onSuccess(googleUser);
+        this.login();
       } catch (error) {
         //on fail do something
         this.onFailure(error);
@@ -154,16 +133,17 @@ export default {
         .then((res) => {
           // alert("로그인 성공")
           console.log(res.headers);
-          this.$store.dispatch('login/allTokenRefresh', res)
-          console.log(this.$store.state.userInfo.email)
+          this.$store.dispatch("login/allTokenRefresh", res);
+          console.log(this.$store.getters["login/userInfo"]);
           this.sendToken();
-          // if (this.$store.state.userInfo.tel === null) {
-          //   this.$router.push('/moreInfo')
-          // }
-          // else{
-          //   //this.$store.commit('loginConfirmModalActivate')
-          //   // this.$router.push('EmotionTest')
-          //}
+          const info = this.$store.getters["login/userInfo"];
+          if (info.addrs === null) {
+            this.$router.push("/moreInfo");
+          } else {
+            //로그인기능 수행 라우팅
+            //this.$store.commit('loginConfirmModalActivate')
+            this.$router.push("/");
+          }
         })
         .catch((error) => {
           console.log(error);
@@ -173,39 +153,63 @@ export default {
 
     handleClickKaKaoSignin() {
       const params = {
-          redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
-          //redirectUri: "http://localhost:5500/socialLogin/KaKaoLogin",
+        redirectUri: "https://j6e105.p.ssafy.io/socialLogin/KaKaoLogin",
+        //redirectUri: "http://localhost:5500/socialLogin/KaKaoLogin",
       };
       window.Kakao.Auth.authorize(params);
     },
 
     sendToken() {
-    console.log('나는 sendToken!')
-    const decodeAccessToken = VueJwtDecode.decode(session.getItem('at-jwt-access-token'));
-    let headers = null;
-      if(decodeAccessToken.exp < Date.now()/1000 + 60){
-        console.log('만료됨!!');
+      console.log("나는 sendToken!");
+      const decodeAccessToken = jwt_decode(
+        session.getItem("at-jwt-access-token")
+      );
+      let headers = null;
+      if (decodeAccessToken.exp < Date.now() / 1000 + 60) {
+        console.log("만료됨!!");
         headers = {
-            'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-            'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-      }
-      console.log('headers : ', headers);
-      }else{
-        console.log('만료되지않음!!');
+          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
+          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
+        };
+        console.log("headers : ", headers);
+      } else {
+        console.log("만료되지않음!!");
         headers = {
-          'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-          'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-        }
-        console.log('headers : ', headers);
+          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
+          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
+        };
+        console.log("headers : ", headers);
       }
     },
-
-
   },
 };
 </script>
 
 <style scoped>
+.kakao-btn {
+  margin: 15px;
+  width: 80%;
+  min-width: 184px;
+  max-width: 184px;
+  border-radius: 2px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  cursor: hand;
+  align-self: center;
+  user-select: none;
+  transition: all 400ms ease 0s;
+}
+
+.kakao_btn:hover {
+  box-shadow: 0 3px 8px rgba(117, 117, 117, 0.5);
+  user-select: none;
+}
+.kakao-btn:active {
+  box-shadow: 0 1px 1px #757575;
+  background: #f8f8f8;
+  color: #fff;
+  user-select: none;
+}
 #LoginLogo {
   height: 300px;
 }
