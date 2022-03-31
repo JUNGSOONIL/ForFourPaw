@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -44,7 +44,7 @@
                       aria-labelledby="item-one-tab"
                     >
                       <div class="shop-details-img">
-                        <img src="img/product/shop_details01.jpg" alt="" />
+                        <img src="/img/product/shop_details01.jpg" alt="" />
                       </div>
                     </div>
                   </div>

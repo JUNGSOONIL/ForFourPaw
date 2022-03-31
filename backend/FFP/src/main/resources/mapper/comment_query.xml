@@ -3,7 +3,7 @@
 <mapper namespace="com.ssafy.FFP.Dao.CommentDao">
 
     <select id="list" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
-        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo, u.nickname as authorNickname
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo, u.nickname as authorNickname, u.profile_img as profileImage
         from ffp.comment co, ffp.miss_comment mc, ffp.user u
         where co.no = mc.comment_no and mc.miss_no = #{missNo} and co.author = u.no
         order by co.write_time desc

@@ -8,7 +8,8 @@
 import axios from "axios";
 
 const session = window.sessionStorage;
-import VueJwtDecode from "vue-jwt-decode";
+import jwt_decode from "jwt-decode";
+
 
 export default {
   name: "KaKaoLogin",
@@ -45,10 +46,10 @@ export default {
           );
 
           this.$store.dispatch("login/allTokenRefresh", res);
-
+          this.$store.commit("login/SET_LOGIN");
           this.sendToken();
           const info = this.$store.getters["login/userInfo"];
-          if (info.addrs == null) {
+          if (info.addrs === null) {
             this.$router.push("/moreInfo");
           } else {
             // this.$store.commit("loginConfirmModalActivate");
@@ -57,15 +58,12 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-        })
-        .then(() => {
-          console.log("getQSSList End!!");
         });
     },
 
     sendToken() {
       console.log("나는 sendToken!");
-      const decodeAccessToken = VueJwtDecode.decode(
+      const decodeAccessToken = jwt_decode(
         session.getItem("at-jwt-access-token")
       );
       let headers = null;
