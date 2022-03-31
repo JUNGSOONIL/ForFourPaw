@@ -113,9 +113,11 @@ public class UserController {
             }
 
             result = userService.userUpdate(user, imgs.get(0));
+        }else {
+            result = userService.userUpdate(user, null);
         }
 
-        if(result != SUCCESS) { // 기존정보와 입력받은 정보를 비교해서 새로 갱신
+        if(result != 0) { // 기존정보와 입력받은 정보를 비교해서 새로 갱신
             UserDto userDto = userService.userSelect(user.getNo());
             String accessToken = jwtService.createAccess(userDto.getEmail());
             System.out.println("==============업데이트 엑세스 토큰 ==========" + "\n" + accessToken);
