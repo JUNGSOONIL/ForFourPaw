@@ -95,7 +95,7 @@ public class ShelnimalController {
     @PostMapping("/shel")
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
-        List<ShelnimalDto> shelnimalDtos = shelnimalService.find(searchDto);
+        List<DatasetDto> shelnimalDtos = shelnimalService.find(searchDto);
 
         if(shelnimalDtos != null) {
             return ResponseEntity.ok().body(shelnimalDtos);
