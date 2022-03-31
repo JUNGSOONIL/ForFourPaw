@@ -10,7 +10,7 @@ public class CommentDto {
     private String descr;
     private int missNo;
     private String authorNickName;
-    private String profileImage
+    private String profileImage;
 
     public CommentDto() {
     }
