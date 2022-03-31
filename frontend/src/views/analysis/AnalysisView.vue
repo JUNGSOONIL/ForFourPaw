@@ -32,17 +32,32 @@
       <!-- breadcrumb-area-end -->
       <section v-show="!this.isLoading" class="shop-details-area pt-110 pb-50">
         <div class="row justify-content-center"> 
-          <div class="row justify-content-center" > 
-            <h2> 데이터 분석 페이지에서는 </h2>
-            <h2> 농림축산식품부의 동물보호관리시스템에 등록된 유기동물 데이터 </h2>
-            <h2> 총 1,174,858 건 의 데이터를 분석해서 불러옵니다. </h2>
-            <h5> 날짜 : ( 2009.01 ~ 2022.03 )  </h5>
-            분석에 약 1분정도 소요됩니다.
-             
+          <div id="t" class="counter-title text-center mb-65">
+            <h6 class="sub-title">유기 동물 데이터 분석</h6>
+            <h2 style="font-family:GW" id="t" >
+              For Four Paw의 데이터 분석 서비스는
+            </h2>
+            <h2>농림축산식품부의 동물보호관리시스템에 등록된 유기동물 데이터 </h2>
+            <h1>총 1,174,858 건의 데이터를 분석해서 </h1>
+            <h2> 사용자에게 그 결과를 제공합니다. </h2>
+          
+            <h5> 범위 : 2009.01 ~ 2022.03  </h5>
+            
+            <!-- <button type="button" class="btn btn-outline-primary" @click="loaddata" > 
+              차트 불러오기
+            </button> -->
+            <!-- <button type="button"><img src="https://i2.tcafe2a.com/220331/e172f68ac574e3a6eb987133136edaad_1648672500_8076.gif" alt="">버튼명</button> -->
+            
+            <img @click="loaddata"
+            src="https://ae01.alicdn.com/kf/HTB1MYl8KpXXXXbZXpXXq6xXFXXXN/8.jpg" style="cursor:pointer;" >
+
+            <h5>분석에 약 1분정도 소요됩니다.</h5>
+          
           </div>
-          <button type="button" class="btn btn-outline-primary" @click="loaddata" > 
-            차트 불러오기
-          </button>
+
+          
+          
+          
         </div>
       </section>
 
