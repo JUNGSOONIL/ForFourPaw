@@ -17,6 +17,7 @@ import LogoutPage from "@/views/accounts/LogoutPage.vue";
 import MoreInfo from "@/views/accounts/MoreInfo.vue";
 import Analysis_Region from "@/views/analysis/Analysis_Region.vue";
 import MissList from "@/views/MissList.vue";
+import UserPage from "@/views/UserPage.vue";
 
 export default new VueRouter({
   mode: "history",
@@ -63,6 +64,12 @@ export default new VueRouter({
       path: "/missWrite",
       component: MissWrite,
       props: true,
+    },
+
+    {
+      name: "UserPage",
+      path: "/userPage",
+      component: UserPage,
     },
 
     {
