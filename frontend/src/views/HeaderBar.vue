@@ -34,17 +34,6 @@
                       <!-- 헤더-유기동물 -->
                       <li class="menu-item-has-children">
                         <router-link to="/shop">유기동물</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/shop">Our Shop</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
                       </li>
                       <!-- 헤더-실종동물 -->
                       <li class="menu-item-has-children">
@@ -73,30 +62,15 @@
                           </li> -->
                         </ul>
                       </li>
-                      <li><router-link to="/dogList">Dog List</router-link></li>
                       <li class="menu-item-has-children">
-                        <router-link to="/shop">Shop</router-link>
-
+                        <router-link to="/shop">통계</router-link>
                         <ul class="submenu">
                           <li>
-                            <router-link to="/shop">Our Shop</router-link>
+                            <router-link to="/Analysis_Region">지역 통계</router-link>
                           </li>
                           <li>
                             <router-link to="/shopDetail"
                               >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="menu-item-has-children">
-                        <router-link to="/blog">Blog</router-link>
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/blog">Our Blog</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/blogDetail"
-                              >Blog Details</router-link
                             >
                           </li>
                         </ul>
@@ -176,16 +150,19 @@
                       </li> -->
                       <li class="header-btn" v-if="!isLoginGetters">
                         <router-link to="/socialLogin" class="btn"
+                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link to="/moreInfo" class="btn"
+                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
                           >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link
+                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
                           to="/logoutPage"
                           class="btn"
                           @click.native="logout"

@@ -1,4 +1,4 @@
-import VueJwtDecode from "vue-jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -73,7 +73,7 @@ const actions = {
       "allTokenRefreshOnUserInfo : " + res.headers["at-jwt-access-token"]
     );
     session.setItem("at-jwt-access-token", res.headers["at-jwt-access-token"]);
-    const decodeAccessToken = VueJwtDecode.decode(
+    const decodeAccessToken = jwt_decode(
       res.headers["at-jwt-access-token"]
     );
     console.log("decodeAccessToken data", decodeAccessToken);
@@ -89,7 +89,7 @@ const actions = {
       res.headers["at-jwt-refresh-token"]
     );
 
-    const decodeAccessToken = VueJwtDecode.decode(
+    const decodeAccessToken = jwt_decode(
       res.headers["at-jwt-access-token"]
     );
     console.log("decodeAccessToken data", decodeAccessToken);
