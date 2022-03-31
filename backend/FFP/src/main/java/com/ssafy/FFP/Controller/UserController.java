@@ -1,14 +1,21 @@
 package com.ssafy.FFP.Controller;
 
 import com.ssafy.FFP.Config.JWT.JwtService;
+import com.ssafy.FFP.Dto.MissnimalDto;
+import com.ssafy.FFP.Dto.S3Dto;
 import com.ssafy.FFP.Dto.UserDto;
+import com.ssafy.FFP.Service.S3Service;
 import com.ssafy.FFP.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @CrossOrigin(origins = {"http://localhost:5500", "https://j6e105.p.ssafy.io"}, allowCredentials = "true", allowedHeaders = "*", methods = {
         RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.HEAD,
@@ -21,6 +28,9 @@ public class UserController {
 
     @Autowired
     JwtService jwtService;
+
+    @Autowired
+    S3Service s3Service;
 
     private static final int SUCCESS = 1;
 
@@ -51,6 +61,17 @@ public class UserController {
         }
     }
 
+    @GetMapping(value = "/users/miss/{no}") // 회원번호로 회원 작성글 반환
+    public ResponseEntity<?> selectOnMiss(@PathVariable String no) {
+        int userNo = Integer.parseInt(no);
+        List<MissnimalDto> missnimalDtos = userService.userSelectOnMiss(userNo);
+        if (missnimalDtos.get(0) != null) {
+            return ResponseEntity.ok().body(missnimalDtos);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하는 글이 없습니다.");
+        }
+    }
+
     @GetMapping(value = "/users/checkByEmail/{email}") // 이메일 중복검사
     public ResponseEntity<Integer> duplicateEmail(@PathVariable String email) {
         if (userService.duplicateEmail(email) == SUCCESS) {
@@ -74,11 +95,28 @@ public class UserController {
     }
 
     @PutMapping(value ="/users") //회원 수정
-    public ResponseEntity<?> update(@RequestBody UserDto changeuserDto) {
+    public ResponseEntity<?> update(
+            @RequestPart(value="userInfo") UserDto user,
+            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile) {
         HttpHeaders res = new HttpHeaders();
+        int result = 0;
+        if(multipartFile != null) {
+            List<Integer> imgNo = new ArrayList<>();
+            if (multipartFile != null) {
+                imgNo = s3Service.uploadFile(multipartFile);
+            }
 
-        if(userService.userUpdate(changeuserDto) == SUCCESS) { // 기존정보와 입력받은 정보를 비교해서 새로 갱신
-            UserDto userDto = userService.userSelect(changeuserDto.getNo());
+            List<S3Dto> imgs = new ArrayList<>();
+            for (int no : imgNo) {
+                System.out.println("no: " + no);
+                imgs.add(s3Service.select(no));
+            }
+
+            result = userService.userUpdate(user, imgs.get(0));
+        }
+
+        if(result != SUCCESS) { // 기존정보와 입력받은 정보를 비교해서 새로 갱신
+            UserDto userDto = userService.userSelect(user.getNo());
             String accessToken = jwtService.createAccess(userDto.getEmail());
             System.out.println("==============업데이트 엑세스 토큰 ==========" + "\n" + accessToken);
             res.add("at-jwt-access-token", accessToken);
