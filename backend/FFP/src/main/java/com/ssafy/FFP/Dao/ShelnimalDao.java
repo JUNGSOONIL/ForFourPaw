@@ -17,7 +17,7 @@ public interface ShelnimalDao {
     public List<ShelnimalDto> list(@Param("sdt") int sdt,
                                    @Param("offset") int offset);
     public List<ShelnimalDto> match(int userNo);
-    public List<ShelnimalDto> find(SearchDto searchDto);
+    public List<DatasetDto> find(SearchDto searchDto);
     public List<DatasetDto> mainList(String processState);
     public List<String> searchList(String kind);
 }
