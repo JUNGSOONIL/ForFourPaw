@@ -24,20 +24,15 @@ public class DatasetController {
 		return Service.DataInsert();
 	}
 	
-<<<<<<< HEAD
-//	@PutMapping("/dataset")
-	@Scheduled(cron = "0 0 4 * * *",zone = "Asia/Seoul")
-	public void DatasetUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
-		System.out.println(Service.DataUpdate());
-=======
 	@GetMapping("/dataset")
 	public Map<String, Integer> Datasetselect() { // 메인에 필요한 데이터 넘겨줌
 		return Service.DataSelect();
 	}
 	
-	@PutMapping("/dataset")
-	public int DatasetUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
-		return Service.DataUpdate();
->>>>>>> feature/datasetBE
+//	@PutMapping("/dataset")
+	@Scheduled(cron = "0 0 4 * * *",zone = "Asia/Seoul")
+	public void DatasetUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
+		System.out.println(Service.DataUpdate());
+
 	}
 }
