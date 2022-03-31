@@ -1,6 +1,8 @@
 package com.ssafy.FFP.Controller;
 
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,9 +18,14 @@ public class DatasetController {
 	@Autowired
 	DatasetService Service;
 
-	@GetMapping("/dataset")
+	@PostMapping("/dataset")
 	public int DatasetInsert() { // 일단 2021년도까지 데이터는 모두 가져와서 데이터베이스에 저장 
 		return Service.DataInsert();
+	}
+	
+	@GetMapping("/dataset")
+	public Map<String, Integer> Datasetselect() { // 메인에 필요한 데이터 넘겨줌
+		return Service.DataSelect();
 	}
 	
 	@PutMapping("/dataset")
