@@ -2,54 +2,18 @@
   <div id="app">
     <!-- Preloader -->
     <div id="preloader">
-      <img src="img/preloader.gif" alt="" />
+      <img src="/img/preloader.gif" alt="" />
     </div>
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
-    <button class="scroll-top scroll-to-target" data-target="html">
+    <button class="scroll-top scroll-to-target" onclick="window.scrollTo(0,0);">
       <i class="fas fa-angle-up"></i>
     </button>
     <!-- Scroll-top-end-->
 
     <!-- header-area -->
     <header>
-      <!-- <div class="header-top-area">
-        <div class="container custom-container">
-          <div class="row align-items-center">
-            <div class="col-md-7">
-              <div class="header-top-left">
-                <ul>
-                  <li>Call us: 747-800-9880</li>
-                  <li>
-                    <i class="far fa-clock"></i>Opening Hours: 7:00 am - 9:00 pm
-                    (Mon - Sun)
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-5">
-              <div class="header-top-right">
-                <ul class="header-top-social">
-                  <li class="follow">Follow :</li>
-                  <li>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                  </li>
-                  <li>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
       <div id="sticky-header" class="menu-area">
         <div class="container custom-container">
           <div class="row">
@@ -59,7 +23,7 @@
                 <nav class="menu-nav show">
                   <div class="logo">
                     <router-link to="/"
-                      ><img src="img/logo/paw_logo_2line.png" alt=""
+                      ><img src="/img/logo/paw_logo_2line.png" alt=""
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
@@ -70,17 +34,6 @@
                       <!-- 헤더-유기동물 -->
                       <li class="menu-item-has-children">
                         <router-link to="/shop">유기동물</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/shop">Our Shop</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
                       </li>
                       <!-- 헤더-실종동물 -->
                       <li class="menu-item-has-children">
@@ -88,50 +41,36 @@
 
                         <ul class="submenu">
                           <li>
-                            <router-link to="/shop">Our Shop</router-link>
+                            <router-link to="/missList"
+                              >실종동물 목록</router-link
+                            >
                           </li>
                           <li>
                             <router-link to="/missWrite"
                               >실종동물 추가</router-link
                             >
                           </li>
-                          <li>
+                          <!-- <li>
                             <router-link to="/missDetail"
                               >실종동물 상세</router-link
                             >
-                          </li>
+                          </li> -->
                           <!-- <li>
                             <router-link to="/shelDetail"
                               >유기동물 상세</router-link
                             >
                           </li> -->
-                          
                         </ul>
                       </li>
-                      <li><router-link to="/dogList">Dog List</router-link></li>
                       <li class="menu-item-has-children">
-                        <router-link to="/shop">Shop</router-link>
-
+                        <router-link to="/shop">통계</router-link>
                         <ul class="submenu">
                           <li>
-                            <router-link to="/shop">Our Shop</router-link>
+                            <router-link to="/Analysis_Region">지역 통계</router-link>
                           </li>
                           <li>
                             <router-link to="/shopDetail"
                               >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="menu-item-has-children">
-                        <router-link to="/blog">Blog</router-link>
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/blog">Our Blog</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/blogDetail"
-                              >Blog Details</router-link
                             >
                           </li>
                         </ul>
@@ -164,7 +103,7 @@
                           <li class="d-flex align-items-start">
                             <div class="cart-img">
                               <a href="#"
-                                ><img src="img/product/cart_p01.jpg" alt=""
+                                ><img src="/img/product/cart_p01.jpg" alt=""
                               /></a>
                             </div>
                             <div class="cart-content">
@@ -181,7 +120,7 @@
                           <li class="d-flex align-items-start">
                             <div class="cart-img">
                               <a href="#"
-                                ><img src="img/product/cart_p02.jpg" alt=""
+                                ><img src="/img/product/cart_p02.jpg" alt=""
                               /></a>
                             </div>
                             <div class="cart-content">
@@ -209,22 +148,30 @@
                           </li>
                         </ul>
                       </li> -->
+                      <li class="header-btn" style="margin: 1px" v-if="isLoginGetters">
+                        <router-link to="/userPage" class="btn" style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;">
+                          내정보<img src="/img/icon/w_pawprint.png" alt=""
+                        /></router-link>
+                    </li>
                       <li class="header-btn" v-if="!isLoginGetters">
                         <router-link to="/socialLogin" class="btn"
-                          >로그인<img src="img/icon/w_pawprint.png" alt=""
+                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                          >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link to="/moreInfo" class="btn"
-                          >추가정보<img src="img/icon/w_pawprint.png" alt=""
+                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                          >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link
+                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
                           to="/logoutPage"
                           class="btn"
                           @click.native="logout"
-                          >로그아웃<img src="img/icon/w_pawprint.png" alt=""
+                          >로그아웃<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                     </ul>
@@ -237,7 +184,7 @@
                   <div class="close-btn"><i class="fas fa-times"></i></div>
                   <div class="nav-logo">
                     <a href="index.html"
-                      ><img src="img/logo/logo.png" alt="" title=""
+                      ><img src="/img/logo/logo.png" alt="" title=""
                     /></a>
                   </div>
                   <div class="menu-outer">
@@ -273,7 +220,7 @@
         </div>
         <div
           class="header-shape"
-          style="background-image: url('img/bg/header_shape.png')"
+          style="background-image: url('/img/bg/header_shape.png')"
         ></div>
       </div>
       <!-- header-search -->
