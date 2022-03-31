@@ -34,7 +34,8 @@ public class AnalysisServiceImpl implements  AnalysisService {
 
 //        String logFile = "src/main/resources/data/dataset.csv";
 //        String logFile = "/home/ubuntu/docker-volume/jenkins/workspace/FFP/backend/FFP/src/main/resources/data/dataset.csv";
-        String logFile = "/../../../../../main/resources/data/dataset.csv";
+//        String logFile = "/../../../../../main/resources/data/dataset.csv";
+        String logFile ="/";
 
         SparkSession spark = SparkSession.builder()
                 .appName("simple app")
