@@ -80,7 +80,7 @@
                       type="text"
                       v-model="miss.authorName"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="personTel">전화번호</label>
                     <input
@@ -88,7 +88,7 @@
                       type="tel"
                       v-model="miss.careTel"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                   </div>
                   <div class="shop-details-price">
@@ -102,7 +102,7 @@
                       type="text"
                       v-model="miss.name"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalKind">품종</label>
                     <input
@@ -110,7 +110,7 @@
                       type="text"
                       v-model="miss.kindCd"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalColor">색상</label>
                     <input
@@ -118,7 +118,7 @@
                       type="text"
                       v-model="miss.colorCd"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalAge">나이</label>
                     <input
@@ -126,7 +126,7 @@
                       type="text"
                       v-model="miss.age"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalSex">성별</label>
                     <input
@@ -134,7 +134,7 @@
                       type="text"
                       v-model="miss.sexCd"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalneuter">중성화</label>
                     <input
@@ -142,7 +142,7 @@
                       type="text"
                       v-model="miss.neuterYn"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalHappenDay">실종날짜</label>
                     <input
@@ -150,7 +150,7 @@
                       type="date"
                       v-model="miss.happenDt"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalHappenPlace">실종장소</label>
                     <div>
@@ -159,7 +159,7 @@
                           type="text"
                           v-model="miss.happenPlace"
                           class="form-control"
-                          readonly
+                          disabled
                         />
                     </div>
                     <label for="animalDesc">특이사항</label>
@@ -168,10 +168,21 @@
                       type="text"
                       v-model="miss.descr"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                   </div>
                 </div>
+                <div class="d-md-flex justify-content-md-end" >
+                  <span v-if="this.miss.author == userInfoNo()">
+                    <li class="header-btn" style="margin: 1px" >
+                      <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;" @click="movepage()">
+                        편집
+                        <img src="/img/icon/w_pawprint.png" alt="" />
+                      </p>
+                      
+                    </li>
+                  </span>
+                   </div>
               </div>
             </div>
           </div>
@@ -400,6 +411,9 @@ export default {
     },
   },
   methods:{
+    movepage(){
+      this.$router.push({ name: 'MissWrite', params: { no: this.no }});
+    },
     imgleft(){
       if(this.misslistmin > 0){
         this.misslistmin--
