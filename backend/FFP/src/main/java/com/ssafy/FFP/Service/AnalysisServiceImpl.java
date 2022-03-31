@@ -41,19 +41,16 @@ public class AnalysisServiceImpl implements  AnalysisService {
         Dataset<Row> df = spark.read().option("delimiter", ";").option("header", "true").option("encoding", "euc-kr").csv(logFile);
 
         System.out.println("[System] 데이터 전처리 실행 ");
-
         Dataset<Row> re = df
-//                .select( regexp_replace( col("weight"), "[(]Kg[)]", "").alias("holyshit"), col("weight"))
-                .select( regexp_replace( col("weight"), "[(]Kg[)]| |[^0-9|.]|[0-9]+[.][(0-9)]+[.][0-9]+[(]Kg[)]", "").alias("holyshit"), col("weight"))
-                .select( regexp_replace( col("holyshit"), "[0-9]+[.][(0-9)]+[.][0-9]*", "").alias("holyshit2"), col("holyshit") )
-                .groupBy("holyshit2")
+                .select( regexp_replace( col("weight"), "[(]Kg[)]| |[^0-9|.]|[0-9]+[.][(0-9)]+[.][0-9]+[(]Kg[)]", "").alias("holy"), col("weight"))
+                .select( regexp_replace( col("holy"), "[0-9]+[.][(0-9)]+[.][0-9]*", "").alias("weightre"), col("holy") )
+                .groupBy("weightre")
                 .count();
         re.show();
 
         valuearr = new long[11];
         re.foreach( now -> {
             // 변수 타입은 String
-//            String temp = now.get(0) + " >>>> " + now.get(1);
             String temp = (String) now.get(0);
             if (
                     temp != null
