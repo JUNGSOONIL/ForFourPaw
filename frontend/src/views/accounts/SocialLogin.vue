@@ -7,7 +7,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="section-title text-center mb-65">
               <div class="">
-                <img src="img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
+                <img src="/img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
               </div>
               <!-- <h5 class="sub-title">Welcome</h5>
               <h2 class="title">Puppies Waiting for Adoption</h2>
@@ -45,7 +45,7 @@
                   </button> -->
                   <img
                     class="kakao-btn"
-                    src="img/kakao_login_medium_narrow.png"
+                    src="/img/kakao_login_medium_narrow.png"
                     @click="handleClickKaKaoSignin"
                   />
                 </div>
@@ -65,7 +65,7 @@
 
 <script>
 import axios from "axios";
-import VueJwtDecode from "vue-jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -161,7 +161,7 @@ export default {
 
     sendToken() {
       console.log("나는 sendToken!");
-      const decodeAccessToken = VueJwtDecode.decode(
+      const decodeAccessToken = jwt_decode(
         session.getItem("at-jwt-access-token")
       );
       let headers = null;

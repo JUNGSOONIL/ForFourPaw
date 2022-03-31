@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -100,7 +100,7 @@
                 </div>
                 <div class="widget shop-widget-banner">
                   <a href="shop.html"
-                    ><img src="img/product/shop_add.jpg" alt=""
+                    ><img src="/img/product/shop_add.jpg" alt=""
                   /></a>
                 </div>
               </aside>
@@ -151,7 +151,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item01.jpg" alt=""
+                          ><img src="/img/product/shop_item01.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -172,7 +172,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item02.jpg" alt=""
+                          ><img src="/img/product/shop_item02.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -193,7 +193,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item03.jpg" alt=""
+                          ><img src="/img/product/shop_item03.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -214,7 +214,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item04.jpg" alt=""
+                          ><img src="/img/product/shop_item04.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -235,7 +235,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item05.jpg" alt=""
+                          ><img src="/img/product/shop_item05.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -256,7 +256,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item06.jpg" alt=""
+                          ><img src="/img/product/shop_item06.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -277,7 +277,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item07.jpg" alt=""
+                          ><img src="/img/product/shop_item07.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -298,7 +298,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item08.jpg" alt=""
+                          ><img src="/img/product/shop_item08.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">
@@ -319,7 +319,7 @@
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <a href="shop-details.html"
-                          ><img src="img/product/shop_item09.jpg" alt=""
+                          ><img src="/img/product/shop_item09.jpg" alt=""
                         /></a>
                       </div>
                       <div class="shop-content">

@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -36,7 +36,7 @@
             <div class="col-lg-8">
               <div class="standard-blog-item mb-50">
                 <div class="standard-blog-thumb">
-                  <img src="img/blog/blog_thumb01.jpg" alt="" />
+                  <img src="/img/blog/blog_thumb01.jpg" alt="" />
                 </div>
                 <div class="standard-blog-content blog-details-content">
                   <div class="blog-post-meta">
@@ -103,10 +103,10 @@
                   <div class="blog-details-img">
                     <div class="row">
                       <div class="col-md-6">
-                        <img src="img/blog/blog_details_img01.jpg" alt="" />
+                        <img src="/img/blog/blog_details_img01.jpg" alt="" />
                       </div>
                       <div class="col-md-6">
-                        <img src="img/blog/blog_details_img02.jpg" alt="" />
+                        <img src="/img/blog/blog_details_img02.jpg" alt="" />
                       </div>
                     </div>
                   </div>
@@ -119,7 +119,7 @@
                   </p>
                   <div
                     class="blog-line"
-                    style="background-image: url('img/blog/blog_item_line.png')"
+                    style="background-image: url('/img/blog/blog_item_line.png')"
                   ></div>
                   <div class="blog-details-bottom">
                     <div class="blog-details-tags">
@@ -151,7 +151,7 @@
               </div>
               <div class="avatar-post mt-50 mb-50">
                 <div class="post-avatar-img">
-                  <img src="img/blog/post_avatar_img.png" alt="img" />
+                  <img src="/img/blog/post_avatar_img.png" alt="img" />
                 </div>
                 <div class="post-avatar-content">
                   <h5>Thomas Herlihy</h5>
@@ -178,13 +178,13 @@
                 <ul>
                   <li class="blog-prev">
                     <a href="#"
-                      ><img src="img/icon/left_arrow.png" alt="img" />Previous
+                      ><img src="/img/icon/left_arrow.png" alt="img" />Previous
                       Post</a
                     >
                   </li>
                   <li class="blog-next">
                     <a href="#"
-                      >Next Post<img src="img/icon/right_arrow.png" alt="img"
+                      >Next Post<img src="/img/icon/right_arrow.png" alt="img"
                     /></a>
                   </li>
                 </ul>
@@ -269,7 +269,7 @@
                       <li>
                         <div class="rc-post-thumb">
                           <a href="blog-details.html"
-                            ><img src="img/blog/rc_post_thumb01.jpg" alt=""
+                            ><img src="/img/blog/rc_post_thumb01.jpg" alt=""
                           /></a>
                         </div>
                         <div class="rc-post-content">
@@ -292,7 +292,7 @@
                       <li>
                         <div class="rc-post-thumb">
                           <a href="blog-details.html"
-                            ><img src="img/blog/rc_post_thumb02.jpg" alt=""
+                            ><img src="/img/blog/rc_post_thumb02.jpg" alt=""
                           /></a>
                         </div>
                         <div class="rc-post-content">
@@ -317,7 +317,7 @@
                 </div>
                 <div class="widget sidebar-newsletter">
                   <div class="sn-icon">
-                    <img src="img/icon/sn_icon.png" alt="" />
+                    <img src="/img/icon/sn_icon.png" alt="" />
                   </div>
                   <div class="sn-title">
                     <h4 class="title">Subscribe Newsletter</h4>
