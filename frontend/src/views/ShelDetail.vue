@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/banner3.jpg')"
+        style="background-image: url('/img/bg/banner3.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -275,7 +275,7 @@ export default {
     };
     axios({
         method: 'get',
-        url: '/api/shel/' + this.no, // 여기 수정
+        url: '/api/shel/detail/' + this.no, // 여기 수정
         headers: headers, 
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) 

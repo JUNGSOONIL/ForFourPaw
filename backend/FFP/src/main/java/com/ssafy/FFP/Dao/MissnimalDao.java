@@ -11,6 +11,7 @@ import java.util.List;
 public interface MissnimalDao {
 
     public MissnimalDto select(int no);
+    public List<MissnimalDto> selectByUser(int no);
     public int create(MissnimalDto missnimalDto);
     public int update(MissnimalDto missnimalDto);
     public int delete(int no);
