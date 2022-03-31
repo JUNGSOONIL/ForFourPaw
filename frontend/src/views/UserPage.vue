@@ -207,13 +207,13 @@
                       <tbody>
                         <tr
                           style="cursor: pointer"
-                          v-for="(board, index) in 4"
+                          v-for="(board, index) in boardlist"
                           v-bind:key="index"
-                          @click="pagemove(index+1)"
+                          @click="pagemove(board.no)"
                           class="text-center text-secondary font-weight-bold">
-                          <td>{{ index+1 }}</td>
-                          <td>여기 뭐쓰지</td>
-                          <td>2022 - 03 - 30</td>
+                          <td>{{ board.no }}</td>
+                          <td>이름 : {{board.name}} | 품종 : {{board.kindCd}} | 실종장소 : {{board.happenPlace}}</td>
+                          <td>{{board.writeTime.substring(0,10)}}</td>
                         </tr>
                       </tbody>
                     </table>
@@ -243,13 +243,34 @@ export default {
          email : "",
          addrs : "",
          profileImg : "",
-       }
+       },
+       boardlist:{ }
      }
   },
   created() {
     this.userInfo = JSON.parse(session.getItem('userInfo'))
+    this.selectmyboard()
   },
   methods:{
+    selectmyboard(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      axios({
+        method: 'get',
+        url: '/api/users/miss/' + this.userInfo.no, // 이부분 수정해야함
+        headers: headers,
+      }).then((res) => {
+        this.$store.dispatch('login/accessTokenRefresh', res)
+        console.log(res)
+        this.boardlist = res.data
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('selectmyboard End!!');
+      });
+    },
     pagemove(el){
       this.$router.push({ name: 'MissDetail', params: { no: el }})
     },
@@ -318,7 +339,7 @@ export default {
          addrs : this.userInfo.addrs,
       };
       formData.append(
-        "missData",
+        "userInfo",
         new Blob([JSON.stringify(data)], { type: "application/json" })
       );
       axios({
@@ -327,7 +348,7 @@ export default {
         data: formData,
         headers: headers,
       }).then((res) => {
-        this.$store.dispatch('login/accessTokenRefresh', res) // 이거도 이거 아닐듯
+        this.$store.dispatch('login/accessTokenRefreshOnUserInfo', res) // 이거도 이거 아닐듯
         this.$alertify.success("수정 완료했습니다.");
         this.$router.push("/");
       }).catch((error) => {
@@ -343,14 +364,14 @@ export default {
       };
       axios({
         method: 'delete',
-        url: '/api/user/' + this.userInfo.no, 
+        url: '/api/users/' + this.userInfo.no, 
         headers: headers,
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res) // 이거는?
         this.$alertify.success("탈퇴 완료했습니다.");
         this.$store.commit("login/SET_LOGOUT");
         session.clear();
-        this.$router.pust("/")
+        this.$router.push("/")
       }).catch((error) => {
         console.log(error);
       }).then(() => {

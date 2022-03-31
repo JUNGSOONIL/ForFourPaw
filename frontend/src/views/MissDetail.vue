@@ -363,7 +363,6 @@ export default {
   name: "App",
   props:{
     no:{
-      default : 3,
       type:Number,
     },
   },
@@ -527,6 +526,7 @@ export default {
       }).catch((error) => {
         console.log(error);
       }).finally(() => this.$store.commit('loading/load', false),
+        console.log("kmeans End"),
         this.matchend = true
       )
     },
