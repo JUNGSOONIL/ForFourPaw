@@ -65,7 +65,7 @@
 
 <script>
 import axios from "axios";
-import VueJwtDecode from "vue-jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -161,7 +161,7 @@ export default {
 
     sendToken() {
       console.log("나는 sendToken!");
-      const decodeAccessToken = VueJwtDecode.decode(
+      const decodeAccessToken = jwt_decode(
         session.getItem("at-jwt-access-token")
       );
       let headers = null;
