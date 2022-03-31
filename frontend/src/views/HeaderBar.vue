@@ -50,11 +50,11 @@
                               >실종동물 추가</router-link
                             >
                           </li>
-                          <li>
+                          <!-- <li>
                             <router-link to="/missDetail"
                               >실종동물 상세</router-link
                             >
-                          </li>
+                          </li> -->
                           <!-- <li>
                             <router-link to="/shelDetail"
                               >유기동물 상세</router-link
