@@ -88,6 +88,7 @@ public class UserServiceImpl implements UserService{
             if(latest.getNo() != 10) s3Service.deleteFile(latest.getImgName());
             userDto.setProfileImg(img.getImgLink());
         } else {
+            System.out.println(raw.toString());
             userDto.setProfileImg(raw.getProfileImg());
         }
         int result = userDao.userUpdate(userDto);
