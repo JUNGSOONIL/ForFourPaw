@@ -65,7 +65,7 @@ public class UserController {
     public ResponseEntity<?> selectOnMiss(@PathVariable String no) {
         int userNo = Integer.parseInt(no);
         List<MissnimalDto> missnimalDtos = userService.userSelectOnMiss(userNo);
-        if (missnimalDtos.get(0) != null) {
+        if (missnimalDtos != null) {
             return ResponseEntity.ok().body(missnimalDtos);
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "존재하는 글이 없습니다.");
