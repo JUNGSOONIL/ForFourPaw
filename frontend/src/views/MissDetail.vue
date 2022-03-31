@@ -274,7 +274,7 @@
                         <div class="shop-item mb-55" style="z-index: -1;">
                           <div class="shop-thumb">
                             <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                              <img :src=miss.filename alt="" style="width:268px; height: 268px; border-radius: 50%"/>
+                              <img :src=miss.popfile alt="" style="width:268px; height: 268px; border-radius: 50%"/>
                               </router-link>
                           </div>
                           <div class="shop-content">
@@ -415,18 +415,21 @@ export default {
       this.$router.push({ name: 'MissWrite', params: { no: this.no }});
     },
     imgleft(){
+      this.misslistslice = null;
       if(this.misslistmin > 0){
         this.misslistmin--
         this.misslistindex--
+        this.misslistslice = null;
+        this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
       }
-      this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
     },
     imgright(){
       if(this.misslistindex < this.misslistmax){
         this.misslistmin++
         this.misslistindex++
+        this.misslistslice = null;
+        this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
       }
-      this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
     },
     userInfoNo(){
       return JSON.parse(session.getItem('userInfo')).no
