@@ -613,7 +613,7 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("삭제 완료했습니다.");
-        this.$router.go(-1)
+        this.$router.push("/")
       }).catch((error) => {
         console.log(error);
       }).then(() => {
