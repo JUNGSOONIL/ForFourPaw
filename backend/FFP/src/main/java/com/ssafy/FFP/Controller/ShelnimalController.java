@@ -32,8 +32,22 @@ public class ShelnimalController {
     ShelnimalService shelnimalService;
 
     // 특정 공고 조회
-    @GetMapping("/shel/{no}")
+    @GetMapping("/shel/detail/{no}")
     public ResponseEntity<?> select(@PathVariable String no){
+        int shelNo = Integer.parseInt(no);
+        ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
+
+        if(shelnimalDto != null) {
+            return ResponseEntity.ok().body(shelnimalDto);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
+
+    // 특정 공고 조회
+    @GetMapping("/shel/detail/notlogin/{no}")
+    public ResponseEntity<?> selectByNotLogin(@PathVariable String no){
         int shelNo = Integer.parseInt(no);
         ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
 
@@ -98,6 +112,34 @@ public class ShelnimalController {
 
         if(shelnimalDtos != null) {
             return ResponseEntity.ok().body(shelnimalDtos);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
+    
+    // 로그인시 메인페이지 유기동물 추천
+    @GetMapping("/shel/view/login/{no}")
+    public ResponseEntity<?> mainListLogin(@PathVariable String no){
+    	System.out.println("mainList : 로그인 " + no);
+        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
+
+        if(shelnimalDtos != null) {
+            return ResponseEntity.ok().body(shelnimalDtos);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
+    
+    // 품종 검색
+    @GetMapping("/shel/search/list/{kind}")
+    public ResponseEntity<?> searchList(@PathVariable String kind){
+    	System.out.println("searchList " + kind);
+        List<String> kinds = shelnimalService.searchList(kind);
+
+        if(kinds != null) {
+            return ResponseEntity.ok().body(kinds);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");

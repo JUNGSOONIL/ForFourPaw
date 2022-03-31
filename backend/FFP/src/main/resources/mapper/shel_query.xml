@@ -71,5 +71,12 @@
         where processState = #{processState}
         ORDER BY RAND() LIMIT 6
     </select>
+    
+    <select id="searchList" parameterType="String" resultType="String">
+        select kindCd
+        from dataset
+        WHERE kindCd like CONCAT('%',#{kindCd},'%')
+        group by kindCd
+    </select>
 
 </mapper>
