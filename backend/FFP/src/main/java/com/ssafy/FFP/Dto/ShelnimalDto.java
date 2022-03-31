@@ -3,45 +3,59 @@ package com.ssafy.FFP.Dto;
 public class ShelnimalDto {
 
     private int no;
-    private String category;
-    private String kind;
-    private String color;
-    private String age;
-    private String careAddr;
-    private String shelter;
-    private String shelterTel;
-    private String neuterYn;
+    private String desertionNo;
+    private String filename;
+    private String happenDt;
     private String happenPlace;
-    private String precessState;
-    private String sumImg;
-    private String img;
+    private String kindCd;
+    private String colorCd;
+    private String age;
+    private String weight;
+    private String noticeNo;
     private String noticeSdt;
     private String noticeEdt;
-    private String descr;
-    private String weight;
+    private String popfile;
+    private String processState;
     private String sexCd;
+    private String neuterYn;
+    private String specialMark;
+    private String careNm;
+    private String careTel;
+    private String careAddr;
+    private String orgNm;
+    private String chargeNm;
+    private String officeTel;
 
-    public ShelnimalDto(int no, String category, String kind, String color, String age, String careAddr, String shelter, String shelterTel,
-                        String neuterYn, String happenPlace, String precessState, String sumImg, String img,
-                        String noticeSdt, String noticeEdt, String descr, String weight, String sexCd) {
+    public ShelnimalDto() {
+    }
+
+    public ShelnimalDto(int no, String desertionNo, String filename, String happenDt, String happenPlace, String kindCd,
+                        String colorCd, String age, String weight, String noticeNo, String noticeSdt, String noticeEdt,
+                        String popfile, String processState, String sexCd, String neuterYn, String specialMark,
+                        String careNm, String careTel, String careAddr, String orgNm, String chargeNm, String officeTel) {
         this.no = no;
-        this.category = category;
-        this.kind = kind;
-        this.color = color;
-        this.age = age;
-        this.careAddr = careAddr;
-        this.shelter = shelter;
-        this.shelterTel = shelterTel;
-        this.neuterYn = neuterYn;
+        this.desertionNo = desertionNo;
+        this.filename = filename;
+        this.happenDt = happenDt;
         this.happenPlace = happenPlace;
-        this.precessState = precessState;
-        this.sumImg = sumImg;
-        this.img = img;
+        this.kindCd = kindCd;
+        this.colorCd = colorCd;
+        this.age = age;
+        this.weight = weight;
+        this.noticeNo = noticeNo;
         this.noticeSdt = noticeSdt;
         this.noticeEdt = noticeEdt;
-        this.descr = descr;
-        this.weight = weight;
+        this.popfile = popfile;
+        this.processState = processState;
         this.sexCd = sexCd;
+        this.neuterYn = neuterYn;
+        this.specialMark = specialMark;
+        this.careNm = careNm;
+        this.careTel = careTel;
+        this.careAddr = careAddr;
+        this.orgNm = orgNm;
+        this.chargeNm = chargeNm;
+        this.officeTel = officeTel;
     }
 
     public int getNo() {
@@ -52,68 +66,28 @@ public class ShelnimalDto {
         this.no = no;
     }
 
-    public String getCategory() {
-        return category;
+    public String getDesertionNo() {
+        return desertionNo;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDesertionNo(String desertionNo) {
+        this.desertionNo = desertionNo;
     }
 
-    public String getKind() {
-        return kind;
+    public String getFilename() {
+        return filename;
     }
 
-    public void setKind(String kind) {
-        this.kind = kind;
+    public void setFilename(String filename) {
+        this.filename = filename;
     }
 
-    public String getColor() {
-        return color;
+    public String getHappenDt() {
+        return happenDt;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
-
-    public String getCareAddr() {
-        return careAddr;
-    }
-
-    public void setCareAddr(String careAddr) {
-        this.careAddr = careAddr;
-    }
-
-    public String getShelter() {
-        return shelter;
-    }
-
-    public void setShelter(String shelter) {
-        this.shelter = shelter;
-    }
-
-    public String getShelterTel() {
-        return shelterTel;
-    }
-
-    public void setShelterTel(String shelterTel) {
-        this.shelterTel = shelterTel;
-    }
-
-    public String getNeuterYn() {
-        return neuterYn;
-    }
-
-    public void setNeuterYn(String neuterYn) {
-        this.neuterYn = neuterYn;
+    public void setHappenDt(String happenDt) {
+        this.happenDt = happenDt;
     }
 
     public String getHappenPlace() {
@@ -124,28 +98,44 @@ public class ShelnimalDto {
         this.happenPlace = happenPlace;
     }
 
-    public String getPrecessState() {
-        return precessState;
+    public String getKindCd() {
+        return kindCd;
     }
 
-    public void setPrecessState(String precessState) {
-        this.precessState = precessState;
+    public void setKindCd(String kindCd) {
+        this.kindCd = kindCd;
     }
 
-    public String getSumImg() {
-        return sumImg;
+    public String getColorCd() {
+        return colorCd;
     }
 
-    public void setSumImg(String sumImg) {
-        this.sumImg = sumImg;
+    public void setColorCd(String colorCd) {
+        this.colorCd = colorCd;
     }
 
-    public String getImg() {
-        return img;
+    public String getAge() {
+        return age;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    public String getNoticeNo() {
+        return noticeNo;
+    }
+
+    public void setNoticeNo(String noticeNo) {
+        this.noticeNo = noticeNo;
     }
 
     public String getNoticeSdt() {
@@ -164,20 +154,20 @@ public class ShelnimalDto {
         this.noticeEdt = noticeEdt;
     }
 
-    public String getDescr() {
-        return descr;
+    public String getPopfile() {
+        return popfile;
     }
 
-    public void setDescr(String descr) {
-        this.descr = descr;
+    public void setPopfile(String popfile) {
+        this.popfile = popfile;
     }
 
-    public String getWeight() {
-        return weight;
+    public String getProcessState() {
+        return processState;
     }
 
-    public void setWeight(String weight) {
-        this.weight = weight;
+    public void setProcessState(String processState) {
+        this.processState = processState;
     }
 
     public String getSexCd() {
@@ -186,5 +176,69 @@ public class ShelnimalDto {
 
     public void setSexCd(String sexCd) {
         this.sexCd = sexCd;
+    }
+
+    public String getNeuterYn() {
+        return neuterYn;
+    }
+
+    public void setNeuterYn(String neuterYn) {
+        this.neuterYn = neuterYn;
+    }
+
+    public String getSpecialMark() {
+        return specialMark;
+    }
+
+    public void setSpecialMark(String specialMark) {
+        this.specialMark = specialMark;
+    }
+
+    public String getCareNm() {
+        return careNm;
+    }
+
+    public void setCareNm(String careNm) {
+        this.careNm = careNm;
+    }
+
+    public String getCareTel() {
+        return careTel;
+    }
+
+    public void setCareTel(String careTel) {
+        this.careTel = careTel;
+    }
+
+    public String getCareAddr() {
+        return careAddr;
+    }
+
+    public void setCareAddr(String careAddr) {
+        this.careAddr = careAddr;
+    }
+
+    public String getOrgNm() {
+        return orgNm;
+    }
+
+    public void setOrgNm(String orgNm) {
+        this.orgNm = orgNm;
+    }
+
+    public String getChargeNm() {
+        return chargeNm;
+    }
+
+    public void setChargeNm(String chargeNm) {
+        this.chargeNm = chargeNm;
+    }
+
+    public String getOfficeTel() {
+        return officeTel;
+    }
+
+    public void setOfficeTel(String officeTel) {
+        this.officeTel = officeTel;
     }
 }

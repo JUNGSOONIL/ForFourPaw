@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -36,7 +36,7 @@
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Meet the animals</h5>
                 <h2 class="title">Puppies Waiting for Adoption</h2>
@@ -52,9 +52,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb01.jpg" alt="" />
+                  <img src="/img/product/adoption_shop_thumb01.jpg" alt="" />
                   <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                   /></a>
                 </div>
                 <div class="adoption-shop-content">
@@ -87,9 +87,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
+                  <img src="/img/product/adoption_shop_thumb02.jpg" alt="" />
                   <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                   /></a>
                 </div>
                 <div class="adoption-shop-content">
@@ -121,9 +121,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb03.jpg" alt="" />
+                  <img src="/img/product/adoption_shop_thumb03.jpg" alt="" />
                   <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                   /></a>
                 </div>
                 <div class="adoption-shop-content">
@@ -156,9 +156,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb04.jpg" alt="" />
+                  <img src="/img/product/adoption_shop_thumb04.jpg" alt="" />
                   <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                   /></a>
                 </div>
                 <div class="adoption-shop-content">
@@ -191,9 +191,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb05.jpg" alt="" />
+                  <img src="/img/product/adoption_shop_thumb05.jpg" alt="" />
                   <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                   /></a>
                 </div>
                 <div class="adoption-shop-content">
@@ -226,9 +226,9 @@
             <div class="col-lg-4 col-md-6">
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb06.jpg" alt="" />
+                  <img src="/img/product/adoption_shop_thumb06.jpg" alt="" />
                   <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                    >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                   /></a>
                 </div>
                 <div class="adoption-shop-content">
@@ -270,8 +270,8 @@
           <div class="row align-items-center">
             <div class="col-lg-6">
               <div class="faq-img-wrap">
-                <img src="img/images/faq_tv.png" class="img-frame" alt="" />
-                <img src="img/images/faq_img.png" class="main-img" alt="" />
+                <img src="/img/images/faq_tv.png" class="img-frame" alt="" />
+                <img src="/img/images/faq_img.png" class="main-img" alt="" />
                 <a
                   href="https://www.youtube.com/watch?v=XdFfCPK5ycw"
                   class="popup-video"
@@ -375,7 +375,7 @@
           </div>
         </div>
         <div class="faq-shape">
-          <img src="img/images/faq_shape.png" alt="" />
+          <img src="/img/images/faq_shape.png" alt="" />
         </div>
       </section>
       <!-- faq-area-end -->
@@ -387,7 +387,7 @@
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Service to Breeds</h5>
                 <h2 class="title">Most Popular Dog Breed</h2>
@@ -404,7 +404,7 @@
               <div class="breed-services-active owl-carousel">
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img01.jpg" alt="" />
+                    <img src="/img/images/breed_services_img01.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -414,7 +414,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img02.jpg" alt="" />
+                    <img src="/img/images/breed_services_img02.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -424,7 +424,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img03.jpg" alt="" />
+                    <img src="/img/images/breed_services_img03.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -434,7 +434,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img04.jpg" alt="" />
+                    <img src="/img/images/breed_services_img04.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -447,7 +447,7 @@
             <div class="col-lg-4 col-md-6">
               <div
                 class="breed-services-info"
-                style="background-image: url('img/bg/breed_services_bg.jpg')"
+                style="background-image: url('/img/bg/breed_services_bg.jpg')"
               >
                 <h5 class="sub-title">Dog Breeder</h5>
                 <h3 class="title">Available for Breed</h3>
@@ -456,17 +456,17 @@
                   (view at Chewy), which provid dogs
                 </p>
                 <a href="shop.html" class="btn"
-                  >More Pets <img src="img/icon/w_pawprint.png" alt=""
+                  >More Pets <img src="/img/icon/w_pawprint.png" alt=""
                 /></a>
               </div>
             </div>
           </div>
         </div>
         <div class="breed-services-shape">
-          <img src="img/images/breed_services_shape01.png" alt="" />
+          <img src="/img/images/breed_services_shape01.png" alt="" />
         </div>
         <div class="breed-services-shape shape-two">
-          <img src="img/images/breed_services_shape02.png" alt="" />
+          <img src="/img/images/breed_services_shape02.png" alt="" />
         </div>
       </section>
       <!-- breeds-services-end -->
@@ -488,10 +488,10 @@
                   </form>
                 </div>
                 <div class="newsletter-shape">
-                  <img src="img/images/newsletter_shape01.png" alt="" />
+                  <img src="/img/images/newsletter_shape01.png" alt="" />
                 </div>
                 <div class="newsletter-shape shape-two">
-                  <img src="img/images/newsletter_shape02.png" alt="" />
+                  <img src="/img/images/newsletter_shape02.png" alt="" />
                 </div>
               </div>
             </div>

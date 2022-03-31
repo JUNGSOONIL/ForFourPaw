@@ -4,42 +4,41 @@ public class MissnimalDto {
 
     private int no;
     private String name;
-    private String missAddr;
-    private String descr;
-    private String tel;
-    private String color;
-    private String kind;
-    private String sexCd;
-    private String guardian;
-    private String distinction;
+    private String kindCd;
+    private String colorCd;
     private String age;
-    private String missDate;
-    private String animalCategory;
-    private String protectCategory;
-    private String img;
+    private String sexCd;
+    private String neuterYn;
     private int author;
+    private String careTel;
+    private String happenDt;
+    private String happenPlace;
+    private String descr;
+    private String profile;
+    private String authorName;
+    private String writeTime;
 
     public MissnimalDto() {
     }
 
-    public MissnimalDto(int no, String name, String missAddr, String descr, String tel, String color, String kind, String sexCd, String guardian,
-                        String distinction, String age, String missDate, String animalCategory, String protectCategory, String img, int author) {
+    public MissnimalDto(int no, String name, String kindCd, String colorCd, String age, String sexCd, String neuterYn,
+                        int author, String careTel, String happenDt, String happenPlace, String descr, String profile,
+                        String authorName, String writeTime) {
         this.no = no;
         this.name = name;
-        this.missAddr = missAddr;
-        this.descr = descr;
-        this.tel = tel;
-        this.color = color;
-        this.kind = kind;
-        this.sexCd = sexCd;
-        this.guardian = guardian;
-        this.distinction = distinction;
+        this.kindCd = kindCd;
+        this.colorCd = colorCd;
         this.age = age;
-        this.missDate = missDate;
-        this.animalCategory = animalCategory;
-        this.protectCategory = protectCategory;
-        this.img = img;
+        this.sexCd = sexCd;
+        this.neuterYn = neuterYn;
         this.author = author;
+        this.careTel = careTel;
+        this.happenDt = happenDt;
+        this.happenPlace = happenPlace;
+        this.descr = descr;
+        this.profile = profile;
+        this.authorName = authorName;
+        this.writeTime = writeTime;
     }
 
     public int getNo() {
@@ -58,68 +57,20 @@ public class MissnimalDto {
         this.name = name;
     }
 
-    public String getMissAddr() {
-        return missAddr;
+    public String getKindCd() {
+        return kindCd;
     }
 
-    public void setMissAddr(String missAddr) {
-        this.missAddr = missAddr;
+    public void setKindCd(String kindCd) {
+        this.kindCd = kindCd;
     }
 
-    public String getDescr() {
-        return descr;
+    public String getColorCd() {
+        return colorCd;
     }
 
-    public void setDescr(String descr) {
-        this.descr = descr;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getKind() {
-        return kind;
-    }
-
-    public void setKind(String kind) {
-        this.kind = kind;
-    }
-
-    public String getSexCd() {
-        return sexCd;
-    }
-
-    public void setSexCd(String sexCd) {
-        this.sexCd = sexCd;
-    }
-
-    public String getGuardian() {
-        return guardian;
-    }
-
-    public void setGuardian(String guardian) {
-        this.guardian = guardian;
-    }
-
-    public String getDistinction() {
-        return distinction;
-    }
-
-    public void setDistinction(String distinction) {
-        this.distinction = distinction;
+    public void setColorCd(String colorCd) {
+        this.colorCd = colorCd;
     }
 
     public String getAge() {
@@ -130,36 +81,20 @@ public class MissnimalDto {
         this.age = age;
     }
 
-    public String getMissDate() {
-        return missDate;
+    public String getSexCd() {
+        return sexCd;
     }
 
-    public void setMissDate(String missDate) {
-        this.missDate = missDate;
+    public void setSexCd(String sexCd) {
+        this.sexCd = sexCd;
     }
 
-    public String getAnimalCategory() {
-        return animalCategory;
+    public String getNeuterYn() {
+        return neuterYn;
     }
 
-    public void setAnimalCategory(String animalCategory) {
-        this.animalCategory = animalCategory;
-    }
-
-    public String getProtectCategory() {
-        return protectCategory;
-    }
-
-    public void setProtectCategory(String protectCategory) {
-        this.protectCategory = protectCategory;
-    }
-
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
+    public void setNeuterYn(String neuterYn) {
+        this.neuterYn = neuterYn;
     }
 
     public int getAuthor() {
@@ -168,5 +103,82 @@ public class MissnimalDto {
 
     public void setAuthor(int author) {
         this.author = author;
+    }
+
+    public String getCareTel() {
+        return careTel;
+    }
+
+    public void setCareTel(String careTel) {
+        this.careTel = careTel;
+    }
+
+    public String getHappenDt() {
+        return happenDt;
+    }
+
+    public void setHappenDt(String happenDt) {
+        this.happenDt = happenDt;
+    }
+
+    public String getHappenPlace() {
+        return happenPlace;
+    }
+
+    public void setHappenPlace(String happenPlace) {
+        this.happenPlace = happenPlace;
+    }
+
+    public String getDescr() {
+        return descr;
+    }
+
+    public void setDescr(String descr) {
+        this.descr = descr;
+    }
+
+    public String getProfile() {
+        return profile;
+    }
+
+    public void setProfile(String profile) {
+        this.profile = profile;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getWriteTime() {
+        return writeTime;
+    }
+
+    public void setWriteTime(String writeTime) {
+        this.writeTime = writeTime;
+    }
+
+    @Override
+    public String toString() {
+        return "MissnimalDto{" +
+                "no=" + no +
+                ", name='" + name + '\'' +
+                ", kindCd='" + kindCd + '\'' +
+                ", colorCd='" + colorCd + '\'' +
+                ", age='" + age + '\'' +
+                ", sexCd='" + sexCd + '\'' +
+                ", neuterYn='" + neuterYn + '\'' +
+                ", author=" + author +
+                ", careTel='" + careTel + '\'' +
+                ", happenDt='" + happenDt + '\'' +
+                ", happenPlace='" + happenPlace + '\'' +
+                ", descr='" + descr + '\'' +
+                ", profile='" + profile + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", writeTime='" + writeTime + '\'' +
+                '}';
     }
 }
