@@ -67,8 +67,8 @@ public class MissnimalServiceImpl implements MissnimalService{
     }
 
     @Override
-    public List<MissnimalDto> list(String sdt) {
-        List<MissnimalDto> missnimalDtos = missnimalDao.list(sdt);
+    public List<MissnimalDto> list(int offset) {
+        List<MissnimalDto> missnimalDtos = missnimalDao.list(offset);
         return missnimalDtos;
     }
 

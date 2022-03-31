@@ -60,13 +60,14 @@ public class ShelnimalController {
     }
 
     // 공고일 종료일이 최소 오늘인 공고 목록 조회
-    @GetMapping("/shel")
-    public ResponseEntity<?> list(){
+    @GetMapping("/shel/{offset}")
+    public ResponseEntity<?> list(@PathVariable String offset){
         LocalDate seoulNow = LocalDate.now(ZoneId.of("Asia/Seoul"));
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String formatedNow = seoulNow.format(formatter);
         int sdt = Integer.parseInt(formatedNow);
-        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt);
+        int os = Integer.parseInt(offset);
+        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt, os);
 
         if(shelnimalDtos != null) {
             return ResponseEntity.ok().body(shelnimalDtos);
