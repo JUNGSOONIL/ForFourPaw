@@ -35,4 +35,8 @@ public class DatasetController {
 		System.out.println(Service.DataUpdate());
 
 	}
+
+	public void Datasetadd() { // 실시간 데이터 추가
+		Service.DataAdd();
+	}
 }
