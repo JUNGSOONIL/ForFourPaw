@@ -119,30 +119,52 @@
                       </li>
                     </ul>
                   </div>
-                  <div class="shop-showing-result">
-                    <p>Total Items 1-12 of 13</p>
-                  </div>
-                  <div class="shop-show-list">
-                    <form action="#">
-                      <label for="show">Show</label>
-                      <select id="show" class="selected">
-                        <option value="">08</option>
-                        <option value="">12</option>
-                        <option value="">16</option>
-                        <option value="">18</option>
-                        <option value="">20</option>
-                      </select>
-                    </form>
-                  </div>
                   <div class="shop-short-by">
                     <form action="#">
-                      <label for="shortBy">Sort By</label>
-                      <select id="shortBy" class="selected">
-                        <option value="">Sort by latest</option>
-                        <option value="">Low to high</option>
-                        <option value="">High to low</option>
-                        <option value="">Popularity</option>
+                      <li class="header-shop-cart" style="display:inline">
+                        <a href="#">
+                          <input type="text" placeholder="품종" id="search-text" @input = "searchChangeFunc($event)" v-model="inputText" class="flaticon-shopping-bag" />
+                          <span>2</span>
+                        </a>
+                        <ul class="minicart">
+                          <div style="" v-for="(search, index) in this.$store.state[`shelView`].search.list" v-bind:key="index">                              
+                            <a @click="clickKind(search)">{{search}}</a>                            
+                          </div>
+                        </ul>
+                      </li>
+                      <select id="shortBy1" class="selected" v-model="sex">
+                        <option :value="null">성별</option>
+                        <option value="수컷">수컷</option>
+                        <option value="암컷">암컷</option>
+                        <option value="상관없음1">상관없음</option>
                       </select>
+                      <select id="shortBy2" class="selected" v-model="neuterYn">
+                        <option :value="null">중성화</option>
+                        <option value="Y">Yes</option>
+                        <option value="N">No</option>
+                        <option value="상관없음2">상관없음</option>
+                      </select>
+                      <select id="shortBy3" class="selected" v-model="addr">
+                        <option :value="null">지역</option>
+                        <option value="서울특별시">서울특별시</option>
+                        <option value="경기도">경기도</option>
+                        <option value="인천광역시">인천광역시</option>
+                        <option value="대전광역시">대전광역시</option>
+                        <option value="충청남도">충청남도</option>
+                        <option value="충청북도">충청북도</option>
+                        <option value="광주광역시">광주광역시</option>
+                        <option value="전라북도">전라북도</option>
+                        <option value="전라남도">전라남도</option>
+                        <option value="대구광역시">대구광역시</option>
+                        <option value="울산광역시">울산광역시</option>
+                        <option value="부산광역시">부산광역시</option>
+                        <option value="경상북도">경상북도</option>
+                        <option value="경상남도">경상남도</option>
+                        <option value="상관없음3">상관없음</option>
+                      </select>
+                      <button type="submit" @click="searchShelnimal">
+                        <i class="fa fa-search"></i>
+                      </button>
                     </form>
                   </div>
                 </div>
@@ -390,6 +412,30 @@
 export default {
   name: "App",
   components: {},
+  data() {
+    return {
+        inputText: '',
+        sex: 'null',
+        neuterYn: 'null',
+        addr: 'null'
+    }
+  },
+  methods : {
+    
+    searchChangeFunc(event) {
+      // this.$store.dispatch("mainView/mainShelnimalList");
+      this.$store.dispatch("shelView/kindSearchList", event.target.value);
+      
+    },
+    clickKind(event){
+      this.inputText = event;
+    },
+    searchShelnimal(){
+      this.$store.dispatch("shelView/searchShelnimal", this.inputText, this.sex, this.neuterYn, this.addr)
+    }
+    
+    
+  },
 };
 </script>
 
