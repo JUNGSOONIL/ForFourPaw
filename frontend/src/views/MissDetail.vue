@@ -397,6 +397,7 @@ export default {
      }
   },
   created() {
+    this.$store.commit('setHaderindex',2);
     this.selectMiss();
     this.commentselect();
   },

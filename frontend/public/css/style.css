@@ -3843,7 +3843,7 @@ label {
     background-position: center;
     background-size: cover;
     position: relative;
-    padding: 105px 0 55px;
+    padding: 65px 0 5px;
     z-index: 1;
 }
 .footer-bg::before,
@@ -3865,7 +3865,7 @@ label {
     bottom: 0;
 }
 .footer-widget {
-    margin-bottom: 50px;
+    margin-bottom: 45px;
 }
 .footer-widget .f-logo {
     margin-bottom: 25px;

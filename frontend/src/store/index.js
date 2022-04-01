@@ -22,6 +22,19 @@ const createStore = () => {
         paths: ["login", "mainView", "loading", "shelView"],
       }),
     ],
+    state: {
+      haderindex: 0,
+    },
+    mutations:{
+      setHaderindex(state, payload){
+        state.haderindex = payload
+      },
+    },
+    getters: {
+      getHaderindex: function (state) {
+        return state.haderindex;
+    },
+    },
   });
 };
 
