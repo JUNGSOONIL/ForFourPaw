@@ -36,7 +36,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     }
 
     @Override
-    public List<ShelnimalDto> find(SearchDto searchDto) {
+    public List<DatasetDto> find(SearchDto searchDto) {
         return shelnimalDao.find(searchDto);
     }
 
