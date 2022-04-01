@@ -123,7 +123,9 @@ public class ShelnimalController {
     @GetMapping("/shel/view/login/{no}")
     public ResponseEntity<?> mainListLogin(@PathVariable String no){
     	System.out.println("mainList : 로그인 " + no);
-        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
+//        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
+        
+        List<DatasetDto> shelnimalDtos = shelnimalService.mainListLogin(no);
 
         if(shelnimalDtos != null) {
             return ResponseEntity.ok().body(shelnimalDtos);

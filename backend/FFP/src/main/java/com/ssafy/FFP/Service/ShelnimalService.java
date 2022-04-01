@@ -14,5 +14,6 @@ public interface ShelnimalService {
     public List<ShelnimalDto> match(int userNo);
     public List<DatasetDto> find(SearchDto searchDto);
     public List<DatasetDto> mainList();
+    public List<DatasetDto> mainListLogin(String no);
     public List<String> searchList(String kind);
 }
