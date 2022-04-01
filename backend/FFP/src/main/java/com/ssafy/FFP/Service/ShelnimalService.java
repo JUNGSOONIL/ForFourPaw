@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 public interface ShelnimalService {
 
     public ShelnimalDto select(int no);
-    public List<ShelnimalDto> list(int sdt, int offset);
+    public List<ShelnimalDto> list(int sdt, int offset, int limit);
     public List<ShelnimalDto> match(int userNo);
     public List<DatasetDto> find(SearchDto searchDto);
     public List<DatasetDto> mainList();
