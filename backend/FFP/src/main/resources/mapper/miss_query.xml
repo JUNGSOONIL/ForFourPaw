@@ -24,7 +24,7 @@
                write_time as writeTime
         from missnimal
         ORDER BY no DESC
-        limit 9 offset #{offset}
+        limit #{limit} offset #{offset}
     </select>
 
     <select id="find" parameterType="int"
@@ -54,7 +54,7 @@
         <if test ="happenPlace != null">
             AND happenPlace = #{happenPlace}
         </if>
-        limit 9 offset #{offset}
+        limit #{limit} offset #{offset}
 
     </select>
 

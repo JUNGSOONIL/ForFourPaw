@@ -12,7 +12,7 @@ public interface MissnimalService {
     public int create(MissnimalDto missnimalDto, S3Dto s3Dto);
     public int update(MissnimalDto missnimalDto, S3Dto s3Dto);
     public int delete(int no);
-    public List<MissnimalDto> list(int offset);
+    public List<MissnimalDto> list(int offset, int limit);
     public List<MissnimalDto> match(int userNo);
     public List<MissnimalDto> find(SearchDto searchDto);
 

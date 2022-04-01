@@ -20,7 +20,7 @@
                careAddr, orgNm, chargeNm, officetel as officeTel
         from dataset
         WHERE noticeEdt >= #{sdt} and processState = '보호중'
-        limit 9 offset #{offset}
+        limit #{limit} offset #{offset}
     </select>
 
     <select id="find" parameterType="int"
@@ -50,21 +50,21 @@
             AND process_state = #{processState}
         </if>
         <if test ="descr != null">
-            AND descr = '%'||#{descr}||'%'
+            AND descr = #{descr}
         </if>
         <if test ="sexCd != null">
-            AND sex_cd = '%'||#{sexCd}||'%'
+            AND sex_cd = #{sexCd}
         </if>
         <if test ="noticeSdt != null">
             AND notice_sdt &lt; #{noticeSdt}
         </if>
         <if test ="noticeEdt != null">
-            AND notice_edt &gt; #{noticeEdt}
+            AND notice_edt >= #{noticeEdt}
         </if>
-        <if test ="careNm != null">
-            AND careNm &gt; #{careNm}
+        <if test ="careAddr != null">
+            AND careAddr LIKE CONCAT(‘%’, #{careAddr}, ‘%’)
         </if>
-        limit 9 offset #{offset}
+        limit #{limit} offset #{offset}
 
     </select>
     
