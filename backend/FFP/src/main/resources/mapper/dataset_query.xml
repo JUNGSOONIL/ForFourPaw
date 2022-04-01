@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssafy.FFP.Dao.DatasetDao">
+	
+	<insert id="TodayInsert" parameterType="int">
+		REPLACE INTO shel_today(today, cnt)
+		VALUES(#{date}, #{cnt})
+	</insert>
+	
+	<select id="MonthProtect" parameterType="int" resultType="com.ssafy.FFP.Dto.MonthDto">
+		SELECT processState, count(*) as count FROM dataset where noticeSdt BETWEEN DATE_ADD(NOW(),INTERVAL -1 MONTH ) AND NOW() group by processState order by processState;
+	</select>
+	
+	<select id="DataSelect" parameterType="int" resultType="int">
+		SELECT cnt FROM shel_today where today =#{date};
+	</select>
 
 	<insert id="DataInsert" parameterType="java.util.List">
 		INSERT INTO dataset(desertionNo, filename, happenDt, happenPlace, kindCd,
@@ -30,6 +43,6 @@
        		#{item.careTel}, #{item.careAddr}, #{item.orgNm}, #{item.chargeNm}, #{item.officetel}
 			)
 		</foreach>
-		ON DUPLICATE KEY UPDATE processState = values(processState)
+		ON DUPLICATE KEY UPDATE no = values(no), processState = values(processState)
 	</insert>
 </mapper>

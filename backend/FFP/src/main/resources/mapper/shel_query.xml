@@ -23,8 +23,8 @@
         limit #{limit} offset #{offset}
     </select>
 
-    <select id="find" parameterType="int"
-            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+    <select id="find" parameterType="com.ssafy.FFP.Dto.SearchDto"
+            resultType="com.ssafy.FFP.Dto.DatasetDto">
         select no, desertionNo, filename, happenDt, happenPlace, kindCd,
                colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
                processState, sexCd, neuterYn, specialMark, careNm, careTel,

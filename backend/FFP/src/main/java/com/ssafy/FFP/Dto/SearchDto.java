@@ -86,6 +86,14 @@ public class SearchDto {
     public void setHappenPlace(String happenPlace) {
         this.happenPlace = happenPlace;
     }
+    
+    public String getCareAddr() {
+		return careAddr;
+	}
+
+	public void setCareAddr(String careAddr) {
+		this.careAddr = careAddr;
+	}
 
     public int getLimit() {
         return limit;
