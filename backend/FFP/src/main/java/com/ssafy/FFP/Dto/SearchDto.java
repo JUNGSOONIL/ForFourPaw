@@ -13,7 +13,8 @@ public class SearchDto {
     private int limit;
     private int offset;
 
-	public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt, String happenPlace, String careAddr, int limit, int offset) {
+    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt,
+                     String happenPlace, String careAddr, int limit, int offset) {
         this.kindCd = kindCd;
         this.colorCd = colorCd;
         this.age = age;
@@ -109,4 +110,6 @@ public class SearchDto {
     public void setOffset(int offset) {
         this.offset = offset;
     }
+
+
 }
