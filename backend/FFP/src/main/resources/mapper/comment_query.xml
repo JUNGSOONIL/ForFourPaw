@@ -3,19 +3,19 @@
 <mapper namespace="com.ssafy.FFP.Dao.CommentDao">
 
     <select id="list" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
-        select co.no, co.descr, co.author, co.write_time as writeTime
-        from comment co, feed_comment fc
-        where co.no = fc.commentNo and fc.feedNo = #{feedNo}
-        order by date desc
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo, u.nickname as authorNickname, u.profile_img as profileImage
+        from ffp.comment co, ffp.miss_comment mc, ffp.user u
+        where co.no = mc.comment_no and mc.miss_no = #{missNo} and co.author = u.no
+        order by co.write_time desc
     </select>
 
     <select id="read" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
-        select co.no, co.descr, co.author, co.write_time as writeTime, fc.feedNo
-        from comment co, feed_comment fc
-        where co.no = #{no} and fc.commentNo = #{no}
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo
+        from comment co, miss_comment mc
+        where co.no = #{no} and mc.comment_no = #{no}
     </select>
 
-    <insert id="write" parameterType="com.ssafy.FFP.Dto.CommentDto">
+    <insert id="create" parameterType="com.ssafy.FFP.Dto.CommentDto">
         insert into comment(descr, author) values (  #{descr}, #{author})
         <selectKey keyProperty="no" resultType="int" order="AFTER">
             SELECT LAST_INSERT_ID()

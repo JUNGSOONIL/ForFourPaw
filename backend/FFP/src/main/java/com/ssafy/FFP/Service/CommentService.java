@@ -15,6 +15,4 @@ public interface CommentService {
 
     public CommentDto select(int no);
 
-    public int relation(int commentNo, int feedNo);
-
 }

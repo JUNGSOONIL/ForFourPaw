@@ -15,12 +15,15 @@ public class MissnimalDto {
     private String happenPlace;
     private String descr;
     private String profile;
+    private String authorName;
+    private String writeTime;
 
     public MissnimalDto() {
     }
 
     public MissnimalDto(int no, String name, String kindCd, String colorCd, String age, String sexCd, String neuterYn,
-                        int author, String careTel, String happenDt, String happenPlace, String descr, String profile) {
+                        int author, String careTel, String happenDt, String happenPlace, String descr, String profile,
+                        String authorName, String writeTime) {
         this.no = no;
         this.name = name;
         this.kindCd = kindCd;
@@ -34,6 +37,8 @@ public class MissnimalDto {
         this.happenPlace = happenPlace;
         this.descr = descr;
         this.profile = profile;
+        this.authorName = authorName;
+        this.writeTime = writeTime;
     }
 
     public int getNo() {
@@ -140,6 +145,22 @@ public class MissnimalDto {
         this.profile = profile;
     }
 
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public String getWriteTime() {
+        return writeTime;
+    }
+
+    public void setWriteTime(String writeTime) {
+        this.writeTime = writeTime;
+    }
+
     @Override
     public String toString() {
         return "MissnimalDto{" +
@@ -156,6 +177,8 @@ public class MissnimalDto {
                 ", happenPlace='" + happenPlace + '\'' +
                 ", descr='" + descr + '\'' +
                 ", profile='" + profile + '\'' +
+                ", authorName='" + authorName + '\'' +
+                ", writeTime='" + writeTime + '\'' +
                 '}';
     }
 }

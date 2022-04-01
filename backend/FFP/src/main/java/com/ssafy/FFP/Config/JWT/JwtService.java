@@ -106,6 +106,7 @@ public class JwtService {
 
     public String decode(String token) {
 
+        System.out.println("decode token : " + token);
         String[] splitToken = token.split("\\.");
 //        Base64.Decoder decoder = Base64.getDecoder();
 //        byte[] decodedBytes = decoder.decode(splitToken[1]);

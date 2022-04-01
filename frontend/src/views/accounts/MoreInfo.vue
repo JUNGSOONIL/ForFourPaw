@@ -74,7 +74,6 @@
                           <option value="경상북도">경상북도</option>
                           <option value="경상남도">경상남도</option>
                           <option value="제주특별자치도">제주특별자치도</option>
-                          <!-- <option :value="18" selected>선택</option> -->
                         </select>
                       </div>
                     </div>
@@ -165,6 +164,7 @@ export default {
     },
     signUp() {
       //validation이 통과 됬을때만 버튼이 클릭되게 해야함
+      const formData = new FormData();
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
@@ -175,29 +175,29 @@ export default {
         nickname: this.nickname,
         addrs: this.addrs,
       };
-      if (
-        this.isNickNameValid &&
-        this.isNickNameDBValid &&
-        this.addrs != ""
-      ) {
+       formData.append(
+        "userInfo",
+        new Blob([JSON.stringify(info)], { type: "application/json" })
+      );
+      if (this.isNickNameValid && this.isNickNameDBValid && this.addrs != "") {
         console.log("send");
         axios({
           method: "put",
           url: `/api/users`,
-          data: info,
+          data: formData,
           headers: headers, // 넣는거 까먹지 마세요
         })
           .then((res) => {
             this.$store.dispatch("login/accessTokenRefreshOnUserInfo", res);
-            this.$route.push("/");
+            this.$router.push("/");
           })
           .catch((error) => {
             console.log(error);
           });
       } else {
-        console.log(this.isNickNameValid)
-        console.log(this.isNickNameDBValid)
-        console.log(this.addrs)
+        console.log(this.isNickNameValid);
+        console.log(this.isNickNameDBValid);
+        console.log(this.addrs);
         this.$alertify.error("정보를 수정할 수 없습니다");
       }
     },
