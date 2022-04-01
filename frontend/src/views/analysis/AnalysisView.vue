@@ -38,20 +38,14 @@
               For Four Paw의 데이터 분석 서비스는
             </h2>
             <h2>농림축산식품부의 동물보호관리시스템에 등록된 유기동물 데이터 </h2>
-            <h1>총 1,174,858 건의 데이터를 분석해서 </h1>
+            <h1>총 1,174,858 건의 유기 동물 정보를 분석해서 </h1>
             <h2> 사용자에게 그 결과를 제공합니다. </h2>
           
             <h5> 범위 : 2009.01 ~ 2022.03  </h5>
-            
-            <!-- <button type="button" class="btn btn-outline-primary" @click="loaddata" > 
-              차트 불러오기
-            </button> -->
-            <!-- <button type="button"><img src="https://i2.tcafe2a.com/220331/e172f68ac574e3a6eb987133136edaad_1648672500_8076.gif" alt="">버튼명</button> -->
-            
-            <img @click="loaddata"
-            src="https://ae01.alicdn.com/kf/HTB1MYl8KpXXXXbZXpXXq6xXFXXXN/8.jpg" style="cursor:pointer;" >
 
-            <h5>분석에 약 1분정도 소요됩니다.</h5>
+            <img id="analysisdog" @click="loaddata" src="../../assets/img/analysisDog4.png" style="cursor:pointer;" >
+
+            <h5>분석에 약 1분 소요됩니다.</h5>
           
           </div>
 
@@ -79,14 +73,14 @@
                     </ul>
                   </div>
                   <div class="shop-showing-result">
-                    <p> 없으면 뭔가 허전한 부분 </p>
+                    <p> </p>
                   </div>
                   
                   
                 </div>
 
                 <div class="row justify-content-center">
-                  <div><h1> 무게 통계 </h1></div>
+                  <div><h1> 무게 별 유기동물 등록 건수  </h1></div>
                   <div>
                   </div>
                 </div>
@@ -98,7 +92,7 @@
                 </div> 
                 
                 <div class="row justify-content-center">
-                  <div><h1> 월별 통계 </h1></div>
+                  <div><h1> 월 별 유기동물 등록 건수 </h1></div>
                   <div>
 
                   </div>
@@ -112,7 +106,7 @@
 
 
                 <div class="row justify-content-center">
-                  <div><h1> 연도별 통계 </h1></div>
+                  <div><h1> 연도 별 유기동물 등록 건수 </h1></div>
                   <div>
 
                   </div>
@@ -132,25 +126,28 @@
                 </div>
                 
                 <div class="row justify-content-center">
+                  <div style="text-align:center;">
                   <div class="col" style="background-color:white width:100% height:100%">
                     <div id="kind_wordcloud"></div>
+                  </div>
                   </div>
                 </div> 
 
 
                 <div class="row justify-content-center">
                   
-                  <div><h1> 지역별 통계 </h1></div>
+                  <div><h1> 지역별 유기동물 등록 횟수 </h1></div>
                   <div>
                   </div>
                 </div>
 
-                <div class="row justify-content-center">
-                  <div>
-                    현재 확인하고 싶은 지역이름 : {{ region_tempname }} 지역 이름 : {{ region_name}} // 값 : {{ region_value }}
-                  </div>
+                <div class="row justify-content-center" id="box1">
+                  <div id="regiontempname"  style="color:#440000;" > {{ region_tempname }} </div>
+                  <div id="regionname" style="color:#300000;" > {{ region_name }} </div>
+                  <div id="regionvalue" style="color:#00071c;" > 총 {{ region_value }} 건 </div>
                   <div class="col" style="text-align:center">
-                  <svg
+                  <svg    
+                      style="cursor:pointer;"
                       xmlns:dc="http://purl.org/dc/elements/1.1/"
                       xmlns:cc="http://creativecommons.org/ns#"
                       xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -362,8 +359,11 @@ export default  {
             region_name : "지역이름",
             region_value : 0,
             region_result : [],
-            region_tempname : "지도에 마우스를 올리면 확인할 수 있습니다.",
+            region_tempname : "",
         }
+    },
+    created(){
+      this.$store.commit('setHaderindex',3);
     },
     mounted() {
         console.log("[system] mounted! ");
@@ -429,6 +429,7 @@ export default  {
                     url: '/api/test',
                     data: data, 
                     headers: headers,  // 넣는거 까먹지 마세요
+                    timeout : 1800000,
                 }).then((res) => {
 
                     this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
@@ -468,13 +469,15 @@ export default  {
                                   '#000f58',
                                   '#f50000'
                                 ],
-                                hoverOffset: 4
+                                hoverOffset: 4,
+                                
                                 
                             }]
                         },
                         options: {
                             plugins: {
                                 legend: {
+                                  display : false, 
                                     labels: {
                                         // This more specific font property overrides the global property
                                         display : false, 
@@ -484,29 +487,26 @@ export default  {
                                     }
                                 }, 
                                 title :{
-                                  display : true,
+                                  display : false,
                                   text : "무게에 따른 유기동물 수",
                                 },
                                 animation : {
                                   animateScale : true,
                                   animateRotate : true,
                                 },
-                                scales: {
-                                  yAxes: {
-                                    font : {
-                                      size : 60
-                                    }
-                                  }, 
-                                  xAxes: [{
+                                
+                            },
+                            scales: {
+                                  yAxis: {
+                                        ticks: {
+                                            fontSize: 100
+                                        }
+                                    },
+                                  xAxis: {
                                     ticks:{
                                       fontColor : 'rgba(12, 13, 13, 1)',
-                                      fontSize : 60
-                                    },
-                                    gridLines:{
-                                      color: "rgba(87, 152, 23, 1)",
-                                      lineWidth: 1
-                                    }
-                                  }]
+                                      fontSize : 100
+                                    },                                  
                                 }
                             }
                         }
@@ -548,6 +548,11 @@ export default  {
                             }]
                         },
                         options: {
+                            plugins: {
+                                legend: {
+                                  display : false
+                                }
+                            }, 
                             scales: {
                                 y: {
                                     beginAtZero: true
@@ -578,7 +583,13 @@ export default  {
                             }]
                         },
                         options: {
+                            plugins: {
+                                legend: {
+                                  display : false
+                                }
+                            }, 
                             scales: {
+                              
                                 y: {
                                     beginAtZero: true
                                 }
@@ -602,7 +613,8 @@ export default  {
                     res.data.regionlist.forEach(element => {
                         templaabels.push( (element.key)  );
                         tempdata.push(element.value);
-                        this.region_result.push( { key : element.key,  value : element.value } );
+                        const temptext = element.value.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")    
+                        this.region_result.push( { key : element.key,  value : temptext } );
                     });
 
                     this.isLoading = !this.isLoading;
@@ -631,6 +643,10 @@ export default  {
                 // else 
                 return 0; 
                 })
+              // .style("fill", function (d) {
+              //         if ( d.size > 5920) return ( "#506230" );
+              //           else return ( "#000000"); 
+              //     })
               .fontSize( function (d) { return (Math.sqrt(d.size) * 0.8 ); })
               // .fontSize(function (d) {
               //       return wordScale(d.frequency);
@@ -656,12 +672,9 @@ export default  {
             // g를 중심에서 단어를 그리기 때문에 g를 svg중심으로 이동한다.
             // .style("font-family", "Impact")
             .attr("transform", "translate(" +  width/2 + "," + height/2+ ")")
-            .style("fill", function ( d ) {
-                        // if ( d.size > 55920) return ( "#506230" );
-                        // else 
-                        console.log(d + "[sytem] 워드 클라우드 색상");
-                        return ( "#000000");
-                    })
+            .style("fill",  () => {
+               return ( "#2a2a2a" ); 
+               })
             .selectAll("text")
             .data(words)
             .enter()
@@ -747,5 +760,68 @@ export default  {
   font-family: "RFR";
   src: url("../../assets/fonts/EliceDigitalRegular.ttf");
 }
+
+@font-face{
+  font-family: "LeferiBaseBold";
+  src: url("../../assets/fonts/LeferiBaseBold.ttf");
+}
+
+#analysisdog:hover {
+  /* opacity:0.8; */
+  filter: brightness(80%); 
+}
+
+#svg2{
+  z-index: 0 !important;
+}
+#regiontempname{
+  font-family:"LeferiBaseBold";
+  color:"#400000" !important;;
+  font-size:80px;
+  position:absolute !important;
+  z-index:10 !important;
+  top:100px;
+  left:80px;
+}
+#regionname{
+  font-family:"LeferiBaseBold";
+  /* color:"#000000" !important;; */
+  font-size:80px;
+  position:absolute !important;
+  z-index:10 !important;
+  top:100px;
+  right:80px;
+}
+#regionvalue{
+  font-family:"LeferiBaseBold";
+  /* color:"#000000" !important;; */
+  font-size:70px;
+  position:absolute !important;
+  z-index:10 !important;
+  top:190px;
+  right:80px;
+
+}
+#box1 {
+  position:relative !important;
+}
+
+/* 
+.text1 {
+  font-size: 100px;
+  position:absolute !important;
+  visibility:hidden;
+  top : 500px;
+  bottom : 50px;
+  z-index: 3;
+ }
+
+.box1:hover {
+  opacity:0.7;
+ }
+
+.box1:hover .text1 {
+   visibility:visible;
+ }  */
 
 </style>
