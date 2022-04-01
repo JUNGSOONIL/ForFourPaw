@@ -34,26 +34,18 @@
         from missnimal
         WHERE no is not null
         <if test ="kindCd != null">
-            AND kindCd = #{kindCd}
-        </if>
-        <if test ="colorCd != null">
-            AND colorCd = #{colorCd}
-        </if>
-        <if test ="age != null">
-            AND age = #{age}
-        </if>
-        <if test ="sexCd != null">
-            AND sexCd = #{sexCd}
+            AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
         </if>
         <if test ="neuterYn != null">
-            AND neuterYn = #{neuterYn}
+            AND neuter_yn = #{neuterYn}
         </if>
-        <if test ="happenDt != null">
-            AND happenDt = #{happenDt}
+        <if test ="sexCd != null">
+            AND sex_cd = #{sexCd}
         </if>
-        <if test ="happenPlace != null">
-            AND happenPlace = #{happenPlace}
+        <if test ="careAddr != null">
+            AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
         </if>
+        order by no DESC
         limit #{limit} offset #{offset}
 
     </select>
