@@ -844,6 +844,7 @@ export default {
   },
   created() {
     this.searchShelnimaldefualt();
+    this.$store.commit('setHaderindex',1);
   },
   methods: {
     kindSearchList(el) {
