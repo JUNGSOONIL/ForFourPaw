@@ -23,7 +23,10 @@
                 <nav class="menu-nav show">
                   <div class="logo">
                     <router-link to="/"
-                      ><img src="/img/logo/paw_logo_2line.png" alt=""
+                      ><img
+                        src="/img/logo/paw_logo_2line.png"
+                        alt=""
+                        onclick="window.scrollTo(0,0);"
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
@@ -63,7 +66,9 @@
                         </ul>
                       </li>
                       <li class="menu-item-has-children">
-                        <router-link to="/analysisview">데이터 분석</router-link>
+                        <router-link to="/analysisview"
+                          >데이터 분석</router-link
+                        >
                       </li>
                       <!-- <li><a href="adoption.html">Adoption</a></li> -->
                       <!-- <li class="menu-item-has-children">
@@ -138,26 +143,58 @@
                           </li>
                         </ul>
                       </li> -->
-                      <li class="header-btn" style="margin: 1px" v-if="isLoginGetters">
-                        <router-link to="/userPage" class="btn" style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;">
+                      <li
+                        class="header-btn"
+                        style="margin: 1px"
+                        v-if="isLoginGetters"
+                      >
+                        <router-link
+                          to="/userPage"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
+                        >
                           내정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
-                    </li>
+                      </li>
                       <li class="header-btn" v-if="!isLoginGetters">
-                        <router-link to="/socialLogin" class="btn"
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                        <router-link
+                          to="/socialLogin"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
-                        <router-link to="/moreInfo" class="btn"
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                        <router-link
+                          to="/moreInfo"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           to="/logoutPage"
                           class="btn"
                           @click.native="logout"
