@@ -111,13 +111,5 @@ public class SearchDto {
         this.offset = offset;
     }
 
-    public String getCareAddr() {
-        return careAddr;
-    }
-
-    public void setCareAddr(String careAddr) {
-        this.careAddr = careAddr;
-    }
-
 
 }
