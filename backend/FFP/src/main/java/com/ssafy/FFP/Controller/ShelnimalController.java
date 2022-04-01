@@ -5,6 +5,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import com.ssafy.FFP.Dto.CountingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -67,10 +68,12 @@ public class ShelnimalController {
         String formatedNow = seoulNow.format(formatter);
         int sdt = Integer.parseInt(formatedNow);
         int os = Integer.parseInt(offset);
-        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt, os);
+        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt, os, 9);
+        List<ShelnimalDto> count = shelnimalService.list(sdt, os, 100000);
+        CountingDto countingDto = new CountingDto(count.size(), shelnimalDtos, null);
 
         if(shelnimalDtos != null) {
-            return ResponseEntity.ok().body(shelnimalDtos);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
@@ -95,10 +98,14 @@ public class ShelnimalController {
     @PostMapping("/shel")
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
+        searchDto.setLimit(9);
         List<ShelnimalDto> shelnimalDtos = shelnimalService.find(searchDto);
+        searchDto.setLimit(100000);
+        List<ShelnimalDto> count = shelnimalService.find(searchDto);
+        CountingDto countingDto = new CountingDto(count.size(), shelnimalDtos, null);
 
         if(shelnimalDtos != null) {
-            return ResponseEntity.ok().body(shelnimalDtos);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
