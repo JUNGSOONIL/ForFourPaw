@@ -37,6 +37,6 @@ public class AnalysisController {
         AnalysisResultDto result = analysisService.test();
         System.out.println(result.toString());
 
-        return ResponseEntity.ok().body("테스트완료");
+        return ResponseEntity.ok().body(result);
     }
 }

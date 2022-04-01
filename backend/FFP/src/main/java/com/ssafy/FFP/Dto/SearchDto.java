@@ -9,8 +9,12 @@ public class SearchDto {
     private String neuterYn;
     private String happenDt;
     private String happenPlace;
+    private String careAddr;
+    private int limit;
+    private int offset;
 
-    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt, String happenPlace) {
+    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt,
+                     String happenPlace, String careAddr, int limit, int offset) {
         this.kindCd = kindCd;
         this.colorCd = colorCd;
         this.age = age;
@@ -18,6 +22,9 @@ public class SearchDto {
         this.neuterYn = neuterYn;
         this.happenDt = happenDt;
         this.happenPlace = happenPlace;
+        this.careAddr = careAddr;
+        this.limit = limit;
+        this.offset = offset;
     }
 
     public SearchDto() {
@@ -79,4 +86,30 @@ public class SearchDto {
     public void setHappenPlace(String happenPlace) {
         this.happenPlace = happenPlace;
     }
+    
+    public String getCareAddr() {
+		return careAddr;
+	}
+
+	public void setCareAddr(String careAddr) {
+		this.careAddr = careAddr;
+	}
+
+    public int getLimit() {
+        return limit;
+    }
+
+    public void setLimit(int limit) {
+        this.limit = limit;
+    }
+
+    public int getOffset() {
+        return offset;
+    }
+
+    public void setOffset(int offset) {
+        this.offset = offset;
+    }
+
+
 }

@@ -1,9 +1,6 @@
 package com.ssafy.FFP.Controller;
 
-import com.ssafy.FFP.Dto.MissnimalDto;
-import com.ssafy.FFP.Dto.S3Dto;
-import com.ssafy.FFP.Dto.SearchDto;
-import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.*;
 import com.ssafy.FFP.Service.MissnimalService;
 import com.ssafy.FFP.Service.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +33,7 @@ public class MissnimalController {
     public ResponseEntity<?> select(@PathVariable String no){
         int missNo = Integer.parseInt(no);
         MissnimalDto missnimalDto = missnimalService.select(missNo);
-
+        System.out.println("missDto : " + missnimalDto);
         if(missnimalDto != null) {
             return ResponseEntity.ok().body(missnimalDto);
         }
@@ -46,16 +43,15 @@ public class MissnimalController {
     }
 
     // 공고일 종료일이 최소 오늘인 공고 목록 조회
-    @GetMapping("/miss")
-    public ResponseEntity<?> list(){
-        LocalDate seoulNow = LocalDate.now(ZoneId.of("Asia/Seoul"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formatedNow = seoulNow.format(formatter);
-
-        List<MissnimalDto> missnimalDtos = missnimalService.list(formatedNow);
+    @GetMapping("/misses/{offset}")
+    public ResponseEntity<?> list(@PathVariable String offset){
+        int os = Integer.parseInt(offset);
+        List<MissnimalDto> missnimalDtos = missnimalService.list(os, 9);
+        List<MissnimalDto> count = missnimalService.list(os, 100000);
+        CountingDto countingDto = new CountingDto(count.size(), null, missnimalDtos);
 
         if(missnimalDtos != null) {
-            return ResponseEntity.ok().body(missnimalDtos);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
@@ -80,10 +76,15 @@ public class MissnimalController {
     @PostMapping("/miss/search")
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
+        searchDto.setLimit(9);
         List<MissnimalDto> missnimalDtos = missnimalService.find(searchDto);
+        searchDto.setLimit(100000);
+        List<MissnimalDto> count = missnimalService.find(searchDto);
+
+        CountingDto countingDto = new CountingDto(count.size(), null, missnimalDtos);
 
         if(missnimalDtos != null) {
-            return ResponseEntity.ok().body(missnimalDtos);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
@@ -116,5 +117,51 @@ public class MissnimalController {
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
         }
+    }
+
+    // 글 수정
+    @PutMapping("/miss")
+    public ResponseEntity<?> update(
+            @RequestPart(value="missData") MissnimalDto missnimalDto,
+            @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
+
+        System.out.println(missnimalDto.toString());
+        int result = 0;
+        if(multipartFile != null) {
+            List<Integer> imgNo = new ArrayList<>();
+            if (multipartFile != null) {
+                imgNo = s3Service.uploadFile(multipartFile);
+            }
+
+            List<S3Dto> imgs = new ArrayList<>();
+            for (int no : imgNo) {
+                System.out.println("no: " + no);
+                imgs.add(s3Service.select(no));
+            }
+
+            result = missnimalService.update(missnimalDto, imgs.get(0));
+        }
+        else {
+            result = missnimalService.update(missnimalDto, null);
+        }
+
+        if(result != 0) {
+            return ResponseEntity.ok().body(result);
+        }
+        else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "양식에 맞지 않습니다.");
+        }
+    }
+    
+    @DeleteMapping("/miss/{no}")
+    public ResponseEntity<?> delete(@PathVariable String no){
+        int missNo = Integer.parseInt(no);
+
+        if (missnimalService.delete(missNo) != 0) {
+            return ResponseEntity.ok().body(1);
+        }else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "삭제에 실패했습니다.");
+        }
+                
     }
 }

@@ -1,12 +1,14 @@
 package com.ssafy.FFP.Service;
 
-import com.ssafy.FFP.Dao.ShelnimalDao;
-import com.ssafy.FFP.Dto.SearchDto;
-import com.ssafy.FFP.Dto.ShelnimalDto;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.ssafy.FFP.Dao.ShelnimalDao;
+import com.ssafy.FFP.Dto.DatasetDto;
+import com.ssafy.FFP.Dto.SearchDto;
+import com.ssafy.FFP.Dto.ShelnimalDto;
 
 @Service
 public class ShelnimalServiceImpl implements ShelnimalService {
@@ -21,8 +23,8 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     }
 
     @Override
-    public List<ShelnimalDto> list(int sdt) {
-        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt);
+    public List<ShelnimalDto> list(int sdt, int offset, int limit) {
+        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt, offset, limit);
         return shelnimalDtos;
 
     }
@@ -37,4 +39,19 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     public List<ShelnimalDto> find(SearchDto searchDto) {
         return shelnimalDao.find(searchDto);
     }
+
+	@Override
+	public List<DatasetDto> mainList() {
+		String processState = "보호중";
+		List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
+		return shelnimalDtos;
+	}
+
+	@Override
+	public List<String> searchList(String kind) {
+		System.out.println(kind);
+		List<String> kinds = shelnimalDao.searchList(kind);
+		System.out.println(kinds);
+		return kinds;
+	}
 }

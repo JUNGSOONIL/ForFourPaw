@@ -7,7 +7,7 @@
         <div class="slider-active">
           <div
             class="single-slider slider-bg d-flex align-items-center"
-            style="background-image: url('img/slider/slider_bg01.jpg')"
+            style="background-image: url('/img/slider/hifive.jpg')"
           >
             <div class="container custom-container">
               <div class="row">
@@ -20,7 +20,8 @@
                         data-delay=".2s"
                         data-duration="1.2s"
                       >
-                        For<span>with</span><br />Four<br />Paw
+                        <!-- For<span>with</span><br />Four<br />Paw -->
+                        For<br />Four<br />Paw
                       </h2>
                     </div>
                     <div class="slider-desc">
@@ -34,14 +35,14 @@
                         있습니다.
                       </p>
                     </div>
-                    <a
+                    <!-- <a
                       href="dog-list.html"
                       class="btn"
                       data-animation="fadeInUpBig"
                       data-delay=".6s"
                       data-duration="1.2s"
-                      >View More <img src="img/icon/w_pawprint.png" alt=""
-                    /></a>
+                      >View More <img src="/img/icon/w_pawprint.png" alt=""
+                    /></a> -->
                   </div>
                 </div>
               </div>
@@ -49,7 +50,7 @@
           </div>
           <!-- <div
             class="single-slider slider-bg d-flex align-items-center"
-            style="background-image: url('img/slider/slider_bg02.jpg')"
+            style="background-image: url('/img/slider/slider_bg02.jpg')"
           >
             <div class="container custom-container">
               <div class="row">
@@ -82,7 +83,7 @@
                       data-animation="fadeInUpBig"
                       data-delay=".6s"
                       data-duration="1.2s"
-                      >View More <img src="img/icon/w_pawprint.png" alt=""
+                      >View More <img src="/img/icon/w_pawprint.png" alt=""
                     /></a>
                   </div>
                 </div>
@@ -91,16 +92,16 @@
           </div> -->
         </div>
         <div class="slider-shape">
-          <img src="img/slider/slider_shape01.png" alt="" />
+          <img src="/img/slider/slider_shape01.png" alt="" />
         </div>
         <div class="slider-shape shape-two">
-          <img src="img/slider/slider_shape02.png" alt="" />
+          <img src="/img/slider/slider_shape02.png" alt="" />
         </div>
       </section>
       <!-- slider-area-end -->
 
       <!-- find-area -->
-      <div class="find-area">
+      <!-- <div class="find-area">
         <div class="container custom-container">
           <div class="row">
             <div class="col-12">
@@ -162,16 +163,16 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
       <!-- find-area-end -->
 
       <!-- counter-area -->
       <section
         class="counter-area counter-bg"
-        style="background-image: url('img/bg/counter_bg.jpg')"
+        style="background-image: url('/img/bg/counter_bg.jpg')"
       >
         <div class="container">
-          <div class="row justify-content-center">
+          <!-- <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8">
               <div class="counter-title text-center mb-65">
                 <h6 class="sub-title">Why Choose Us?</h6>
@@ -180,38 +181,38 @@
                 </h2>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row justify-content-center">
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="73"></span>%
+                  <span class="odometer" data-count="73">{{maincnt.today}}</span>
                 </h2>
-                <p>dogs are first bred</p>
+                <p>오늘 추가된 유기 동물</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="259"></span>+
+                  <span class="odometer" data-count="259">{{maincnt.protect}}</span>
                 </h2>
-                <p>Most dogs are first</p>
+                <p>최근 한달 간 보호</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="39"></span>K
+                  <span class="odometer" data-count="10">{{maincnt.return}}</span>
                 </h2>
-                <p>Dog Breeding</p>
+                <p>최근 한달 간 반환</p>
               </div>
             </div>
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="45"></span>+
+                  <span class="odometer" data-count="45">{{maincnt.death}}</span>
                 </h2>
-                <p>Years Of History</p>
+                <p>최근 한달 간 사망</p>
               </div>
             </div>
           </div>
@@ -220,14 +221,14 @@
       <!-- counter-area-end -->
 
       <!-- adoption-area -->
-      <section class="adoption-area">
+      <!-- <section class="adoption-area">
         <div class="container">
           <div
             class="row align-items-center align-items-xl-end justify-content-center"
           >
             <div class="col-xl-7 col-lg-6 col-md-10 order-0 order-lg-2">
               <div class="adoption-img">
-                <img src="img/images/adoption_img.jpg" alt="" />
+                <img src="/img/images/adoption_img.jpg" alt="" />
               </div>
             </div>
             <div class="col-xl-5 col-lg-6">
@@ -242,26 +243,26 @@
                   information.
                 </p>
                 <a href="adoption.html" class="btn"
-                  >Adoption <img src="img/icon/w_pawprint.png" alt=""
+                  >Adoption <img src="/img/icon/w_pawprint.png" alt=""
                 /></a>
               </div>
             </div>
           </div>
         </div>
         <div class="adoption-shape">
-          <img src="img/images/adoption_shape.png" alt="" />
+          <img src="/img/images/adoption_shape.png" alt="" />
         </div>
-      </section>
+      </section> -->
       <!-- adoption-area-end -->
 
       <!-- breeds-services -->
-      <section class="breeds-services pt-110 pb-110">
+      <!-- <section class="breeds-services pt-110 pb-110">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Service to Breeds</h5>
                 <h2 class="title">Most Popular Dog Breed</h2>
@@ -278,7 +279,7 @@
               <div class="breed-services-active owl-carousel">
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img01.jpg" alt="" />
+                    <img src="/img/images/breed_services_img01.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -288,7 +289,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img02.jpg" alt="" />
+                    <img src="/img/images/breed_services_img02.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -298,7 +299,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img03.jpg" alt="" />
+                    <img src="/img/images/breed_services_img03.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -308,7 +309,7 @@
                 </div>
                 <div class="breed-services-item">
                   <div class="thumb">
-                    <img src="img/images/breed_services_img04.jpg" alt="" />
+                    <img src="/img/images/breed_services_img04.jpg" alt="" />
                   </div>
                   <div class="content">
                     <h3 class="title">
@@ -321,7 +322,7 @@
             <div class="col-lg-4 col-md-6">
               <div
                 class="breed-services-info"
-                style="background-image: url('img/bg/breed_services_bg.jpg')"
+                style="background-image: url('/img/bg/breed_services_bg.jpg')"
               >
                 <h5 class="sub-title">Dog Breeder</h5>
                 <h3 class="title">Available for Breed</h3>
@@ -330,29 +331,29 @@
                   (view at Chewy), which provid dogs
                 </p>
                 <a href="dog-list.html" class="btn"
-                  >More Pets <img src="img/icon/w_pawprint.png" alt=""
+                  >More Pets <img src="/img/icon/w_pawprint.png" alt=""
                 /></a>
               </div>
             </div>
           </div>
         </div>
         <div class="breed-services-shape">
-          <img src="img/images/breed_services_shape01.png" alt="" />
+          <img src="/img/images/breed_services_shape01.png" alt="" />
         </div>
         <div class="breed-services-shape shape-two">
-          <img src="img/images/breed_services_shape02.png" alt="" />
+          <img src="/img/images/breed_services_shape02.png" alt="" />
         </div>
-      </section>
+      </section> -->
       <!-- breeds-services-end -->
 
       <!-- faq-area -->
-      <section class="faq-area faq-bg">
+      <!-- <section class="faq-area faq-bg">
         <div class="container">
           <div class="row align-items-center">
             <div class="col-lg-6">
               <div class="faq-img-wrap">
-                <img src="img/images/faq_tv.png" class="img-frame" alt="" />
-                <img src="img/images/faq_img.png" class="main-img" alt="" />
+                <img src="/img/images/faq_tv.png" class="img-frame" alt="" />
+                <img src="/img/images/faq_img.png" class="main-img" alt="" />
                 <a
                   href="https://www.youtube.com/watch?v=XdFfCPK5ycw"
                   class="popup-video"
@@ -456,66 +457,25 @@
           </div>
         </div>
         <div class="faq-shape">
-          <img src="img/images/faq_shape.png" alt="" />
+          <img src="/img/images/faq_shape.png" alt="" />
         </div>
-      </section>
+      </section> -->
       <!-- faq-area-end -->
 
-      <!-- brand-area -->
-      <div class="brand-area pt-80 pb-80">
-        <div class="container">
-          <div class="row brand-active">
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item01.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item02.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item03.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item04.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item05.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item06.png" alt="img" />
-              </div>
-            </div>
-            <div class="col-12">
-              <div class="brand-item">
-                <img src="img/brand/brand_item03.png" alt="img" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- brand-area-end -->
-
-      <!-- adoption-shop-area -->
-      <section class="adoption-shop-area">
-        <div class="container">
+      <!-- carousel-area-start -->
+      <!-- <section class="adoption-area-two pt-110 pb-110">
+        <div class="container custom-container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
                   <img src="img/icon/pawprint.png" alt="" />
                 </div>
-                <h5 class="sub-title">Meet the animals</h5>
-                <h2 class="title">Puppies Waiting for Adoption</h2>
+                <h5 class="sub-title">도와주세요</h5>
+                <h2 class="title">
+                  혼자 남은 아이들을 위해 <br />
+                  함께 할 수 있는 가족이 되어주세요
+                </h2>
                 <p>
                   The best overall dog DNA test is Embark Breed & Health Kit
                   (view at Chewy), which provides you with a breed brwn and
@@ -524,212 +484,100 @@
               </div>
             </div>
           </div>
+          <div class="adopt-active">
+            <Slick ref="slick" :options="slickOptions">
+              <div
+                v-for="(shelnimal, index) in this.$store.state[`mainView`]
+                  .shelnimal.list"
+                v-bind:key="index"
+                class="adoption-item"
+              >
+                <div class="adopt-thumb">
+                  <router-link
+                    :to="{ name: 'ShelDetail', params: { no: shelnimal.no } }"
+                  >
+                    <img
+                      style="width: 353px; height: 353px"
+                      :src="shelnimal.popfile"
+                      alt=""
+                    />
+                  </router-link>
+                </div>
+                <div class="adopt-content">
+                  <h3 class="title"></h3>
+                  <p>
+                    품종 : {{ shelnimal.kindCd }}<br />
+                    발견장소 : {{ shelnimal.happenPlace }}
+                  </p>
+                </div>
+              </div>
+            </Slick>
+          </div>
+        </div>
+      </section> -->
+      <!-- carousel-area-end -->
+
+      <!-- adoption-shop-area -->
+      <section class="adoption-shop-area">
+        <div class="container">
           <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb01.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
+            <div class="col-xl-7 col-lg-9">
+              <div class="section-title text-center mb-65">
+                <div class="section-icon">
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Mister Tartosh</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
-                  </div>
-                </div>
+                <h5 class="sub-title">도와주세요</h5>
+                <h2 class="title">
+                  혼자 남은 아이들을 위해 <br />
+                  함께 할 수 있는 가족이 돼주세요
+                </h2>
+                <!-- <p>
+                  The best overall dog DNA test is Embark Breed & Health Kit
+                  (view at Chewy), which provides you with a breed brwn and
+                  information Most dogs
+                </p> -->
               </div>
             </div>
-            <div class="col-lg-4 col-md-6">
+          </div>
+          <div class="row justify-content-center">
+            <div
+              class="col-lg-4 col-md-6"
+              v-for="(shelnimal, index) in this.$store.state[`mainView`]
+                .shelnimal.list"
+              v-bind:key="index"
+            >
               <div class="adoption-shop-item">
                 <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb02.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
+                  <img
+                    style="width: 380px; height: 381px"
+                    :src="shelnimal.popfile"
+                    alt=""
+                  />
+                  <router-link
+                    :to="{ name: 'ShelDetail', params: { no: shelnimal.no } }"
+                    class="btn"
+                    >보러가기<img src="img/icon/w_pawprint.png" alt=""
+                  /></router-link>
                 </div>
                 <div class="adoption-shop-content">
-                  <h4 class="title"><a href="shop-details.html">Charlie</a></h4>
+                  <h4 class="title"></h4>
                   <div class="adoption-meta">
                     <ul>
                       <li>
                         <i class="fas fa-cog"></i
-                        ><a href="#">Golden Retriever</a>
+                        ><a href="#">{{ shelnimal.kindCd }}</a>
                       </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$30</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb03.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Alessia Max</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
                       <li>
-                        <i class="fas fa-cog"></i><a href="#">German Sherped</a>
+                        <i class="far fa-calendar"></i>{{ shelnimal.age }}
                       </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2020</li>
                     </ul>
                   </div>
                   <div class="adoption-rating">
                     <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+                      <li><i class="fas fa-coins"></i> 특징</li>
+                      <li style="text-align: right; width: 220px">
+                        {{ shelnimal.specialMark }}
                       </li>
-                      <li class="price">Total Price : <span>$29</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb04.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Canadian</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">German Sherped</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>$39</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb05.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Entertainment</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i><a href="#">Siberian Husky</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-              <div class="adoption-shop-item">
-                <div class="adoption-shop-thumb">
-                  <img src="img/product/adoption_shop_thumb06.jpg" alt="" />
-                  <a href="shop-details.html" class="btn"
-                    >Adoption <img src="img/icon/w_pawprint.png" alt=""
-                  /></a>
-                </div>
-                <div class="adoption-shop-content">
-                  <h4 class="title">
-                    <a href="shop-details.html">Dangerous</a>
-                  </h4>
-                  <div class="adoption-meta">
-                    <ul>
-                      <li>
-                        <i class="fas fa-cog"></i
-                        ><a href="#">Golden Retriever</a>
-                      </li>
-                      <li><i class="far fa-calendar-alt"></i> Birth : 2021</li>
-                    </ul>
-                  </div>
-                  <div class="adoption-rating">
-                    <ul>
-                      <li class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                      </li>
-                      <li class="price">Total Price : <span>Free</span></li>
                     </ul>
                   </div>
                 </div>
@@ -747,15 +595,15 @@
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
-                <h5 class="sub-title">Testimonials</h5>
-                <h2 class="title">Our Happy Customers</h2>
-                <p>
+                <h5 class="sub-title">준비해봤어요</h5>
+                <h2 class="title">도움이 될만한 사이트를 <br />준비해봤어요</h2>
+                <!-- <p>
                   The best overall dog DNA test is Embark Breed & Health Kit
                   (view at Chewy), which provides you with a breed brwn and
                   information Most dogs
-                </p>
+                </p> -->
               </div>
             </div>
           </div>
@@ -763,72 +611,38 @@
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar01.png" alt="" />
+                  <img src="/img/logo/character.png" alt="" />
                 </div>
                 <div class="testi-content">
-                  <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
-                  </p>
                   <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
+                    <h5 class="title">
+                      <a href="http://www.animal.go.kr">동물보호관리시스템</a>
+                    </h5>
                   </div>
+                  <p>
+                    농림축산식품부에서 운영하는 동물보호관리시스템 입니다.
+                    동물을 잃어버린 경우, 동물의 입양을 희망하는 경우 이용을
+                    추천드립니다.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="testimonial-item">
                 <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar02.png" alt="" />
+                  <img src="/img/logo/character.png" alt="" />
                 </div>
                 <div class="testi-content">
-                  <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
-                  </p>
                   <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
+                    <h5 class="title">
+                      <a href="https://mypetlife.co.kr/">비마이펫 라이프</a>
+                    </h5>
                   </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="testimonial-item">
-                <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar01.png" alt="" />
-                </div>
-                <div class="testi-content">
                   <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
+                    반려동물의 건강, 행동에서부터 생활 팁까지. 다양한 지식정보
+                    콘텐츠를 전문가 및 출판사 등과 협력하여 발행하는 사이트
+                    입니다
                   </p>
-                  <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6">
-              <div class="testimonial-item">
-                <div class="testi-avatar-thumb">
-                  <img src="img/images/testi_avatar02.png" alt="" />
-                </div>
-                <div class="testi-content">
-                  <p>
-                    “ The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy), which provides with a breed brwn and
-                    information ”
-                  </p>
-                  <div class="testi-avatar-info">
-                    <h5 class="title">Alessia Cara</h5>
-                    <span>Googel CEO</span>
-                  </div>
                 </div>
               </div>
             </div>
@@ -838,13 +652,13 @@
       <!-- testimonial-area-end -->
 
       <!-- blog-area -->
-      <section class="blog-area pt-110 pb-60">
+      <!-- <section class="blog-area pt-110 pb-60">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-xl-7 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
-                  <img src="img/icon/pawprint.png" alt="" />
+                  <img src="/img/icon/pawprint.png" alt="" />
                 </div>
                 <h5 class="sub-title">Our News</h5>
                 <h2 class="title">Latest News Update</h2>
@@ -861,7 +675,7 @@
               <div class="blog-post-item mb-50">
                 <div class="blog-post-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_post_thumb01.jpg" alt=""
+                    ><img src="/img/blog/blog_post_thumb01.jpg" alt=""
                   /></a>
                   <div class="blog-post-tag">
                     <a href="#"><i class="flaticon-bookmark-1"></i>Sharped</a>
@@ -882,7 +696,7 @@
                     at Chewy.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
@@ -891,7 +705,7 @@
               <div class="blog-post-item mb-50">
                 <div class="blog-post-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_post_thumb02.jpg" alt=""
+                    ><img src="/img/blog/blog_post_thumb02.jpg" alt=""
                   /></a>
                   <div class="blog-post-tag">
                     <a href="#"><i class="flaticon-bookmark-1"></i>Creative</a>
@@ -912,7 +726,7 @@
                     at Chewy.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
@@ -921,7 +735,7 @@
               <div class="blog-post-item mb-50">
                 <div class="blog-post-thumb">
                   <a href="blog-details.html"
-                    ><img src="img/blog/blog_post_thumb03.jpg" alt=""
+                    ><img src="/img/blog/blog_post_thumb03.jpg" alt=""
                   /></a>
                   <div class="blog-post-tag">
                     <a href="#"><i class="flaticon-bookmark-1"></i>Business</a>
@@ -942,53 +756,116 @@
                     at Chewy.
                   </p>
                   <a href="blog-details.html" class="read-more"
-                    >Read More <img src="img/icon/pawprint.png" alt=""
+                    >Read More <img src="/img/icon/pawprint.png" alt=""
                   /></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
       <!-- blog-area-end -->
-
-      <!-- newsletter-area -->
-      <div class="newsletter-area pb-110">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div class="newsletter-wrap">
-                <div class="newsletter-content">
-                  <h2 class="title">Newsletter For</h2>
-                  <p><span>*</span> Do Not Show Your Email.</p>
-                </div>
-                <div class="newsletter-form">
-                  <form action="#">
-                    <input type="email" placeholder="Enter Your Email..." />
-                    <button type="submit" class="btn">Subscribe</button>
-                  </form>
-                </div>
-                <div class="newsletter-shape">
-                  <img src="img/images/newsletter_shape01.png" alt="" />
-                </div>
-                <div class="newsletter-shape shape-two">
-                  <img src="img/images/newsletter_shape02.png" alt="" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- newsletter-area-end -->
     </main>
     <!-- main-area-end -->
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+// import Slick from "vue-slick";
 export default {
   name: "App",
-  components: {},
+  components: {
+    // Slick,
+  },
+  data() {
+    return {
+      maincnt:{},
+      slickOptions: {
+        dots: false,
+        infinite: true,
+        speed: 1000,
+        autoplay: false,
+        arrows: true,
+        autoplaySpeed: 3000,
+        prevArrow:
+          '<button type="button" class="slick-prev"><img src="/img/icon/arrow.png" /></button>',
+        nextArrow:
+          '<button type="button" class="slick-next"><img src="/img/icon/arrow.png" /></button>',
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+          {
+            breakpoint: 1200,
+            settings: {
+              slidesToShow: 3,
+              slidesToScroll: 1,
+              infinite: true,
+            },
+          },
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              speed: 1000,
+            },
+          },
+          {
+            breakpoint: 767,
+            settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1,
+              arrows: false,
+              speed: 1000,
+            },
+          },
+          {
+            breakpoint: 575,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              arrows: false,
+              speed: 1000,
+            },
+          },
+        ],
+      },
+    };
+  },
+  created(){
+    this.selectmaincnt();
+  },
+  mounted() {
+    if (this.$store.state["login"].isLogin == false) {
+      this.shelimalList();
+    } else {
+      this.shelimalListLogin();
+    }
+  },
+  methods:{
+    shelimalList() {
+      console.log("비로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalList");
+    },
+    shelimalListLogin() {
+      console.log("로그인 접속");
+      this.$store.dispatch("mainView/mainShelnimalListLogin");
+    },
+    selectmaincnt(){
+    axios({
+        method: 'get',
+        url: '/api/dataset/',
+      }).then((res) => {
+        this.maincnt = res.data; 
+        console.log(res.data)
+      }).catch((error) => {
+        console.log(error);
+      }).then(() => {
+        console.log('selectmaincnt End!!');
+      });
+    },
+  }
 };
 </script>
 

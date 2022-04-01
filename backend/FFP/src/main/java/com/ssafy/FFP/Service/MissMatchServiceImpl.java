@@ -29,7 +29,8 @@ public class MissMatchServiceImpl implements MissMatchService {
 	@Autowired
 	MissMatchDao missMatchtDao;
 	
-	static SparkConf conf = new SparkConf().setAppName("JavaKMeansExample").setMaster("local");
+	static SparkConf conf = new SparkConf().setAppName("JavaKMeansExample").setMaster("local").set("spark.driver.allowMultipleContexts","true");
+	static JavaSparkContext jsc = new JavaSparkContext(conf);
 
 	@Override
 	public List<DatasetDto> matching(Map<String, String> map) {
@@ -48,7 +49,7 @@ public class MissMatchServiceImpl implements MissMatchService {
 		String[] gugun = new String[] {"인천광역시","서울특별시","경기도","강원도","세종특별자치시","대전광역시","충청남도","충청북도","경상북도","대구광역시","울산광역시","경상남도","부산광역시","전라북도","전라남도","광주광역시","제주특별자치도"};
 		String[] sex = new String[] {"F","Q","M"};
 		String[] color = new String[] {"흰","힌","휜","하","화","백","white","베","아이","황","크림","노","누","골","금","gold","붉","빨","분","커피","브라","갈","밤","쵸","초코","초콜","초","녹","실버","그","회","감장","흑","블","검","black","바둑","젖소","점박","얼룩","삼색","호피","블루","고","치즈","턱시","코숏"};
-		File csv = new File("src/main/resources/recommend.csv");
+		File csv = new File("/recommend.csv");
 		BufferedWriter bw = null; // 출력 스트림 생성
 		try {
 			bw = new BufferedWriter(new FileWriter(csv));
@@ -97,14 +98,13 @@ public class MissMatchServiceImpl implements MissMatchService {
 		}
 
 		// CSV 파일 읽고 Kmeans 돌리기
-		String path = "src/main/resources/recommend.csv";
-
-		JavaSparkContext jsc = new JavaSparkContext(conf);
+		String path = "/recommend.csv";
+		
 		JavaRDD<String> data = jsc.textFile(path);
 
 		JavaRDD<Vector> parsedData = data.map(s -> {
 			String[] sarray = s.split("\\|");
-			double[] values = new double[sarray.length];
+			double[] values = new double[sarray.length]; 
 			for (int i = 0; i < sarray.length; i++) {
 				values[i] = Double.parseDouble(sarray[i]);
 			}
@@ -125,93 +125,10 @@ public class MissMatchServiceImpl implements MissMatchService {
 			if (result_int.get(j) == result_int.get(0))
 				result.add(list.get(j));
 		}
-		jsc.stop();
-
+//		jsc.stop(); 
+ 
 		result.sort((a,b) -> b.getHappenDt().compareTo(a.getHappenDt()));
 
 		return result;
 	}
-
-//	public void test() {
-//		SparkConf conf = new SparkConf().setAppName("JavaKMeansExample").setMaster("local");
-//		JavaSparkContext jsc = new JavaSparkContext(conf);
-//
-//		// $example on$
-//		// Load and parse data
-//		String path = "src/main/resources/recommend.csv";
-//
-//		JavaRDD<String> data = jsc.textFile(path);
-//
-//	    data.foreach(s -> {
-//	    	String[] sarray = s.split("\\|");
-//			DatasetDto dto = new DatasetDto();
-//			dto.setDesertionNo(sarray[0]);
-//			dto.setFilename(sarray[1]);
-//			dto.setHappenDt(sarray[2]);
-//			dto.setHappenPlace(sarray[3]);
-//			dto.setKindCd(sarray[4]);
-//			dto.setColorCd(sarray[5]);
-//			dto.setAge(sarray[6]);
-//			dto.setWeight(sarray[7]);
-//			dto.setNoticeNo(sarray[8]);
-//			dto.setNoticeSdt(sarray[9]);
-//			dto.setNoticeEdt(sarray[10]);
-//			dto.setPopfile(sarray[11]);
-//			dto.setProcessState(sarray[12]);
-//			dto.setSexCd(sarray[13]);
-//			dto.setNeuterYn(sarray[14]);
-//			dto.setSpecialMark(sarray[15]);
-//			dto.setCareNm(sarray[16]);
-//			dto.setCareTel(sarray[17]);
-//			dto.setCareAddr(sarray[18]);
-//			dto.setOrgNm(sarray[19]);
-//			dto.setChargeNm(sarray[20]);
-//			dto.setOfficetel(sarray[21]);
-//			list.add(dto);
-//	    });
-//	        
-//		JavaRDD<Vector> parsedData = data.map(s -> {
-//			String[] sarray = s.split("\\|");
-//			double[] values = new double[3];
-//			values[0] = Double.parseDouble(sarray[5]);
-//			values[1] = Double.parseDouble(sarray[13]);
-//			values[2] = Double.parseDouble(sarray[19]);
-//			return Vectors.dense(values);
-//		});
-//
-//		parsedData.cache();
-//
-//		// Cluster the data into two classes using KMeans
-//		int numClusters = (int) data.count();
-//		int numIterations = 20;
-//
-//		KMeansModel clusters = KMeans.train(parsedData.rdd(), numClusters, numIterations);
-//
-////	    System.out.println("Cluster centers:");
-////	    for (Vector center: clusters.clusterCenters()) {
-////	      System.out.println(" " + center);
-////	    }
-//
-////	    // Evaluate clustering by computing Within Set Sum of Squared Errors
-////	    double WSSSE = clusters.computeCost(parsedData.rdd());
-////	    System.out.println("Within Set Sum of Squared Errors = " + WSSSE);
-//		System.out.println(clusters.predict(parsedData).collect());
-//
-//		double cost = clusters.computeCost(parsedData.rdd());
-//		System.out.println("Cost: " + cost);
-//
-//		List<Integer> result = clusters.predict(parsedData).collect();
-//		for (int j = 0; j < result.size(); j++) {
-//			if (result.get(j) == 3)
-//				System.out.println(list.get(j));
-//		}
-//		System.out.println("\n" + list.size());
-//
-////	    // Save and load model
-////	    clusters.save(jsc.sc(), "target/org/apache/spark/JavaKMeansExample/KMeansModel");
-////	    KMeansModel sameModel = KMeansModel.load(jsc.sc(),"target/org/apache/spark/JavaKMeansExample/KMeansModel");
-////	    // $example off$
-//
-//		jsc.stop();
-//	}
 }

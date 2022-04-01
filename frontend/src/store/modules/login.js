@@ -1,4 +1,4 @@
-import VueJwtDecode from "vue-jwt-decode";
+import jwt_decode from "jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -35,6 +35,7 @@ const mutations = {
     if (!session.getItem("userInfo")) {
       session.setItem("userInfo", JSON.stringify(payload.userInfo)); //토큰값으로 들어오면
     } else if (session.getItem("userInfo")) {
+
       session.setItem("userInfo", JSON.stringify(payload.userInfo));
     }
 
@@ -70,11 +71,11 @@ const actions = {
   accessTokenRefreshOnUserInfo({ commit }, res) {
     // 유저 정보 갱신할때 사용
     console.log(
-      "allTokenRefreshOnUserInfo : " + res.headers["at-jwt-access-token"]
+      "allTokenRefreshOnUserInfo : " + res.headers["at-jwt-access-token2"]
     );
-    session.setItem("at-jwt-access-token", res.headers["at-jwt-access-token"]);
-    const decodeAccessToken = VueJwtDecode.decode(
-      res.headers["at-jwt-access-token"]
+    session.setItem("at-jwt-access-token", res.headers["at-jwt-access-token2"]);
+    const decodeAccessToken = jwt_decode(
+      res.headers["at-jwt-access-token2"]
     );
     console.log("decodeAccessToken data", decodeAccessToken);
     commit("userUpdate", decodeAccessToken);
@@ -89,7 +90,7 @@ const actions = {
       res.headers["at-jwt-refresh-token"]
     );
 
-    const decodeAccessToken = VueJwtDecode.decode(
+    const decodeAccessToken = jwt_decode(
       res.headers["at-jwt-access-token"]
     );
     console.log("decodeAccessToken data", decodeAccessToken);
