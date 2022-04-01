@@ -12,7 +12,7 @@ public interface ShelnimalService {
     public ShelnimalDto select(int no);
     public List<ShelnimalDto> list(int sdt, int offset, int limit);
     public List<ShelnimalDto> match(int userNo);
-    public List<DatasetDto> find(SearchDto searchDto);
+    public List<ShelnimalDto> find(SearchDto searchDto);
     public List<DatasetDto> mainList();
     public List<String> searchList(String kind);
 }
