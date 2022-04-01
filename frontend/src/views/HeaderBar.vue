@@ -30,17 +30,17 @@
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
-                    <ul class="navigation">
-                      <li class="menu-item-has-children">
+                    <ul class="navigation" >
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 0}">
                         <router-link to="/">홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 1}">
                         <router-link to="/shop">유기동물</router-link>
                       </li>
                       <!-- 헤더-실종동물 -->
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">실종동물</router-link>
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 2}">
+                        <router-link to="/missList">실종동물</router-link>
 
                         <ul class="submenu">
                           <li>
@@ -65,7 +65,7 @@
                           </li> -->
                         </ul>
                       </li>
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children"  :class="{active : this.$store.getters.getHaderindex == 3}">
                         <router-link to="/analysisview"
                           >데이터 분석</router-link
                         >
@@ -292,6 +292,11 @@
 const session = window.sessionStorage;
 
 export default {
+    data() {
+    return {
+      navclick : 0,
+    };
+  },
   computed: {
     isLoginGetters() {
       return this.$store.getters["login/isLogin"];
