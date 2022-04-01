@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- Preloader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
       <img src="/img/preloader.gif" alt="" />
-    </div>
+    </div> -->
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->

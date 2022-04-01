@@ -171,7 +171,7 @@
         class="counter-area counter-bg"
         style="background-image: url('/img/bg/counter_bg.jpg')"
       >
-        <div class="container">
+        <div v-if="maincnt.protect!=0" class="container">
           <!-- <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8">
               <div class="counter-title text-center mb-65">
@@ -186,7 +186,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="73">{{maincnt.today}}</span>
+                  <span class="odometer" >{{maincnt.today}}</span>
                 </h2>
                 <p>오늘 추가된 유기 동물</p>
               </div>
@@ -194,7 +194,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="259">{{maincnt.protect}}</span>
+                  <span class="odometer">{{maincnt.protect}}</span>
                 </h2>
                 <p>최근 한달 간 보호</p>
               </div>
@@ -202,7 +202,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="10">{{maincnt.return}}</span>
+                  <span class="odometer" >{{maincnt.return}}</span>
                 </h2>
                 <p>최근 한달 간 반환</p>
               </div>
@@ -210,7 +210,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" data-count="45">{{maincnt.death}}</span>
+                  <span class="odometer" >{{maincnt.death}}</span>
                 </h2>
                 <p>최근 한달 간 사망</p>
               </div>
@@ -780,7 +780,12 @@ export default {
   },
   data() {
     return {
-      maincnt:{},
+      maincnt:{
+        today:0,
+        protect:0,
+        return:0,
+        death:0,
+      },
       slickOptions: {
         dots: false,
         infinite: true,
@@ -834,15 +839,15 @@ export default {
     };
   },
   created(){
-    this.$store.commit('setHaderindex',0);
-    this.selectmaincnt();
-  },
-  mounted() {
     if (this.$store.state["login"].isLogin == false) {
       this.shelimalList();
     } else {
       this.shelimalListLogin();
     }
+    this.selectmaincnt();
+  },
+  mounted() {
+
   },
   methods:{
     shelimalList() {
@@ -854,6 +859,7 @@ export default {
       this.$store.dispatch("mainView/mainShelnimalListLogin");
     },
     selectmaincnt(){
+    this.$store.commit('loading/load', true);
     axios({
         method: 'get',
         url: '/api/dataset/',
@@ -862,9 +868,9 @@ export default {
         console.log(res.data)
       }).catch((error) => {
         console.log(error);
-      }).then(() => {
-        console.log('selectmaincnt End!!');
-      });
+      }).finally(() => this.$store.commit('loading/load', false),
+        console.log('selectmaincnt End!!'),
+      )
     },
   }
 };
