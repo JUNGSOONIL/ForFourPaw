@@ -14,38 +14,47 @@
 
     <select id="list" parameterType="map"
             resultType="com.ssafy.FFP.Dto.ShelnimalDto">
-        select no, desertionNo, filename, happenDt, happenPlace, kindCd,
+        select q.no, desertionNo, filename, happenDt, happenPlace, kindCd,
                colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
                processState, sexCd, neuterYn, specialMark, careNm, careTel,
                careAddr, orgNm, chargeNm, officetel as officeTel
-        from dataset
-        WHERE noticeEdt >= #{sdt} and processState = '보호중'
-        limit #{limit} offset #{offset}
+        from (
+            select no
+            from ffp.dataset
+            WHERE noticeEdt >= #{sdt} and processState = '보호중'
+            limit #{limit} offset #{offset}
+        ) q
+        join ffp.dataset d
+        on q.no = d.no
     </select>
 
     <select id="find" parameterType="com.ssafy.FFP.Dto.SearchDto"
             resultType="com.ssafy.FFP.Dto.DatasetDto">
-        select no, desertionNo, filename, happenDt, happenPlace, kindCd,
+        select q.no, desertionNo, filename, happenDt, happenPlace, kindCd,
                colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
                processState, sexCd, neuterYn, specialMark, careNm, careTel,
                careAddr, orgNm, chargeNm, officetel as officeTel
-        from dataset
-        WHERE no is not null
-        <if test ="kindCd != null">
-            AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
-        </if>
-        <if test ="neuterYn != null">
-            AND neuter_yn = #{neuterYn}
-        </if>
-        <if test ="sexCd != null">
-            AND sex_cd = #{sexCd}
-        </if>
-        <if test ="careAddr != null">
-            AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
-        </if>
-        order by noticeSdt DESC
-        limit #{limit} offset #{offset}
-
+        from (
+            select no
+            from ffp.dataset
+            WHERE no is not null
+            <if test ="kindCd != null">
+                AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
+            </if>
+            <if test ="neuterYn != null">
+                AND neuter_yn = #{neuterYn}
+            </if>
+            <if test ="sexCd != null">
+                AND sex_cd = #{sexCd}
+            </if>
+            <if test ="careAddr != null">
+                AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
+            </if>
+            order by noticeSdt DESC
+            limit 9 offset 0
+        ) q
+        join ffp.dataset d
+        on q.no = d.no
     </select>
     
     <select id="mainList" parameterType="String" resultType="com.ssafy.FFP.Dto.DatasetDto">
