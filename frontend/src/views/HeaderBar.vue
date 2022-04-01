@@ -306,7 +306,7 @@ export default {
     },
     activeMoreInfo() {
       let isAddrsvalidate = false;
-      if (this.userInfoGetters.addrs != "") {
+      if (this.userInfoGetters!=null && this.userInfoGetters.addrs != "") {
         isAddrsvalidate = true;
       }
       return this.isLoginGetters && !isAddrsvalidate;
