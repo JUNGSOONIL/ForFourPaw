@@ -426,7 +426,7 @@ export default  {
                     url: '/api/test',
                     data: data, 
                     headers: headers,  // 넣는거 까먹지 마세요
-                    timeout : 180000,
+                    timeout : 1800000,
                 }).then((res) => {
 
                     this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
