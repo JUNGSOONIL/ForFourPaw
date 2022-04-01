@@ -31,39 +31,19 @@
                careAddr, orgNm, chargeNm, officetel as officeTel
         from dataset
         WHERE no is not null
-        <if test ="happenDt != null">
-            AND happenDt = #{happenDt}
-        </if>
-        <if test ="happenPlace != null">
-            AND happenPlace = #{happenPlace}
-        </if>
         <if test ="kindCd != null">
-            AND kindCd = #{kindCd}
-        </if>
-        <if test ="colorCd != null">
-            AND colorCd = #{colorCd}
+            AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
         </if>
         <if test ="neuterYn != null">
             AND neuter_yn = #{neuterYn}
         </if>
-        <if test ="processState != null">
-            AND process_state = #{processState}
-        </if>
-        <if test ="descr != null">
-            AND descr = #{descr}
-        </if>
         <if test ="sexCd != null">
             AND sex_cd = #{sexCd}
         </if>
-        <if test ="noticeSdt != null">
-            AND notice_sdt &lt; #{noticeSdt}
-        </if>
-        <if test ="noticeEdt != null">
-            AND notice_edt >= #{noticeEdt}
-        </if>
         <if test ="careAddr != null">
-            AND careAddr LIKE CONCAT(‘%’, #{careAddr}, ‘%’)
+            AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
         </if>
+        order by noticeSdt DESC
         limit #{limit} offset #{offset}
 
     </select>
