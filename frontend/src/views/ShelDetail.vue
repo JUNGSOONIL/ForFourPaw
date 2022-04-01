@@ -288,6 +288,35 @@ export default {
         console.log('getQSSList End!!');
       });
     },
+
+    viewShel(){
+      let headers = {
+        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
+        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
+      };
+      const formData = new FormData();
+      let data = {
+          no : JSON.parse(session.getItem('userInfo')).no,
+          shelnimalId : this.miss.desertionNo,
+      };
+      formData.append(
+        "viewData",
+        new Blob([JSON.stringify(data)], { type: "application/json" })
+      );
+      axios({
+        method: 'post',
+        url: '/api/shel/', // /api vue.configjs가 가르키는 주소
+        data: data, // post 나 put에 데이터 넣어 줄때
+        headers: headers,  // 넣는거 까먹지 마세요
+      }).then((res) => {
+        
+        console.log(res);
+        this.dispatch('login/accessTokenRefresh', res) // 상황에 따라서 메서드가 다르다
+
+      }).catch((error) => {
+        console.log(error);
+      })
+    }
   },
 };
 </script>
