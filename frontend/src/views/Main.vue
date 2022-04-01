@@ -839,6 +839,7 @@ export default {
     };
   },
   created(){
+    this.$store.commit('setHaderindex',0);
     if (this.$store.state["login"].isLogin == false) {
       this.shelimalList();
     } else {

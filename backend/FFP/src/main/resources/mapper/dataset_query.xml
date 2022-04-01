@@ -43,6 +43,6 @@
        		#{item.careTel}, #{item.careAddr}, #{item.orgNm}, #{item.chargeNm}, #{item.officetel}
 			)
 		</foreach>
-		ON DUPLICATE KEY UPDATE no = values(no), processState = values(processState)
+		ON DUPLICATE KEY UPDATE processState = values(processState)
 	</insert>
 </mapper>
