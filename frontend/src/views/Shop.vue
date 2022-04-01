@@ -11,7 +11,7 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 class="title">유기 동뭉</h2>
+                <h2 class="title">유기 동물</h2>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
