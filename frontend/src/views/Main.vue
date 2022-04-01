@@ -834,6 +834,7 @@ export default {
     };
   },
   created(){
+    this.$store.commit('setHaderindex',0);
     this.selectmaincnt();
   },
   mounted() {

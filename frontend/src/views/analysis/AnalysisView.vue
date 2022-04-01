@@ -362,6 +362,9 @@ export default  {
             region_tempname : "",
         }
     },
+    created(){
+      this.$store.commit('setHaderindex',3);
+    },
     mounted() {
         console.log("[system] mounted! ");
     },
