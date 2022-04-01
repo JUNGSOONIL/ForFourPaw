@@ -31,7 +31,7 @@
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
                     <ul class="navigation">
-                      <li class="active menu-item-has-children">
+                      <li class="menu-item-has-children">
                         <router-link to="/">홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
@@ -174,7 +174,7 @@
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="isLoginGetters">
+                      <li class="header-btn" v-if="activeMoreInfo">
                         <router-link
                           to="/moreInfo"
                           class="btn"
@@ -295,6 +295,16 @@ export default {
   computed: {
     isLoginGetters() {
       return this.$store.getters["login/isLogin"];
+    },
+    userInfoGetters() {
+      return this.$store.getters["login/userInfo"];
+    },
+    activeMoreInfo() {
+      let isAddrsvalidate = false;
+      if (this.userInfoGetters.addrs != "") {
+        isAddrsvalidate = true;
+      }
+      return this.isLoginGetters && !isAddrsvalidate;
     },
   },
   methods: {
