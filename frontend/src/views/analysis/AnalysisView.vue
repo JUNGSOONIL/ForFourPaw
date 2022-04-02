@@ -428,12 +428,12 @@ export default  {
                     method: 'get',
                     url: '/api/test',
                     data: data, 
-                    headers: headers,  // 넣는거 까먹지 마세요
+                    // headers: headers,  // 넣는거 까먹지 마세요
                     timeout : 1800000,
                 }).then((res) => {
 
                     this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
-                    this.dispatch('accessTokenRefresh', res) // store에서
+                    // this.dispatch('accessTokenRefresh', res) // store에서
 
                     console.log(res.data);
                     var templaabels = [];
