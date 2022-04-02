@@ -3,6 +3,9 @@ package com.ssafy.FFP.Dto;
 public class ViewStoreDto {
 	private String no;
 	private String desertionNo;
+	
+	public ViewStoreDto() {}
+	
 	public String getNo() {
 		return no;
 	}
