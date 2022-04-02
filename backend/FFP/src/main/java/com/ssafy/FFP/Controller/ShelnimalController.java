@@ -5,7 +5,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import com.ssafy.FFP.Dto.CountingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.ssafy.FFP.Dto.CountingDto;
 import com.ssafy.FFP.Dto.DatasetDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.ViewStoreDto;
 import com.ssafy.FFP.Service.ShelnimalService;
 
 @CrossOrigin(origins = {"http://localhost:5500", "https://j6e105.p.ssafy.io"}, allowCredentials = "true", allowedHeaders = "*", methods = {
@@ -154,5 +155,20 @@ public class ShelnimalController {
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
         }
+    }
+    
+    // 검색
+    @PostMapping("/shel/view/detail")
+    public ResponseEntity<?> viewStore(@RequestBody ViewStoreDto viewStoreDto){
+    	System.out.println(viewStoreDto);
+//        int result = shelnimalService.viewStore(viewStoreDto);
+//
+//        if(result != 0) {
+//            return ResponseEntity.ok().body(result);
+//        }
+//        else {
+//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+//        }
+    	return null;
     }
 }
