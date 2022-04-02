@@ -44,60 +44,60 @@ public class AnalysisServiceImpl implements  AnalysisService {
 
         Dataset<Row> df = spark.read().option("delimiter", ";").option("header", "true").option("encoding", "euc-kr").csv(logFile);
 
-        System.out.println("[System] 데이터 전처리 실행 ");
-        Dataset<Row> re = df
-                .select( regexp_replace( col("weight"), "[(]Kg[)]| |[^0-9|.]|[0-9]+[.][(0-9)]+[.][0-9]+[(]Kg[)]", "").alias("holy"), col("weight"))
-                .select( regexp_replace( col("holy"), "[0-9]+[.][(0-9)]+[.][0-9]*", "").alias("weightre"), col("holy") )
-                .groupBy("weightre")
-                .count();
-        re.show();
-
-        valuearr = new long[11];
-        re.foreach( now -> {
-            // 변수 타입은 String
-            String temp = (String) now.get(0);
-            if (
-                    temp != null
-                            && temp.equals("") == false
-                            && temp.contains("..") == false
-                            && temp.charAt(0) != '.'
-            ){
-                Double num = Double.parseDouble(temp);
-                if ( 0 <= num && num < 1){
-                    valuearr[0] += (long) now.get(1);
-                } else if ( 1 <= num && num < 2 ){
-                    valuearr[1] +=  (long) now.get(1);
-                } else if ( 2 <= num && num < 3 ){
-                    valuearr[2] +=  (long) now.get(1);
-                } else if ( 3 <= num && num < 4 ){
-                    valuearr[3] +=  (long) now.get(1);
-                } else if ( 4 <= num && num < 5 ){
-                    valuearr[4] +=  (long) now.get(1);
-                } else if ( 5 <= num && num < 6 ){
-                    valuearr[5] +=  (long) now.get(1);
-                } else if ( 6 <= num && num < 7 ){
-                    valuearr[6] +=  (long) now.get(1);
-                } else if ( 7 <= num && num < 8 ){
-                    valuearr[7] +=  (long)now.get(1);
-                } else if ( 8 <= num && num < 9 ){
-                    valuearr[8] +=  (long) now.get(1);
-                } else if ( 9 <= num && num < 10 ){
-                    valuearr[9] += (long)now.get(1);
-                } else if ( 10 <= num ){
-                    valuearr[10] += (long)now.get(1);
-                }
-//                System.out.println(Arrays.toString(valuearr));
-            }
-        });
-
-
-        System.out.println(Arrays.toString(valuearr));
-        List<AnalysisDto> result_list = new ArrayList<AnalysisDto>();
-        for (int i = 0 ; i <= 10; i++ ){
-            result_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
-            System.out.println(result_list.get(i).toString());
-        }
-        result.setList(result_list);
+//        System.out.println("[System] 데이터 전처리 실행 ");
+//        Dataset<Row> re = df
+//                .select( regexp_replace( col("weight"), "[(]Kg[)]| |[^0-9|.]|[0-9]+[.][(0-9)]+[.][0-9]+[(]Kg[)]", "").alias("holy"), col("weight"))
+//                .select( regexp_replace( col("holy"), "[0-9]+[.][(0-9)]+[.][0-9]*", "").alias("weightre"), col("holy") )
+//                .groupBy("weightre")
+//                .count();
+//        re.show();
+//
+//        valuearr = new long[11];
+//        re.foreach( now -> {
+//            // 변수 타입은 String
+//            String temp = (String) now.get(0);
+//            if (
+//                    temp != null
+//                            && temp.equals("") == false
+//                            && temp.contains("..") == false
+//                            && temp.charAt(0) != '.'
+//            ){
+//                Double num = Double.parseDouble(temp);
+//                if ( 0 <= num && num < 1){
+//                    valuearr[0] += (long) now.get(1);
+//                } else if ( 1 <= num && num < 2 ){
+//                    valuearr[1] +=  (long) now.get(1);
+//                } else if ( 2 <= num && num < 3 ){
+//                    valuearr[2] +=  (long) now.get(1);
+//                } else if ( 3 <= num && num < 4 ){
+//                    valuearr[3] +=  (long) now.get(1);
+//                } else if ( 4 <= num && num < 5 ){
+//                    valuearr[4] +=  (long) now.get(1);
+//                } else if ( 5 <= num && num < 6 ){
+//                    valuearr[5] +=  (long) now.get(1);
+//                } else if ( 6 <= num && num < 7 ){
+//                    valuearr[6] +=  (long) now.get(1);
+//                } else if ( 7 <= num && num < 8 ){
+//                    valuearr[7] +=  (long)now.get(1);
+//                } else if ( 8 <= num && num < 9 ){
+//                    valuearr[8] +=  (long) now.get(1);
+//                } else if ( 9 <= num && num < 10 ){
+//                    valuearr[9] += (long)now.get(1);
+//                } else if ( 10 <= num ){
+//                    valuearr[10] += (long)now.get(1);
+//                }
+////                System.out.println(Arrays.toString(valuearr));
+//            }
+//        });
+//
+//
+//        System.out.println(Arrays.toString(valuearr));
+//        List<AnalysisDto> result_list = new ArrayList<AnalysisDto>();
+//        for (int i = 0 ; i <= 10; i++ ){
+//            result_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
+//            System.out.println(result_list.get(i).toString());
+//        }
+//        result.setList(result_list);
 
 
         // 날짜 분류 코드
