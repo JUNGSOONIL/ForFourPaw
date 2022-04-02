@@ -265,6 +265,7 @@ export default {
      }
   },
   created() {
+    this.$store.commit('setHaderindex',1);
     this.selectShel();
   },
   
