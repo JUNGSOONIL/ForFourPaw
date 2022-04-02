@@ -21,6 +21,7 @@ export default {
   },
   computed: {
     isLoadingGetters(){
+      alert(this.$route.name)
       return this.$store.getters["loading/isLoading"]
     }
   }
