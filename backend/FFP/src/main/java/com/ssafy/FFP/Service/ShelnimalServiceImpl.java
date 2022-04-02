@@ -209,7 +209,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 			DescendingObj descending = new DescendingObj();
 	        Collections.sort(recommend, descending);
 	        
-	        if(items.size() < 6) {
+	        if(items.size() < 6 || recommend.size() < 6) {
 	        	String processState = "보호중";
 	    		List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
 	    		System.out.println(shelnimalDtos.toString());
