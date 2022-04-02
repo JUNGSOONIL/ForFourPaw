@@ -24,6 +24,9 @@ import com.ssafy.FFP.Dto.ViewStoreDto;
 @Service
 public class ShelnimalServiceImpl implements ShelnimalService {
 	
+	private static final int SUCCESS = 1;
+    private static final int FAIL = -1;
+	
 	static class Node{
 		String shelnimalId; // 반려동물 Id
 		double degree;
@@ -229,7 +232,10 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 
 	@Override
 	public int viewStore(ViewStoreDto viewStoreDto) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		if (shelnimalDao.viewStore(viewStoreDto) == SUCCESS) // 성공
+            return SUCCESS;
+        else // 실패
+            return FAIL;
 	}
 }

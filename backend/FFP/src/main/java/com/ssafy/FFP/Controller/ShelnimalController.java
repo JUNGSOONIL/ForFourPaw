@@ -32,6 +32,9 @@ public class ShelnimalController {
 
     @Autowired
     ShelnimalService shelnimalService;
+    
+    private static final int SUCCESS = 1;
+    private static final int FAIL = -1;
 
     // 특정 공고 조회
     @GetMapping("/shel/detail/{no}")
@@ -160,15 +163,14 @@ public class ShelnimalController {
     // 검색
     @PostMapping("/shel/view/detail")
     public ResponseEntity<?> viewStore(@RequestBody ViewStoreDto viewStoreDto){
-    	System.out.println(viewStoreDto);
-//        int result = shelnimalService.viewStore(viewStoreDto);
-//
-//        if(result != 0) {
-//            return ResponseEntity.ok().body(result);
-//        }
-//        else {
-//            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
-//        }
-    	return null;
+    	
+        if (shelnimalService.viewStore(viewStoreDto) == SUCCESS) {
+            System.out.println("조회 저장 성공");
+            System.out.println(viewStoreDto);
+            return new ResponseEntity<Integer>(SUCCESS, HttpStatus.OK);
+        } else {
+            System.out.println("조회 저장 실패");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "중복");
+        }
     }
 }
