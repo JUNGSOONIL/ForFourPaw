@@ -268,6 +268,7 @@ export default {
     this.$store.commit('setHaderindex',1);
     this.selectShel();
   },
+  
   methods:{
     selectShel(){
       let headers = {
