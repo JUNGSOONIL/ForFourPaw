@@ -310,7 +310,7 @@
                           :style="commenntopen">
 
                             <div v-for="(com, index) in commentlistslice" v-bind:key="index">
-                              <img style="float:left;" id="comment_img" :src="com.profile_img" alt="">
+                              <img style="float:left;" id="comment_img" :src="com.profileImage" alt="">
                               <h4 style="float:left; margin:0px">{{com.authorNickName}}</h4>
                               <div v-if="com.author == userInfoNo()" id="setting" style="cursor: pointer; float:right;" @click="commentdelete(com.no)">
                                 <i style="margin-top:5px" class="fas fa-trash"></i>
