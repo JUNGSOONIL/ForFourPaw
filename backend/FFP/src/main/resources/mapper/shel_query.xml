@@ -94,9 +94,11 @@
 		<foreach collection="list" item="item" open="(" close=")" separator="or">
 		desertionNo = #{item}
 		</foreach>
-
-
-
     </select>
+    
+    <insert id="viewStore" parameterType="com.ssafy.FFP.Dto.ViewStoreDto">
+		insert IGNORE into ffp.view(no, shelnimalId)
+		values (#{no}, #{desertionNo})
+	</insert>
 
 </mapper>

@@ -433,7 +433,7 @@ export default  {
                 }).then((res) => {
 
                     this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
-                    this.dispatch('accessTokenRefresh', res) // store에서
+                    // this.dispatch('accessTokenRefresh', res) // store에서
 
                     console.log(res.data);
                     var templaabels = [];
