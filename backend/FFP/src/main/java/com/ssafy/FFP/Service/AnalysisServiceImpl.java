@@ -42,7 +42,7 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .config("spark.master", "local")
                 .getOrCreate();
 
-        Dataset<Row> df = spark.read().option("delimiter", ";").option("header", "true").option("encoding", "euc-kr").csv(logFile);
+//        Dataset<Row> df = spark.read().option("delimiter", ";").option("header", "true").option("encoding", "euc-kr").csv(logFile);
 
 //        System.out.println("[System] 데이터 전처리 실행 ");
 //        Dataset<Row> re = df
