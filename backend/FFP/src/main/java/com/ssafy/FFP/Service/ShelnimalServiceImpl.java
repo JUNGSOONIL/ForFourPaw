@@ -19,6 +19,7 @@ import com.ssafy.FFP.Dao.ShelnimalDao;
 import com.ssafy.FFP.Dto.DatasetDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.ViewStoreDto;
 
 @Service
 public class ShelnimalServiceImpl implements ShelnimalService {
@@ -224,5 +225,11 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 		}
 		
         
+	}
+
+	@Override
+	public int viewStore(ViewStoreDto viewStoreDto) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
