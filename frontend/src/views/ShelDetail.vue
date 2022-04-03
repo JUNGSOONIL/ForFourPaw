@@ -304,7 +304,13 @@ export default {
   created() {
     this.$store.commit('setHaderindex',1);
     this.selectShel();
+     
   },
+
+  mounted() {
+    
+  },
+  
   methods:{
     selectShel(){
       let headers = {
@@ -320,11 +326,46 @@ export default {
         console.log(res);
         this.miss = res.data; // 여기 수정
         this.noticedt = this.miss.noticeSdt +" ~ " + this.miss.noticeEdt;
+        if (this.$store.state["login"].isLogin == true){
+          this.viewStore();
+        }
       }).catch((error) => {
         console.log(error);
       }).then(() => {
         console.log('getQSSList End!!');
       });
+    },
+
+    viewStore() {
+      let headers = {
+        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
+        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
+      };
+
+      console.log(JSON.parse(session.getItem('userInfo')).no + " " + this.miss.desertionNo)
+
+      let data = {
+        no: JSON.parse(session.getItem('userInfo')).no,
+        desertionNo: this.miss.desertionNo,
+      };
+
+      axios({
+        method: "post",
+        url: "/api/shel/view/detail",
+        data: data,
+        headers: headers,
+      })
+        .then((res) => {
+          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
+          
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .then(() => {
+          console.log("viewStore 성공");
+          
+        });
     },
   },
 };

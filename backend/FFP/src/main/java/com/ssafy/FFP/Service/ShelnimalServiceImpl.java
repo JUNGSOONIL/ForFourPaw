@@ -19,9 +19,13 @@ import com.ssafy.FFP.Dao.ShelnimalDao;
 import com.ssafy.FFP.Dto.DatasetDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.ViewStoreDto;
 
 @Service
 public class ShelnimalServiceImpl implements ShelnimalService {
+	
+	private static final int SUCCESS = 1;
+    private static final int FAIL = -1;
 	
 	static class Node{
 		String shelnimalId; // 반려동물 Id
@@ -205,7 +209,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 			DescendingObj descending = new DescendingObj();
 	        Collections.sort(recommend, descending);
 	        
-	        if(items.size() < 6) {
+	        if(items.size() < 6 || recommend.size() < 6) {
 	        	String processState = "보호중";
 	    		List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
 	    		System.out.println(shelnimalDtos.toString());
@@ -224,5 +228,14 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 		}
 		
         
+	}
+
+	@Override
+	public int viewStore(ViewStoreDto viewStoreDto) {
+		
+		if (shelnimalDao.viewStore(viewStoreDto) == SUCCESS) // 성공
+            return SUCCESS;
+        else // 실패
+            return FAIL;
 	}
 }
