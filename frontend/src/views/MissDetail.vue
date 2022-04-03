@@ -202,7 +202,7 @@
                       >약관</a
                     >
                   </li>
-                  <li class="nav-item">
+                  <li v-if="miss.author == userInfoNo()" class="nav-item">
                     <a
                       class="nav-link"
                       id="details-tab"
@@ -564,7 +564,9 @@ export default {
         console.log(error);
       }).then(() => {
         console.log('selectMiss End!!');
-        this.match();
+        if(this.miss.author == this.userInfoNo()){
+          this.match();
+        }
       });
     },
   },
