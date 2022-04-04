@@ -276,7 +276,8 @@ export default {
   },
   computed: {
     isLoginGetters() {
-      return this.$store.getters["login/isLogin"];
+       return session.getItem("userInfo"); 
+      // return this.$store.getters["login/isLogin"];
     },
     userInfoGetters() {
       return this.$store.getters["login/userInfo"];
