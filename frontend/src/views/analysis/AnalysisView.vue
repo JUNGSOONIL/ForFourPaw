@@ -338,7 +338,9 @@
 
 <script>
 import axios from 'axios'
-const session = window.sessionStorage;
+axios.defaults.timeout = 1800000;
+
+// const session = window.sessionStorage;
 
 // for chart
 import { Chart, registerables } from 'chart.js';
