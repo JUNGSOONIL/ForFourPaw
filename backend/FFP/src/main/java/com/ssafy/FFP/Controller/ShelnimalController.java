@@ -5,7 +5,6 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import com.ssafy.FFP.Dto.CountingDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,9 +17,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.ssafy.FFP.Dto.CountingDto;
 import com.ssafy.FFP.Dto.DatasetDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.ViewStoreDto;
 import com.ssafy.FFP.Service.ShelnimalService;
 
 @CrossOrigin(origins = {"http://localhost:5500", "https://j6e105.p.ssafy.io"}, allowCredentials = "true", allowedHeaders = "*", methods = {
@@ -31,6 +32,9 @@ public class ShelnimalController {
 
     @Autowired
     ShelnimalService shelnimalService;
+    
+    private static final int SUCCESS = 1;
+    private static final int FAIL = -1;
 
     // 특정 공고 조회
     @GetMapping("/shel/detail/{no}")
@@ -130,7 +134,9 @@ public class ShelnimalController {
     @GetMapping("/shel/view/login/{no}")
     public ResponseEntity<?> mainListLogin(@PathVariable String no){
     	System.out.println("mainList : 로그인 " + no);
-        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
+//        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();
+        
+        List<DatasetDto> shelnimalDtos = shelnimalService.mainListLogin(no);
 
         if(shelnimalDtos != null) {
             return ResponseEntity.ok().body(shelnimalDtos);
@@ -151,6 +157,20 @@ public class ShelnimalController {
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+        }
+    }
+    
+    // 검색
+    @PostMapping("/shel/view/detail")
+    public ResponseEntity<?> viewStore(@RequestBody ViewStoreDto viewStoreDto){
+    	
+        if (shelnimalService.viewStore(viewStoreDto) == SUCCESS) {
+            System.out.println("조회 저장 성공");
+            System.out.println(viewStoreDto);
+            return new ResponseEntity<Integer>(SUCCESS, HttpStatus.OK);
+        } else {
+            System.out.println("조회 저장 실패");
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "중복");
         }
     }
 }

@@ -214,6 +214,9 @@ export default {
       ],
     };
   },
+  created(){
+    this.$store.commit('setHaderindex',2);
+  },
   methods: {
     GetAnimalstest() {
       let headers = {

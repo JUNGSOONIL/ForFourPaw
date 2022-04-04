@@ -202,7 +202,7 @@
                       >약관</a
                     >
                   </li>
-                  <li class="nav-item">
+                  <li v-if="miss.author == userInfoNo()" class="nav-item">
                     <a
                       class="nav-link"
                       id="details-tab"
@@ -310,7 +310,7 @@
                           :style="commenntopen">
 
                             <div v-for="(com, index) in commentlistslice" v-bind:key="index">
-                              <img style="float:left;" id="comment_img" :src="com.profile_img" alt="">
+                              <img style="float:left;" id="comment_img" :src="com.profileImage" alt="">
                               <h4 style="float:left; margin:0px">{{com.authorNickName}}</h4>
                               <div v-if="com.author == userInfoNo()" id="setting" style="cursor: pointer; float:right;" @click="commentdelete(com.no)">
                                 <i style="margin-top:5px" class="fas fa-trash"></i>
@@ -397,6 +397,7 @@ export default {
      }
   },
   created() {
+    this.$store.commit('setHaderindex',2);
     this.selectMiss();
     this.commentselect();
   },
@@ -563,7 +564,9 @@ export default {
         console.log(error);
       }).then(() => {
         console.log('selectMiss End!!');
-        this.match();
+        if(this.miss.author == this.userInfoNo()){
+          this.match();
+        }
       });
     },
   },

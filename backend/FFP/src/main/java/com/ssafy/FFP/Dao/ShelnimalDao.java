@@ -2,13 +2,13 @@ package com.ssafy.FFP.Dao;
 
 import java.util.List;
 
-import com.ssafy.FFP.Dto.MissnimalDto;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.ssafy.FFP.Dto.DatasetDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import com.ssafy.FFP.Dto.ShelnimalDto;
-import org.apache.ibatis.annotations.Param;
+import com.ssafy.FFP.Dto.ViewStoreDto;
 
 @Mapper
 public interface ShelnimalDao {
@@ -21,4 +21,9 @@ public interface ShelnimalDao {
     public List<ShelnimalDto> find(SearchDto searchDto);
     public List<DatasetDto> mainList(String processState);
     public List<String> searchList(String kind);
+    public Integer userCount();
+    public String[] userInfo();
+    public String[] userItem(String no);
+    public List<DatasetDto> mainListLogin(List<String> list);
+    public int viewStore(ViewStoreDto viewStoreDto);
 }
