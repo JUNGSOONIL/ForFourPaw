@@ -10,11 +10,13 @@ public class SearchDto {
     private String happenDt;
     private String happenPlace;
     private String careAddr;
+    private String processState;
     private int limit;
-    private int offset;
+    private String offset;
+//    private int offset;
 
     public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt,
-                     String happenPlace, String careAddr, int limit, int offset) {
+                     String happenPlace, String careAddr, String processState, int limit, String offset) {
         this.kindCd = kindCd;
         this.colorCd = colorCd;
         this.age = age;
@@ -23,6 +25,7 @@ public class SearchDto {
         this.happenDt = happenDt;
         this.happenPlace = happenPlace;
         this.careAddr = careAddr;
+        this.processState = processState;
         this.limit = limit;
         this.offset = offset;
     }
@@ -102,14 +105,46 @@ public class SearchDto {
     public void setLimit(int limit) {
         this.limit = limit;
     }
+//
+//    public int getOffset() {
+//        return offset;
+//    }
+//
+//    public void setOffset(int offset) {
+//        this.offset = offset;
+//    }
 
-    public int getOffset() {
+
+    public String getOffset() {
         return offset;
     }
 
-    public void setOffset(int offset) {
+    public void setOffset(String offset) {
         this.offset = offset;
     }
 
+    public String getProcessState() {
+        return processState;
+    }
 
+    public void setProcessState(String processState) {
+        this.processState = processState;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchDto{" +
+                "kindCd='" + kindCd + '\'' +
+                ", colorCd='" + colorCd + '\'' +
+                ", age='" + age + '\'' +
+                ", sexCd='" + sexCd + '\'' +
+                ", neuterYn='" + neuterYn + '\'' +
+                ", happenDt='" + happenDt + '\'' +
+                ", happenPlace='" + happenPlace + '\'' +
+                ", careAddr='" + careAddr + '\'' +
+                ", processState='" + processState + '\'' +
+                ", limit=" + limit +
+                ", offset='" + offset + '\'' +
+                '}';
+    }
 }
