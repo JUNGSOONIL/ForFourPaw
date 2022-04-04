@@ -30,14 +30,14 @@
     <select id="find" parameterType="int"
             resultType="com.ssafy.FFP.Dto.MissnimalDto">
         select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile,
-               m.write_time as writeTime
+               write_time as writeTime
         from missnimal
         WHERE no is not null
         <if test ="kindCd != null">
             AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
         </if>
-        <if test ="careAddr != null">
-            AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
+        <if test ="happenPlace != null">
+            AND happenPlace LIKE CONCAT('%', #{careAddr}, '%')
         </if>
         order by no DESC
         limit #{limit} offset #{offset}
