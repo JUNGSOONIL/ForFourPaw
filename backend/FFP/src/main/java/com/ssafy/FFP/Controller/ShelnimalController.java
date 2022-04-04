@@ -80,18 +80,93 @@ public class ShelnimalController {
 
     // 공고일 종료일이 최소 오늘인 공고 목록 조회
     @GetMapping("/shel/{offset}")
-    public ResponseEntity<?> list(@PathVariable String offset){
+    public ResponseEntity<?> list(@PathVariable String offset) throws IOException{
         LocalDate seoulNow = LocalDate.now(ZoneId.of("Asia/Seoul"));
+        LocalDate seoulMonth = seoulNow.plusMonths(1);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
         String formatedNow = seoulNow.format(formatter);
-        int sdt = Integer.parseInt(formatedNow);
-        int os = Integer.parseInt(offset);
-        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt, os, 9);
-        List<ShelnimalDto> count = shelnimalService.list(sdt, os, 100000);
-        CountingDto countingDto = new CountingDto(count.size(), shelnimalDtos, null);
+        String formatedMonth = seoulMonth.format(formatter);
+//        int sdt = Integer.parseInt(formatedNow);
+//        int os = Integer.parseInt(offset);
+//        List<ShelnimalDto> shelnimalDtos = shelnimalService.list(sdt, os, 9);
+//        List<ShelnimalDto> count = shelnimalService.list(sdt, os, 100000);
+//        CountingDto countingDto = new CountingDto(count.size(), shelnimalDtos, null);
 
-        if(shelnimalDtos != null) {
-            return ResponseEntity.ok().body(countingDto);
+        int max = 1;
+        int result = 0;
+        List<ShelnimalDto> list = new ArrayList<>();
+
+        StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
+        urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=D21SdqOm7AojlfaqJFBST3lCQ27QgAqg0TW%2BP%2BDSCI3ZZghj9ZwBWiAh7StgwiTR8WwHIbhtYIto%2F8StRy4qVw%3D%3D"); /*Service Key*/
+        urlBuilder.append("&" + URLEncoder.encode("endde","UTF-8") + "=" + URLEncoder.encode(formatedMonth, "UTF-8")); /*유기날짜(검색 종료일) (YYYYMMDD)*/
+        urlBuilder.append("&" + URLEncoder.encode("state","UTF-8") + "=" + URLEncoder.encode("protect", "UTF-8")); /*상태(전체 : null(빈값), 공고중 : notice, 보호중 : protect)*/
+        if(offset != null) urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(offset, "UTF-8")); /*페이지 번호 (기본값 : 1)*/
+        urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("9", "UTF-8")); /*페이지당 보여줄 개수 (1,000 이하), 기본값 : 10*/
+        urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*xml(기본값) 또는 json*/
+        URL url = new URL(urlBuilder.toString());
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-type", "application/json");
+        System.out.println("Response code: " + conn.getResponseCode());
+        BufferedReader rd;
+        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        } else {
+            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        }
+        String line;
+        String str = "";
+        while ((line = rd.readLine()) != null) {
+            str += line + "\n";
+        }
+        try {
+            if(str.contains("SERVICE ERROR"))
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
+            JSONParser jsonParse = new JSONParser(); // JSONParse에 json데이터를 넣어 파싱한 다음 JSONObject로 변환한다.
+            JSONObject jsonObject = (JSONObject) jsonParse.parse(str);
+            JSONObject response = (JSONObject) jsonObject.get("response");
+            JSONObject body = (JSONObject) response.get("body");
+            JSONObject items = (JSONObject) body.get("items");
+            int totalCount = Integer.parseInt(body.get("totalCount").toString());
+            if (max == 1)
+                max = totalCount % 1000 == 0 ? totalCount / 1000 : totalCount / 1000 + 1;
+            JSONArray item = (JSONArray) items.get("item"); // JSON 파싱 데이터에서 tracks부분을 배열로 가져옴
+            for (int i = 0; i < item.size(); i++) {
+                ShelnimalDto dto = new ShelnimalDto();
+                JSONObject itembody = (JSONObject) item.get(i);
+                dto.setDesertionNo(itembody.get("desertionNo") != null ? itembody.get("desertionNo").toString() : "-");
+                dto.setFilename(itembody.get("filename") != null ? itembody.get("filename").toString() : "-");
+                dto.setHappenDt(itembody.get("happenDt") != null ? itembody.get("happenDt").toString() : "-");
+                dto.setHappenPlace(itembody.get("happenPlace") != null ? itembody.get("happenPlace").toString() : "-");
+                dto.setKindCd(itembody.get("kindCd") != null ? itembody.get("kindCd").toString() : "-");
+                dto.setColorCd(itembody.get("colorCd") != null ? itembody.get("colorCd").toString() : "-");
+                dto.setAge(itembody.get("age") != null ? itembody.get("age").toString() : "-");
+                dto.setWeight(itembody.get("weight") != null ? itembody.get("weight").toString() : "-");
+                dto.setNoticeNo(itembody.get("noticeNo") != null ? itembody.get("noticeNo").toString() : "-");
+                dto.setNoticeSdt(itembody.get("noticeSdt") != null ? itembody.get("noticeSdt").toString() : "-");
+                dto.setNoticeEdt(itembody.get("noticeEdt") !=null ? itembody.get("noticeEdt").toString() : "-");
+                dto.setPopfile(itembody.get("popfile") != null ? itembody.get("popfile").toString() : "-");
+                dto.setProcessState(itembody.get("processState") != null ? itembody.get("processState").toString() : "-");
+                dto.setSexCd(itembody.get("sexCd") != null ? itembody.get("sexCd").toString() : "-");
+                dto.setNeuterYn(itembody.get("neuterYn") != null ? itembody.get("neuterYn").toString() : "-");
+                dto.setSpecialMark(itembody.get("specialMark") != null ? itembody.get("specialMark").toString() : "-");
+                dto.setCareNm(itembody.get("careNm") != null ? itembody.get("careNm").toString() : "-");
+                dto.setCareTel(itembody.get("careTel") != null ? itembody.get("careTel").toString() : "-");
+                dto.setCareAddr(itembody.get("careAddr") != null ? itembody.get("careAddr").toString() : "-");
+                dto.setOrgNm(itembody.get("orgNm") != null ? itembody.get("orgNm").toString() : "-");
+                dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "-");
+                dto.setOfficeTel(itembody.get("officeTel") != null ? itembody.get("officetel").toString() : "-");
+                list.add(dto);
+            }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        System.out.println(result);
+        rd.close();
+        conn.disconnect();
+
+        if(list != null) {
+            return ResponseEntity.ok().body(list);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
@@ -139,6 +214,9 @@ public class ShelnimalController {
         String processState = searchDto.getProcessState();
         String kind = searchDto.getKindCd();
         String place = searchDto.getCareAddr();
+        String upKindCd = searchDto.getUpKindCd();
+        String noticeSdt = searchDto.getNoticeSdt();
+        String noticeEdt = searchDto.getNoticeEdt();
 
         System.out.println(searchDto.toString());
 
@@ -148,11 +226,11 @@ public class ShelnimalController {
 
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=D21SdqOm7AojlfaqJFBST3lCQ27QgAqg0TW%2BP%2BDSCI3ZZghj9ZwBWiAh7StgwiTR8WwHIbhtYIto%2F8StRy4qVw%3D%3D"); /*Service Key*/
-        //urlBuilder.append("&" + URLEncoder.encode("bgnde","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*유기날짜(검색 시작일) (YYYYMMDD)*/
-        //urlBuilder.append("&" + URLEncoder.encode("endde","UTF-8") + "=" + URLEncoder.encode("", "UTF-8")); /*유기날짜(검색 종료일) (YYYYMMDD)*/
+        if(noticeSdt != null) urlBuilder.append("&" + URLEncoder.encode("bgnde","UTF-8") + "=" + URLEncoder.encode(noticeSdt, "UTF-8")); /*유기날짜(검색 시작일) (YYYYMMDD)*/
+        if(noticeEdt != null) urlBuilder.append("&" + URLEncoder.encode("endde","UTF-8") + "=" + URLEncoder.encode(noticeEdt, "UTF-8")); /*유기날짜(검색 종료일) (YYYYMMDD)*/
         //urlBuilder.append("&" + URLEncoder.encode("care_reg_no","UTF-8") + "=" + URLEncoder.encode(" ", "UTF-8")); /*보호소번호 (보호소 조회 OPEN API 참조)*/
         // urlBuilder.append("&" + URLEncoder.encode("org_cd","UTF-8") + "=" + URLEncoder.encode(" ", "UTF-8")); /*시군구코드 (시군구 조회 OPEN API 참조)*/
-        // urlBuilder.append("&" + URLEncoder.encode("upkind","UTF-8") + "=" + URLEncoder.encode(, "UTF-8")); /*축종코드 (개 : 417000, 고양이 : 422400, 기타 : 429900)*/
+        if(upKindCd != null) urlBuilder.append("&" + URLEncoder.encode("upkind","UTF-8") + "=" + URLEncoder.encode(upKindCd, "UTF-8")); /*축종코드 (개 : 417000, 고양이 : 422400, 기타 : 429900)*/
         if(kind != null) urlBuilder.append("&" + URLEncoder.encode("kind","UTF-8") + "=" + URLEncoder.encode(kind, "UTF-8")); /*품종코드 (품종 조회 OPEN API 참조)*/
         if(place != null) urlBuilder.append("&" + URLEncoder.encode("upr_cd","UTF-8") + "=" + URLEncoder.encode(place, "UTF-8")); /*시도코드 (시도 조회 OPEN API 참조)*/
         if(processState != null) urlBuilder.append("&" + URLEncoder.encode("state","UTF-8") + "=" + URLEncoder.encode(processState, "UTF-8")); /*상태(전체 : null(빈값), 공고중 : notice, 보호중 : protect)*/
