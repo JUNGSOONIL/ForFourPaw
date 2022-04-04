@@ -6,16 +6,22 @@ Vue.use(VueRouter);
 import Main from "@/views/Main.vue";
 import Shop from "@/views/Shop.vue";
 import ShopDetail from "@/views/ShopDetail.vue";
+import MissDetail from "@/views/MissDetail.vue";
+import ShelDetail from "@/views/ShelDetail.vue";
+import MissWrite from "@/views/MissWrite.vue";
 import DogList from "@/views/DogList.vue";
 import BlogDetail from "@/views/BlogDetail.vue";
 import Blog from "@/views/Blog.vue";
 import SocialLogin from "@/views/accounts/SocialLogin.vue";
 import LogoutPage from "@/views/accounts/LogoutPage.vue";
 import MoreInfo from "@/views/accounts/MoreInfo.vue";
-import Analysis_Region from "@/views/analysis/Analysis_Region.vue";
+import AnalysisView from "@/views/analysis/AnalysisView.vue";
+import MissList from "@/views/MissList.vue";
+import UserPage from "@/views/UserPage.vue";
 
 export default new VueRouter({
   mode: "history",
+  base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
@@ -32,6 +38,38 @@ export default new VueRouter({
       name: "ShopDetail",
       path: "/shopDetail",
       component: ShopDetail,
+    },
+    {
+      name: "MissList",
+      path: "/missList",
+      component: MissList,
+    },
+
+    {
+      name: "MissDetail",
+      path: "/missDetail",
+      component: MissDetail,
+      props: true,
+    },
+
+    {
+      name: "ShelDetail",
+      path: "/shelDetail",
+      component: ShelDetail,
+      props: true,
+    },
+
+    {
+      name: "MissWrite",
+      path: "/missWrite",
+      component: MissWrite,
+      props: true,
+    },
+
+    {
+      name: "UserPage",
+      path: "/userPage",
+      component: UserPage,
     },
 
     {
@@ -83,12 +121,22 @@ export default new VueRouter({
       path: "/moreInfo",
       component: MoreInfo,
     },
-
     {
-      name: "Analysis_Region",
-      path: "/Analysis_Region",
-      component: Analysis_Region,
+      name: "AnalysisView",
+      path: "/AnalysisView",
+      component: AnalysisView,
     },
+    {
+      name: "UserPage",
+      path: "/userPage",
+      component: UserPage,
+    },
+    {
+      name: "MissList",
+      path: "/missList",
+      component: MissList,
+    },
+    
   ],
 
   //페이지 이동시 유지되던 스크롤 위치를 맨위로 이동

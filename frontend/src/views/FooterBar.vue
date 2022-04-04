@@ -8,14 +8,17 @@
             <div class="col-3">
               <div class="footer-widget">
                 <div class="f-logo">
-                  <a href="index.html"
-                    ><img src="img/logo/paw_logo_2line.png" alt=""
-                  /></a>
+                  <router-link to="/"
+                    ><img
+                      src="/img/logo/paw_logo_2line.png"
+                      alt=""
+                      onclick="window.scrollTo(0,0);"
+                  /></router-link>
                 </div>
                 <div class="footer-text">
                   <p>
-                    The best overall dog DNA test Embark Breed & Health Kit
-                    (view at Chewy) which provides overall dog you.
+                    For Four Paw 에서는 유기동물 및 실종동물을 <br />
+                    조회할 수 있습니다.
                   </p>
                 </div>
                 <!-- <div class="footer-contact">
@@ -26,7 +29,7 @@
                     </h4>
                     <span>Call Now</span>
                   </div>
-                </div> -->
+                </div>
                 <div class="footer-social">
                   <ul>
                     <li>
@@ -42,10 +45,10 @@
                       <a href="#"><i class="fab fa-linkedin-in"></i></a>
                     </li>
                   </ul>
-                </div>
+                </div> -->
               </div>
             </div>
-            <div class="col-2">
+            <!-- <div class="col-2">
               <div class="footer-widget">
                 <h4 class="fw-title">Our Policies</h4>
                 <div class="fw-link">
@@ -78,40 +81,75 @@
                   </ul>
                 </div>
               </div>
-            </div>
-            <div class="col-3">
+            </div> -->
+            <div class="col-7">
               <div class="footer-widget">
-                <h4 class="fw-title">Instagram</h4>
+                <h4 class="fw-title">Team</h4>
                 <div class="fw-insta">
                   <ul>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img01.png" alt=""
+                        ><img
+                          class="team"
+                          src="/img/team/soon.png"
+                          alt=""
+                          width="92px"
+                          height="92px"
                       /></a>
+                      정순일
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img02.png" alt=""
+                        ><img
+                          class="team"
+                          src="/img/team/sik.jpg"
+                          alt=""
+                          width="92px"
+                          height="92px"
                       /></a>
+                      우윤식
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img03.png" alt=""
+                        ><img
+                          class="team"
+                          src="/img/team/tak.jpg"
+                          alt=""
+                          width="92px"
+                          height="92px"
                       /></a>
+                      류기탁
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img04.png" alt=""
+                        ><img
+                          class="team"
+                          src="/img/team/sang.png"
+                          alt=""
+                          width="92px"
+                          height="92px"
                       /></a>
+                      최상후
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img05.png" alt=""
+                        ><img
+                          class="team"
+                          src="/img/team/chan.png"
+                          alt=""
+                          width="92px"
+                          height="92px"
                       /></a>
+                      윤찬호
                     </li>
                     <li>
                       <a href="#"
-                        ><img src="img/images/insta_img06.png" alt=""
+                        ><img
+                          class="team"
+                          src="/img/logo/character.png"
+                          alt=""
+                          width="92px"
+                          height="92px"
                       /></a>
                     </li>
                   </ul>
@@ -121,10 +159,10 @@
           </div>
         </div>
         <div class="footer-shape">
-          <img src="img/images/footer_shape01.png" alt="" />
+          <img src="/img/images/footer_shape01.png" alt="" />
         </div>
         <div class="footer-shape shape-two">
-          <img src="img/images/footer_shape02.png" alt="" />
+          <img src="/img/images/footer_shape02.png" alt="" />
         </div>
       </div>
       <div class="copyright-area">
@@ -146,20 +184,20 @@
                     aria-haspopup="true"
                     aria-expanded="false"
                   >
-                    <img src="img/icon/united-states.png" alt="" /> English
+                    <img src="/img/icon/united-states.png" alt="" /> English
                   </button>
                   <div
                     class="dropdown-menu"
                     aria-labelledby="dropdownMenuButton2"
                   >
                     <a class="dropdown-item" href="index.html"
-                      ><img src="img/icon/russia.png" alt="" />Russia</a
+                      ><img src="/img/icon/russia.png" alt="" />Russia</a
                     >
                     <a class="dropdown-item" href="index.html"
-                      ><img src="img/icon//thailand.png" alt="" />Thailand</a
+                      ><img src="/img/icon//thailand.png" alt="" />Thailand</a
                     >
                     <a class="dropdown-item" href="index.html"
-                      ><img src="img/icon/india.png" alt="" />India</a
+                      ><img src="/img/icon/india.png" alt="" />India</a
                     >
                   </div>
                 </div>
@@ -179,4 +217,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.team {
+  border-radius: 50%;
+}
+</style>
