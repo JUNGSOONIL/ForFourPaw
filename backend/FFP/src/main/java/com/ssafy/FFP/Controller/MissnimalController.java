@@ -1,9 +1,6 @@
 package com.ssafy.FFP.Controller;
 
-import com.ssafy.FFP.Dto.MissnimalDto;
-import com.ssafy.FFP.Dto.S3Dto;
-import com.ssafy.FFP.Dto.SearchDto;
-import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.*;
 import com.ssafy.FFP.Service.MissnimalService;
 import com.ssafy.FFP.Service.S3Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,16 +43,16 @@ public class MissnimalController {
     }
 
     // 공고일 종료일이 최소 오늘인 공고 목록 조회
-    @GetMapping("/miss")
-    public ResponseEntity<?> list(){
-        LocalDate seoulNow = LocalDate.now(ZoneId.of("Asia/Seoul"));
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formatedNow = seoulNow.format(formatter);
-
-        List<MissnimalDto> missnimalDtos = missnimalService.list(formatedNow);
+    @GetMapping("/misses/{offset}")
+    public ResponseEntity<?> list(@PathVariable String offset){
+        int os = Integer.parseInt(offset);
+        os = (os - 1) * 9;
+        List<MissnimalDto> missnimalDtos = missnimalService.list(os, 9);
+        List<MissnimalDto> count = missnimalService.list(0, 100000);
+        CountingDto countingDto = new CountingDto(count.size(), null, missnimalDtos);
 
         if(missnimalDtos != null) {
-            return ResponseEntity.ok().body(missnimalDtos);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
@@ -80,10 +77,19 @@ public class MissnimalController {
     @PostMapping("/miss/search")
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
+        searchDto.setLimit(9);
+        int os = searchDto.getOffset();
+        os = (os - 1) * 9;
+        searchDto.setOffset(os);
         List<MissnimalDto> missnimalDtos = missnimalService.find(searchDto);
+        searchDto.setLimit(100000);
+        searchDto.setOffset(0);
+        List<MissnimalDto> count = missnimalService.find(searchDto);
+
+        CountingDto countingDto = new CountingDto(count.size(), null, missnimalDtos);
 
         if(missnimalDtos != null) {
-            return ResponseEntity.ok().body(missnimalDtos);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");

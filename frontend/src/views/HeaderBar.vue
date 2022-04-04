@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- Preloader -->
-    <div id="preloader">
-      <img src="img/preloader.gif" alt="" />
-    </div>
+    <!-- <div id="preloader">
+      <img src="/img/preloader.gif" alt="" />
+    </div> -->
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
@@ -23,83 +23,29 @@
                 <nav class="menu-nav show">
                   <div class="logo">
                     <router-link to="/"
-                      ><img src="img/logo/paw_logo_2line.png" alt=""
+                      ><img
+                        src="/img/logo/paw_logo_2line.png"
+                        alt=""
+                        onclick="window.scrollTo(0,0);"
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
-                    <ul class="navigation">
-                      <li class="active menu-item-has-children">
+                    <ul class="navigation" >
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 0}">
                         <router-link to="/">홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 1}">
                         <router-link to="/shop">유기동물</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/shop">Our Shop</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
                       </li>
                       <!-- 헤더-실종동물 -->
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">실종동물</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/missList"
-                              >실종동물 목록</router-link
-                            >
-                          </li>
-                          <li>
-                            <router-link to="/missWrite"
-                              >실종동물 추가</router-link
-                            >
-                          </li>
-                          <li>
-                            <router-link to="/missDetail"
-                              >실종동물 상세</router-link
-                            >
-                          </li>
-                          <!-- <li>
-                            <router-link to="/shelDetail"
-                              >유기동물 상세</router-link
-                            >
-                          </li> -->
-                        </ul>
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 2}">
+                        <router-link to="/missList">실종동물</router-link>
                       </li>
-                      <li><router-link to="/dogList">Dog List</router-link></li>
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">Shop</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/shop">Our Shop</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
-                      </li>
-                      <li class="menu-item-has-children">
-                        <router-link to="/blog">Blog</router-link>
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/blog">Our Blog</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/blogDetail"
-                              >Blog Details</router-link
-                            >
-                          </li>
-                        </ul>
+                      <li class="menu-item-has-children"  :class="{active : this.$store.getters.getHaderindex == 3}">
+                        <router-link to="/analysisview"
+                          >데이터 분석</router-link
+                        >
                       </li>
                       <!-- <li><a href="adoption.html">Adoption</a></li> -->
                       <!-- <li class="menu-item-has-children">
@@ -129,7 +75,7 @@
                           <li class="d-flex align-items-start">
                             <div class="cart-img">
                               <a href="#"
-                                ><img src="img/product/cart_p01.jpg" alt=""
+                                ><img src="/img/product/cart_p01.jpg" alt=""
                               /></a>
                             </div>
                             <div class="cart-content">
@@ -146,7 +92,7 @@
                           <li class="d-flex align-items-start">
                             <div class="cart-img">
                               <a href="#"
-                                ><img src="img/product/cart_p02.jpg" alt=""
+                                ><img src="/img/product/cart_p02.jpg" alt=""
                               /></a>
                             </div>
                             <div class="cart-content">
@@ -174,22 +120,62 @@
                           </li>
                         </ul>
                       </li> -->
-                      <li class="header-btn" v-if="!isLoginGetters">
-                        <router-link to="/socialLogin" class="btn"
-                          >로그인<img src="img/icon/w_pawprint.png" alt=""
+                      <li
+                        class="header-btn"
+                        style="margin: 1px"
+                        v-if="isLoginGetters"
+                      >
+                        <router-link
+                          to="/userPage"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
+                        >
+                          내정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="isLoginGetters">
-                        <router-link to="/moreInfo" class="btn"
-                          >추가정보<img src="img/icon/w_pawprint.png" alt=""
+                      <li class="header-btn" v-if="!isLoginGetters">
+                        <router-link
+                          to="/socialLogin"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
+                          >로그인<img src="/img/icon/w_pawprint.png" alt=""
+                        /></router-link>
+                      </li>
+                      <li class="header-btn" v-if="activeMoreInfo">
+                        <router-link
+                          to="/moreInfo"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
+                          >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           to="/logoutPage"
                           class="btn"
                           @click.native="logout"
-                          >로그아웃<img src="img/icon/w_pawprint.png" alt=""
+                          >로그아웃<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                     </ul>
@@ -202,7 +188,7 @@
                   <div class="close-btn"><i class="fas fa-times"></i></div>
                   <div class="nav-logo">
                     <a href="index.html"
-                      ><img src="img/logo/logo.png" alt="" title=""
+                      ><img src="/img/logo/logo.png" alt="" title=""
                     /></a>
                   </div>
                   <div class="menu-outer">
@@ -238,7 +224,7 @@
         </div>
         <div
           class="header-shape"
-          style="background-image: url('img/bg/header_shape.png')"
+          style="background-image: url('/img/bg/header_shape.png')"
         ></div>
       </div>
       <!-- header-search -->
@@ -283,9 +269,24 @@
 const session = window.sessionStorage;
 
 export default {
+    data() {
+    return {
+      navclick : 0,
+    };
+  },
   computed: {
     isLoginGetters() {
       return this.$store.getters["login/isLogin"];
+    },
+    userInfoGetters() {
+      return this.$store.getters["login/userInfo"];
+    },
+    activeMoreInfo() {
+      let isAddrsvalidate = false;
+      if (this.userInfoGetters!=null && this.userInfoGetters.addrs != "") {
+        isAddrsvalidate = true;
+      }
+      return this.isLoginGetters && !isAddrsvalidate;
     },
   },
   methods: {
