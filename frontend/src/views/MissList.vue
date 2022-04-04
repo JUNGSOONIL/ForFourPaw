@@ -45,13 +45,13 @@
 
                   <div class="shop-pagination"  style="float:left; margin-left:552px; margin-bottom:0px">
                         <label style="margin-right:10px; color:#0a303a">날짜</label>
-                        <input type="date" id="search-text" v-model="search.noticeSdt" style="width:140px; height:39px; border: 1px solid #e1e1e1;"/>
+                        <input type="date" id="search-text" v-model="search.happenDt" style="width:140px; height:39px; border: 1px solid #e1e1e1;"/>
                   </div>
 
                   <div class="shop-show-list"  style="float:left; margin-left:20px;">
                     <form action="#">
                       <label for="careAddr">지역</label>
-                      <select id="careAddr" class="selected" v-model="search.careAddr">
+                      <select id="careAddr" class="selected" v-model="search.happenPlace">
                         <option value="null">전체</option>
                           <option value="6110000">서울특별시</option>
                           <option value="6260000">부산광역시</option>
@@ -593,23 +593,23 @@
                   v-if="shelList"
                 >
                   <div
-                    v-for="(shel, index) in shelList"
+                    v-for="(miss, index) in missList"
                     v-bind:key="index"
                     class="col-lg-4 col-sm-6"
                   >
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
                         <router-link
-                          :to="{ name: 'ShelDetail', params: { no: shel.no } }"
+                          :to="{ name: 'ShelDetail', params: { no: miss.no } }"
                         >
                           <img
-                            v-if="shel.popfile"
-                            :src="shel.popfile"
+                            v-if="miss.popfile"
+                            :src="miss.popfile"
                             style="width: 278px; height: 268px"
                             alt=""
                           />
                           <img
-                            v-if="!shel.popfile"
+                            v-if="!miss.popfile"
                             src="../assets/img/image.png"
                             style="background-color: #bcbcbc"
                             alt=""
@@ -617,17 +617,20 @@
                         </router-link>
                       </div>
                       <div class="shop-content">
-                        <span>{{ shel.processState }}</span>
+                        <span>{{ miss.processState }}</span>
                         <h4 class="title">
-                          {{ shel.noticeSdt }} ~ {{ shel.noticeEdt }}
+                          {{ miss.noticeSdt }} ~ {{ miss.noticeEdt }}
                         </h4>
                         <div class="shop-content-bottom">
-                          <span class="price">{{ shel.specialMark }}</span>
+                            <span class="price">장소 : {{ miss.orgNm }}</span>
+                        </div>
+                        <div class="shop-content-bottom">
+                          <span class="price">{{ miss.specialMark }}</span>
                           <span class="add-cart">
                             <router-link
                               :to="{
                                 name: 'ShelDetail',
-                                params: { no: shel.no },
+                                params: { no: miss.no },
                               }"
                             >
                               상세보기
@@ -650,7 +653,7 @@
                 >
                   <div class="shop-pagination" style="margin: 0px">
                     <ul>
-                      <li>
+                     <li>
                         <a v-show="pagegroup != 1" @click="pagegroup--"
                           ><i class="fas fa-angle-double-left"></i
                         ></a>
@@ -661,20 +664,19 @@
                         "
                         v-for="(shel, index) in pagegroup * 10 <= pagegroupmax
                           ? 10
-                          : total % 9"
+                          : Math.ceil((total % 90)/9)"
                         v-bind:key="index"
                         :class="{
                           active: index + 1 + (pagegroup - 1) * 10 == page,
                         }"
                       >
-                        <!-- :class="{active:index+1 == page}" -->
                         <a>
                           {{ index + 1 + (pagegroup - 1) * 10 }}
                         </a>
                       </li>
                       <li>
                         <a
-                          v-show="pagegroup * 10 != pagegroupmax"
+                          v-show="pagegroup * 10 < pagegroupmax"
                           @click="pagegroup++"
                           ><i class="fas fa-angle-double-right"></i
                         ></a>
@@ -704,68 +706,41 @@ export default {
   data() {
     return {
       search: {
-        noticeSdt: null,
-        noticeEdt: null,
-        kindCd: null,
-        sexCd: null,
-        neuterYn: null,
-        careAddr: null,
-        processState: null,
+        happenDt: null,
+        happenPlace: null,
         upKindCd : null,
+        kindCd: null,
       },
       pagegroupmax: 0,
       pagegroup: 1,
       page: 1,
       total: 0,
-      kindCdList: [],
-      shelList: [],
+      missList: [],
     };
   },
   created() {
-    // this.searchShelnimaldefualt();
+    this.searchMissnimaldefualt();
     this.$store.commit('setHaderindex',2);
   },
   methods: {
-    kindSearchList(el) {
-      this.search.kindCd = el.target.value;
+  
+    searchMissnimaldefualt() {
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
       };
       axios({
         method: "get",
-        url: "/api/shel/search/list/" + this.search.kindCd,
-        headers: headers,
-      })
-        .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // store아닌곳에서 상황에 따라서 메서드가 다르다
-          this.kindCdList = res.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        })
-        .then(() => {
-          console.log("kindSearchList End!!");
-        });
-    },
-
-    searchShelnimaldefualt() {
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
-      axios({
-        method: "get",
-        url: "/api/shel/0",
+        url: "/api/miss/1",
         headers: headers,
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           console.log(res.data);
-          this.shelList = res.data.shelnimalDtos;
+          this.missList = null
+          this.missList = res.data.missnimalDtos;
           this.total = res.data.allCount;
-          this.pagegroupmax =
-            this.total % 9 == 0 ? this.total / 9 : this.total / 9 + 1;
+          this.pagegroupmax = Math.ceil(this.total / 9 )
         })
         .catch((error) => {
           console.log(error);
@@ -778,17 +753,21 @@ export default {
     },
 
     searchShelnimal() {
+      this.page = 1
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
       };
 
       let data = {
+        noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
+        noticeEdt: this.search.noticeEdt  == null ? null : this.search.noticeEdt.split("-").join(""),
+        upKindCd : this.search.upKindCd,
         kindCd: this.search.kindCd,
-        sexCd: this.search.sexCd,
         neuterYn: this.search.neuterYn,
         careAddr: this.search.careAddr,
-        offset: 0,
+        processState: this.search.processState,
+        offset: 1,
       };
 
       axios({
@@ -799,13 +778,18 @@ export default {
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
+          this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
-          this.pagegroupmax =
-            this.total % 9 == 0 ? this.total / 9 : this.total / 9 + 1;
+          this.pagegroup = 1
+          this.pagegroupmax = Math.ceil(this.total / 9 )
+          console.log(res)
         })
         .catch((error) => {
           console.log(error);
+           this.shelList = ""
+           this.total = 0
+           this.pagegroupmax = 0
         })
         .then(() => {
           console.log("searchShelnimal End!!");
@@ -815,18 +799,21 @@ export default {
     },
 
     searchShelnimalPage(el) {
-      this.page = el;
+      this.page = el
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
       };
 
       let data = {
+        noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
+        noticeEdt: this.search.noticeEdt  == null ? null : this.search.noticeEdt.split("-").join(""),
+        upKindCd : this.search.upKindCd,
         kindCd: this.search.kindCd,
-        sexCd: this.search.sexCd,
         neuterYn: this.search.neuterYn,
         careAddr: this.search.careAddr,
-        offset: el - 1,
+        processState: this.search.processState,
+        offset: el,
       };
 
       axios({
@@ -835,22 +822,28 @@ export default {
         data: data,
         headers: headers,
       })
-        .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
-          this.shelList = null;
+        .then((res) => { 
+          this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
+          this.total = res.data.allCount;
+          this.pagegroupmax = Math.ceil(this.total / 9 )
           console.log(res.data);
         })
         .catch((error) => {
           console.log(error);
+          this.shelList = ""
+           this.total = 0
+           this.pagegroupmax = 0
         })
         .then(() => {
           console.log("searchShelnimalPage End!!");
+          window.scrollTo(0,380);
         });
     },
   },
 };
 </script>
+
 
 <style>
 #app {
