@@ -848,9 +848,13 @@ export default {
     this.selectmaincnt();
   },
   mounted() {
-
+    window.addEventListener('beforeunload', this.clearStorage)
   },
   methods:{
+    clearStorage() {
+      localStorage.removeItem('vuex');
+      
+    },
     shelimalList() {
       console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
