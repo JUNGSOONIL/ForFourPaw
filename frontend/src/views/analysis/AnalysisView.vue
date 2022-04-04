@@ -453,10 +453,10 @@ export default  {
             };
               axios({
                     method:'get',
-                    url: '/api/test',
-                    data: data, 
+                    url:'/api/loaddata',
+                    data:data, 
                     headers: headers,  // 넣는거 까먹지 마세요
-                    timeout : 1800000,
+                    timeout:1800000,
                 }).then((res) => {
 
                     this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
