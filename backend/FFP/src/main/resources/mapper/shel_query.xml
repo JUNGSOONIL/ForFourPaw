@@ -70,5 +70,35 @@
         WHERE kindCd like CONCAT('%',#{kindCd},'%')
         group by kindCd
     </select>
+    
+    <select id="userCount" resultType="Integer">
+        SELECT count(distinct no) as count
+		FROM ffp.view
+    </select>
+    
+    <select id="userInfo" resultType="String">
+        select distinct no
+		from ffp.view 
+    </select>
+    
+    <select id="userItem" parameterType="String" resultType="String">
+        select shelnimalId
+		from ffp.view
+		where no = #{no};
+    </select>
+    
+    <select id="mainListLogin" parameterType="java.util.List" resultType="com.ssafy.FFP.Dto.DatasetDto">
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd, colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd, neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel
+        from dataset
+        where 
+		<foreach collection="list" item="item" open="(" close=")" separator="or">
+		desertionNo = #{item}
+		</foreach>
+    </select>
+    
+    <insert id="viewStore" parameterType="com.ssafy.FFP.Dto.ViewStoreDto">
+		insert IGNORE into ffp.view(no, shelnimalId)
+		values (#{no}, #{desertionNo})
+	</insert>
 
 </mapper>

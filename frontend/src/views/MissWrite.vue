@@ -411,6 +411,7 @@ export default {
      }
   },
   created() {
+    this.$store.commit('setHaderindex',2);
     if(this.no != null){
       this.selectMiss();
     }
