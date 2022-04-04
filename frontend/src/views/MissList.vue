@@ -119,7 +119,7 @@
                   <div
                     v-for="(miss, index) in missList"
                     v-bind:key="index"
-                    class="col-lg-4 col-sm-6"
+                                       style="whidth:341; height:457; padding:10px"
                   >
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
@@ -149,7 +149,7 @@
                             <span class="price">발생지역 : {{ miss.happenPlace }}</span>
                         </div>
                         <div class="shop-content-bottom">
-                          <span class="price">{{ miss.descr }}</span>
+                          <span class="price">특이사항 : {{ miss.descr }}</span>
                           <span class="add-cart">
                             <router-link
                               :to="{
