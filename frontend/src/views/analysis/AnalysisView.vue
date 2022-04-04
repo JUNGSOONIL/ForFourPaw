@@ -338,6 +338,8 @@
 
 <script>
 import axios from 'axios'
+axios.defaults.timeout = 1800000;
+
 const session = window.sessionStorage;
 
 // for chart
