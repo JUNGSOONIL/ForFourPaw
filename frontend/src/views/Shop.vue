@@ -700,7 +700,7 @@
                   <div
                     v-for="(shel, index) in shelList"
                     v-bind:key="index"
-                    style="whidth:341; height:457; padding:10px"
+                     style="width: 341px; height: 457px; padding: 10px;"
                   >
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
