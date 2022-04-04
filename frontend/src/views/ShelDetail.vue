@@ -291,7 +291,7 @@ export default {
   name: "App",
   props:{
     no:{
-      type:Number,
+      type:String,
     },
   },
   components: {},
