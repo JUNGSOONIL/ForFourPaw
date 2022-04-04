@@ -221,7 +221,7 @@ public class ShelnimalController {
     @PostMapping("/shel")
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto) throws IOException {
 
-        String offset = searchDto.getOffset();
+        String offset = String.valueOf(searchDto.getOffset());
         String nyn = searchDto.getNeuterYn();
         String processState = searchDto.getProcessState();
         String kind = searchDto.getKindCd();
@@ -248,7 +248,7 @@ public class ShelnimalController {
         if(place != null) urlBuilder.append("&" + URLEncoder.encode("upr_cd","UTF-8") + "=" + URLEncoder.encode(place, "UTF-8")); /*시도코드 (시도 조회 OPEN API 참조)*/
         if(processState != null) urlBuilder.append("&" + URLEncoder.encode("state","UTF-8") + "=" + URLEncoder.encode(processState, "UTF-8")); /*상태(전체 : null(빈값), 공고중 : notice, 보호중 : protect)*/
         if(nyn != null) urlBuilder.append("&" + URLEncoder.encode("neuter_yn","UTF-8") + "=" + URLEncoder.encode(nyn, "UTF-8")); /*상태 (전체 : null(빈값), 예 : Y, 아니오 : N, 미상 : U)*/
-        if(searchDto.getOffset() != null) urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(offset, "UTF-8")); /*페이지 번호 (기본값 : 1)*/
+        if(offset != null) urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode(offset, "UTF-8")); /*페이지 번호 (기본값 : 1)*/
         urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("9", "UTF-8")); /*페이지당 보여줄 개수 (1,000 이하), 기본값 : 10*/
         urlBuilder.append("&" + URLEncoder.encode("_type","UTF-8") + "=" + URLEncoder.encode("json", "UTF-8")); /*xml(기본값) 또는 json*/
         URL url = new URL(urlBuilder.toString());
