@@ -36,12 +36,6 @@
         <if test ="kindCd != null">
             AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
         </if>
-        <if test ="neuterYn != null">
-            AND neuter_yn = #{neuterYn}
-        </if>
-        <if test ="sexCd != null">
-            AND sexCd = #{sexCd}
-        </if>
         <if test ="careAddr != null">
             AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
         </if>
