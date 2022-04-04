@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/banner2.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -18,7 +18,7 @@
                       <router-link to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      실종 동물
+                      실종 동물 목록
                     </li>
                   </ol>
                 </nav>
@@ -129,7 +129,7 @@
                           <img
                             v-if="miss.profile"
                             :src="miss.profile"
-                            style="width: 278px; height: 268px"
+                            style="width: 321px; height: 268px"
                             alt=""
                           />
                           <img
@@ -166,15 +166,17 @@
                   </div>
                 </div>
 
-                 <div v-if="total == 0" style="text-align: center">
-                  <img src="../assets/img/analysisDog4.png" alt="">
+                 <div v-if="total == 0" style="text-align: center; margin-top:20px">
+                   <h3>조건에 맞는 검색 정보가 없습니다.</h3>
+                    <h3>조건을 전체로 설정 후 한번 더 검색하시기 바랍니다.</h3>
+                  <img src="/img/bg/logo5.png" alt="">
                 </div>
 
                 <div v-if="total != 0"
                   class="shop-page-meta"
                   style="
                     height: 60px;
-                    width: 100%
+                    width: 100%;
                     padding: 12px;
                     display: flex;
                     justify-content: center;

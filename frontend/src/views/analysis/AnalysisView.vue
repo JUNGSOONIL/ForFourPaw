@@ -7,7 +7,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/banner2.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -17,7 +17,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link to="/"> Main </router-link>
+                      <router-link to="/"> 홈 </router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       유기동물 데이터 분석
