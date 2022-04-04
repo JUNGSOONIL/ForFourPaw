@@ -9,20 +9,14 @@ public class SearchDto {
     private String neuterYn;
     private String happenDt;
     private String happenPlace;
+    private String careAddr;
+    private String processState;
     private int limit;
-    private int offset;
-
-    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt, String happenPlace, int limit, int offset) {
-        this.kindCd = kindCd;
-        this.colorCd = colorCd;
-        this.age = age;
-        this.sexCd = sexCd;
-        this.neuterYn = neuterYn;
-        this.happenDt = happenDt;
-        this.happenPlace = happenPlace;
-        this.limit = limit;
-        this.offset = offset;
-    }
+    private String offset;
+    private String upKindCd;
+    private String noticeEdt;
+    private String noticeSdt;
+//    private int offset;
 
     public SearchDto() {
 
@@ -83,6 +77,14 @@ public class SearchDto {
     public void setHappenPlace(String happenPlace) {
         this.happenPlace = happenPlace;
     }
+    
+    public String getCareAddr() {
+		return careAddr;
+	}
+
+	public void setCareAddr(String careAddr) {
+		this.careAddr = careAddr;
+	}
 
     public int getLimit() {
         return limit;
@@ -91,12 +93,53 @@ public class SearchDto {
     public void setLimit(int limit) {
         this.limit = limit;
     }
+//
+//    public int getOffset() {
+//        return offset;
+//    }
+//
+//    public void setOffset(int offset) {
+//        this.offset = offset;
+//    }
 
-    public int getOffset() {
+
+    public String getOffset() {
         return offset;
     }
 
-    public void setOffset(int offset) {
+    public void setOffset(String offset) {
         this.offset = offset;
+    }
+
+    public String getProcessState() {
+        return processState;
+    }
+
+    public void setProcessState(String processState) {
+        this.processState = processState;
+    }
+
+    public String getUpKindCd() {
+        return upKindCd;
+    }
+
+    public void setUpKindCd(String upKindCd) {
+        this.upKindCd = upKindCd;
+    }
+
+    public String getNoticeEdt() {
+        return noticeEdt;
+    }
+
+    public void setNoticeEdt(String noticeEdt) {
+        this.noticeEdt = noticeEdt;
+    }
+
+    public String getNoticeSdt() {
+        return noticeSdt;
+    }
+
+    public void setNoticeSdt(String noticeSdt) {
+        this.noticeSdt = noticeSdt;
     }
 }

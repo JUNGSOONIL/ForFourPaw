@@ -80,7 +80,7 @@
                       type="text"
                       v-model="miss.authorName"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="personTel">전화번호</label>
                     <input
@@ -88,7 +88,7 @@
                       type="tel"
                       v-model="miss.careTel"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                   </div>
                   <div class="shop-details-price">
@@ -102,7 +102,7 @@
                       type="text"
                       v-model="miss.name"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalKind">품종</label>
                     <input
@@ -110,7 +110,7 @@
                       type="text"
                       v-model="miss.kindCd"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalColor">색상</label>
                     <input
@@ -118,7 +118,7 @@
                       type="text"
                       v-model="miss.colorCd"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalAge">나이</label>
                     <input
@@ -126,7 +126,7 @@
                       type="text"
                       v-model="miss.age"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalSex">성별</label>
                     <input
@@ -134,7 +134,7 @@
                       type="text"
                       v-model="miss.sexCd"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalneuter">중성화</label>
                     <input
@@ -142,7 +142,7 @@
                       type="text"
                       v-model="miss.neuterYn"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalHappenDay">실종날짜</label>
                     <input
@@ -150,7 +150,7 @@
                       type="date"
                       v-model="miss.happenDt"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                     <label for="animalHappenPlace">실종장소</label>
                     <div>
@@ -159,7 +159,7 @@
                           type="text"
                           v-model="miss.happenPlace"
                           class="form-control"
-                          readonly
+                          disabled
                         />
                     </div>
                     <label for="animalDesc">특이사항</label>
@@ -168,10 +168,21 @@
                       type="text"
                       v-model="miss.descr"
                       class="form-control"
-                      readonly
+                      disabled
                     />
                   </div>
                 </div>
+                <div class="d-md-flex justify-content-md-end" >
+                  <span v-if="this.miss.author == userInfoNo()">
+                    <li class="header-btn" style="margin: 1px" >
+                      <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;" @click="movepage()">
+                        편집
+                        <img src="/img/icon/w_pawprint.png" alt="" />
+                      </p>
+                      
+                    </li>
+                  </span>
+                   </div>
               </div>
             </div>
           </div>
@@ -191,7 +202,7 @@
                       >약관</a
                     >
                   </li>
-                  <li class="nav-item">
+                  <li v-if="miss.author == userInfoNo()" class="nav-item">
                     <a
                       class="nav-link"
                       id="details-tab"
@@ -262,20 +273,20 @@
                       <div v-for="(miss, index) in misslistslice" v-bind:key="index" class="col-lg-3">
                         <div class="shop-item mb-55" style="z-index: -1;">
                           <div class="shop-thumb">
-                            <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
-                              <img :src=miss.filename alt="" style="width:268px; height: 268px; border-radius: 50%"/>
+                            <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
+                              <img :src=miss.popfile alt="" style="width:268px; height: 268px; border-radius: 50%"/>
                               </router-link>
                           </div>
                           <div class="shop-content">
                             <h5 class="title">
-                              <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                              <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
                                 {{miss.orgNm}} {{miss.happenPlace}}
                               </router-link>
                             </h5>
                             <div class="shop-content-bottom">
                               <span class="price">보호기관 : {{miss.careTel}}</span>
                               <span class="add-cart">
-                                <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                                <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
                                   상세보기
                                 </router-link>
                               </span>
@@ -299,7 +310,7 @@
                           :style="commenntopen">
 
                             <div v-for="(com, index) in commentlistslice" v-bind:key="index">
-                              <img style="float:left;" id="comment_img" :src="com.profile_img" alt="">
+                              <img style="float:left;" id="comment_img" :src="com.profileImage" alt="">
                               <h4 style="float:left; margin:0px">{{com.authorNickName}}</h4>
                               <div v-if="com.author == userInfoNo()" id="setting" style="cursor: pointer; float:right;" @click="commentdelete(com.no)">
                                 <i style="margin-top:5px" class="fas fa-trash"></i>
@@ -386,6 +397,7 @@ export default {
      }
   },
   created() {
+    this.$store.commit('setHaderindex',2);
     this.selectMiss();
     this.commentselect();
   },
@@ -400,19 +412,25 @@ export default {
     },
   },
   methods:{
+    movepage(){
+      this.$router.push({ name: 'MissWrite', params: { no: this.no }});
+    },
     imgleft(){
+      this.misslistslice = null;
       if(this.misslistmin > 0){
         this.misslistmin--
         this.misslistindex--
+        this.misslistslice = null;
+        this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
       }
-      this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
     },
     imgright(){
       if(this.misslistindex < this.misslistmax){
         this.misslistmin++
         this.misslistindex++
+        this.misslistslice = null;
+        this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
       }
-      this.misslistslice = this.misslist.slice(this.misslistmin,this.misslistindex)
     },
     userInfoNo(){
       return JSON.parse(session.getItem('userInfo')).no
@@ -546,7 +564,9 @@ export default {
         console.log(error);
       }).then(() => {
         console.log('selectMiss End!!');
-        this.match();
+        if(this.miss.author == this.userInfoNo()){
+          this.match();
+        }
       });
     },
   },

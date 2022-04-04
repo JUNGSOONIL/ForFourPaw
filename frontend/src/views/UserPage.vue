@@ -34,19 +34,19 @@
                                     <form action="#" class="contact-form">
                                         <div class="form-grp" style="margin-bottom:20px">
                                             <label for="name">이름</label>
-                                            <input type="text" id="name" v-model="userInfo.name" readonly>
+                                            <input type="text" id="name" v-model="userInfo.name" disabled>
                                         </div>
                                         <div class="form-grp" style="margin-bottom:20px">
                                             <label for="nickname">닉네임</label>
-                                            <input type="text" id="nickname"  v-model="userInfo.nickname" readonly>
+                                            <input type="text" id="nickname"  v-model="userInfo.nickname" disabled>
                                         </div>
                                         <div class="form-grp" style="margin-bottom:20px">
                                             <label for="email">이메일</label>
-                                            <input type="text" id="email"  v-model="userInfo.email" readonly>
+                                            <input type="text" id="email"  v-model="userInfo.email" disabled>
                                         </div>
                                         <div class="form-grp" style="margin-bottom:20px">
                                             <label for="addrs">거주지역 </label>
-                                            <input type="text" id="addrs"  v-model="userInfo.addrs" readonly>
+                                            <input type="text" id="addrs"  v-model="userInfo.addrs" disabled>
                                         </div>
                                     </form>
                                 </div>
@@ -186,7 +186,7 @@
             </section>
 
             <section class="contact-area pt-10 pb-20">
-              <div class="container">
+              <div v-if="boardlist.length != 0" class="container">
                 <div class="container-inner-wrap">
                   <div class="row " style=" border: 1px solid gray; border-radius: 40px; padding:15px">
                     <h3 class="title">내가 작성한 글</h3>
@@ -263,8 +263,9 @@ export default {
         headers: headers,
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
-        console.log(res)
+        console.log(res.data)
         this.boardlist = res.data
+        console.log(this.boardlist)
       }).catch((error) => {
         console.log(error);
       }).then(() => {

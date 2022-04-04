@@ -11,7 +11,8 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 class="title">실종 동물 추가 페이지</h2>
+                <h2 v-if="this.no == null" class="title">실종 동물 추가 페이지</h2>
+                <h2 v-else class="title">실종 동물 수정 페이지</h2>
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
@@ -410,6 +411,7 @@ export default {
      }
   },
   created() {
+    this.$store.commit('setHaderindex',2);
     if(this.no != null){
       this.selectMiss();
     }
@@ -592,7 +594,7 @@ export default {
 
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("수정 완료했습니다.");
-        this.$router.push({ name: 'ShelDetail', params: { no: this.no }});
+        this.$router.push({ name: 'MissDetail', params: { no: this.no }});
       }).catch((error) => {
         console.log(error);
       }).then(() => {
@@ -612,7 +614,7 @@ export default {
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
         this.$alertify.success("삭제 완료했습니다.");
-        this.$router.go(-1)
+        this.$router.push("/")
       }).catch((error) => {
         console.log(error);
       }).then(() => {
