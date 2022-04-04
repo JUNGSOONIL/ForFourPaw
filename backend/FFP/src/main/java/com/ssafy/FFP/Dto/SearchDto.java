@@ -13,22 +13,10 @@ public class SearchDto {
     private String processState;
     private int limit;
     private String offset;
+    private String upKindCd;
+    private String noticeEdt;
+    private String noticeSdt;
 //    private int offset;
-
-    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt,
-                     String happenPlace, String careAddr, String processState, int limit, String offset) {
-        this.kindCd = kindCd;
-        this.colorCd = colorCd;
-        this.age = age;
-        this.sexCd = sexCd;
-        this.neuterYn = neuterYn;
-        this.happenDt = happenDt;
-        this.happenPlace = happenPlace;
-        this.careAddr = careAddr;
-        this.processState = processState;
-        this.limit = limit;
-        this.offset = offset;
-    }
 
     public SearchDto() {
 
@@ -131,20 +119,27 @@ public class SearchDto {
         this.processState = processState;
     }
 
-    @Override
-    public String toString() {
-        return "SearchDto{" +
-                "kindCd='" + kindCd + '\'' +
-                ", colorCd='" + colorCd + '\'' +
-                ", age='" + age + '\'' +
-                ", sexCd='" + sexCd + '\'' +
-                ", neuterYn='" + neuterYn + '\'' +
-                ", happenDt='" + happenDt + '\'' +
-                ", happenPlace='" + happenPlace + '\'' +
-                ", careAddr='" + careAddr + '\'' +
-                ", processState='" + processState + '\'' +
-                ", limit=" + limit +
-                ", offset='" + offset + '\'' +
-                '}';
+    public String getUpKindCd() {
+        return upKindCd;
+    }
+
+    public void setUpKindCd(String upKindCd) {
+        this.upKindCd = upKindCd;
+    }
+
+    public String getNoticeEdt() {
+        return noticeEdt;
+    }
+
+    public void setNoticeEdt(String noticeEdt) {
+        this.noticeEdt = noticeEdt;
+    }
+
+    public String getNoticeSdt() {
+        return noticeSdt;
+    }
+
+    public void setNoticeSdt(String noticeSdt) {
+        this.noticeSdt = noticeSdt;
     }
 }
