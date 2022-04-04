@@ -1,18 +1,28 @@
 package com.ssafy.FFP.Dto;
 
 public class AnalysisDto {
-    private String key;
+    private String code;
+    private String name;
     private double value;
 
     public AnalysisDto() { }
 
     public AnalysisDto(String key, double value) {
-        this.key = key;
+        this.name = key;
         this.value = value;
     }
 
-    public String getKey() { return key; }
-    public void setKey(String key) { this.key = key; }
+    public AnalysisDto(String key, double value, String code) {
+        this.name = key;
+        this.value = value;
+        this.code = code;
+    }
+
+    public String getCode() { return code; }
+    public void setCode(String code) { this.code = code; }
+
+    public String getKey() { return name; }
+    public void setKey(String key) { this.name = key; }
 
     public double getValue() { return value; }
     public void setValue(double value) { this.value = value; }
@@ -20,7 +30,7 @@ public class AnalysisDto {
     @Override
     public String toString() {
         return "AnalysisDto{" +
-                "key='" + key + '\'' +
+                "key='" + name + '\'' +
                 ", value=" + value +
                 '}';
     }
