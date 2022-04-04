@@ -94,6 +94,7 @@ public class ShelnimalController {
 
         int max = 1;
         int result = 0;
+        int totalCount = 0;
         List<ShelnimalDto> list = new ArrayList<>();
 
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
@@ -127,7 +128,7 @@ public class ShelnimalController {
             JSONObject response = (JSONObject) jsonObject.get("response");
             JSONObject body = (JSONObject) response.get("body");
             JSONObject items = (JSONObject) body.get("items");
-            int totalCount = Integer.parseInt(body.get("totalCount").toString());
+            totalCount = Integer.parseInt(body.get("totalCount").toString());
             if (max == 1)
                 max = totalCount % 1000 == 0 ? totalCount / 1000 : totalCount / 1000 + 1;
             JSONArray item = (JSONArray) items.get("item"); // JSON 파싱 데이터에서 tracks부분을 배열로 가져옴
@@ -164,9 +165,9 @@ public class ShelnimalController {
         System.out.println(result);
         rd.close();
         conn.disconnect();
-
+        CountingDto countingDto = new CountingDto(totalCount, list, null);
         if(list != null) {
-            return ResponseEntity.ok().body(list);
+            return ResponseEntity.ok().body(countingDto);
         }
         else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
@@ -222,6 +223,7 @@ public class ShelnimalController {
 
         int max = 1;
         int result = 0;
+        int totalCount = 0;
         List<ShelnimalDto> list = new ArrayList<>();
 
         StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/1543061/abandonmentPublicSrvc/abandonmentPublic"); /*URL*/
@@ -262,7 +264,7 @@ public class ShelnimalController {
             JSONObject response = (JSONObject) jsonObject.get("response");
             JSONObject body = (JSONObject) response.get("body");
             JSONObject items = (JSONObject) body.get("items");
-            int totalCount = Integer.parseInt(body.get("totalCount").toString());
+            totalCount = Integer.parseInt(body.get("totalCount").toString());
             if (max == 1)
                 max = totalCount % 1000 == 0 ? totalCount / 1000 : totalCount / 1000 + 1;
             JSONArray item = (JSONArray) items.get("item"); // JSON 파싱 데이터에서 tracks부분을 배열로 가져옴
@@ -300,8 +302,9 @@ public class ShelnimalController {
             rd.close();
             conn.disconnect();
 
+            CountingDto countingDto = new CountingDto(totalCount, list, null);
             if(list != null) {
-                return ResponseEntity.ok().body(list);
+                return ResponseEntity.ok().body(countingDto);
             }
             else {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "오류 발생.");
