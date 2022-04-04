@@ -78,9 +78,9 @@ public class MissnimalController {
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
         searchDto.setLimit(9);
-        int os = Integer.parseInt(searchDto.getOffset());
+        int os = searchDto.getOffset();
         os = (os - 1) * 9;
-        searchDto.setOffset(String.valueOf(os));
+        searchDto.setOffset(os);
         List<MissnimalDto> missnimalDtos = missnimalService.find(searchDto);
         searchDto.setLimit(100000);
         List<MissnimalDto> count = missnimalService.find(searchDto);
