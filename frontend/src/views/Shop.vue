@@ -952,6 +952,7 @@ export default {
         })
         .then(() => {
           console.log("searchShelnimalPage End!!");
+          window.scrollTo(0,380);
         });
     },
   },
