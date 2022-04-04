@@ -42,13 +42,19 @@
                 AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
             </if>
             <if test ="neuterYn != null">
-                AND neuter_yn = #{neuterYn}
+                AND neuterYn = #{neuterYn}
             </if>
             <if test ="sexCd != null">
-                AND sex_cd = #{sexCd}
+                AND sexCd = #{sexCd}
             </if>
             <if test ="careAddr != null">
                 AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
+            </if>
+            <if test ="processState == '보호중'">
+                AND processState LIKE CONCAT('%', #{processState}, '%')
+            </if>
+            <if test ="processState == '종료'">
+                AND processState NOT LIKE CONCAT('%', '보호중', '%')
             </if>
             order by noticeSdt DESC
             limit 9 offset 0

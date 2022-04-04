@@ -40,7 +40,7 @@
             AND neuter_yn = #{neuterYn}
         </if>
         <if test ="sexCd != null">
-            AND sex_cd = #{sexCd}
+            AND sexCd = #{sexCd}
         </if>
         <if test ="careAddr != null">
             AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
