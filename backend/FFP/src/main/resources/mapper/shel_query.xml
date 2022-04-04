@@ -9,7 +9,7 @@
                processState, sexCd, neuterYn, specialMark, careNm, careTel,
                careAddr, orgNm, chargeNm, officetel as officeTel
         from dataset
-        where no = #{no}
+        where desertionNo = #{no}
     </select>
 
     <select id="list" parameterType="map"
