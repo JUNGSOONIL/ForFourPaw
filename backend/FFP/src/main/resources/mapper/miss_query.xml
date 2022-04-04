@@ -40,7 +40,7 @@
             AND happenPlace LIKE CONCAT('%', #{careAddr}, '%')
         </if>
         order by no DESC
-        limit #{limit} offset 0
+        limit #{limit} offset #{offset}
 
     </select>
 
