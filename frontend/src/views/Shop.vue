@@ -829,7 +829,6 @@ export default {
       pagegroup: 1,
       page: 1,
       total: 0,
-      kindCdList: [],
       shelList: [],
     };
   },
