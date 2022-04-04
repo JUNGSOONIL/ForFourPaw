@@ -12,7 +12,10 @@
         <mapper resource="mapper/user_query.xml" />
         <mapper resource="mapper/shel_query.xml" />
         <mapper resource="mapper/miss_query.xml" />
-        <mapper resource="mapper/comment_query.xml" />
+        <mapper resource="mapper/comment_query.xml" />   
+		<mapper resource="mapper/missmatch_query.xml" />
+		<mapper resource="mapper/dataset_query.xml" />
+        <mapper resource="mapper/S3_query.xml" />
         <mapper resource="mapper/Analysis_query.xml" />
 
     </mappers>

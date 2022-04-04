@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.S3Dao">
+
+    <insert id="flushFile" parameterType="com.ssafy.FFP.Dto.S3Dto">
+        insert into img(img_link, img_name) values (  #{imgLink}, #{imgName})
+        <selectKey keyProperty="no" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <delete id="deleteFile" parameterType="string">
+        delete from img where img_name = #{imgName}
+    </delete>
+
+    <delete id="deleteByNo" parameterType="int">
+        delete from img where no = #{no}
+    </delete>
+
+    <select id="select" parameterType="int" resultType="com.ssafy.FFP.Dto.S3Dto">
+        select no, img_link as imgLink, img_name as imgName
+        from img
+        where no = #{no}
+    </select>
+
+    <select id="selectByName" parameterType="string" resultType="com.ssafy.FFP.Dto.S3Dto">
+        select no, img_link as imgLink, img_name as imgName
+        from img
+        where img_name = #{imgName}
+    </select>
+
+    <select id="selectByLink" parameterType="string" resultType="com.ssafy.FFP.Dto.S3Dto">
+        select no, img_link as imgLink, img_name as imgName
+        from img
+        where img_link = #{imgLink}
+    </select>
+    
+    <update id="updateimg">
+		update user
+		set profile_img = #{imgLink}
+		where no = #{no}
+	</update> 
+</mapper>
