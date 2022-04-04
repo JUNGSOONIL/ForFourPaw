@@ -13,10 +13,12 @@ import com.ssafy.FFP.Dto.ViewStoreDto;
 @Mapper
 public interface ShelnimalDao {
 
-    public ShelnimalDto select(int no);
+    public ShelnimalDto select(String no);
+    public int insert(ShelnimalDto data);
     public List<ShelnimalDto> list(@Param("sdt") int sdt,
                                    @Param("offset") int offset,
                                    @Param("limit") int limit);
+
     public List<ShelnimalDto> match(int userNo);
     public List<ShelnimalDto> find(SearchDto searchDto);
     public List<DatasetDto> mainList(String processState);

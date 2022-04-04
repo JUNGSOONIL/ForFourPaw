@@ -12,11 +12,10 @@ public class SearchDto {
     private String careAddr;
     private String processState;
     private int limit;
-    private String offset;
     private String upKindCd;
     private String noticeEdt;
     private String noticeSdt;
-//    private int offset;
+    private int offset;
 
     public SearchDto() {
 
@@ -93,21 +92,12 @@ public class SearchDto {
     public void setLimit(int limit) {
         this.limit = limit;
     }
-//
-//    public int getOffset() {
-//        return offset;
-//    }
-//
-//    public void setOffset(int offset) {
-//        this.offset = offset;
-//    }
 
-
-    public String getOffset() {
+    public int getOffset() {
         return offset;
     }
 
-    public void setOffset(String offset) {
+    public void setOffset(int offset) {
         this.offset = offset;
     }
 
@@ -141,5 +131,44 @@ public class SearchDto {
 
     public void setNoticeSdt(String noticeSdt) {
         this.noticeSdt = noticeSdt;
+    }
+
+    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt,
+                     String happenPlace, String careAddr, String processState, int limit, String upKindCd,
+                     String noticeEdt, String noticeSdt, int offset) {
+        this.kindCd = kindCd;
+        this.colorCd = colorCd;
+        this.age = age;
+        this.sexCd = sexCd;
+        this.neuterYn = neuterYn;
+        this.happenDt = happenDt;
+        this.happenPlace = happenPlace;
+        this.careAddr = careAddr;
+        this.processState = processState;
+        this.limit = limit;
+        this.upKindCd = upKindCd;
+        this.noticeEdt = noticeEdt;
+        this.noticeSdt = noticeSdt;
+        this.offset = offset;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchDto{" +
+                "kindCd='" + kindCd + '\'' +
+                ", colorCd='" + colorCd + '\'' +
+                ", age='" + age + '\'' +
+                ", sexCd='" + sexCd + '\'' +
+                ", neuterYn='" + neuterYn + '\'' +
+                ", happenDt='" + happenDt + '\'' +
+                ", happenPlace='" + happenPlace + '\'' +
+                ", careAddr='" + careAddr + '\'' +
+                ", processState='" + processState + '\'' +
+                ", limit=" + limit +
+                ", upKindCd='" + upKindCd + '\'' +
+                ", noticeEdt='" + noticeEdt + '\'' +
+                ", noticeSdt='" + noticeSdt + '\'' +
+                ", offset=" + offset +
+                '}';
     }
 }

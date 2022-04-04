@@ -46,8 +46,9 @@ public class MissnimalController {
     @GetMapping("/misses/{offset}")
     public ResponseEntity<?> list(@PathVariable String offset){
         int os = Integer.parseInt(offset);
+        os = (os - 1) * 9;
         List<MissnimalDto> missnimalDtos = missnimalService.list(os, 9);
-        List<MissnimalDto> count = missnimalService.list(os, 100000);
+        List<MissnimalDto> count = missnimalService.list(0, 100000);
         CountingDto countingDto = new CountingDto(count.size(), null, missnimalDtos);
 
         if(missnimalDtos != null) {
@@ -77,8 +78,12 @@ public class MissnimalController {
     public ResponseEntity<?> find(@RequestBody SearchDto searchDto){
 
         searchDto.setLimit(9);
+        int os = searchDto.getOffset();
+        os = (os - 1) * 9;
+        searchDto.setOffset(os);
         List<MissnimalDto> missnimalDtos = missnimalService.find(searchDto);
         searchDto.setLimit(100000);
+        searchDto.setOffset(0);
         List<MissnimalDto> count = missnimalService.find(searchDto);
 
         CountingDto countingDto = new CountingDto(count.size(), null, missnimalDtos);
