@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.ssafy.FFP.Dto.CountingDto;
+import com.ssafy.FFP.Service.DatasetService;
+import org.checkerframework.checker.units.qual.A;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -46,6 +48,9 @@ public class ShelnimalController {
 
     @Autowired
     ShelnimalService shelnimalService;
+
+    @Autowired
+    DatasetService datasetService;
     
     private static final int SUCCESS = 1;
     private static final int FAIL = -1;
@@ -53,8 +58,8 @@ public class ShelnimalController {
     // 특정 공고 조회
     @GetMapping("/shel/detail/{no}")
     public ResponseEntity<?> select(@PathVariable String no){
-        int shelNo = Integer.parseInt(no);
-        ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
+//        int shelNo = Integer.parseInt(no);
+        ShelnimalDto shelnimalDto = shelnimalService.select(no);
 
         if(shelnimalDto != null) {
             return ResponseEntity.ok().body(shelnimalDto);
@@ -67,8 +72,8 @@ public class ShelnimalController {
     // 특정 공고 조회
     @GetMapping("/shel/detail/notlogin/{no}")
     public ResponseEntity<?> selectByNotLogin(@PathVariable String no){
-        int shelNo = Integer.parseInt(no);
-        ShelnimalDto shelnimalDto = shelnimalService.select(shelNo);
+//        int shelNo = Integer.parseInt(no);
+        ShelnimalDto shelnimalDto = shelnimalService.select(no);
 
         if(shelnimalDto != null) {
             return ResponseEntity.ok().body(shelnimalDto);
@@ -158,6 +163,10 @@ public class ShelnimalController {
                     dto.setOrgNm(itembody.get("orgNm") != null ? itembody.get("orgNm").toString() : "-");
                     dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "-");
                     dto.setOfficeTel(itembody.get("officeTel") != null ? itembody.get("officetel").toString() : "-");
+                    ShelnimalDto raw = shelnimalService.select(dto.getDesertionNo());
+                    if(raw == null){
+                        shelnimalService.insert(dto);
+                    }
                     list.add(dto);
                 }
             }
@@ -296,6 +305,10 @@ public class ShelnimalController {
                     dto.setOrgNm(itembody.get("orgNm") != null ? itembody.get("orgNm").toString() : "-");
                     dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "-");
                     dto.setOfficeTel(itembody.get("officeTel") != null ? itembody.get("officetel").toString() : "-");
+                    ShelnimalDto raw = shelnimalService.select(dto.getDesertionNo());
+                    if(raw == null){
+                        shelnimalService.insert(dto);
+                    }
                     list.add(dto);
                 }
             }
