@@ -132,32 +132,34 @@ public class ShelnimalController {
             if (max == 1)
                 max = totalCount % 1000 == 0 ? totalCount / 1000 : totalCount / 1000 + 1;
             JSONArray item = (JSONArray) items.get("item"); // JSON 파싱 데이터에서 tracks부분을 배열로 가져옴
-            for (int i = 0; i < item.size(); i++) {
-                ShelnimalDto dto = new ShelnimalDto();
-                JSONObject itembody = (JSONObject) item.get(i);
-                dto.setDesertionNo(itembody.get("desertionNo") != null ? itembody.get("desertionNo").toString() : "-");
-                dto.setFilename(itembody.get("filename") != null ? itembody.get("filename").toString() : "-");
-                dto.setHappenDt(itembody.get("happenDt") != null ? itembody.get("happenDt").toString() : "-");
-                dto.setHappenPlace(itembody.get("happenPlace") != null ? itembody.get("happenPlace").toString() : "-");
-                dto.setKindCd(itembody.get("kindCd") != null ? itembody.get("kindCd").toString() : "-");
-                dto.setColorCd(itembody.get("colorCd") != null ? itembody.get("colorCd").toString() : "-");
-                dto.setAge(itembody.get("age") != null ? itembody.get("age").toString() : "-");
-                dto.setWeight(itembody.get("weight") != null ? itembody.get("weight").toString() : "-");
-                dto.setNoticeNo(itembody.get("noticeNo") != null ? itembody.get("noticeNo").toString() : "-");
-                dto.setNoticeSdt(itembody.get("noticeSdt") != null ? itembody.get("noticeSdt").toString() : "-");
-                dto.setNoticeEdt(itembody.get("noticeEdt") !=null ? itembody.get("noticeEdt").toString() : "-");
-                dto.setPopfile(itembody.get("popfile") != null ? itembody.get("popfile").toString() : "-");
-                dto.setProcessState(itembody.get("processState") != null ? itembody.get("processState").toString() : "-");
-                dto.setSexCd(itembody.get("sexCd") != null ? itembody.get("sexCd").toString() : "-");
-                dto.setNeuterYn(itembody.get("neuterYn") != null ? itembody.get("neuterYn").toString() : "-");
-                dto.setSpecialMark(itembody.get("specialMark") != null ? itembody.get("specialMark").toString() : "-");
-                dto.setCareNm(itembody.get("careNm") != null ? itembody.get("careNm").toString() : "-");
-                dto.setCareTel(itembody.get("careTel") != null ? itembody.get("careTel").toString() : "-");
-                dto.setCareAddr(itembody.get("careAddr") != null ? itembody.get("careAddr").toString() : "-");
-                dto.setOrgNm(itembody.get("orgNm") != null ? itembody.get("orgNm").toString() : "-");
-                dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "-");
-                dto.setOfficeTel(itembody.get("officeTel") != null ? itembody.get("officetel").toString() : "-");
-                list.add(dto);
+            if(item != null) {
+                for (int i = 0; i < item.size(); i++) {
+                    ShelnimalDto dto = new ShelnimalDto();
+                    JSONObject itembody = (JSONObject) item.get(i);
+                    dto.setDesertionNo(itembody.get("desertionNo") != null ? itembody.get("desertionNo").toString() : "-");
+                    dto.setFilename(itembody.get("filename") != null ? itembody.get("filename").toString() : "-");
+                    dto.setHappenDt(itembody.get("happenDt") != null ? itembody.get("happenDt").toString() : "-");
+                    dto.setHappenPlace(itembody.get("happenPlace") != null ? itembody.get("happenPlace").toString() : "-");
+                    dto.setKindCd(itembody.get("kindCd") != null ? itembody.get("kindCd").toString() : "-");
+                    dto.setColorCd(itembody.get("colorCd") != null ? itembody.get("colorCd").toString() : "-");
+                    dto.setAge(itembody.get("age") != null ? itembody.get("age").toString() : "-");
+                    dto.setWeight(itembody.get("weight") != null ? itembody.get("weight").toString() : "-");
+                    dto.setNoticeNo(itembody.get("noticeNo") != null ? itembody.get("noticeNo").toString() : "-");
+                    dto.setNoticeSdt(itembody.get("noticeSdt") != null ? itembody.get("noticeSdt").toString() : "-");
+                    dto.setNoticeEdt(itembody.get("noticeEdt") != null ? itembody.get("noticeEdt").toString() : "-");
+                    dto.setPopfile(itembody.get("popfile") != null ? itembody.get("popfile").toString() : "-");
+                    dto.setProcessState(itembody.get("processState") != null ? itembody.get("processState").toString() : "-");
+                    dto.setSexCd(itembody.get("sexCd") != null ? itembody.get("sexCd").toString() : "-");
+                    dto.setNeuterYn(itembody.get("neuterYn") != null ? itembody.get("neuterYn").toString() : "-");
+                    dto.setSpecialMark(itembody.get("specialMark") != null ? itembody.get("specialMark").toString() : "-");
+                    dto.setCareNm(itembody.get("careNm") != null ? itembody.get("careNm").toString() : "-");
+                    dto.setCareTel(itembody.get("careTel") != null ? itembody.get("careTel").toString() : "-");
+                    dto.setCareAddr(itembody.get("careAddr") != null ? itembody.get("careAddr").toString() : "-");
+                    dto.setOrgNm(itembody.get("orgNm") != null ? itembody.get("orgNm").toString() : "-");
+                    dto.setChargeNm(itembody.get("chargeNm") != null ? itembody.get("chargeNm").toString() : "-");
+                    dto.setOfficeTel(itembody.get("officeTel") != null ? itembody.get("officetel").toString() : "-");
+                    list.add(dto);
+                }
             }
         } catch (ParseException e) {
             e.printStackTrace();
@@ -268,6 +270,7 @@ public class ShelnimalController {
             if (max == 1)
                 max = totalCount % 1000 == 0 ? totalCount / 1000 : totalCount / 1000 + 1;
             JSONArray item = (JSONArray) items.get("item"); // JSON 파싱 데이터에서 tracks부분을 배열로 가져옴
+            if(item != null) {
                 for (int i = 0; i < item.size(); i++) {
                     ShelnimalDto dto = new ShelnimalDto();
                     JSONObject itembody = (JSONObject) item.get(i);
@@ -281,7 +284,7 @@ public class ShelnimalController {
                     dto.setWeight(itembody.get("weight") != null ? itembody.get("weight").toString() : "-");
                     dto.setNoticeNo(itembody.get("noticeNo") != null ? itembody.get("noticeNo").toString() : "-");
                     dto.setNoticeSdt(itembody.get("noticeSdt") != null ? itembody.get("noticeSdt").toString() : "-");
-                    dto.setNoticeEdt(itembody.get("noticeEdt") !=null ? itembody.get("noticeEdt").toString() : "-");
+                    dto.setNoticeEdt(itembody.get("noticeEdt") != null ? itembody.get("noticeEdt").toString() : "-");
                     dto.setPopfile(itembody.get("popfile") != null ? itembody.get("popfile").toString() : "-");
                     dto.setProcessState(itembody.get("processState") != null ? itembody.get("processState").toString() : "-");
                     dto.setSexCd(itembody.get("sexCd") != null ? itembody.get("sexCd").toString() : "-");
@@ -295,6 +298,7 @@ public class ShelnimalController {
                     dto.setOfficeTel(itembody.get("officeTel") != null ? itembody.get("officetel").toString() : "-");
                     list.add(dto);
                 }
+            }
             } catch (ParseException e) {
                 e.printStackTrace();
             }
