@@ -773,6 +773,7 @@
 <script>
 import axios from 'axios';
 // import Slick from "vue-slick";
+const session = window.sessionStorage;
 export default {
   name: "App",
   components: {
@@ -840,7 +841,7 @@ export default {
   },
   created(){
     this.$store.commit('setHaderindex',0);
-    if (this.$store.state["login"].isLogin == false) {
+    if (session.getItem("userInfo") == null) {
       this.shelimalList();
     } else {
       this.shelimalListLogin();
@@ -848,13 +849,13 @@ export default {
     this.selectmaincnt();
   },
   mounted() {
-    window.addEventListener('beforeunload', this.clearStorage)
+    // window.addEventListener('beforeunload', this.clearStorage)
+    // console.log(session.getItem("userInfo"));
   },
   methods:{
-    clearStorage() {
-      localStorage.removeItem('vuex');
-      
-    },
+    // clearStorage() {
+    //   localStorage.removeItem('vuex');
+    // },
     shelimalList() {
       console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
