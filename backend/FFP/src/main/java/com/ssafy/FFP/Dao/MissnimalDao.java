@@ -11,10 +11,12 @@ import java.util.List;
 public interface MissnimalDao {
 
     public MissnimalDto select(int no);
+    public List<MissnimalDto> selectByUser(int no);
     public int create(MissnimalDto missnimalDto);
     public int update(MissnimalDto missnimalDto);
     public int delete(int no);
-    public List<MissnimalDto> list(String sdt);
+    public List<MissnimalDto> list(@Param("offset") int offset,
+                                   @Param("limit") int limit);
     public List<MissnimalDto> match(int userNo);
     public List<MissnimalDto> find(SearchDto searchDto);
 

@@ -29,6 +29,12 @@ public class MissnimalServiceImpl implements MissnimalService{
     }
 
     @Override
+    public List<MissnimalDto> selectByUser(int no) {
+        List<MissnimalDto> missnimalDtos = missnimalDao.selectByUser(no);
+        return missnimalDtos;
+    }
+
+    @Override
     public int create(MissnimalDto missnimalDto, S3Dto img) {
         missnimalDto.setProfile(img.getImgLink());
         int result = missnimalDao.create(missnimalDto);
@@ -61,8 +67,8 @@ public class MissnimalServiceImpl implements MissnimalService{
     }
 
     @Override
-    public List<MissnimalDto> list(String sdt) {
-        List<MissnimalDto> missnimalDtos = missnimalDao.list(sdt);
+    public List<MissnimalDto> list(int offset, int limit) {
+        List<MissnimalDto> missnimalDtos = missnimalDao.list(offset, limit);
         return missnimalDtos;
     }
 

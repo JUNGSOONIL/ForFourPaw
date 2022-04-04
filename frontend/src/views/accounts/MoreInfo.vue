@@ -164,6 +164,7 @@ export default {
     },
     signUp() {
       //validation이 통과 됬을때만 버튼이 클릭되게 해야함
+      const formData = new FormData();
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
@@ -174,17 +175,21 @@ export default {
         nickname: this.nickname,
         addrs: this.addrs,
       };
+       formData.append(
+        "userInfo",
+        new Blob([JSON.stringify(info)], { type: "application/json" })
+      );
       if (this.isNickNameValid && this.isNickNameDBValid && this.addrs != "") {
         console.log("send");
         axios({
           method: "put",
           url: `/api/users`,
-          data: info,
+          data: formData,
           headers: headers, // 넣는거 까먹지 마세요
         })
           .then((res) => {
             this.$store.dispatch("login/accessTokenRefreshOnUserInfo", res);
-            this.$route.push("/");
+            this.$router.push("/");
           })
           .catch((error) => {
             console.log(error);
