@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <!-- Preloader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
       <img src="/img/preloader.gif" alt="" />
-    </div>
+    </div> -->
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
@@ -23,21 +23,24 @@
                 <nav class="menu-nav show">
                   <div class="logo">
                     <router-link to="/"
-                      ><img src="/img/logo/paw_logo_2line.png" alt=""
+                      ><img
+                        src="/img/logo/paw_logo_2line.png"
+                        alt=""
+                        onclick="window.scrollTo(0,0);"
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
-                    <ul class="navigation">
-                      <li class="active menu-item-has-children">
+                    <ul class="navigation" >
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 0}">
                         <router-link to="/">홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
-                      <li class="menu-item-has-children">
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 1}">
                         <router-link to="/shop">유기동물</router-link>
                       </li>
                       <!-- 헤더-실종동물 -->
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">실종동물</router-link>
+                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 2}">
+                        <router-link to="/missList">실종동물</router-link>
 
                         <ul class="submenu">
                           <li>
@@ -62,18 +65,10 @@
                           </li> -->
                         </ul>
                       </li>
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">통계</router-link>
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/Analysis_Region">지역 통계</router-link>
-                          </li>
-                          <li>
-                            <router-link to="/shopDetail"
-                              >Shop Details</router-link
-                            >
-                          </li>
-                        </ul>
+                      <li class="menu-item-has-children"  :class="{active : this.$store.getters.getHaderindex == 3}">
+                        <router-link to="/analysisview"
+                          >데이터 분석</router-link
+                        >
                       </li>
                       <!-- <li><a href="adoption.html">Adoption</a></li> -->
                       <!-- <li class="menu-item-has-children">
@@ -148,26 +143,58 @@
                           </li>
                         </ul>
                       </li> -->
-                      <li class="header-btn" style="margin: 1px" v-if="isLoginGetters">
-                        <router-link to="/userPage" class="btn" style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;">
+                      <li
+                        class="header-btn"
+                        style="margin: 1px"
+                        v-if="isLoginGetters"
+                      >
+                        <router-link
+                          to="/userPage"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
+                        >
                           내정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
-                    </li>
+                      </li>
                       <li class="header-btn" v-if="!isLoginGetters">
-                        <router-link to="/socialLogin" class="btn"
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                        <router-link
+                          to="/socialLogin"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="isLoginGetters">
-                        <router-link to="/moreInfo" class="btn"
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                      <li class="header-btn" v-if="activeMoreInfo">
+                        <router-link
+                          to="/moreInfo"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           to="/logoutPage"
                           class="btn"
                           @click.native="logout"
@@ -265,9 +292,24 @@
 const session = window.sessionStorage;
 
 export default {
+    data() {
+    return {
+      navclick : 0,
+    };
+  },
   computed: {
     isLoginGetters() {
       return this.$store.getters["login/isLogin"];
+    },
+    userInfoGetters() {
+      return this.$store.getters["login/userInfo"];
+    },
+    activeMoreInfo() {
+      let isAddrsvalidate = false;
+      if (this.userInfoGetters!=null && this.userInfoGetters.addrs != "") {
+        isAddrsvalidate = true;
+      }
+      return this.isLoginGetters && !isAddrsvalidate;
     },
   },
   methods: {

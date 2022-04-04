@@ -15,7 +15,8 @@ public interface MissnimalDao {
     public int create(MissnimalDto missnimalDto);
     public int update(MissnimalDto missnimalDto);
     public int delete(int no);
-    public List<MissnimalDto> list(@Param("offset") int offset);
+    public List<MissnimalDto> list(@Param("offset") int offset,
+                                   @Param("limit") int limit);
     public List<MissnimalDto> match(int userNo);
     public List<MissnimalDto> find(SearchDto searchDto);
 

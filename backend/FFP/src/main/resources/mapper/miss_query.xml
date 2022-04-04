@@ -24,7 +24,7 @@
                write_time as writeTime
         from missnimal
         ORDER BY no DESC
-        limit 9 offset #{offset}
+        limit #{limit} offset #{offset}
     </select>
 
     <select id="find" parameterType="int"
@@ -34,27 +34,19 @@
         from missnimal
         WHERE no is not null
         <if test ="kindCd != null">
-            AND kindCd = #{kindCd}
+            AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
         </if>
-        <if test ="colorCd != null">
-            AND colorCd = #{colorCd}
-        </if>
-        <if test ="age != null">
-            AND age = #{age}
+        <if test ="neuterYn != null">
+            AND neuter_yn = #{neuterYn}
         </if>
         <if test ="sexCd != null">
             AND sexCd = #{sexCd}
         </if>
-        <if test ="neuterYn != null">
-            AND neuterYn = #{neuterYn}
+        <if test ="careAddr != null">
+            AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
         </if>
-        <if test ="happenDt != null">
-            AND happenDt = #{happenDt}
-        </if>
-        <if test ="happenPlace != null">
-            AND happenPlace = #{happenPlace}
-        </if>
-        limit 9 offset #{offset}
+        order by no DESC
+        limit #{limit} offset #{offset}
 
     </select>
 
