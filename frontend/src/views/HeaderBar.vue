@@ -41,29 +41,6 @@
                       <!-- 헤더-실종동물 -->
                       <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 2}">
                         <router-link to="/missList">실종동물</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/missList"
-                              >실종동물 목록</router-link
-                            >
-                          </li>
-                          <li>
-                            <router-link to="/missWrite"
-                              >실종동물 추가</router-link
-                            >
-                          </li>
-                          <!-- <li>
-                            <router-link to="/missDetail"
-                              >실종동물 상세</router-link
-                            >
-                          </li> -->
-                          <!-- <li>
-                            <router-link to="/shelDetail"
-                              >유기동물 상세</router-link
-                            >
-                          </li> -->
-                        </ul>
                       </li>
                       <li class="menu-item-has-children"  :class="{active : this.$store.getters.getHaderindex == 3}">
                         <router-link to="/analysisview"
