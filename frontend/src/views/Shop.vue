@@ -839,6 +839,7 @@ export default {
   methods: {
   
     searchShelnimaldefualt() {
+      this.$store.commit('loading/load', true);
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
@@ -858,15 +859,13 @@ export default {
         })
         .catch((error) => {
           console.log(error);
-        })
-        .then(() => {
-          console.log("searchShelnimaldefualt End!!");
-          console.log(this.total);
-          console.log(this.pagegroupmax);
-        });
+        }).finally(() => this.$store.commit('loading/load', false),
+        console.log('searchShelnimaldefualt End!!'),
+)
     },
 
     searchShelnimal() {
+      this.$store.commit('loading/load', true);
       this.page = 1
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
@@ -904,15 +903,13 @@ export default {
            this.shelList = ""
            this.total = 0
            this.pagegroupmax = 0
-        })
-        .then(() => {
-          console.log("searchShelnimal End!!");
-          console.log(this.total);
-          console.log(this.pagegroupmax);
-        });
+        }).finally(() => this.$store.commit('loading/load', false),
+        console.log('searchShelnimal End!!'),
+)
     },
 
     searchShelnimalPage(el) {
+      this.$store.commit('loading/load', true);
       this.page = el
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
@@ -949,10 +946,10 @@ export default {
            this.total = 0
            this.pagegroupmax = 0
         })
-        .then(() => {
-          console.log("searchShelnimalPage End!!");
-          window.scrollTo(0,380);
-        });
+        .finally(() => this.$store.commit('loading/load', false),
+        console.log('searchShelnimalPage End!!'),
+         window.scrollTo(0,380),
+)
     },
   },
 };
