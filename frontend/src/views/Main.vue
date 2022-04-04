@@ -554,7 +554,7 @@
                     alt=""
                   />
                   <router-link
-                    :to="{ name: 'ShelDetail', params: { no: shelnimal.no } }"
+                    :to="{ name: 'ShelDetail', params: { no: shelnimal.desertionNo } }"
                     class="btn"
                     >보러가기<img src="img/icon/w_pawprint.png" alt=""
                   /></router-link>

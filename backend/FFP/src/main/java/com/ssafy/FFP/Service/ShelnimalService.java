@@ -9,7 +9,8 @@ import com.ssafy.FFP.Dto.ViewStoreDto;
 
 public interface ShelnimalService {
 
-    public ShelnimalDto select(int no);
+    public ShelnimalDto select(String no);
+    public int insert(ShelnimalDto data);
     public List<ShelnimalDto> list(int sdt, int offset, int limit);
     public List<ShelnimalDto> match(int userNo);
     public List<ShelnimalDto> find(SearchDto searchDto);

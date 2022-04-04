@@ -70,12 +70,17 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     ShelnimalDao shelnimalDao;
 
     @Override
-    public ShelnimalDto select(int no) {
+    public ShelnimalDto select(String no) {
         ShelnimalDto shelnimalDto = shelnimalDao.select(no);
         return shelnimalDto;
     }
 
-    @Override
+	@Override
+	public int insert(ShelnimalDto data) {
+		return shelnimalDao.insert(data);
+	}
+
+	@Override
     public List<ShelnimalDto> list(int sdt, int offset, int limit) {
         List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt, offset, limit);
         return shelnimalDtos;

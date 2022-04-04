@@ -39,4 +39,13 @@ public class AnalysisController {
 
         return ResponseEntity.ok().body(result);
     }
+
+    @GetMapping(value="/loaddata")
+    public ResponseEntity<?> loaddata(
+            HttpServletRequest request) throws Exception {
+        System.out.println("[system] DB에서 chart data 불러오기");
+        AnalysisResultDto result = analysisService.loaddata();
+        System.out.println(result.toString());
+        return ResponseEntity.ok().body(result);
+    }
 }
