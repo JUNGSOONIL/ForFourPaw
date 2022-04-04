@@ -17,5 +17,8 @@ public interface AnalysisDao {
     // DB에서 불러오기
     public List<AnalysisDto> chartlist(String code);
 
+    // DB 테이블 초기화
+    public void cleartable();
+
 
 }

@@ -3,6 +3,7 @@ package com.ssafy.FFP.Controller;
 
 import java.util.Map;
 
+import com.ssafy.FFP.Service.AnalysisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class DatasetController {
 	
 	@Autowired
 	DatasetService Service;
+
+	@Autowired
+	AnalysisService AService;
 
 	@PostMapping("/dataset")
 	public int DatasetInsert() { // 일단 2021년도까지 데이터는 모두 가져와서 데이터베이스에 저장 
@@ -39,5 +43,10 @@ public class DatasetController {
 	@Scheduled(cron = "0 0 0/1 * * *",zone = "Asia/Seoul")
 	public void Datasetadd() { // 실시간 데이터 추가
 		Service.DataAdd();
+	}
+
+	@Scheduled(cron = "55 22 * * *",zone = "Asia/Seoul")
+	public void AnalysisUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
+		AService.updateChartDB();
 	}
 }
