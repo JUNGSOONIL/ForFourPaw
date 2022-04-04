@@ -273,20 +273,20 @@
                       <div v-for="(miss, index) in misslistslice" v-bind:key="index" class="col-lg-3">
                         <div class="shop-item mb-55" style="z-index: -1;">
                           <div class="shop-thumb">
-                            <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                            <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
                               <img :src=miss.popfile alt="" style="width:268px; height: 268px; border-radius: 50%"/>
                               </router-link>
                           </div>
                           <div class="shop-content">
                             <h5 class="title">
-                              <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                              <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
                                 {{miss.orgNm}} {{miss.happenPlace}}
                               </router-link>
                             </h5>
                             <div class="shop-content-bottom">
                               <span class="price">보호기관 : {{miss.careTel}}</span>
                               <span class="add-cart">
-                                <router-link :to="{ name: 'ShelDetail', params: { no: miss.no },}">
+                                <router-link :to="{ name: 'ShelDetail', params: { no: miss.desertionNo },}">
                                   상세보기
                                 </router-link>
                               </span>
