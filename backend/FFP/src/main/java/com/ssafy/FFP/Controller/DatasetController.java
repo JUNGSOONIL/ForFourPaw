@@ -45,8 +45,13 @@ public class DatasetController {
 		Service.DataAdd();
 	}
 
-	@Scheduled(cron = "55 22 * * *",zone = "Asia/Seoul")
-	public void AnalysisUpdate() { // 최근 4달 데이터 가져와서 새로 갱신하는 방식
+	@Scheduled(cron = "10 11 * * *",zone = "Asia/Seoul")
+	public void AnalysisUpdate() {
+		AService.updateChartDB();
+	}
+
+	@Scheduled(cron = "0 0 4 * * *",zone = "Asia/Seoul")
+	public void AnalysisUpdate2() {
 		AService.updateChartDB();
 	}
 }
