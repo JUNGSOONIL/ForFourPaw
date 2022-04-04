@@ -726,8 +726,12 @@
                         <h4 class="title">
                           {{ shel.noticeSdt }} ~ {{ shel.noticeEdt }}
                         </h4>
+                         <div class="shop-content-bottom">
+                            <span class="price">장소 : {{ shel.orgNm }}</span>
+                        </div>
                         <div class="shop-content-bottom">
-                          <span class="price">{{ shel.specialMark }}</span>
+                         
+                          <span class="price">특징 : {{ shel.specialMark }}</span>
                           <span class="add-cart">
                             <router-link
                               :to="{
@@ -771,7 +775,7 @@
                         "
                         v-for="(shel, index) in pagegroup * 10 <= pagegroupmax
                           ? 10
-                          : Math.ceil(total / 9)"
+                          : Math.ceil((total % 90)/9)"
                         v-bind:key="index"
                         :class="{
                           active: index + 1 + (pagegroup - 1) * 10 == page,
@@ -864,6 +868,7 @@ export default {
     },
 
     searchShelnimal() {
+      this.page = 1
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
@@ -891,6 +896,7 @@ export default {
           this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
+          this.pagegroup = 1
           this.pagegroupmax = Math.ceil(this.total / 9 )
           console.log(res)
         })
@@ -902,12 +908,13 @@ export default {
         })
         .then(() => {
           console.log("searchShelnimal End!!");
-
+          console.log(this.total);
+          console.log(this.pagegroupmax);
         });
     },
 
     searchShelnimalPage(el) {
-      this.page = el;
+      this.page = el
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
@@ -939,6 +946,9 @@ export default {
         })
         .catch((error) => {
           console.log(error);
+          this.shelList = ""
+           this.total = 0
+           this.pagegroupmax = 0
         })
         .then(() => {
           console.log("searchShelnimalPage End!!");
