@@ -765,6 +765,43 @@
         </div>
       </section> -->
       <!-- blog-area-end -->
+
+      <!-- faq-area -->
+        <section class="faq-area">
+            <div class="container">
+              <br>
+              <br>
+                <div class="row align-items-center">
+                  <div class="col-lg-12">
+                    <div class="faq-img-wrap">
+                      <table align="center" width="1162" height="695" background="img/images/faq_tv.png" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                          <td height="180"> </td>
+                        </tr>
+                        <tr>
+                          <td height="225" align="center">
+                            <video height="450" width="900" controls>
+                              <source src="video/test.mp4" type="video/mp4">
+                              이 문장은 여러분의 브라우저가 video 태그를 지원하지 않을 때 화면에 표시됩니다!
+                            </video>  
+                          </td> 
+                          <td width="100"></td>
+                        </tr>
+                        <tr>
+                          <td height="35"> </td>
+                        </tr>
+                      </table>
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="faq-shape"><img src="img/images/faq_shape.png" alt=""></div>
+            <br>
+            <br>
+        </section>
+        <!-- faq-area-end -->
+
     </main>
     <!-- main-area-end -->
   </div>
@@ -773,6 +810,7 @@
 <script>
 import axios from 'axios';
 // import Slick from "vue-slick";
+
 const session = window.sessionStorage;
 export default {
   name: "App",
