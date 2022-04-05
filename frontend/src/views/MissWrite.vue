@@ -348,7 +348,7 @@
                   </div>
                 </div>
                 <div class="d-md-flex justify-content-md-end">
-                  <span v-if="no == null">
+                  <span v-if="no == null"  style="margin-top: 10px; margin-right:10px">
                     <li class="header-btn" style="margin: 1px" @click="reset">
                       <p
                         class="btn"
@@ -364,10 +364,9 @@
                       </p>
                     </li>
                   </span>
-                  <span v-if="no == null">
+                  <span v-if="no == null" style="margin-top: 10px">
                     <li
                       class="header-btn"
-                      style="margin: 1px"
                       @click="insertMiss"
                     >
                       <p
@@ -384,10 +383,9 @@
                       </p>
                     </li>
                   </span>
-                  <span v-if="no != null">
+                  <span v-if="no != null" style="margin-top: 10px; margin-right:10px">
                     <li
                       class="header-btn"
-                      style="margin: 1px"
                       @click="updateMiss"
                     >
                       <p
@@ -404,10 +402,9 @@
                       </p>
                     </li>
                   </span>
-                  <span v-if="no != null">
+                  <span v-if="no != null" style="margin-top: 10px">
                     <li
                       class="header-btn"
-                      style="margin: 1px"
                       @click="deleteMiss"
                     >
                       <p

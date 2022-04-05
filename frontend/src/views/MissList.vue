@@ -132,12 +132,9 @@
                     v-bind:key="index"
                     style="width: 341px; height: 457px; padding: 10px"
                   >
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <router-link
-                          :to="{ name: 'MissDetail', params: { no: miss.no } }"
-                        >
-                          <img
+                    <div class="adoption-shop-item mb-55">
+                 <div class="adoption-shop-thumb">
+                  <img
                             v-if="miss.profile"
                             :src="miss.profile"
                             style="width: 321px; height: 268px"
@@ -149,10 +146,16 @@
                             style="background-color: #bcbcbc"
                             alt=""
                           />
-                        </router-link>
-                      </div>
+                  <router-link
+                    :to="{ name: 'MissDetail', params: { no: miss.no  } }"
+                    class="btn"
+                    >보러가기<img src="img/icon/w_pawprint.png" alt=""
+                  /></router-link>
+                </div>
                       <div class="shop-content">
-                        <span>{{ miss.name }}</span>
+                        <div class="shop-content-bottom">
+                        <span style="margin-bottom:4px;" class="price">{{ miss.name }}</span>
+                        </div>
                         <h4 class="title">실종 날짜 : {{ miss.happenDt }}</h4>
                         <div class="shop-content-bottom">
                           <span class="price"
@@ -161,16 +164,6 @@
                         </div>
                         <div class="shop-content-bottom">
                           <span class="price">특이사항 : {{ miss.descr }}</span>
-                          <span class="add-cart">
-                            <router-link
-                              :to="{
-                                name: 'MissDetail',
-                                params: { no: miss.no },
-                              }"
-                            >
-                              상세보기
-                            </router-link>
-                          </span>
                         </div>
                       </div>
                     </div>
@@ -251,8 +244,8 @@ export default {
   data() {
     return {
       search: {
-        happenPlace: null,
-        kindCd: null,
+        happenPlace: "",
+        kindCd: "",
       },
       pagegroupmax: 0,
       pagegroup: 1,
@@ -266,6 +259,7 @@ export default {
     this.$store.commit("setHaderindex", 2);
   },
   methods: {
+
     userInfoNo() {
       if (session.getItem("userInfo") != null)
         return JSON.parse(session.getItem("userInfo")).no;

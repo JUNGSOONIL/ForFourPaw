@@ -227,6 +227,8 @@
                         v-model="search.kindCd"
                         style="width:250px"
                       >
+                        <option  v-if="!search.upKindCd" value="">전체</option>
+                        
                         <option  v-if="search.upKindCd == 417000" value="null">전체</option>
 
                         <option  v-if="search.upKindCd == 417000" value="000054">골든 리트리버</option>
@@ -702,11 +704,8 @@
                     v-bind:key="index"
                      style="width: 341px; height: 457px; padding: 10px;"
                   >
-                    <div class="shop-item mb-55">
-                      <div class="shop-thumb">
-                        <router-link
-                          :to="{ name: 'ShelDetail', params: { no: shel.desertionNo } }"
-                        >
+                    <div class="adoption-shop-item mb-55">
+                      <div class="adoption-shop-thumb">
                           <img
                             v-if="shel.popfile"
                             :src="shel.popfile"
@@ -719,12 +718,18 @@
                             style="background-color: #bcbcbc"
                             alt=""
                           />
-                        </router-link>
+                         <router-link
+                    :to="{ name: 'ShelDetail', params: { no: shel.desertionNo } }"
+                    class="btn"
+                    >보러가기<img src="img/icon/w_pawprint.png" alt=""
+                  /></router-link>
                       </div>
                       <div class="shop-content">
-                        <span>{{ shel.processState }}</span>
+                        <div class="shop-content-bottom">
+                        <span style="margin-bottom:4px;" class="price">{{ shel.processState }}</span>
+                        </div>
                         <h4 class="title">
-                          {{ shel.noticeSdt }} ~ {{ shel.noticeEdt }}
+                          {{ changeDateString(shel.noticeSdt) }} ~ {{ changeDateString(shel.noticeEdt) }}
                         </h4>
                          <div class="shop-content-bottom">
                             <span class="price">장소 : {{ shel.orgNm }}</span>
@@ -732,16 +737,6 @@
                         <div class="shop-content-bottom">
                          
                           <span class="price">특징 : {{ shel.specialMark }}</span>
-                          <span class="add-cart">
-                            <router-link
-                              :to="{
-                                name: 'ShelDetail',
-                                params: { no: shel.desertionNo },
-                              }"
-                            >
-                              상세보기
-                            </router-link>
-                          </span>
                         </div>
                       </div>
                     </div>
@@ -818,13 +813,13 @@ export default {
   data() {
     return {
       search: {
-        noticeSdt: null,
-        noticeEdt: null,
-        upKindCd : null,
-        kindCd: null,
-        neuterYn: null,
-        careAddr: null,
-        processState: null,
+        noticeSdt: "",
+        noticeEdt: "",
+        upKindCd : "",
+        kindCd: "",
+        neuterYn: "",
+        careAddr: "",
+        processState: "",
       },
       pagegroupmax: 0,
       pagegroup: 1,
@@ -838,7 +833,12 @@ export default {
     this.$store.commit('setHaderindex',1);
   },
   methods: {
-  
+    changeDateString(date){
+      var year = date.substr(0,4);
+      var month = date.substr(4,2);
+      var day = date.substr(6,2);
+    return year + "-" + month + "-" + day
+    },
     searchShelnimaldefualt() {
       this.shelList = ""
       this.$store.commit('loading/load', true);

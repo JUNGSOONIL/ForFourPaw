@@ -42,7 +42,7 @@
               <h2>사용자에게 그 결과를 제공합니다.</h2>
             </div>
 
-            <h4 style="color: #9859ff">범위 : 2009.01 ~ 현재</h4>
+            <h4 style="color: #9859ff">범위 : 2009-01 ~ 현재</h4>
 
             <img
               id="analysisdog"
