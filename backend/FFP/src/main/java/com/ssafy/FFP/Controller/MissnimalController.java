@@ -97,7 +97,7 @@ public class MissnimalController {
     }
 
     // 글 작성
-    @PostMapping("/miss")
+    @PostMapping("/authorization/miss")
     public ResponseEntity<?> create(
             @RequestPart(value="missData") MissnimalDto missnimalDto,
             @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
@@ -125,7 +125,7 @@ public class MissnimalController {
     }
 
     // 글 수정
-    @PutMapping("/miss")
+    @PutMapping("/authorization/miss")
     public ResponseEntity<?> update(
             @RequestPart(value="missData") MissnimalDto missnimalDto,
             @RequestPart(value="multipartFile", required = false) List<MultipartFile> multipartFile){
@@ -158,7 +158,7 @@ public class MissnimalController {
         }
     }
     
-    @DeleteMapping("/miss/{no}")
+    @DeleteMapping("/authorization/miss/{no}")
     public ResponseEntity<?> delete(@PathVariable String no){
         int missNo = Integer.parseInt(no);
 
