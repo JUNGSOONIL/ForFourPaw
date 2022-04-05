@@ -37,7 +37,7 @@
             <div class="col-lg-10">
               <div class="shop-wrap">
                 <h4 class="title">실종 동물 목록 </h4>
-                <li class="header-btn">
+                <li v-if="userInfoNo() != null" class="header-btn">
                         <router-link
                           to="/missWrite"
                           class="btn"
@@ -49,7 +49,7 @@
                             padding: 19px 15px;
                           "
                           >글작성<img src="/img/icon/w_pawprint.png" alt=""
-                        /></router-link>
+                  /></router-link>
                 </li>
                 <br>
                 <br>
@@ -229,7 +229,7 @@
 
 <script>
 import axios from "axios";
-
+const session = window.sessionStorage;
 export default {
   name: "App",
   components: {},
@@ -251,6 +251,11 @@ export default {
     this.$store.commit('setHaderindex',2);
   },
   methods: {
+     userInfoNo(){
+      if(session.getItem('userInfo') != null)
+        return JSON.parse(session.getItem('userInfo')).no
+      return null
+    },
   
     searchMissnimaldefualt() {
       this.$store.commit('loading/load', true);
@@ -321,7 +326,6 @@ export default {
         data: data,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           this.missList = ""
           this.missList = res.data.missnimalDtos;
           this.total = res.data.allCount;
