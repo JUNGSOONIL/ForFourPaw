@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/banner2.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -18,7 +18,7 @@
                       <router-link to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      유기 동물
+                      유기 동물 목록
                     </li>
                   </ol>
                 </nav>
@@ -700,7 +700,7 @@
                   <div
                     v-for="(shel, index) in shelList"
                     v-bind:key="index"
-                    class="col-lg-4 col-sm-6"
+                     style="width: 341px; height: 457px; padding: 10px;"
                   >
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
@@ -710,7 +710,7 @@
                           <img
                             v-if="shel.popfile"
                             :src="shel.popfile"
-                            style="width: 278px; height: 268px"
+                            style="width: 321px; height: 268px"
                             alt=""
                           />
                           <img
@@ -748,8 +748,10 @@
                   </div>
                 </div>
 
-                <div v-if="total == 0" style="text-align: center">
-                  <img src="../assets/img/analysisDog4.png" alt="">
+                <div v-if="total == 0" style="text-align: center; margin-top:20px">
+                  <h3>품종오류가 발생할 수 있으니 축종을 전체로 설정 후 </h3>
+                  <h3>한번 더 검색하시기 바랍니다.</h3>
+                  <img src="/img/bg/logo5.png" alt="">
                 </div>
 
                 <div v-if="total != 0"
@@ -809,7 +811,6 @@
 
 <script>
 import axios from "axios";
-const session = window.sessionStorage;
 
 export default {
   name: "App",
@@ -829,7 +830,6 @@ export default {
       pagegroup: 1,
       page: 1,
       total: 0,
-      kindCdList: [],
       shelList: [],
     };
   },
@@ -840,39 +840,29 @@ export default {
   methods: {
   
     searchShelnimaldefualt() {
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
+      this.shelList = ""
+      this.$store.commit('loading/load', true);
       axios({
         method: "get",
         url: "/api/shel/1",
-        headers: headers,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           console.log(res.data);
-          this.shelList = null
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
         })
         .catch((error) => {
           console.log(error);
-        })
-        .then(() => {
-          console.log("searchShelnimaldefualt End!!");
-          console.log(this.total);
-          console.log(this.pagegroupmax);
-        });
+        }).finally(() => this.$store.commit('loading/load', false),
+        console.log('searchShelnimaldefualt End!!'),
+)
     },
 
     searchShelnimal() {
+      this.shelList = ""
+      this.$store.commit('loading/load', true);
       this.page = 1
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       let data = {
         noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
@@ -889,11 +879,8 @@ export default {
         method: "post",
         url: "/api/shel/",
         data: data,
-        headers: headers,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
-          this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroup = 1
@@ -905,20 +892,15 @@ export default {
            this.shelList = ""
            this.total = 0
            this.pagegroupmax = 0
-        })
-        .then(() => {
-          console.log("searchShelnimal End!!");
-          console.log(this.total);
-          console.log(this.pagegroupmax);
-        });
+        }).finally(() => this.$store.commit('loading/load', false),
+        console.log('searchShelnimal End!!'),
+)
     },
 
     searchShelnimalPage(el) {
+       this.shelList = ""
+      this.$store.commit('loading/load', true);
       this.page = el
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       let data = {
         noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
@@ -935,10 +917,8 @@ export default {
         method: "post",
         url: "/api/shel/",
         data: data,
-        headers: headers,
       })
         .then((res) => { 
-          this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
@@ -950,10 +930,10 @@ export default {
            this.total = 0
            this.pagegroupmax = 0
         })
-        .then(() => {
-          console.log("searchShelnimalPage End!!");
-          window.scrollTo(0,380);
-        });
+        .finally(() => this.$store.commit('loading/load', false),
+        console.log('searchShelnimalPage End!!'),
+         window.scrollTo(0,380),
+        )
     },
   },
 };
