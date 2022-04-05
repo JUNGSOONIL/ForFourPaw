@@ -39,6 +39,7 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .excludePathPatterns("/shel")
                 .excludePathPatterns("/miss")
                 .excludePathPatterns("/misses/**")
+                .excludePathPatterns("/loaddata")
                 .excludePathPatterns("/miss/**");
 
     }
