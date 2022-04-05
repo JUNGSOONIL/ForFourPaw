@@ -364,8 +364,6 @@
 import axios from 'axios'
 axios.defaults.timeout = 1800000;
 
-const session = window.sessionStorage;
-
 // const session = window.sessionStorage;
 
 // for chart
@@ -444,10 +442,6 @@ export default  {
         loaddata_fromDB() {
             console.log("[system] 차트 불러오기 ");
             
-            let headers = {
-                'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-                'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-            };
 
             let data = {
               name: '',
@@ -457,11 +451,9 @@ export default  {
                     method:'get',
                     url:'/api/loaddata',
                     data:data, 
-                    headers: headers,  // 넣는거 까먹지 마세요
                     timeout:1800000,
                 }).then((res) => {
 
-                    this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
                     // this.dispatch('accessTokenRefresh', res) // store에서
 
                     // console.log(res.data);
