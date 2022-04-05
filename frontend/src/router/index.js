@@ -4,14 +4,10 @@ import VueRouter from "vue-router";
 Vue.use(VueRouter);
 
 import Main from "@/views/Main.vue";
-import Shop from "@/views/Shop.vue";
-import ShopDetail from "@/views/ShopDetail.vue";
+import ShelList from "@/views/ShelList.vue";
 import MissDetail from "@/views/MissDetail.vue";
 import ShelDetail from "@/views/ShelDetail.vue";
 import MissWrite from "@/views/MissWrite.vue";
-import DogList from "@/views/DogList.vue";
-import BlogDetail from "@/views/BlogDetail.vue";
-import Blog from "@/views/Blog.vue";
 import SocialLogin from "@/views/accounts/SocialLogin.vue";
 import LogoutPage from "@/views/accounts/LogoutPage.vue";
 import MoreInfo from "@/views/accounts/MoreInfo.vue";
@@ -29,16 +25,11 @@ export default new VueRouter({
     },
 
     {
-      name: "Shop",
-      path: "/shop",
-      component: Shop,
+      name: "ShelList",
+      path: "/shelList",
+      component: ShelList,
     },
 
-    {
-      name: "ShopDetail",
-      path: "/shopDetail",
-      component: ShopDetail,
-    },
     {
       name: "MissList",
       path: "/missList",
@@ -70,27 +61,6 @@ export default new VueRouter({
       name: "UserPage",
       path: "/userPage",
       component: UserPage,
-    },
-
-    {
-      name: "DogList",
-      path: "/dogList",
-      component: DogList,
-      meta: {
-        title: "ForFourPaw",
-      },
-    },
-
-    {
-      name: "Blog",
-      path: "/blog",
-      component: Blog,
-    },
-
-    {
-      name: "BlogDetail",
-      path: "/blogDetail",
-      component: BlogDetail,
     },
 
     {

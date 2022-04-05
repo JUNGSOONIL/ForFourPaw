@@ -34,7 +34,12 @@ public class WebConfiguration implements WebMvcConfigurer {
                 .excludePathPatterns("/error/**")
                 .excludePathPatterns("/shel/view/notlogin")
                 .excludePathPatterns("/shel/detail/notlogin/**")
-                .excludePathPatterns("/dataset/**");
+                .excludePathPatterns("/dataset/**")
+                .excludePathPatterns("/shel/**")
+                .excludePathPatterns("/shel")
+                .excludePathPatterns("/miss")
+                .excludePathPatterns("/misses/**")
+                .excludePathPatterns("/miss/**");
 
     }
   
