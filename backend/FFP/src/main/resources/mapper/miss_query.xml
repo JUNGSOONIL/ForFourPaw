@@ -36,7 +36,7 @@
         <if test ="kindCd != null">
             AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
         </if>
-        <if test ="happenPlace != null">
+        <if test ="careAddr != null">
             AND happenPlace LIKE CONCAT('%', #{careAddr}, '%')
         </if>
         order by no DESC
