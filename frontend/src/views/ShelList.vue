@@ -932,7 +932,7 @@ export default {
         })
         .finally(() => this.$store.commit('loading/load', false),
         console.log('searchShelnimalPage End!!'),
-         window.scrollTo(0,380),
+         window.scrollTo(0,0),
         )
     },
   },

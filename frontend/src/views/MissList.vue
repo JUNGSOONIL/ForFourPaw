@@ -355,7 +355,7 @@ export default {
         .finally(
           () => this.$store.commit("loading/load", false),
           console.log("searchMissnimalPage End!!"),
-          window.scrollTo(0, 380)
+          window.scrollTo(0, 0)
         );
     },
   },
