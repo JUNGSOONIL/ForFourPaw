@@ -11,14 +11,14 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 class="title">유기 동물 상세 페이지</h2>
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                      <router-link to="/">홈</router-link>
+                <h2 class="title">유기 동물</h2>
+                 <nav style="background-color:#f5f2eb; width:270px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
+                  <ol style="margin-left:20px" class="breadcrumb">
+                    <li class="breadcrumb-item" aria-current="page">
+                      <router-link style="color:gray" to="/shelList">유기 동물 공고</router-link>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      유기 동물
+                    <li class="breadcrumb-item" aria-current="page">
+                      <router-link to="/shelDetail">유기 동물 상세</router-link>
                     </li>
                   </ol>
                 </nav>
@@ -30,10 +30,11 @@
       <!-- breadcrumb-area-end -->
 
       <!-- shop-details-area -->
-      <section class="shop-details-area pt-110 pb-50">
+      <section class="shop-details-area  pt-30 pb-60">
         <div class="container">
           <div class="shop-details-wrap">
             <div class="row">
+               <h4 style="margin-left:12px; width:100%" class="title">유기 동물 상세</h4>
               <div class="col-6">
                 <div class="shop-details-img-wrap">
                   <div class="tab-content" id="myTabContent">

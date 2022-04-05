@@ -12,13 +12,13 @@
             <div class="col-12">
               <div class="breadcrumb-content">
                 <h2 class="title">실종 동물</h2>
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
+                <nav style="background-color:#f5f2eb; width:180px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
+                   <ol style="margin-left:20px" class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link to="/">홈</router-link>
+                      <router-link style="color:gray" to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      실종 동물 목록
+                      <router-link to="/misslList">실종 동물 목록</router-link>
                     </li>
                   </ol>
                 </nav>
@@ -30,7 +30,7 @@
       <!-- breadcrumb-area-end -->
 
       <!-- shop-area -->
-      <div class="shop-area pt-110 pb-110">
+      <div class="shop-area  pt-30 pb-60">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-1"></div>

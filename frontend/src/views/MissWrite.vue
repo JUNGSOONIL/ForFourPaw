@@ -11,18 +11,20 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 v-if="this.no == null" class="title">
-                  실종 동물 추가 페이지
+                <h2 class="title">
+                  실종 동물
                 </h2>
-                <h2 v-else class="title">실종 동물 수정 페이지</h2>
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
+                <nav style="background-color:#f5f2eb; width:270px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
+                  <ol style="margin-left:20px" class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link to="/">홈</router-link>
+                      <router-link style="color:gray" to="/missList">실종 동물 목록</router-link>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">
-                      실종동물
-                    </li>
+                    <li v-if="this.no == null" class="breadcrumb-item active" aria-current="page">
+                       <router-link to="/missWrite">실종 동물 등록</router-link>
+                    </li> 
+                     <li v-else class="breadcrumb-item active" aria-current="page">
+                       <router-link to="/missWrite">실종 동물 수정</router-link>
+                    </li> 
                   </ol>
                 </nav>
               </div>
@@ -33,10 +35,12 @@
       <!-- breadcrumb-area-end -->
 
       <!-- shop-details-area -->
-      <section class="shop-details-area pt-110 pb-50">
+      <section class="shop-details-area  pt-30 pb-60">
         <div class="container">
           <div class="shop-details-wrap">
             <div class="row">
+              <h4 v-if="this.no == null" style="margin-left:12px; width:100%" class="title">실종 동물 등록</h4>
+              <h4 v-else style="margin-left:12px; width:100%" class="title">실종 동물 수정</h4>
               <div class="col-6">
                 <div class="shop-details-img-wrap">
                   <div class="tab-content" id="myTabContent">
@@ -378,7 +382,7 @@
                           padding: 19px 15px;
                         "
                       >
-                        작성
+                        등록
                         <img src="/img/icon/w_pawprint.png" alt="" />
                       </p>
                     </li>

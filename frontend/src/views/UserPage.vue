@@ -8,13 +8,13 @@
                         <div class="col-12">
                             <div class="breadcrumb-content">
                                 <h2 class="title">마이 페이지</h2>
-                                <nav aria-label="breadcrumb">
-                                    <ol class="breadcrumb">
+                <nav style="background-color:#f5f2eb; width:170px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
+                  <ol style="margin-left:20px" class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                          <router-link to="/">홈</router-link>
+                                           <router-link style="color:gray" to="/">홈</router-link>
                                         </li>
                                         <li class="breadcrumb-item active" aria-current="page">
-                                          유저
+                                           <router-link to="/userPage">마이 페이지</router-link>
                                         </li>
                                     </ol>
                                 </nav>
@@ -24,12 +24,15 @@
                 </div>
             </section>
 
+
+          
             <section v-if="!check" class="contact-area">
                 <div class="container">
                     <div class="container-inner-wrap">
+                      <h3 class="title">프로필</h3>
                         <div class="row justify-content-center justify-content-lg-between" style=" border: 1px solid gray; border-radius: 40px; padding:15px">
                             <div class="col-lg-6 col-md-8 order-2 order-lg-0">
-                                <h3 class="title">프로필</h3>
+                              
                                 <div class="contact-wrap-content">
                                     <form action="#" class="contact-form">
                                         <div class="form-grp" style="margin-bottom:20px">
@@ -78,9 +81,9 @@
             <section v-if="check" class="contact-area">
                 <div class="container">
                     <div class="container-inner-wrap">
+                      <h3 class="title">프로필</h3>
                         <div class="row justify-content-center justify-content-lg-between" style=" border: 1px solid gray; border-radius: 40px; padding:15px">
                             <div class="col-lg-6 col-md-8 order-2 order-lg-0">
-                                <h3 class="title">프로필</h3>
                                 <div class="contact-wrap-content">
                                     <form action="#" class="contact-form">
                                       <div class="mb-35">
@@ -188,8 +191,8 @@
             <section class="contact-area pt-10 pb-20">
               <div v-if="boardlist.length != 0" class="container">
                 <div class="container-inner-wrap">
+                   <h3 class="title">내가 작성한 글</h3>
                   <div class="row " style=" border: 1px solid gray; border-radius: 40px; padding:15px">
-                    <h3 class="title">내가 작성한 글</h3>
                     <table class="table align-items-center mb-0 table-hover">
                       <thead>
                         <tr>
