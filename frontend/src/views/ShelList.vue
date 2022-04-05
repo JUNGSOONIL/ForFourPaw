@@ -841,6 +841,7 @@ export default {
   methods: {
   
     searchShelnimaldefualt() {
+      this.shelList = ""
       this.$store.commit('loading/load', true);
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
@@ -854,7 +855,6 @@ export default {
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           console.log(res.data);
-          this.shelList = null
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
@@ -867,6 +867,7 @@ export default {
     },
 
     searchShelnimal() {
+      this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = 1
       let headers = {
@@ -893,7 +894,6 @@ export default {
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
-          this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroup = 1
@@ -911,6 +911,7 @@ export default {
     },
 
     searchShelnimalPage(el) {
+       this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = el
       let headers = {
@@ -936,7 +937,7 @@ export default {
         headers: headers,
       })
         .then((res) => { 
-          this.shelList = ""
+         
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )

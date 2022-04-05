@@ -7,7 +7,7 @@
           <div class="col-xl-7 col-lg-9">
             <div class="section-title text-center mb-65">
               <div class="">
-                <img src="/img/logo/paw_logo2_white_pawver2.png" alt="" id="LoginLogo" />
+                <img src="/img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
               </div>
               <div class="comment-reply-box" style="margin:0px; width:400px; height:360px;  display: inline-block; padding:50px;">
                 <h3 style="margin:0px; margin-bottom:30px">For Four Paw에 <br>오신 걸 환영합니다.🐾</h3>
