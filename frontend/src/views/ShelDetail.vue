@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('/img/bg/banner3.jpg')"
+        style="background-image: url('/img/bg/drinking_dog.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -44,31 +44,43 @@
                       aria-labelledby="item-one-tab"
                     >
                       <div class="shop-details-img">
-                        <img v-if="!miss.popfile" src="../assets/img/image.png" alt="" style="
-                              background-color: #bcbcbc;
-                              width: 616px;
-                              height: 568px;
-                              border: 2px solid black;
-                        "/>
-                        <img v-else :src="miss.popfile" alt="" style="
-                              width: 616px;
-                              height: 568px;
-                              border: 2px solid black;
-                        "/>
+                        <img
+                          v-if="!miss.popfile"
+                          src="../assets/img/image.png"
+                          alt=""
+                          style="
+                            background-color: #bcbcbc;
+                            width: 616px;
+                            height: 568px;
+                            border: 2px solid black;
+                          "
+                        />
+                        <img
+                          v-else
+                          :src="miss.popfile"
+                          alt=""
+                          style="
+                            width: 616px;
+                            height: 568px;
+                            border: 2px solid black;
+                          "
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="col-6">
-                <div id="test"
+                <div
+                  id="test"
                   style="
                     border: 2px solid black;
                     padding: 10px;
                     width: 586px;
                     height: 568px;
                     overflow: auto;
-                  ">
+                  "
+                >
                   <div class="shop-details-price">
                     <h2 class="price">동물 정보</h2>
                     <h5 class="stock-status">- Animal</h5>
@@ -123,7 +135,7 @@
                       readonly
                     />
                   </div>
-                   <div class="shop-details-price">
+                  <div class="shop-details-price">
                     <h2 class="price">구조 정보</h2>
                     <h5 class="stock-status">- Rescue</h5>
                   </div>
@@ -138,26 +150,26 @@
                     />
                     <label for="animalHappenPlace">발생장소</label>
                     <div>
-                        <input
-                          id="animalHappenPlace"
-                          type="text"
-                          v-model="miss.happenPlace"
-                          class="form-control"
-                          readonly
-                        />
+                      <input
+                        id="animalHappenPlace"
+                        type="text"
+                        v-model="miss.happenPlace"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                     <label for="animalnoticeSdt">공고기간</label>
                     <div>
-                        <input
-                          id="animalnoticeSdt"
-                          type="text"
-                          v-model="noticedt"
-                          class="form-control"
-                          readonly
-                        />
+                      <input
+                        id="animalnoticeSdt"
+                        type="text"
+                        v-model="noticedt"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                   </div>
-                   <div class="shop-details-price">
+                  <div class="shop-details-price">
                     <h2 class="price">보호소 정보</h2>
                     <h5 class="stock-status">- Shelter</h5>
                   </div>
@@ -172,26 +184,26 @@
                     />
                     <label for="animalHappenPlace">보호소 위치</label>
                     <div>
-                        <input
-                          id="animalHappenPlace"
-                          type="text"
-                          v-model="miss.careAddr"
-                          class="form-control"
-                          readonly
-                        />
+                      <input
+                        id="animalHappenPlace"
+                        type="text"
+                        v-model="miss.careAddr"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                     <label for="animalnoticeSdt">보호소 전화번호</label>
                     <div>
-                        <input
-                          id="animalnoticeSdt"
-                          type="text"
-                          v-model="miss.careTel"
-                          class="form-control"
-                          readonly
-                        />
+                      <input
+                        id="animalnoticeSdt"
+                        type="text"
+                        v-model="miss.careTel"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                   </div>
-                   <div class="shop-details-price">
+                  <div class="shop-details-price">
                     <h2 class="price">관할기관 정보</h2>
                     <h5 class="stock-status">- Jurisdiction</h5>
                   </div>
@@ -206,38 +218,35 @@
                       readonly
                     />
                     <label for="animalHappenPlace">담당자</label>
-                     <!-- {{miss.chargeNm}} <br> -->
+                    <!-- {{miss.chargeNm}} <br> -->
                     <div>
-                        <input
-                          id="animalHappenPlace"
-                          type="text"
-                          v-model="miss.chargeNm"
-                          class="form-control"
-                          readonly
-                        />
+                      <input
+                        id="animalHappenPlace"
+                        type="text"
+                        v-model="miss.chargeNm"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                     <label for="animalnoticeSdt">전화번호</label>
-                     <!-- {{miss.officeTel}} <br> -->
+                    <!-- {{miss.officeTel}} <br> -->
                     <div>
-                        <input
-                          id="animalnoticeSdt"
-                          type="text"
-                          v-model="miss.officeTel"
-                          class="form-control"
-                          readonly
-                        />
+                      <input
+                        id="animalnoticeSdt"
+                        type="text"
+                        v-model="miss.officeTel"
+                        class="form-control"
+                        readonly
+                      />
                     </div>
                   </div>
-                  
-
-
                 </div>
               </div>
             </div>
           </div>
-                    <div class="row">
+          <div class="row">
             <div class="col-12">
-              <div class="product-desc-wrap" style="padding-top : 15px;">
+              <div class="product-desc-wrap" style="padding-top: 15px">
                 <ul class="nav nav-tabs" id="myTabTwo" role="tablist">
                   <li class="nav-item">
                     <a
@@ -252,7 +261,7 @@
                     >
                   </li>
                 </ul>
-                
+
                 <div class="tab-content" id="myTabContentTwo">
                   <div
                     class="tab-pane fade show active"
@@ -261,13 +270,19 @@
                     aria-labelledby="details-tab"
                   >
                     <div class="product-desc-content">
-                      <h5 >
-                        「동물보호법」 제17조, 시행령7조 및 동법 시행규칙 제20조에 따라 유기·유실동물을 보호하고 있는 경우에는 소유자 등이
-                          보호조치 사실을 알 수 있도록 7일 동안 공고하여야 합니다.
-                          공고 중인 동물 소유자는 해당 시군구 및 동물보호센터에 문의하시어 동물을 찾아가시기 바랍니다.
-                          다만, 「동물보호법」 제19조 및 동법 시행규칙 제21조에 따라 소유자에게 보호비용이 청구될 수 있습니다.
-                          또한 「동물보호법」 제17조에 따른 공고가 있는 날부터 10일이 경과하여도 소유자 등을 알 수 없는 경우에는 
-                          「유실물법」 제12조 및 「민법」 제253조의 규정에도 불구하고 해당 시·도지사 또는 시장·군수·구청장이 그 동물의 소유권을 취득하게 됩니다.
+                      <h5>
+                        「동물보호법」 제17조, 시행령7조 및 동법 시행규칙
+                        제20조에 따라 유기·유실동물을 보호하고 있는 경우에는
+                        소유자 등이 보호조치 사실을 알 수 있도록 7일 동안
+                        공고하여야 합니다. 공고 중인 동물 소유자는 해당 시군구
+                        및 동물보호센터에 문의하시어 동물을 찾아가시기 바랍니다.
+                        다만, 「동물보호법」 제19조 및 동법 시행규칙 제21조에
+                        따라 소유자에게 보호비용이 청구될 수 있습니다. 또한
+                        「동물보호법」 제17조에 따른 공고가 있는 날부터 10일이
+                        경과하여도 소유자 등을 알 수 없는 경우에는 「유실물법」
+                        제12조 및 「민법」 제253조의 규정에도 불구하고 해당
+                        시·도지사 또는 시장·군수·구청장이 그 동물의 소유권을
+                        취득하게 됩니다.
                       </h5>
                     </div>
                   </div>
@@ -284,50 +299,50 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from "axios";
 const session = window.sessionStorage;
 
 export default {
   name: "App",
-  props:{
-    no:{
-      type:String,
+  props: {
+    no: {
+      type: String,
     },
   },
   components: {},
-  data: function(){
-     return {
-       miss: {}, 
-       noticedt: "",
-     }
+  data: function () {
+    return {
+      miss: {},
+      noticedt: "",
+    };
   },
   created() {
-    this.$store.commit('setHaderindex',1);
+    this.$store.commit("setHaderindex", 1);
     this.selectShel();
-     
   },
 
-  mounted() {
-    
-  },
-  
-  methods:{
-    selectShel(){
-    axios({
-        method: 'get',
-        url: '/api/shel/detail/' + this.no, // 여기 수정
-      }).then((res) => {
-        console.log(res);
-        this.miss = res.data; // 여기 수정
-        this.noticedt = this.miss.noticeSdt +" ~ " + this.miss.noticeEdt;
-        if (this.$store.state["login"].isLogin == true){
-          this.viewStore();
-        }
-      }).catch((error) => {
-        console.log(error);
-      }).then(() => {
-        console.log('getQSSList End!!');
-      });
+  mounted() {},
+
+  methods: {
+    selectShel() {
+      axios({
+        method: "get",
+        url: "/api/shel/detail/" + this.no, // 여기 수정
+      })
+        .then((res) => {
+          console.log(res);
+          this.miss = res.data; // 여기 수정
+          this.noticedt = this.miss.noticeSdt + " ~ " + this.miss.noticeEdt;
+          if (this.$store.state["login"].isLogin == true) {
+            this.viewStore();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .then(() => {
+          console.log("getQSSList End!!");
+        });
     },
 
     viewStore() {
@@ -336,10 +351,12 @@ export default {
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
       };
 
-      console.log(JSON.parse(session.getItem('userInfo')).no + " " + this.miss.desertionNo)
+      console.log(
+        JSON.parse(session.getItem("userInfo")).no + " " + this.miss.desertionNo
+      );
 
       let data = {
-        no: JSON.parse(session.getItem('userInfo')).no,
+        no: JSON.parse(session.getItem("userInfo")).no,
         desertionNo: this.miss.desertionNo,
       };
 
@@ -351,14 +368,12 @@ export default {
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
-          
         })
         .catch((error) => {
           console.log(error);
         })
         .then(() => {
           console.log("viewStore 성공");
-          
         });
     },
   },
@@ -366,8 +381,7 @@ export default {
 </script>
 
 <style scoped>
-#app{
-
+#app {
 }
 #test::-webkit-scrollbar {
   width: 15px; /*스크롤바의 너비*/
