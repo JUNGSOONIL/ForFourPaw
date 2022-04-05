@@ -62,8 +62,8 @@
                             </div>
                         </div>
                             <div class="d-md-flex justify-content-md-end">
-                              <span>
-                                <li class="header-btn" style="margin: 1px;" @click="check = !check">
+                              <span style="margin-top: 10px">
+                                <li class="header-btn" @click="check = !check">
                                   <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                                     편집
                                     <img src="/img/icon/w_pawprint.png" alt="" />
@@ -156,26 +156,26 @@
                             </div>
                         </div>
                          <div class="d-md-flex justify-content-md-end">
-                              <span >
-                                <li class="header-btn" style="margin: 1px" @click="toggle">
+                              <span style="margin-top: 10px; margin-right:10px;">
+                                <li class="header-btn"  @click="toggle">
                                   <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                                     취소
                                     <img src="/img/icon/w_pawprint.png" alt="" />
                                   </p>
                                 </li>
                               </span>
-                              <span>
-                                <li class="header-btn" style="margin: 1px;" @click="updateuser">
+                              <span style="margin-top: 10px; margin-right:10px;">
+                                <li class="header-btn"  @click="updateuser">
                                   <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
                                     수정
                                     <img src="/img/icon/w_pawprint.png" alt="" />
                                   </p>
                                 </li>
                               </span>
-                              <span>
-                                <li class="header-btn" style="margin: 1px;" @click="deleteuser">
+                              <span style="margin-top: 10px">
+                                <li class="header-btn" @click="deleteuser">
                                   <p class="btn" style="width: 85px; height: 10px; font-size:17px; padding: 19px 15px;">
-                                    삭제
+                                    탈퇴
                                     <img src="/img/icon/w_pawprint.png" alt="" />
                                   </p>
                                 </li>
@@ -212,7 +212,7 @@
                           @click="pagemove(board.no)"
                           class="text-center text-secondary font-weight-bold">
                           <td>{{ board.no }}</td>
-                          <td>이름 : {{board.name}} | 품종 : {{board.kindCd}} | 실종장소 : {{board.happenPlace}}</td>
+                          <td>이름 : {{board.name}} ({{board.kindCd}}) - 실종장소 : {{board.happenPlace}}</td>
                           <td>{{board.writeTime.substring(0,10)}}</td>
                         </tr>
                       </tbody>

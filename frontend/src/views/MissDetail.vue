@@ -185,8 +185,8 @@
                   </div>
                 </div>
                 <div class="d-md-flex justify-content-md-end">
-                  <span v-if="this.miss.author == userInfoNo()">
-                    <li class="header-btn" style="margin: 1px">
+                  <span v-if="this.miss.author == userInfoNo()" style="margin-top: 10px">
+                    <li class="header-btn" >
                       <p
                         class="btn"
                         style="
@@ -361,16 +361,6 @@
                               <span class="price"
                                 >보호기관 : {{ miss.careTel }}</span
                               >
-                              <span class="add-cart">
-                                <router-link
-                                  :to="{
-                                    name: 'ShelDetail',
-                                    params: { no: miss.desertionNo },
-                                  }"
-                                >
-                                  상세보기
-                                </router-link>
-                              </span>
                             </div>
                           </div>
                         </div>

@@ -324,6 +324,12 @@ export default {
   mounted() {},
 
   methods: {
+    changeDateString(date){
+      var year = date.substr(0,4);
+      var month = date.substr(4,2);
+      var day = date.substr(6,2);
+    return year + "-" + month + "-" + day
+    },
     selectShel() {
       axios({
         method: "get",
@@ -332,7 +338,8 @@ export default {
         .then((res) => {
           console.log(res);
           this.miss = res.data; // 여기 수정
-          this.noticedt = this.miss.noticeSdt + " ~ " + this.miss.noticeEdt;
+          this.miss.happenDt = this.changeDateString(this.miss.happenDt)
+          this.noticedt = this.changeDateString(this.miss.noticeSdt) + " ~ " + this.changeDateString(this.miss.noticeEdt);
           if (this.$store.state["login"].isLogin == true) {
             this.viewStore();
           }
