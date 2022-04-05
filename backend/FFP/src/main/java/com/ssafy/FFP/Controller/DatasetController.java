@@ -45,12 +45,7 @@ public class DatasetController {
 		Service.DataAdd();
 	}
 
-//	@Scheduled(cron = "10 11 * * *",zone = "Asia/Seoul")
-	public void AnalysisUpdate() {
-		AService.updateChartDB();
-	}
-
-//	@Scheduled(cron = "0 0 4 * * *",zone = "Asia/Seoul")
+	@Scheduled(cron = "0 0 5 * * *",zone = "Asia/Seoul")
 	public void AnalysisUpdate2() {
 		AService.updateChartDB();
 	}
