@@ -5,7 +5,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('/img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/banner2.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -18,7 +18,7 @@
                       <router-link to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      유기 동물
+                      유기 동물 목록
                     </li>
                   </ol>
                 </nav>
@@ -700,7 +700,7 @@
                   <div
                     v-for="(shel, index) in shelList"
                     v-bind:key="index"
-                    class="col-lg-4 col-sm-6"
+                     style="width: 341px; height: 457px; padding: 10px;"
                   >
                     <div class="shop-item mb-55">
                       <div class="shop-thumb">
@@ -710,7 +710,7 @@
                           <img
                             v-if="shel.popfile"
                             :src="shel.popfile"
-                            style="width: 278px; height: 268px"
+                            style="width: 321px; height: 268px"
                             alt=""
                           />
                           <img
@@ -748,8 +748,10 @@
                   </div>
                 </div>
 
-                <div v-if="total == 0" style="text-align: center">
-                  <img src="../assets/img/analysisDog4.png" alt="">
+                <div v-if="total == 0" style="text-align: center; margin-top:20px">
+                  <h3>품종오류가 발생할 수 있으니 축종을 전체로 설정 후 </h3>
+                  <h3>한번 더 검색하시기 바랍니다.</h3>
+                  <img src="/img/bg/logo5.png" alt="">
                 </div>
 
                 <div v-if="total != 0"
@@ -839,6 +841,7 @@ export default {
   methods: {
   
     searchShelnimaldefualt() {
+      this.shelList = ""
       this.$store.commit('loading/load', true);
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
@@ -852,7 +855,6 @@ export default {
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           console.log(res.data);
-          this.shelList = null
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
@@ -865,6 +867,7 @@ export default {
     },
 
     searchShelnimal() {
+      this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = 1
       let headers = {
@@ -891,7 +894,6 @@ export default {
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
-          this.shelList = ""
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroup = 1
@@ -909,6 +911,7 @@ export default {
     },
 
     searchShelnimalPage(el) {
+       this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = el
       let headers = {
@@ -934,7 +937,7 @@ export default {
         headers: headers,
       })
         .then((res) => { 
-          this.shelList = ""
+         
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )

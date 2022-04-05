@@ -5,5 +5,6 @@ import com.ssafy.FFP.Dto.AnalysisResultDto;
 public interface AnalysisService {
     public AnalysisResultDto test();
     public AnalysisResultDto loaddata();
+    public void updateChartDB();
 
 }
