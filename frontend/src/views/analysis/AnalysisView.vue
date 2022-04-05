@@ -7,7 +7,7 @@
       <!-- breadcrumb-area -->
       <section
         class="breadcrumb-area breadcrumb-bg"
-        style="background-image: url('img/bg/breadcrumb_bg.jpg')"
+        style="background-image: url('/img/bg/banner2.jpg')"
       >
         <div class="container">
           <div class="row">
@@ -17,7 +17,7 @@
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link to="/"> Main </router-link>
+                      <router-link to="/"> 홈 </router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       유기동물 데이터 분석
@@ -34,18 +34,21 @@
         <div class="row justify-content-center"> 
           <div id="t" class="counter-title text-center mb-65">
             <h6 class="sub-title">유기 동물 데이터 분석</h6>
-            <h2 style="font-family:GW" id="t" >
+
+            <div id="desc"> 
+            <h2 >
               For Four Paw의 데이터 분석 서비스는
             </h2>
             <h2>농림축산식품부의 동물보호관리시스템에 등록된 유기동물 데이터 </h2>
-            <h1>총 1,174,858 건의 유기 동물 정보를 분석해서 </h1>
+            <h1>약 1,200,000 건의 유기 동물 정보를 분석해서 </h1>
             <h2> 사용자에게 그 결과를 제공합니다. </h2>
-          
-            <h5> 범위 : 2009.01 ~ 2022.03  </h5>
+            </div>
 
-            <img id="analysisdog" @click="loaddata" src="../../assets/img/analysisDog4.png" style="cursor:pointer;" >
+            <h4 style="color:#9859ff"> 범위 : 2009.01 ~ 현재  </h4>
 
-            <h5>분석에 약 1분 소요됩니다.</h5>
+            <img id="analysisdog" @click="loaddata_fromDB" src="../../assets/img/analysisDog4.png" style="cursor:pointer;" >
+
+            <h5 style="color:#970000"> 데이터는 매일 새벽 5시에 업데이트 됩니다. ( 한국시간기준 ) </h5>
           
           </div>
 
@@ -78,6 +81,19 @@
                   
                   
                 </div>
+
+                <div class="row justify-content-center">
+                  <div><h1> 유기된 동물의 종류  </h1></div>
+                  <div>
+                  </div>
+                </div>
+                
+                <div class="row justify-content-center">
+                  <div class="col" style="background-color:white">
+                    <canvas id="Chart_animal" style="width:100% height:100%"></canvas>
+                  </div>
+                </div> 
+
 
                 <div class="row justify-content-center">
                   <div><h1> 무게 별 유기동물 등록 건수  </h1></div>
@@ -120,8 +136,15 @@
 
 
                 <div class="row justify-content-center">
-                  <div><h1> 품종 별 WORD CLOUD </h1></div>
+                  <div id="t" class="counter-title text-center mb-65">
+                    <div><h1> 품종 별 WORD CLOUD </h1></div>
+                     <h5 style="color:#9859ff"> ※ 코숏 : ( 코리안 숏헤어를 뜻하며, 품종이 정해지지 않은 한국의 혼혈 고양이)</h5>
+                     <h5 style="color:#9859ff"> ※ 유기된 수가 120,000이 넘는 품종은 크기가 고정입니다. </h5>
+                     
+                  </div>
+
                   <div>
+                 
                   </div>
                 </div>
                 
@@ -130,6 +153,7 @@
                   <div class="col" style="background-color:white width:100% height:100%">
                     <div id="kind_wordcloud"></div>
                   </div>
+                  
                   </div>
                 </div> 
 
@@ -342,6 +366,8 @@ axios.defaults.timeout = 1800000;
 
 const session = window.sessionStorage;
 
+// const session = window.sessionStorage;
+
 // for chart
 import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
@@ -356,6 +382,7 @@ export default  {
             Chart_Date : null,
             Chart_year : null,
             Chart_region : null,
+            Chart_animal : null,
             words : [],
             isLoading : false,
             region_name : "지역이름",
@@ -414,7 +441,7 @@ export default  {
           this.region_name = this.region_result[index].key;
           this.region_value = this.region_result[index].value;
         }, 
-        loaddata() {
+        loaddata_fromDB() {
             console.log("[system] 차트 불러오기 ");
             
             let headers = {
@@ -427,17 +454,17 @@ export default  {
               type: ''
             };
               axios({
-                    method: 'get',
-                    url: '/api/test',
-                    data: data, 
+                    method:'get',
+                    url:'/api/loaddata',
+                    data:data, 
                     headers: headers,  // 넣는거 까먹지 마세요
-                    timeout : 1800000,
+                    timeout:1800000,
                 }).then((res) => {
 
                     this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서
                     // this.dispatch('accessTokenRefresh', res) // store에서
 
-                    console.log(res.data);
+                    // console.log(res.data);
                     var templaabels = [];
                     var tempdata = [];
                     res.data.list.forEach(element => {
@@ -523,7 +550,7 @@ export default  {
                     });
                     const ctx2 = document.getElementById('Chart_date').getContext('2d');
                     this.Chart_Date = new Chart( ctx2, {
-                        type: 'doughnut',
+                        type: 'bar',
                         data: {
                             labels : templaabels ,
                             datasets: [{
@@ -553,6 +580,47 @@ export default  {
                             plugins: {
                                 legend: {
                                   display : false
+                                }
+                            }, 
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
+                    });
+
+                    // 축종 별
+                    templaabels = [];
+                    tempdata = [];
+                    templaabels.push("강아지");
+                    templaabels.push("고양이");
+                    templaabels.push("기타 축종");
+                    res.data.kindlist.forEach(element => {
+                        tempdata.push(element.value);
+                    });
+                    const ctx4 = document.getElementById('Chart_animal').getContext('2d');
+                    this.Chart_animal = new Chart( ctx4, {
+                        type: 'pie',
+                        data: {
+                            labels : templaabels ,
+                            datasets: [{
+                                label: '# of Votes',
+                                data : tempdata,
+                                borderWidth: 1,
+                                fill : "start" ,
+                                backgroundColor: [
+                                  '#095000',
+                                  '#f1fba0',
+                                  '#622c1c',
+                                ],
+
+                            }]
+                        },
+                        options: {
+                            plugins: {
+                                legend: {
+                                  display : true
                                 }
                             }, 
                             scales: {
@@ -740,7 +808,6 @@ export default  {
           }
         },
 
-
     }
 
 }
@@ -768,9 +835,19 @@ export default  {
   src: url("../../assets/fonts/LeferiBaseBold.ttf");
 }
 
+@font-face{
+  font-family: "";
+  src: url("../../assets/fonts/SLEIGothicTTF.ttf");
+}
+
 #analysisdog:hover {
   /* opacity:0.8; */
   filter: brightness(80%); 
+}
+
+
+#desc{
+  font-family:"SLEIGothicTTF";
 }
 
 #svg2{
@@ -807,23 +884,5 @@ export default  {
 #box1 {
   position:relative !important;
 }
-
-/* 
-.text1 {
-  font-size: 100px;
-  position:absolute !important;
-  visibility:hidden;
-  top : 500px;
-  bottom : 50px;
-  z-index: 3;
- }
-
-.box1:hover {
-  opacity:0.7;
- }
-
-.box1:hover .text1 {
-   visibility:visible;
- }  */
 
 </style>

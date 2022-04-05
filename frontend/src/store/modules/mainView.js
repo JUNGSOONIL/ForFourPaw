@@ -60,7 +60,7 @@ const actions = {
             };
             axios({
                 method: 'get',
-                url: '/api/shel/view/login/' + JSON.parse(session.getItem('userInfo')).no, // /api vue.configjs가 가르키는 주소
+                url: '/api/authorization/shel/view/login/' + JSON.parse(session.getItem('userInfo')).no, // /api vue.configjs가 가르키는 주소
                 // data: , // post 나 put에 데이터 넣어 줄때
                 headers: headers,  // 넣는거 까먹지 마세요
               }).then((res) => {

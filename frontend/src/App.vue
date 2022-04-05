@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <loading v-if="isLoadingGetters"/>
-    <header-bar v-if="!($route.name === 'SocialLogin' || $route.name === 'LogoutPage' || $route.name === 'MoreInfo')" id="headerbar"></header-bar>
+    <header-bar v-if="!($route.name === 'SocialLogin' || $route.name === 'LogoutPage' || $route.name === 'MoreInfo' || $router.name === 'KaKaoLogin')" id="headerbar"></header-bar>
     <router-view></router-view>
-    <footer-bar v-if="!($route.name === 'SocialLogin' || $route.name === 'LogoutPage' || $route.name === 'MoreInfo')" id="footerbar"></footer-bar>
+    <footer-bar v-if="!($route.name === 'SocialLogin' || $route.name === 'LogoutPage' || $route.name === 'MoreInfo' || $router.name === 'KaKaoLogin')" id="footerbar"></footer-bar>
   </div>
 </template>
 

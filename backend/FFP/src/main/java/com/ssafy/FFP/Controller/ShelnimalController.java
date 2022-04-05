@@ -343,7 +343,7 @@ public class ShelnimalController {
     }
     
     // 로그인시 메인페이지 유기동물 추천
-    @GetMapping("/shel/view/login/{no}")
+    @GetMapping("/authorization/shel/view/login/{no}")
     public ResponseEntity<?> mainListLogin(@PathVariable String no){
     	System.out.println("mainList : 로그인 " + no);
 //        List<DatasetDto> shelnimalDtos = shelnimalService.mainList();

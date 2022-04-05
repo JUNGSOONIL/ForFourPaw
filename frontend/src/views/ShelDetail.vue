@@ -291,7 +291,7 @@ export default {
   name: "App",
   props:{
     no:{
-      type:Number,
+      type:String,
     },
   },
   components: {},
@@ -313,16 +313,10 @@ export default {
   
   methods:{
     selectShel(){
-      let headers = {
-        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-    };
     axios({
         method: 'get',
         url: '/api/shel/detail/' + this.no, // 여기 수정
-        headers: headers, 
       }).then((res) => {
-        this.$store.dispatch('login/accessTokenRefresh', res) 
         console.log(res);
         this.miss = res.data; // 여기 수정
         this.noticedt = this.miss.noticeSdt +" ~ " + this.miss.noticeEdt;

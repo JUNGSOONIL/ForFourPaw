@@ -214,7 +214,7 @@
                       >매칭</a
                     >
                   </li>
-                  <li class="nav-item">
+                  <li v-if="userInfoNo() != null" class="nav-item">
                     <a
                       class="nav-link"
                       id="comment-tab"
@@ -399,7 +399,6 @@ export default {
   created() {
     this.$store.commit('setHaderindex',2);
     this.selectMiss();
-    this.commentselect();
   },
   computed:{
     commenntopen(){
@@ -433,7 +432,9 @@ export default {
       }
     },
     userInfoNo(){
-      return JSON.parse(session.getItem('userInfo')).no
+      if(session.getItem('userInfo') != null)
+        return JSON.parse(session.getItem('userInfo')).no
+      return null
     },
     commentselect(){
       this.commentlist = null;
@@ -549,16 +550,10 @@ export default {
       )
     },
     selectMiss(){
-      let headers = {
-        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-    };
     axios({
         method: 'get',
         url: '/api/miss/' + this.no, // 여기 수정
-        headers: headers, 
       }).then((res) => {
-        this.$store.dispatch('login/accessTokenRefresh', res) 
         this.miss = res.data; // 여기 수정
       }).catch((error) => {
         console.log(error);
@@ -566,6 +561,9 @@ export default {
         console.log('selectMiss End!!');
         if(this.miss.author == this.userInfoNo()){
           this.match();
+        }
+        if(this.userInfoNo() != null){
+          this.commentselect();
         }
       });
     },
