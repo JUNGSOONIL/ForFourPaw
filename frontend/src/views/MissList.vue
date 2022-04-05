@@ -229,7 +229,6 @@
 
 <script>
 import axios from "axios";
-const session = window.sessionStorage;
 
 export default {
   name: "App",
@@ -255,17 +254,11 @@ export default {
   
     searchMissnimaldefualt() {
       this.$store.commit('loading/load', true);
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
       axios({
         method: "get",
         url: "/api/misses/1",
-        headers: headers,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           console.log(res.data);
           this.missList = null
           this.missList = res.data.missnimalDtos;
@@ -282,10 +275,6 @@ export default {
     searchMissnimal() {
       this.$store.commit('loading/load', true);
       this.page = 1
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       let data = {
         careAddr: this.search.happenPlace,
@@ -297,10 +286,8 @@ export default {
         method: "post",
         url: "/api/miss/search",
         data: data,
-        headers: headers,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           this.missList = ""
           this.missList = res.data.missnimalDtos;
           this.total = res.data.allCount;
@@ -321,10 +308,6 @@ export default {
     searchMissnimalPage(el) {
       this.$store.commit('loading/load', true);
       this.page = el
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       let data = {
         careAddr: this.search.happenPlace,
@@ -336,7 +319,6 @@ export default {
         method: "post",
         url: "/api/miss/search",
         data: data,
-        headers: headers,
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다

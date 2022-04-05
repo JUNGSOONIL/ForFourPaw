@@ -434,16 +434,10 @@ export default {
       this.validate.happenPlace = (this.miss.happenPlace.length >2 && this.miss.happenGugun.length > 0) ? true : false
     },
     selectMiss(){
-      let headers = {
-        'at-jwt-access-token': session.getItem('at-jwt-access-token'),
-        'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
-      };
       axios({
         method: 'get',
         url: '/api/miss/' + this.no, // 이부분 수정해야함
-        headers: headers,
       }).then((res) => {
-        this.$store.dispatch('login/accessTokenRefresh', res)
         this.miss = res.data // 이부분도 수정
         const arr = this.miss.happenPlace.split(" ")
         this.miss.happenGugun = arr[0];
@@ -533,7 +527,7 @@ export default {
  
       axios({
         method: 'post',
-        url: '/api/miss', // 이부분 수정해야함
+        url: '/api/authorization/miss', // 이부분 수정해야함
         data: formData,
         headers: headers,
       }).then((res) => {
@@ -587,7 +581,7 @@ export default {
 
       axios({
         method: 'put',
-        url: '/api/miss', // 이부분 수정해야함
+        url: '/api/authorization/miss', // 이부분 수정해야함
         data: formData,
         headers: headers,
       }).then((res) => {
@@ -609,7 +603,7 @@ export default {
 
       axios({
         method: 'delete',
-        url: '/api/miss/' + this.no, 
+        url: '/api/authorization/miss/' + this.no, 
         headers: headers,
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)

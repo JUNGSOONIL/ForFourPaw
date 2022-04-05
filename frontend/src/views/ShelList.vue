@@ -811,7 +811,6 @@
 
 <script>
 import axios from "axios";
-const session = window.sessionStorage;
 
 export default {
   name: "App",
@@ -843,17 +842,11 @@ export default {
     searchShelnimaldefualt() {
       this.shelList = ""
       this.$store.commit('loading/load', true);
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
       axios({
         method: "get",
         url: "/api/shel/1",
-        headers: headers,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           console.log(res.data);
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
@@ -870,10 +863,6 @@ export default {
       this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = 1
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       let data = {
         noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
@@ -890,10 +879,8 @@ export default {
         method: "post",
         url: "/api/shel/",
         data: data,
-        headers: headers,
       })
         .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroup = 1
@@ -914,10 +901,6 @@ export default {
        this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = el
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       let data = {
         noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
@@ -934,10 +917,8 @@ export default {
         method: "post",
         url: "/api/shel/",
         data: data,
-        headers: headers,
       })
         .then((res) => { 
-         
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
@@ -952,7 +933,7 @@ export default {
         .finally(() => this.$store.commit('loading/load', false),
         console.log('searchShelnimalPage End!!'),
          window.scrollTo(0,380),
-)
+        )
     },
   },
 };
