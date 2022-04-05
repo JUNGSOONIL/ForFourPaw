@@ -11,14 +11,14 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 class="title">유기동물 데이터 분석</h2>
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
+                <h2 class="title">데이터 분석</h2>
+                <nav style="background-color:#f5f2eb; width:230px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
+                  <ol style="margin-left:20px" class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link to="/"> 홈 </router-link>
+                     <router-link style="color:gray" to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      유기동물 데이터 분석
+                      <router-link to="/analysisview">유기 동물 데이터 분석</router-link>
                     </li>
                   </ol>
                 </nav>
@@ -28,7 +28,7 @@
         </div>
       </section>
       <!-- breadcrumb-area-end -->
-      <section v-show="!this.isLoading" class="shop-details-area pt-110 pb-50">
+      <section v-show="!this.isLoading" class="shop-details-area  pt-30 pb-60">
         <div class="row justify-content-center">
           <div id="t" class="counter-title text-center mb-65">
             <h6 class="sub-title">유기 동물 데이터 분석</h6>
