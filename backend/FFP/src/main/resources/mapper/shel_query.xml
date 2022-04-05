@@ -18,10 +18,10 @@
             neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel)
         VALUES
             (
-            #{item.desertionNo}, #{item.filename}, #{item.happenDt}, #{item.happenPlace}, #{item.kindCd},
-            #{item.colorCd}, #{item.age}, #{item.weight}, #{item.noticeNo}, #{item.noticeSdt}, #{item.noticeEdt},
-            #{item.popfile}, #{item.processState}, #{item.sexCd}, #{item.neuterYn}, #{item.specialMark}, #{item.careNm},
-            #{item.careTel}, #{item.careAddr}, #{item.orgNm}, #{item.chargeNm}, #{item.officetel}
+            #{desertionNo}, #{filename}, #{happenDt}, #{happenPlace}, #{kindCd},
+            #{colorCd}, #{age}, #{weight}, #{noticeNo}, #{noticeSdt}, #{noticeEdt},
+            #{popfile}, #{processState}, #{sexCd}, #{neuterYn}, #{specialMark}, #{careNm},
+            #{careTel}, #{careAddr}, #{orgNm}, #{chargeNm}, #{officeTel}
             )
     </insert>
 

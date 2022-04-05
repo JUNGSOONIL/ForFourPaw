@@ -33,4 +33,8 @@
         WHERE AR_listcode = #{code};
     </select>
 
+    <delete id="cleartable">
+        TRUNCATE TABLE analysis_result;
+    </delete>
+
 </mapper>
