@@ -54,7 +54,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-6 col-md-8 pt-40 " >
+                            <div class="col-xl-5 col-lg-6 col-md-8" >
                               <label style="color:#0a303a">프로필 이미지 </label>
                                 <div class="contact-info-wrap" style="padding:38px">
                                   
