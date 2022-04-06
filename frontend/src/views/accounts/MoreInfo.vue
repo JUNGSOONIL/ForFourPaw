@@ -45,7 +45,6 @@
                           >거주지역:</label
                         >
                         <select
-                          @change="change"
                           v-model="addrs"
                           class="form-control"
                           name="거주지역"
@@ -115,9 +114,6 @@ export default {
     },
   },
   methods: {
-    change() {
-      console.log(this.addrs);
-    },
     validateName() {
       this.isUserNameValid = this.name.length > 1 ? true : false;
     },
@@ -137,13 +133,11 @@ export default {
         })
           .then((res) => {
             this.$store.dispatch("login/accessTokenRefresh", res); // store아닌곳에서
-            console.log("success");
             this.$alertify.success("아이디를 사용할 수 있습니다.");
             this.isNickNameDBValid = true;
           })
           .catch((error) => {
             console.log(error);
-            console.log("error");
             this.$alertify.error("아이디가 중복됩니다.");
             this.isNickNameDBValid = false;
           });
@@ -167,7 +161,6 @@ export default {
         new Blob([JSON.stringify(info)], { type: "application/json" })
       );
       if (this.isNickNameValid && this.isNickNameDBValid && this.addrs != "") {
-        console.log("send");
         axios({
           method: "put",
           url: `/api/users`,
@@ -182,9 +175,6 @@ export default {
             console.log(error);
           });
       } else {
-        console.log(this.isNickNameValid);
-        console.log(this.isNickNameDBValid);
-        console.log(this.addrs);
         this.$alertify.error("정보를 수정할 수 없습니다");
       }
     },

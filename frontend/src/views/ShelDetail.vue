@@ -345,7 +345,6 @@ export default {
         url: "/api/shel/detail/" + this.no, // 여기 수정
       })
         .then((res) => {
-          console.log(res);
           this.miss = res.data; // 여기 수정
           this.miss.happenDt = this.changeDateString(this.miss.happenDt)
           this.noticedt = this.changeDateString(this.miss.noticeSdt) + " ~ " + this.changeDateString(this.miss.noticeEdt);
@@ -356,16 +355,9 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("getQSSList End!!");
-        });
     },
 
     viewStore() {
-
-      console.log(
-        JSON.parse(session.getItem("userInfo")).no + " " + this.miss.desertionNo
-      );
 
       let data = {
         no: JSON.parse(session.getItem("userInfo")).no,
@@ -377,11 +369,10 @@ export default {
         url: "/api/shel/view/detail",
         data: data,
       })
-        .then(() => {
-          console.log("viewStore 성공");
-        })
         .catch((error) => {
-          console.log(error);
+          if(error.response.data.message != "중복"){
+            console.log(error)
+          }
         })
     },
   },

@@ -584,13 +584,11 @@ export default {
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res); // store아닌곳에서
           this.commentlist = res.data;
-          console.log(res);
         })
         .catch((error) => {
           console.log(error);
         })
         .then(() => {
-          console.log("commentselect End!!");
           if (this.commentlist.length == 0) {
             this.commentstyle.height = "50px";
           } else {
@@ -624,9 +622,6 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("commentinset End!!");
-        });
     },
     commentdelete(el) {
       let headers = {
@@ -647,7 +642,6 @@ export default {
           console.log(error);
         })
         .then(() => {
-          console.log("commentdelete End!!");
         });
     },
     updatecomment() {
@@ -694,7 +688,6 @@ export default {
         })
         .finally(
           () => this.$store.commit("loading/load", false),
-          console.log("kmeans End"),
           (this.matchend = true)
         );
     },
@@ -710,7 +703,6 @@ export default {
           console.log(error);
         })
         .then(() => {
-          console.log("selectMiss End!!");
           if (this.miss.author == this.userInfoNo()) {
             this.match();
           }

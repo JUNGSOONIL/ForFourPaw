@@ -534,9 +534,7 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("getQSSList End!!");
-        });
+
     },
     check() {
       if (
@@ -641,16 +639,12 @@ export default {
       })
         .then((res) => {
           this.$store.dispatch("login/accessTokenRefresh", res);
-          console.log(res);
           this.$alertify.success("작성 완료했습니다.");
           this.$router.go(-1);
         })
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("insertMiss End!!");
-        });
     },
     updateMiss() {
       if (this.updatecheck() === true) {
@@ -682,8 +676,6 @@ export default {
         happenPlace: this.miss.happenGugun + " " + this.miss.happenPlace,
         descr: this.miss.descr,
       };
-      console.log(data);
-      console.log(this.$refs.animalImg.files[0]);
       formData.append(
         "missData",
         new Blob([JSON.stringify(data)], { type: "application/json" })
@@ -703,9 +695,6 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("updateMiss End!!");
-        });
     },
     deleteMiss() {
       this.$alertify.confirm(
@@ -734,9 +723,6 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("deleteMiss End!!");
-        });
     },
 
     validTel() {

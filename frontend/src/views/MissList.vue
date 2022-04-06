@@ -18,7 +18,7 @@
                       <router-link style="color:gray" to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                      <router-link to="/misslList">실종 동물 목록</router-link>
+                      <router-link to="/missList">실종 동물 목록</router-link>
                     </li>
                   </ol>
                 </nav>
@@ -274,7 +274,6 @@ export default {
         url: "/api/misses/1",
       })
         .then((res) => {
-          console.log(res.data);
           this.missList = null;
           this.missList = res.data.missnimalDtos;
           this.total = res.data.allCount;
@@ -285,7 +284,6 @@ export default {
         })
         .finally(
           () => this.$store.commit("loading/load", false),
-          console.log("searchMissnimaldefualt End!!")
         );
     },
 
@@ -310,7 +308,6 @@ export default {
           this.total = res.data.allCount;
           this.pagegroup = 1;
           this.pagegroupmax = Math.ceil(this.total / 9);
-          console.log(res);
         })
         .catch((error) => {
           console.log(error);
@@ -320,7 +317,6 @@ export default {
         })
         .finally(
           () => this.$store.commit("loading/load", false),
-          console.log("searchMissnimal End!!")
         );
     },
 
@@ -345,7 +341,6 @@ export default {
           this.total = res.data.allCount;
           this.pagegroup = 1;
           this.pagegroupmax = Math.ceil(this.total / 9);
-          console.log(res);
         })
         .catch((error) => {
           console.log(error);
@@ -355,7 +350,6 @@ export default {
         })
         .finally(
           () => this.$store.commit("loading/load", false),
-          console.log("searchMissnimalPage End!!"),
           window.scrollTo(0, 0)
         );
     },

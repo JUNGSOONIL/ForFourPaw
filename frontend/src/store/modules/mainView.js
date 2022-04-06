@@ -43,7 +43,6 @@ const actions = {
     
             // this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서 상황에 따라서 메서드가 다르다
             
-            console.log(res);
 
             context.commit("SET_MAIN_SELIMAL_LIST", res.data);
             
@@ -67,7 +66,6 @@ const actions = {
         
                 this.dispatch('login/accessTokenRefresh', res) // 상황에 따라서 메서드가 다르다
                 
-                console.log(res);
     
                 context.commit("SET_MAIN_SELIMAL_LIST", res.data);
                 
