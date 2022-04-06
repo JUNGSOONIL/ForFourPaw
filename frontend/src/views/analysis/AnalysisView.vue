@@ -663,71 +663,71 @@ export default {
       if (index == 0) {
         document.getElementById("GGD").style.fill = "#686868";
         this.top_index = "100px";
-        this.left_index = "200px";
+        this.left_index = "100px";
       } else if (index == 1) {
         document.getElementById("Seoul").style.fill = "#686868";
         this.top_index = "170px";
-        this.left_index = "420px";
+        this.left_index = "320px";
       } else if (index == 2) {
         document.getElementById("GSN").style.fill = "#686868";
         this.top_index = "770px";
-        this.left_index = "570px";
+        this.left_index = "470px";
       } else if (index == 3) {
         document.getElementById("Pusan").style.fill = "#686868";
-        this.top_index = "720px";
-        this.left_index = "900px";
+        this.top_index = "770px";
+        this.left_index = "700px";
       } else if (index == 4) {
         document.getElementById("Incheon").style.fill = "#686868";
         this.top_index = "180px";
-        this.left_index = "120px";
+        this.left_index = "20px";
       } else if (index == 5) {
         document.getElementById("GSB").style.fill = "#686868";
         this.top_index = "450px";
-        this.left_index = "680px";
+        this.left_index = "580px";
       } else if (index == 6) {
         document.getElementById("JRB").style.fill = "#686868";
         this.top_index = "570px";
-        this.left_index = "170px";
+        this.left_index = "70px";
       } else if (index == 7) {
         document.getElementById("CCN").style.fill = "#686868";
         this.top_index = "370px";
-        this.left_index = "300px";
+        this.left_index = "200px";
       } else if (index == 8) {
         document.getElementById("Daegu").style.fill = "#686868";
         this.top_index = "550px";
-        this.left_index = "670px";
+        this.left_index = "570px";
       } else if (index == 9) {
         document.getElementById("JRN").style.fill = "#686868";
         this.top_index = "770px";
-        this.left_index = "170px";
+        this.left_index = "70px";
       } else if (index == 10) {
         document.getElementById("GWD").style.fill = "#686868";
         this.top_index = "100px";
-        this.left_index = "620px";
+        this.left_index = "520px";
       } else if (index == 11) {
         document.getElementById("Jeju").style.fill = "#686868";
         this.top_index = "1100px";
-        this.left_index = "500px";
+        this.left_index = "400px";
       } else if (index == 12) {
         document.getElementById("CCB").style.fill = "#686868";
         this.top_index = "350px";
-        this.left_index = "600px";
+        this.left_index = "500px";
       } else if (index == 13) {
         document.getElementById("Daejeon").style.fill = "#686868";
         this.top_index = "470px";
-        this.left_index = "120px";
+        this.left_index = "20px";
       } else if (index == 14) {
         document.getElementById("Ulsan").style.fill = "#686868";
         this.top_index = "590px";
-        this.left_index = "770px";
+        this.left_index = "670px";
       } else if (index == 15) {
         document.getElementById("Gwangju").style.fill = "#686868";
         this.top_index = "690px";
-        this.left_index = "170px";
+        this.left_index = "70px";
       } else if (index == 16) {
         document.getElementById("Sejong").style.fill = "#686868";
         this.top_index = "420px";
-        this.left_index = "140px";
+        this.left_index = "20px";
       }
     },
     changedata() {
@@ -990,7 +990,7 @@ export default {
       const cloud = require("d3-cloud");
       cloud()
         .words(this.words)
-        .size(["1800", "700"])
+        .size(["1200", "900"])
         .padding(1)
         .font("Impact")
         // .style("font-family", "RFR")
@@ -1006,7 +1006,7 @@ export default {
         //           else return ( "#000000");
         //     })
         .fontSize(function (d) {
-          return Math.sqrt(d.size) * 0.7;
+          return Math.sqrt(d.size) * 0.65;
         })
         // .fontSize(function (d) {
         //       return wordScale(d.frequency);
@@ -1019,8 +1019,8 @@ export default {
     },
     end(words) {
       const d3 = require("d3");
-      const width = 1800;
-      const height = 700;
+      const width = 1200;
+      const height = 900;
       d3.select("#kind_wordcloud")
         .append("svg")
         .attr("width", width)
