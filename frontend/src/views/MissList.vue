@@ -101,6 +101,7 @@
                         id="kindCd"
                         class="selected"
                         v-model="search.kindCd"
+                        @keyup.enter="searchMissnimal"
                       />
                     </form>
                   </div>
