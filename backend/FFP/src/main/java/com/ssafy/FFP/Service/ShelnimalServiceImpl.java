@@ -203,6 +203,11 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 					// 권장 사용자가 현재 아이템을 구입하지 않은 경우 권장 사항이 계산됩니다. 
 					double itemRecommendDegree = 0.0;
 					for (String user: users){
+						if(userID.get(recommendUser) == null) {
+							String processState = "보호중";
+							List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
+							return shelnimalDtos;	
+						}
 						itemRecommendDegree += sparseMatrix[userID.get(recommendUser)][userID.get(user)]/Math.sqrt(userItemLength.get(recommendUser)*userItemLength.get(user));
 						// 권장계산
 					}
