@@ -57,18 +57,6 @@
 
                   <div class="shop-show-list"  style="float:left; margin-left:10px; margin-right:20px">
                     <form action="#">
-                      <label for="neuterYn">중성화</label>
-                      <select id="neuterYn" class="selected"  v-model="search.neuterYn" @change="searchShelnimal">
-                        <option value="">전체</option>
-                        <option value="Y">예</option>
-                        <option value="N">아니요</option>
-                        <option value="U">미상</option>
-                      </select>
-                    </form>
-                  </div>
-
-                  <div class="shop-show-list"  style="float:left; margin-right:20px">
-                    <form action="#">
                       <label for="processState">상태</label>
                       <select id="processState" class="selected"  v-model="search.processState"  @change="searchShelnimal">
                         <option value="">전체</option>
@@ -78,6 +66,17 @@
                     </form>
                   </div>
 
+                  <div class="shop-show-list"  style="float:left; margin-right:20px">
+                    <form action="#">
+                      <label for="neuterYn">중성화</label>
+                      <select id="neuterYn" class="selected"  v-model="search.neuterYn" @change="searchShelnimal">
+                        <option value="">전체</option>
+                        <option value="Y">예</option>
+                        <option value="N">아니요</option>
+                        <option value="U">미상</option>
+                      </select>
+                    </form>
+                  </div>
 
                   <div class="shop-show-list"  style="float:left; margin-right:430px;">
                     <form action="#">
