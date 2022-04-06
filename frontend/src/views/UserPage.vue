@@ -83,7 +83,7 @@
                   </form>
                 </div>
               </div>
-              <div class="col-xl-5 col-lg-6 col-md-8 pt-40">
+              <div class="col-xl-5 col-lg-6 col-md-8">
                 <label style="color: #0a303a">프로필 이미지 </label>
                 <div class="contact-info-wrap" style="padding: 38px">
                   <div>
@@ -318,7 +318,7 @@
             <div
             id="test"
               class="row"
-              style="border: 1px solid gray; border-radius: 40px; padding: 15px; height:488; overflow:auto;"
+              style="border: 1px solid gray; border-radius: 40px; padding: 15px; height:448px; overflow:auto;"
             >
               <table class="table align-items-center mb-0 table-hover">
                 <thead>
