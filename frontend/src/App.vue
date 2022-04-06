@@ -7,7 +7,7 @@
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
           $route.name === 'MoreInfo' ||
-          $router.name === 'KaKaoLogin'
+          $router.path === '/socialLogin/KaKaoLogin'
         )
       "
       id="headerbar"
@@ -19,7 +19,7 @@
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
           $route.name === 'MoreInfo' ||
-          $router.name === 'KaKaoLogin'
+          $router.path === '/socialLogin/KaKaoLogin'
         )
       "
       id="footerbar"
