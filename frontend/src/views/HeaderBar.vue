@@ -74,7 +74,7 @@
                       <li
                         class="header-btn"
                         style="margin: 1px"
-                        v-if="isLoginGetters"
+                        v-if="userInfoNo() != null"
                       >
                         <router-link
                           to="/userPage"
@@ -89,7 +89,7 @@
                           내정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="!isLoginGetters">
+                      <li class="header-btn" v-if="userInfoNo() ==null">
                         <router-link
                           to="/socialLogin"
                           class="btn"
@@ -102,7 +102,7 @@
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="activeMoreInfo">
+                      <li class="header-btn" v-if="(userInfoNo() != null && userInfoAddr() == null)">
                         <router-link
                           to="/moreInfo"
                           class="btn"
@@ -115,7 +115,7 @@
                           >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="isLoginGetters">
+                      <li class="header-btn" v-if="userInfoNo() != null">
                         <router-link
                           style="
                             width: 100%;
@@ -246,6 +246,16 @@ export default {
     },
   },
   methods: {
+    userInfoNo() {
+      if (session.getItem("userInfo") != null)
+        return JSON.parse(session.getItem("userInfo")).no;
+      return null;
+    },
+    userInfoAddr() {
+      if (session.getItem("userInfo") != null)
+        return JSON.parse(session.getItem("userInfo")).addrs;
+      return null;
+    },
     logout: function () {
       // this.$store.state.login.isLogin = false;
       this.$store.commit("login/SET_LOGOUT");
