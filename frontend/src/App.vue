@@ -4,7 +4,6 @@
     <header-bar
       v-show="
         !(
-           test() ||
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
           $route.name === 'MoreInfo' ||
@@ -46,9 +45,6 @@ export default {
     },
   },
   methods: {
-    test(){
-      alert(this.$route.name)
-    },
     isSession() {
       return session.getItem("userInfo");
     },
