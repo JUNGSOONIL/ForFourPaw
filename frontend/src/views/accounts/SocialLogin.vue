@@ -1,59 +1,33 @@
 <template>
-  <div>
-    <!-- adoption-shop-area -->
-    <section class="adoption-shop-area">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-7 col-lg-9">
-            <div class="section-title text-center mb-65">
-              <div class="">
-                <img src="/img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
-              </div>
-              <div class="comment-reply-box" style="margin:0px; width:400px; height:360px;  display: inline-block; padding:50px;">
-                <h3 style="margin:0px; margin-bottom:30px">For Four Paw에 <br>오신 걸 환영합니다.🐾</h3>
+              <div class="section-title text-center" style="display: flex; justify-content: center; align-items:center; min-height: 100vh;">
+                <div>
+                  <div class="">
+                    <img src="/img/logo/paw_logo_3line.png" alt="" id="LoginLogo" />
+                  </div>
+                  <div class="comment-reply-box" style="margin:0px; width:400px; height:360px; display: inline-block;">
+                    <h3 style="margin:0px; margin-bottom:30px">For Four Paw에 <br>오신 걸 환영합니다.🐾</h3>
 
-                <div class="d-flex justify-content-center">
-                  <div class="google-btn btn-block" @click="handleClickSignIn">
-                    <div class="google-icon-wrapper btn-block">
+                    <div class="d-flex justify-content-center">
+                      <div class="google-btn btn-block" @click="handleClickSignIn">
+                        <div class="google-icon-wrapper btn-block">
+                          <img
+                            class="google-icon-svg"
+                            src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                          />
+                        </div>
+                        <p class="btn-text"><b>Sign in with Google</b></p>
+                      </div>
+                    </div>
+                    <div>
                       <img
-                        class="google-icon-svg"
-                        src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                        class="kakao-btn"
+                        src="/img/kakao_login_medium_narrow.png"
+                        @click="handleClickKaKaoSignin"
                       />
                     </div>
-                    <p class="btn-text"><b>Sign in with Google</b></p>
                   </div>
                 </div>
-                <!-- <div>
-                  <button type="button" class="btn" @click="handleClickSignIn">
-                    구글
-                  </button>
-                </div> -->
-                <div>
-                  <!-- <button
-                    type="button"
-                    class="btn"
-                    @click="handleClickKaKaoSignin"
-                  >
-                    카카오
-                  </button> -->
-                  <img
-                    class="kakao-btn"
-                    src="/img/kakao_login_medium_narrow.png"
-                    @click="handleClickKaKaoSignin"
-                  />
-                </div>
-                <!-- <div v-if="!isLoginGetters">
-                  <router-link to="/" class="btn" @click.native="login"
-                    >로그인(테스트용)</router-link
-                  >
-                </div> -->
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
 </template>
 
 <script>
