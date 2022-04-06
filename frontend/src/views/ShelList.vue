@@ -140,7 +140,7 @@
                       >
                         <option  v-if="!search.upKindCd" value="">전체</option>
                         
-                        <option  v-if="search.upKindCd == 417000" value="null">전체</option>
+                        <option  v-if="search.upKindCd == 417000" value="">전체</option>
 
                         <option  v-if="search.upKindCd == 417000" value="000054">골든 리트리버</option>
 
@@ -506,7 +506,7 @@
 
                         <option  v-if="search.upKindCd == 417000" value="000111">휘펫</option>
 
-                        <option  v-if="search.upKindCd == 422400" value="null">전체</option>
+                        <option  v-if="search.upKindCd == 422400" value="">전체</option>
 
                         <option  v-if="search.upKindCd == 422400" value="000116">고양이</option>
 
