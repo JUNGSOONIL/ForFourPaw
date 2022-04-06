@@ -1,18 +1,18 @@
 <template>
   <div>
     <!-- adoption-shop-area -->
-    <section class="adoption-shop-area">
+        <section class="adoption-shop-area">
       <div class="container">
         <div class="row justify-content-center">
-          <div class="col-xl-7 col-lg-9">
+          <div class="col-xl-7 col-lg-9" style="padding:60px">
             <div class="section-title mb-65">
               <!-- 추가 정보 start -->
-              <div class="comment-reply-box">
-                <h5 class="title text-center">
+              <div style="margin-top:40px; width:600px; height:500px;" class="comment-reply-box">
+                <h3 class="text-left">
                   멍멍! 야옹! <br />
-                  포포포(For Four Paw)에서 <br />
-                  사용할 당신의 정보를 입력하세요!
-                </h5>
+                  포포포(For Four Paw)에서
+                  사용할<br> 당신의 정보를 입력하세요!🐾
+                </h3>
                 <form action="#" class="comment-reply-form">
                   <div class="row">
                     <div class="col-md-12">
@@ -80,7 +80,7 @@
                   </div>
                 </form>
                 <div class="col-md-12 text-center">
-                  <button id="moreinfobtn" class="btn" @click="signUp">
+                  <button style="height:40px" id="moreinfobtn" class="btn" @click="signUp">
                     수정
                   </button>
                 </div>
