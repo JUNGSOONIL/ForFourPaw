@@ -2,24 +2,25 @@
   <div id="app">
     <loading v-if="isLoadingGetters" />
     <header-bar
-      v-if="
+      v-show="
         !(
+           test() ||
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
           $route.name === 'MoreInfo' ||
-          $router.path === '/socialLogin/KaKaoLogin'
+          $route.name === 'KaKaoLogin' 
         )
       "
       id="headerbar"
     ></header-bar>
     <router-view></router-view>
     <footer-bar
-      v-if="
+      v-show="
         !(
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
           $route.name === 'MoreInfo' ||
-          $router.path === '/socialLogin/KaKaoLogin'
+          $route.name === 'KaKaoLogin'
         )
       "
       id="footerbar"
@@ -45,6 +46,9 @@ export default {
     },
   },
   methods: {
+    test(){
+      alert(this.$route.name)
+    },
     isSession() {
       return session.getItem("userInfo");
     },
