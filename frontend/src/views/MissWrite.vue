@@ -708,6 +708,14 @@ export default {
         });
     },
     deleteMiss() {
+      this.$alertify.confirm(
+        '삭제하시겠습니까?',
+        () => this.alertifyDeleteMiss(),
+        () => this.$alertify.error('cancel')
+      );
+    },
+
+    alertifyDeleteMiss(){
       let headers = {
         "at-jwt-access-token": session.getItem("at-jwt-access-token"),
         "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
@@ -730,6 +738,7 @@ export default {
           console.log("deleteMiss End!!");
         });
     },
+
     validTel() {
       const nums = this.miss.careTel.length;
       const n = this.miss.careTel.charCodeAt(nums - 1);
