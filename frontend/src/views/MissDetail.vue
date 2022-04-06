@@ -543,7 +543,6 @@ export default {
       this.$router.push({ name: "MissWrite", params: { no: this.no } });
     },
     imgleft() {
-      this.misslistslice = null;
       if (this.misslistmin > 0) {
         this.misslistmin--;
         this.misslistindex--;
