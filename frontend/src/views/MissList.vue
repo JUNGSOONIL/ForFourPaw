@@ -59,7 +59,7 @@
                 >
                   <div
                     class="shop-show-list"
-                    style="float: left; margin-left: 450px"
+                    style="float: left; margin-left:10px; margin-right: 20px"
                   >
                     <form action="#">
                       <label for="careAddr">지역</label>
@@ -67,6 +67,7 @@
                         id="careAddr"
                         class="selected"
                         v-model="search.happenPlace"
+                        @change="searchMissnimal"
                       >
                         <option value="">전체</option>
                         <option value="서울특별시">서울특별시</option>
@@ -92,7 +93,7 @@
 
                   <div
                     class="shop-show-list"
-                    style="float: left; margin-left: 20px"
+                    style="float: left; margin-right: 20px"
                   >
                     <form action="#">
                       <label for="kindCd">품종</label>
@@ -110,7 +111,7 @@
                     class="shop-pagination"
                     style="
                       float: left;
-                      margin-left: 10px;
+                      margin-right: 400px;
                       margin-top: 2px;
                       cursor: pointer;
                     "
@@ -131,7 +132,7 @@
                   <div
                     v-for="(miss, index) in missList"
                     v-bind:key="index"
-                    style="width: 341px; height: 457px; padding: 10px"
+                    style="width: 341px; height: 430px; padding: 10px; display: inline;"
                   >
                     <div class="adoption-shop-item mb-55">
                  <div class="adoption-shop-thumb">
@@ -154,17 +155,19 @@
                   /></router-link>
                 </div>
                       <div class="shop-content">
-                        <div class="shop-content-bottom">
-                        <span style="margin-bottom:4px;" class="price">{{ miss.name }}</span>
+                        <div class="shop-content-bottom"> 
+                        <span class="price"> <i class="fa fa-hashtag"></i> &nbsp;{{ miss.name }}</span>
                         </div>
-                        <h4 class="title">실종 날짜 : {{ miss.happenDt }}</h4>
+                        <div class="shop-content-bottom"> 
+                          <span class="price"> <i class="far fa-calendar"></i> &nbsp; {{ miss.happenDt }} </span>
+                        </div>
                         <div class="shop-content-bottom">
                           <span class="price"
-                            >발생지역 : {{ miss.happenPlace }}</span
+                            ><i class="fa fa-location-arrow"></i> &nbsp; {{ miss.happenPlace }}</span
                           >
                         </div>
                         <div class="shop-content-bottom">
-                          <span class="price">특이사항 : {{ miss.descr }}</span>
+                          <span class="price"><i class="fa fa-asterisk"></i> &nbsp; {{ miss.descr }}</span>
                         </div>
                       </div>
                     </div>

@@ -44,59 +44,21 @@
                 >
 
                   
-                  <div class="shop-pagination"  style="float:left; margin-left:589px; margin-bottom:0px">
-                        <label style="margin-right:10px; color:#0a303a">날짜</label>
-                        <input type="date" id="search-text" v-model="search.noticeSdt" style="width:140px; height:39px; border: 1px solid #e1e1e1;"/>
+                  <div class="shop-pagination"  style="float:left; margin-left:10px; margin-right:589px; margin-bottom:0px">
+                        <label style="margin-right:10px; color:#0a303a; font-size: 13px;">날짜</label>
+                        <input type="date" id="input_date" v-model="search.noticeSdt" style="width:140px; height:39px; "/>
                         &nbsp; ~ &nbsp;
-                        <input type="date" id="search-text" v-model="search.noticeEdt" style="width:140px; height:39px; border: 1px solid #e1e1e1;"/>
+                        <input type="date" id="input_date" v-model="search.noticeEdt" style="width:140px; height:39px; "/>
                   </div>
 
-                  <div class="shop-pagination"  style="float:left; margin-left:790px; margin-top:0px; margin-bottom:2px; font-size:12px">
+                  <div class="shop-pagination"  style="float:left; margin-left:210px; margin-right:600px; margin-top:0px; margin-bottom:2px; font-size:12px">
                     (날짜는 접수일 기준입니다)
                   </div>
 
-
-                  <!-- <div
-                    class="shop-show-list"
-                    style="float: left; margin-left: 20px"
-                  >
-                    <form action="#">
-                      <label for="kindCd">성별</label>
-                      <select
-                        id="kindCd"
-                        class="selected"
-                        v-model="search.sexCd"
-                      >
-                        <option selected value="null">전체</option>
-                        <option value="M">수컷</option>
-                        <option value="F">암컷</option>
-                      </select>
-                    </form>
-                  </div> -->
-
-                  <!-- <div
-                    class="shop-show-list"
-                    style="float: left; margin-left: 430px"
-                  >
+                  <div class="shop-show-list"  style="float:left; margin-left:10px; margin-right:20px">
                     <form action="#">
                       <label for="neuterYn">중성화</label>
-                      <select
-                        id="neuterYn"
-                        class="selected"
-                        v-model="search.neuterYn"
-                      >
-                        >
-                        <option value="null">전체</option>
-                        <option value="Y">예</option>
-                        <option value="N">아니요</option>
-                      </select>
-                    </form>
-                  </div> -->
-
-                  <div class="shop-show-list"  style="float:left; margin-left:430px">
-                    <form action="#">
-                      <label for="neuterYn">중성화</label>
-                      <select id="neuterYn" class="selected"  v-model="search.neuterYn">>
+                      <select id="neuterYn" class="selected"  v-model="search.neuterYn" @change="searchShelnimal">
                         <option value="">전체</option>
                         <option value="Y">예</option>
                         <option value="N">아니요</option>
@@ -104,30 +66,11 @@
                       </select>
                     </form>
                   </div>
-<!-- 
-                  <div
-                    class="shop-show-list"
-                    style="float: left; margin-left: 20px"
-                  >
-                    <form action="#">
-                      <label for="processState">상태</label>
-                      <select
-                        id="processState"
-                        class="selected"
-                        v-model="search.processState"
-                      >
-                        >
-                        <option value="null">전체</option>
-                        <option value="보호중">보호중</option>
-                        <option value="종료">종료</option>
-                      </select>
-                    </form>
-                  </div> -->
 
-                  <div class="shop-show-list"  style="float:left; margin-left:20px">
+                  <div class="shop-show-list"  style="float:left; margin-right:20px">
                     <form action="#">
                       <label for="processState">상태</label>
-                      <select id="processState" class="selected"  v-model="search.processState">>
+                      <select id="processState" class="selected"  v-model="search.processState"  @change="searchShelnimal">
                         <option value="">전체</option>
                         <option value="protect">보호중</option>
                         <option value="notice">공고중 </option>
@@ -135,43 +78,11 @@
                     </form>
                   </div>
 
-                  <!-- <div
-                    class="shop-show-list"
-                    style="float: left; margin-left: 20px"
-                  >
-                    <form action="#">
-                      <label for="careAddr">지역</label>
-                      <select
-                        id="careAddr"
-                        class="selected"
-                        v-model="search.careAddr"
-                      >
-                        <option value="null">전체</option>
-                        <option value="서울특별시">서울특별시</option>
-                        <option value="부산광역시">부산광역시</option>
-                        <option value="대구광역시">대구광역시</option>
-                        <option value="인천광역시">인천광역시</option>
-                        <option value="광주광역시">광주광역시</option>
-                        <option value="대전광역시">대전광역시</option>
-                        <option value="울산광역시">울산광역시</option>
-                        <option value="세종특별자치시">세종특별자치시</option>
-                        <option value="경기도">경기도</option>
-                        <option value="강원도">강원도</option>
-                        <option value="충청북도">충청북도</option>
-                        <option value="충청남도">충청남도</option>
-                        <option value="전라북도">전라북도</option>
-                        <option value="전라남도">전라남도</option>
-                        <option value="경상북도">경상북도</option>
-                        <option value="경상남도">경상남도</option>
-                        <option value="제주특별자치도">제주특별자치도</option>
-                      </select>
-                    </form>
-                  </div> -->
 
-                  <div class="shop-show-list"  style="float:left; margin-left:20px;">
+                  <div class="shop-show-list"  style="float:left; margin-right:430px;">
                     <form action="#">
                       <label for="careAddr">지역</label>
-                      <select id="careAddr" class="selected" v-model="search.careAddr">
+                      <select id="careAddr" class="selected" v-model="search.careAddr"  @change="searchShelnimal">
                         <option value="">전체</option>
                           <option value="6110000">서울특별시</option>
                           <option value="6260000">부산광역시</option>
@@ -196,7 +107,7 @@
 
                   <div
                     class="shop-show-list"
-                    style="float: left; margin-left: 455px"
+                    style="float: left; margin-left:10px; margin-right: 20px"
                   >
                     <form action="#">
                       <label for="upKindCd">축종</label>
@@ -204,7 +115,7 @@
                         id="upKindCd"
                         class="selected"
                         v-model="search.upKindCd"
-                        @change="search.kindCd==null"
+                         @change="search.kindCd == null"
                       >
                         <option value="">전체</option>
                         <option value="417000">개</option>
@@ -217,7 +128,7 @@
                   <!-- 품종-->
                   <div
                     class="shop-show-list"
-                    style="float: left; margin-left: 20px"
+                    style="float: left; margin-right: 20px"
                   >
                     <form action="#">
                       <label for="kindCd">품종</label>
@@ -225,6 +136,7 @@
                         id="kindCd"
                         class="selected"
                         v-model="search.kindCd"
+                        @change="searchShelnimal"
                         style="width:250px"
                       >
                         <option  v-if="!search.upKindCd" value="">전체</option>
@@ -681,7 +593,7 @@
                     class="shop-pagination"
                     style="
                       float: left;
-                      margin-left: 10px;
+                      margin-right: 450px;
                       margin-top: 2px;
                       cursor: pointer;
                     "
@@ -702,7 +614,7 @@
                   <div
                     v-for="(shel, index) in shelList"
                     v-bind:key="index"
-                     style="width: 341px; height: 457px; padding: 10px;"
+                     style="width: 341px; height: 430px; padding: 10px;"
                   >
                     <div class="adoption-shop-item mb-55">
                       <div class="adoption-shop-thumb">
@@ -726,17 +638,17 @@
                       </div>
                       <div class="shop-content">
                         <div class="shop-content-bottom">
-                        <span style="margin-bottom:4px;" class="price">{{ shel.processState }}</span>
-                        </div>
-                        <h4 class="title">
-                          {{ changeDateString(shel.noticeSdt) }} ~ {{ changeDateString(shel.noticeEdt) }}
-                        </h4>
-                         <div class="shop-content-bottom">
-                            <span class="price">장소 : {{ shel.orgNm }}</span>
+                          <span class="price"> <i class="fa fa-bell"></i> &nbsp;  {{ shel.processState }} - {{shel.kindCd}}</span>
                         </div>
                         <div class="shop-content-bottom">
-                         
-                          <span class="price">특징 : {{ shel.specialMark }}</span>
+                          <span class="price"><i class="far fa-calendar"></i>  
+                           &nbsp;{{ changeDateString(shel.noticeSdt) }} ~ {{ changeDateString(shel.noticeEdt) }}</span>
+                        </div>
+                        <div class="shop-content-bottom">
+                          <span class="price"><i class="fa fa-location-arrow"></i> &nbsp; {{ shel.orgNm }}</span>
+                        </div>
+                        <div class="shop-content-bottom">
+                          <span class="price"><i class="fa fa-asterisk"></i> &nbsp; {{ shel.specialMark }}</span>
                         </div>
                       </div>
                     </div>
@@ -935,6 +847,16 @@ export default {
 
 <style>
 #app {
+}
+#input_date {
+    border: 1px solid #e1e1e1;
+    background: #fff;
+    padding: 8px 25px 8px 11px;
+    min-width: 54px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #111e49;
+    border-radius: 3px;
 }
 #test::-webkit-scrollbar {
   width: 15px; /*스크롤바의 너비*/
