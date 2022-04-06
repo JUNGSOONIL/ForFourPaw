@@ -337,10 +337,6 @@ export default {
     },
 
     viewStore() {
-      let headers = {
-        "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-        "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-      };
 
       console.log(JSON.parse(session.getItem('userInfo')).no + " " + this.miss.desertionNo)
 
@@ -353,19 +349,13 @@ export default {
         method: "post",
         url: "/api/shel/view/detail",
         data: data,
-        headers: headers,
       })
-        .then((res) => {
-          this.$store.dispatch("login/accessTokenRefresh", res); // 상황에 따라서 메서드가 다르다
-          
+        .then(() => {
+          console.log("viewStore 성공");
         })
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("viewStore 성공");
-          
-        });
     },
   },
 };
