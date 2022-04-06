@@ -1,10 +1,5 @@
 <template>
-  <div>
-    <!-- adoption-shop-area -->
-    <section class="adoption-shop-area">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-7 col-lg-9">
+          <div class="section-title text-center" style="display: flex; justify-content: center; align-items:center; min-height: 100vh;">
             <div class="section-title mb-65">
               <div class="text-center">
                 <img src="/img/logo/character.png" width="500" alt="" />
@@ -21,10 +16,6 @@
               </div> -->
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-  </div>
 </template>
 
 <script>

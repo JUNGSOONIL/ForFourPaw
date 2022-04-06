@@ -498,8 +498,8 @@ export default {
         this.$alertify.success("탈퇴 완료했습니다.");
         this.$store.commit("login/SET_LOGOUT");
         session.clear();
-        this.$router.push("/")
-        // this.$router.push({ name: "LogoutPage", params: { msg: "회원탈퇴"}});
+        // this.$router.push("/")
+        this.$router.push({ name: "LogoutPage", params: { msg: "회원탈퇴"}});
       }).catch((error) => {
         console.log(error);
       }).then(() => {

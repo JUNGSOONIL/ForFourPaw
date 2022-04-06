@@ -14,6 +14,7 @@ import MoreInfo from "@/views/accounts/MoreInfo.vue";
 import AnalysisView from "@/views/analysis/AnalysisView.vue";
 import MissList from "@/views/MissList.vue";
 import UserPage from "@/views/UserPage.vue";
+import KaKaoLogin from "@/views/accounts/KaKaoLogin.vue";
 
 export default new VueRouter({
   mode: "history",
@@ -72,7 +73,7 @@ export default new VueRouter({
     {
       name: "KaKaoLogin",
       path: "/socialLogin/KaKaoLogin",
-      component: () => import("@/views/accounts/KaKaoLogin.vue"),
+      component: KaKaoLogin,
       meta: {
         loginRequired: false,
         testRequired: false,
