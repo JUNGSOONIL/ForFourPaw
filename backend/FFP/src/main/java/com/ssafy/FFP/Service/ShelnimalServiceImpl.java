@@ -185,7 +185,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 			String recommendUser = no;
 //			System.out.println("mainListLogin : " + userID.get(recommendUser));
 			// 사용자 간 유사도 계산 [cosine similarity]
-			int recommendUserId = userID.get(recommendUser);
+//			int recommendUserId = userID.get(recommendUser);
 //			for (int i = 0; i < sparseMatrix.length; i++) {
 //				if(i != recommendUserId) {
 //					System.out.println(idUser.get(recommendUserId)+"--"+idUser.get(i)+" similarity :"+sparseMatrix[recommendUserId][i]/Math.sqrt(userItemLength.get(idUser.get(recommendUserId))*userItemLength.get(idUser.get(i))));
