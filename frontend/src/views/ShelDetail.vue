@@ -87,6 +87,14 @@
                     <h5 class="stock-status">- Animal</h5>
                   </div>
                   <div class="shop-details-dimension">
+                    <label for="processState">상태</label>
+                    <input
+                      id="processState"
+                      type="text"
+                      v-model="miss.processState"
+                      class="form-control"
+                      readonly
+                    />
                     <label for="animalKind">품종</label>
                     <input
                       id="animalKind"
