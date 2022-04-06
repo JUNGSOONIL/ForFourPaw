@@ -984,7 +984,7 @@ export default {
       const cloud = require("d3-cloud");
       cloud()
         .words(this.words)
-        .size(["1200", "900"])
+        .size(["1200", "1000"])
         .padding(1)
         .font("Impact")
         // .style("font-family", "RFR")
@@ -1014,7 +1014,7 @@ export default {
     end(words) {
       const d3 = require("d3");
       const width = 1200;
-      const height = 900;
+      const height = 1000;
       d3.select("#kind_wordcloud")
         .append("svg")
         .attr("width", width)
