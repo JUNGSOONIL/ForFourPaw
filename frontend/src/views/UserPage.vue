@@ -136,7 +136,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-xl-5 col-lg-6 col-md-8 pt-40" >
+                            <div class="col-xl-5 col-lg-6 col-md-8" >
                               <label >프로필 이미지 </label>
                                 <div class="contact-info-wrap" style="padding:38px ">
                                     <div>
@@ -192,7 +192,7 @@
               <div v-if="boardlist.length != 0" class="container">
                 <div class="container-inner-wrap">
                    <h3 class="title">내가 작성한 글</h3>
-                  <div class="row " style=" border: 1px solid gray; border-radius: 40px; padding:15px">
+                  <div id="test" class="row " style=" border: 1px solid gray; border-radius: 40px; padding:15px; height:488px; overflow: auto;">
                     <table class="table align-items-center mb-0 table-hover">
                       <thead>
                         <tr>
@@ -389,5 +389,19 @@ export default {
 <style scoped>
 #app{
 
+}
+#test::-webkit-scrollbar {
+  width: 15px; /*스크롤바의 너비*/
+}
+
+#test::-webkit-scrollbar-thumb {
+  background-color: red; /*스크롤바의 색상*/
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  height: 17%;
+  border-radius: 100px;
+}
+#test::-webkit-scrollbar-track {
+  background-color: rgba(0,0,0,0); /*스크롤바 트랙 색상*/
 }
 </style>
