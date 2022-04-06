@@ -101,7 +101,7 @@
                         id="kindCd"
                         class="selected"
                         v-model="search.kindCd"
-                        @keyup.enter="searchMissnimal"
+                        v-on:keydown.enter.prevent="searchMissnimal"
                       />
                     </form>
                   </div>
