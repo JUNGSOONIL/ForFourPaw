@@ -990,7 +990,7 @@ export default {
       const cloud = require("d3-cloud");
       cloud()
         .words(this.words)
-        .size(["1800", "600"])
+        .size(["1800", "700"])
         .padding(1)
         .font("Impact")
         // .style("font-family", "RFR")
@@ -1006,7 +1006,7 @@ export default {
         //           else return ( "#000000");
         //     })
         .fontSize(function (d) {
-          return Math.sqrt(d.size) * 0.8;
+          return Math.sqrt(d.size) * 0.7;
         })
         // .fontSize(function (d) {
         //       return wordScale(d.frequency);
@@ -1020,7 +1020,7 @@ export default {
     end(words) {
       const d3 = require("d3");
       const width = 1800;
-      const height = 600;
+      const height = 700;
       d3.select("#kind_wordcloud")
         .append("svg")
         .attr("width", width)
