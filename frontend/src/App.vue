@@ -1,9 +1,29 @@
 <template>
   <div id="app">
-    <loading v-if="isLoadingGetters"/>
-    <header-bar v-if="!($route.name === 'SocialLogin' || $route.name === 'LogoutPage' || $route.name === 'MoreInfo' || $router.name === 'KaKaoLogin')" id="headerbar"></header-bar>
+    <loading v-if="isLoadingGetters" />
+    <header-bar
+      v-if="
+        !(
+          $route.name === 'SocialLogin' ||
+          $route.name === 'LogoutPage' ||
+          $route.name === 'MoreInfo' ||
+          $router.name === 'KaKaoLogin'
+        )
+      "
+      id="headerbar"
+    ></header-bar>
     <router-view></router-view>
-    <footer-bar v-if="!($route.name === 'SocialLogin' || $route.name === 'LogoutPage' || $route.name === 'MoreInfo' || $router.name === 'KaKaoLogin')" id="footerbar"></footer-bar>
+    <footer-bar
+      v-if="
+        !(
+          $route.name === 'SocialLogin' ||
+          $route.name === 'LogoutPage' ||
+          $route.name === 'MoreInfo' ||
+          $router.name === 'KaKaoLogin'
+        )
+      "
+      id="footerbar"
+    ></footer-bar>
   </div>
 </template>
 
@@ -11,7 +31,7 @@
 import HeaderBar from "./views/HeaderBar.vue";
 import FooterBar from "./views/FooterBar.vue";
 import Loading from "./views/Loading.vue";
-
+const session = window.sessionStorage;
 export default {
   name: "App",
   components: {
@@ -20,10 +40,15 @@ export default {
     Loading,
   },
   computed: {
-    isLoadingGetters(){
-      return this.$store.getters["loading/isLoading"]
-    }
-  }
+    isLoadingGetters() {
+      return this.$store.getters["loading/isLoading"];
+    },
+  },
+  methods: {
+    isSession() {
+      return session.getItem("userInfo");
+    },
+  },
 };
 </script>
 
