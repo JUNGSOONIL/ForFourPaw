@@ -485,7 +485,9 @@ export default {
         console.log('updateuser End!!');
       });
     },
-    deleteuser(){
+
+    alertifyDelete(){
+      
       let headers = {
         'at-jwt-access-token': session.getItem('at-jwt-access-token'),
         'at-jwt-refresh-token': session.getItem('at-jwt-refresh-token'),
@@ -506,6 +508,14 @@ export default {
       }).then(() => {
         console.log('deleteuser End!!');
       });
+    },
+
+    deleteuser(){
+      this.$alertify.confirm(
+        '탈퇴하시겠습니까?',
+        () => this.alertifyDelete(),
+        () => this.$alertify.error('cancel')
+      );
     },
   },
 };
