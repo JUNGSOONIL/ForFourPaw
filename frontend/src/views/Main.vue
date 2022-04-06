@@ -807,9 +807,6 @@
             </div>
           </div>
         </div>
-        <div class="faq-shape">
-          <img src="img/images/faq_shape.png" alt="" />
-        </div>
         <br />
         <br />
       </section>
@@ -821,14 +818,11 @@
 
 <script>
 import axios from "axios";
-// import Slick from "vue-slick";
 
 const session = window.sessionStorage;
 export default {
   name: "App",
-  components: {
-    // Slick,
-  },
+  components: {},
   data() {
     return {
       maincnt: {
