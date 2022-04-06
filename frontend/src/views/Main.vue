@@ -171,7 +171,7 @@
         class="counter-area counter-bg"
         style="background-image: url('/img/bg/counter_bg.jpg')"
       >
-        <div v-if="maincnt.protect!=0" class="container">
+        <div v-if="maincnt.protect != 0" class="container">
           <!-- <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-8">
               <div class="counter-title text-center mb-65">
@@ -186,7 +186,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" >{{maincnt.today}}</span>
+                  <span class="odometer">{{ maincnt.today }}</span>
                 </h2>
                 <p>오늘 추가된 유기 동물</p>
               </div>
@@ -194,7 +194,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer">{{maincnt.protect}}</span>
+                  <span class="odometer">{{ maincnt.protect }}</span>
                 </h2>
                 <p>최근 한달 간 보호</p>
               </div>
@@ -202,7 +202,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" >{{maincnt.return}}</span>
+                  <span class="odometer">{{ maincnt.return }}</span>
                 </h2>
                 <p>최근 한달 간 반환</p>
               </div>
@@ -210,7 +210,7 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
               <div class="counter-item">
                 <h2 class="count">
-                  <span class="odometer" >{{maincnt.death}}</span>
+                  <span class="odometer">{{ maincnt.death }}</span>
                 </h2>
                 <p>최근 한달 간 사망</p>
               </div>
@@ -554,7 +554,10 @@
                     alt=""
                   />
                   <router-link
-                    :to="{ name: 'ShelDetail', params: { no: shelnimal.no } }"
+                    :to="{
+                      name: 'ShelDetail',
+                      params: { no: shelnimal.desertionNo },
+                    }"
                     class="btn"
                     >보러가기<img src="img/icon/w_pawprint.png" alt=""
                   /></router-link>
@@ -765,14 +768,62 @@
         </div>
       </section> -->
       <!-- blog-area-end -->
+
+      <!-- faq-area -->
+      <section class="faq-area">
+        <div class="container">
+          <br />
+          <br />
+          <div class="row align-items-center">
+            <div class="col-lg-12">
+              <div class="faq-img-wrap">
+                <table
+                  align="center"
+                  width="1162"
+                  height="695"
+                  background="img/images/faq_tv.png"
+                  border="0"
+                  cellspacing="0"
+                  cellpadding="0"
+                >
+                  <tr>
+                    <td height="180"></td>
+                  </tr>
+                  <tr>
+                    <td height="225" align="center">
+                      <video height="450" width="900" controls>
+                        <source src="video/test.mp4" type="video/mp4" />
+                        이 문장은 여러분의 브라우저가 video 태그를 지원하지 않을
+                        때 화면에 표시됩니다!
+                      </video>
+                    </td>
+                    <td width="100"></td>
+                  </tr>
+                  <tr>
+                    <td height="35"></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="faq-shape">
+          <img src="img/images/faq_shape.png" alt="" />
+        </div>
+        <br />
+        <br />
+      </section>
+      <!-- faq-area-end -->
     </main>
     <!-- main-area-end -->
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 // import Slick from "vue-slick";
+
+const session = window.sessionStorage;
 export default {
   name: "App",
   components: {
@@ -780,11 +831,11 @@ export default {
   },
   data() {
     return {
-      maincnt:{
-        today:0,
-        protect:0,
-        return:0,
-        death:0,
+      maincnt: {
+        today: 0,
+        protect: 0,
+        return: 0,
+        death: 0,
       },
       slickOptions: {
         dots: false,
@@ -838,9 +889,9 @@ export default {
       },
     };
   },
-  created(){
-    this.$store.commit('setHaderindex',0);
-    if (this.$store.state["login"].isLogin == false) {
+  created() {
+    this.$store.commit("setHaderindex", 0);
+    if (session.getItem("userInfo") == null) {
       this.shelimalList();
     } else {
       this.shelimalListLogin();
@@ -848,9 +899,13 @@ export default {
     this.selectmaincnt();
   },
   mounted() {
-
+    // window.addEventListener('beforeunload', this.clearStorage)
+    // console.log(session.getItem("userInfo"));
   },
-  methods:{
+  methods: {
+    // clearStorage() {
+    //   localStorage.removeItem('vuex');
+    // },
     shelimalList() {
       console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
@@ -859,21 +914,25 @@ export default {
       console.log("로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalListLogin");
     },
-    selectmaincnt(){
-    this.$store.commit('loading/load', true);
-    axios({
-        method: 'get',
-        url: '/api/dataset/',
-      }).then((res) => {
-        this.maincnt = res.data; 
-        console.log(res.data)
-      }).catch((error) => {
-        console.log(error);
-      }).finally(() => this.$store.commit('loading/load', false),
-        console.log('selectmaincnt End!!'),
-      )
+    selectmaincnt() {
+      this.$store.commit("loading/load", true);
+      axios({
+        method: "get",
+        url: "/api/dataset/",
+      })
+        .then((res) => {
+          this.maincnt = res.data;
+          console.log(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+        .finally(
+          () => this.$store.commit("loading/load", false),
+          console.log("selectmaincnt End!!")
+        );
     },
-  }
+  },
 };
 </script>
 
