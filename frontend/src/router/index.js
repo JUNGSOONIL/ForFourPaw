@@ -84,6 +84,7 @@ export default new VueRouter({
       name: "LogoutPage",
       path: "/logoutPage",
       component: LogoutPage,
+      props: true,
     },
 
     {
@@ -106,7 +107,6 @@ export default new VueRouter({
       path: "/missList",
       component: MissList,
     },
-    
   ],
 
   //페이지 이동시 유지되던 스크롤 위치를 맨위로 이동

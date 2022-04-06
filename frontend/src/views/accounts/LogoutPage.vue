@@ -10,7 +10,7 @@
                 <img src="/img/logo/character.png" width="500" alt="" />
               </div>
               <div class="text-center">
-                <h5 class="sub-title">로그아웃 완료</h5>
+                <h5 class="sub-title">{{ this.msg }} 완료</h5>
                 <h2 class="title">감사합니다<br />다음에 또 방문해 주세요</h2>
               </div>
               <div class="text-center">
@@ -26,3 +26,11 @@
     </section>
   </div>
 </template>
+
+<script>
+export default {
+  props: {
+    msg: String,
+  },
+};
+</script>
