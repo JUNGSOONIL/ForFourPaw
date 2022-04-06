@@ -2,7 +2,7 @@
   <div id="app">
     <loading v-if="isLoadingGetters" />
     <header-bar
-      v-show="
+      v-if="
         !(
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
@@ -14,7 +14,7 @@
     ></header-bar>
     <router-view></router-view>
     <footer-bar
-      v-show="
+      v-if="
         !(
           $route.name === 'SocialLogin' ||
           $route.name === 'LogoutPage' ||
