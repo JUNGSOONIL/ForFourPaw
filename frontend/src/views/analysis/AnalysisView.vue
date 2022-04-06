@@ -645,7 +645,7 @@ export default {
     this.$store.commit("setHaderindex", 3);
   },
   mounted() {
-    console.log("[system] mounted! ");
+
   },
   computed:{
     commenntopen() {
@@ -736,7 +736,6 @@ export default {
       // this.region_value = this.region_result[index].value;
     },
     loaddata_fromDB() {
-      console.log("[system] 차트 불러오기 ");
 
       let data = {
         name: "",
@@ -975,15 +974,10 @@ export default {
           });
 
           this.isLoading = !this.isLoading;
-          console.log("바꾸기 : " + this.isLoading);
-          console.log("[system] 통신 완료");
         })
         .catch((error) => {
           console.log(error);
         })
-        .then(() => {
-          console.log("getQSSList End!!");
-        });
     },
     // word cloud test
     kindwordcloudload() {

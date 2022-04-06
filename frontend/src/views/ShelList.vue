@@ -847,7 +847,6 @@ export default {
         url: "/api/shel/1",
       })
         .then((res) => {
-          console.log(res.data);
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
@@ -855,7 +854,6 @@ export default {
         .catch((error) => {
           console.log(error);
         }).finally(() => this.$store.commit('loading/load', false),
-        console.log('searchShelnimaldefualt End!!'),
 )
     },
 
@@ -885,7 +883,6 @@ export default {
           this.total = res.data.allCount;
           this.pagegroup = 1
           this.pagegroupmax = Math.ceil(this.total / 9 )
-          console.log(res)
         })
         .catch((error) => {
           console.log(error);
@@ -893,7 +890,6 @@ export default {
            this.total = 0
            this.pagegroupmax = 0
         }).finally(() => this.$store.commit('loading/load', false),
-        console.log('searchShelnimal End!!'),
 )
     },
 
@@ -922,7 +918,6 @@ export default {
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9 )
-          console.log(res.data);
         })
         .catch((error) => {
           console.log(error);
@@ -931,7 +926,6 @@ export default {
            this.pagegroupmax = 0
         })
         .finally(() => this.$store.commit('loading/load', false),
-        console.log('searchShelnimalPage End!!'),
          window.scrollTo(0,0),
         )
     },

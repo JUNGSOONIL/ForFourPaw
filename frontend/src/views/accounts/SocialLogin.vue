@@ -32,7 +32,6 @@
 
 <script>
 import axios from "axios";
-import jwt_decode from "jwt-decode";
 
 const session = window.sessionStorage;
 
@@ -65,14 +64,6 @@ export default {
         if (!googleUser) {
           return null;
         }
-        console.log("googleUser", googleUser);
-        console.log("getId", googleUser.getId());
-        console.log("getBasicProfile", googleUser.getBasicProfile());
-        console.log("getAuthResponse", googleUser.getAuthResponse());
-        console.log(
-          "getAuthResponse",
-          this.$gAuth.GoogleAuth.currentUser.get().getAuthResponse()
-        );
         this.isSignIn = this.$gAuth.isAuthorized;
         this.onSuccess(googleUser);
         this.login();
@@ -83,7 +74,6 @@ export default {
     },
     onSuccess(googleUser) {
       // eslint-disable-next-line
-      console.log(googleUser);
       this.googleUser = googleUser;
       this.tokenVerify();
     },
@@ -95,14 +85,11 @@ export default {
       const url = "/api/login/oauth/google";
       const params = new URLSearchParams();
       params.append("idToken", this.googleUser.wc.id_token);
-      console.log("idtoken : " + this.googleUser.wc.id_token);
       axios
         .post(url, params)
         .then((res) => {
           // alert("로그인 성공")
-          console.log(res.headers);
           this.$store.dispatch("login/allTokenRefresh", res);
-          console.log(this.$store.getters["login/userInfo"]);
           this.sendToken();
           const info = this.$store.getters["login/userInfo"];
           if (info.addrs === null) {
@@ -128,26 +115,7 @@ export default {
     },
 
     sendToken() {
-      console.log("나는 sendToken!");
-      const decodeAccessToken = jwt_decode(
-        session.getItem("at-jwt-access-token")
-      );
-      let headers = null;
-      if (decodeAccessToken.exp < Date.now() / 1000 + 60) {
-        console.log("만료됨!!");
-        headers = {
-          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-        };
-        console.log("headers : ", headers);
-      } else {
-        console.log("만료되지않음!!");
-        headers = {
-          "at-jwt-access-token": session.getItem("at-jwt-access-token"),
-          "at-jwt-refresh-token": session.getItem("at-jwt-refresh-token"),
-        };
-        console.log("headers : ", headers);
-      }
+
     },
   },
 };

@@ -28,10 +28,6 @@ const mutations = {
     state.isLogin = false;
   },
   userUpdate(state, payload) {
-    console.log("userUpdate 접근 =====");
-    console.log(payload);
-    const userdata = JSON.parse(session.getItem("userInfo"));
-    console.log(userdata);
     if (!session.getItem("userInfo")) {
       session.setItem("userInfo", JSON.stringify(payload.userInfo)); //토큰값으로 들어오면
     } else if (session.getItem("userInfo")) {
@@ -39,12 +35,11 @@ const mutations = {
       session.setItem("userInfo", JSON.stringify(payload.userInfo));
     }
 
-    console.log("userUpdate 완료 ======" + session.getItem("userInfo"));
     state.userInfo = JSON.parse(session.getItem("userInfo"));
   },
 
   tokenTest() {
-    console.log("test");
+
   },
 };
 
@@ -52,7 +47,6 @@ const mutations = {
 const actions = {
   // 엑세스 토큰 갱신
   accessTokenRefresh({ commit }, res) {
-    console.log("accesstoken : " + res.headers);
     if (
       res.headers["at-jwt-access-token"] !=
       session.getItem("at-jwt-access-token")
@@ -62,7 +56,6 @@ const actions = {
         "at-jwt-access-token",
         res.headers["at-jwt-access-token"]
       );
-      console.log("Access Token을 교체합니다!!!");
     }
     commit("tokenTest");
   },
@@ -70,20 +63,15 @@ const actions = {
   // 유저 정보, 엑세스 토큰 갱신
   accessTokenRefreshOnUserInfo({ commit }, res) {
     // 유저 정보 갱신할때 사용
-    console.log(
-      "allTokenRefreshOnUserInfo : " + res.headers["at-jwt-access-token2"]
-    );
     session.setItem("at-jwt-access-token", res.headers["at-jwt-access-token2"]);
     const decodeAccessToken = jwt_decode(
       res.headers["at-jwt-access-token2"]
     );
-    console.log("decodeAccessToken data", decodeAccessToken);
     commit("userUpdate", decodeAccessToken);
   },
 
   // 토큰 전체 갱신
   allTokenRefresh({ commit }, res) {
-    console.log("alltoken : " + res.headers);
     session.setItem("at-jwt-access-token", res.headers["at-jwt-access-token"]);
     session.setItem(
       "at-jwt-refresh-token",
@@ -93,7 +81,6 @@ const actions = {
     const decodeAccessToken = jwt_decode(
       res.headers["at-jwt-access-token"]
     );
-    console.log("decodeAccessToken data", decodeAccessToken);
     commit("userUpdate", decodeAccessToken);
 
     return new Promise((resolve) => {
