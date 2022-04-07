@@ -390,7 +390,6 @@ export default {
         headers: headers,
       }).then((res) => {
         this.$store.dispatch('login/accessTokenRefresh', res)
-        console.log(res.data)
         this.boardlist = res.data
       }).catch((error) => {
         console.log(error);
