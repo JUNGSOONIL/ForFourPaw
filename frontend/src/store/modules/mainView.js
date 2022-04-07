@@ -43,7 +43,6 @@ const actions = {
     
             // this.$store.dispatch('login/accessTokenRefresh', res) // store아닌곳에서 상황에 따라서 메서드가 다르다
             
-            console.log(res);
 
             context.commit("SET_MAIN_SELIMAL_LIST", res.data);
             
@@ -60,14 +59,13 @@ const actions = {
             };
             axios({
                 method: 'get',
-                url: '/api/shel/view/login/' + JSON.parse(session.getItem('userInfo')).no, // /api vue.configjs가 가르키는 주소
+                url: '/api/authorization/shel/view/login/' + JSON.parse(session.getItem('userInfo')).no, // /api vue.configjs가 가르키는 주소
                 // data: , // post 나 put에 데이터 넣어 줄때
                 headers: headers,  // 넣는거 까먹지 마세요
               }).then((res) => {
         
                 this.dispatch('login/accessTokenRefresh', res) // 상황에 따라서 메서드가 다르다
                 
-                console.log(res);
     
                 context.commit("SET_MAIN_SELIMAL_LIST", res.data);
                 
