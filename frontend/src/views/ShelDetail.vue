@@ -364,6 +364,11 @@ export default {
   mounted() {},
 
   methods: {
+    userInfoNo() {
+      if (session.getItem("userInfo") != null)
+        return JSON.parse(session.getItem("userInfo")).no;
+      return null;
+    },
     changeDateString(date) {
       var year = date.substr(0, 4);
       var month = date.substr(4, 2);
@@ -382,7 +387,7 @@ export default {
             this.changeDateString(this.miss.noticeSdt) +
             " ~ " +
             this.changeDateString(this.miss.noticeEdt);
-          if (this.$store.state["login"].isLogin == true) {
+          if (this.userInfoNo != null) {
             this.viewStore();
           }
         })
