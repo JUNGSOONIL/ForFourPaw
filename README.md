@@ -121,7 +121,7 @@ commit log: 싸피 외부 깃헙/깃랩 주소
 ----
 
   - Jenkins
-    - GitLab develop에 merge 시 자동 서배 배포
+    - GitLab develop에 merge 시 자동 서버 배포
     - 약 2분 정도 시간이 걸림
 
 
