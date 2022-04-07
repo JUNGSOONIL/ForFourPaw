@@ -7,6 +7,9 @@
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
+    <button style="margin-right:60px" class="scroll-top scroll-to-target" @click="$router.go(-1)">
+      <i class="fas fa-angle-left"></i>
+    </button>
     <button class="scroll-top scroll-to-target" onclick="window.scrollTo(0,0);">
       <i class="fas fa-angle-up"></i>
     </button>
