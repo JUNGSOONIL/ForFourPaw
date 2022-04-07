@@ -53,7 +53,7 @@
                             background-color: #bcbcbc;
                             width: 616px;
                             height: 568px;
-                            border: 2px solid black;
+                            border-radius: 10px
                           "
                         />
                         <img
@@ -61,9 +61,10 @@
                           :src="miss.popfile"
                           alt=""
                           style="
+                            background-color: #f5f2eb;
                             width: 616px;
                             height: 568px;
-                            border: 2px solid black;
+                             border-radius: 10px
                           "
                         />
                       </div>
@@ -75,7 +76,8 @@
                 <div
                   id="test"
                   style="
-                    border: 2px solid black;
+                    border-radius: 10px;
+                    background-color: #f5f2eb;
                     padding: 10px;
                     width: 586px;
                     height: 568px;
@@ -93,7 +95,8 @@
                       type="text"
                       v-model="miss.processState"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalKind">품종</label>
                     <input
@@ -101,7 +104,8 @@
                       type="text"
                       v-model="miss.kindCd"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalColor">색상</label>
                     <input
@@ -109,7 +113,8 @@
                       type="text"
                       v-model="miss.colorCd"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalAge">나이</label>
                     <input
@@ -117,7 +122,8 @@
                       type="text"
                       v-model="miss.age"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalSex">성별</label>
                     <input
@@ -125,7 +131,8 @@
                       type="text"
                       v-model="miss.sexCd"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalneuter">중성화</label>
                     <input
@@ -133,7 +140,8 @@
                       type="text"
                       v-model="miss.neuterYn"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalDesc">특이사항</label>
                     <textarea
@@ -141,7 +149,8 @@
                       type="text"
                       v-model="miss.specialMark"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                   </div>
                   <div class="shop-details-price">
@@ -155,7 +164,8 @@
                       type="text"
                       v-model="miss.happenDt"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalHappenPlace">발생장소</label>
                     <div>
@@ -164,7 +174,8 @@
                         type="text"
                         v-model="miss.happenPlace"
                         class="form-control"
-                        readonly
+                        style=" background-color: white;"
+                      disabled
                       />
                     </div>
                     <label for="animalnoticeSdt">공고기간</label>
@@ -174,7 +185,8 @@
                         type="text"
                         v-model="noticedt"
                         class="form-control"
-                        readonly
+                        style=" background-color: white;"
+                      disabled
                       />
                     </div>
                   </div>
@@ -189,7 +201,8 @@
                       type="text"
                       v-model="miss.careNm"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalHappenPlace">보호소 위치</label>
                     <div>
@@ -198,7 +211,8 @@
                         type="text"
                         v-model="miss.careAddr"
                         class="form-control"
-                        readonly
+                        style=" background-color: white;"
+                      disabled
                       />
                     </div>
                     <label for="animalnoticeSdt">보호소 전화번호</label>
@@ -208,7 +222,8 @@
                         type="text"
                         v-model="miss.careTel"
                         class="form-control"
-                        readonly
+                        style=" background-color: white;"
+                      disabled
                       />
                     </div>
                   </div>
@@ -224,7 +239,8 @@
                       type="text"
                       v-model="miss.orgNm"
                       class="form-control"
-                      readonly
+                      style=" background-color: white;"
+                      disabled
                     />
                     <label for="animalHappenPlace">담당자</label>
                     <!-- {{miss.chargeNm}} <br> -->
@@ -234,7 +250,8 @@
                         type="text"
                         v-model="miss.chargeNm"
                         class="form-control"
-                        readonly
+                        style=" background-color: white;"
+                      disabled
                       />
                     </div>
                     <label for="animalnoticeSdt">전화번호</label>
@@ -245,7 +262,8 @@
                         type="text"
                         v-model="miss.officeTel"
                         class="form-control"
-                        readonly
+                        style=" background-color: white;"
+                      disabled
                       />
                     </div>
                   </div>
@@ -393,6 +411,6 @@ export default {
   border-radius: 100px;
 }
 #test::-webkit-scrollbar-track {
-  background-color: white; /*스크롤바 트랙 색상*/
+  background-color: rgba(0,0,0,0); /*스크롤바 트랙 색상*/
 }
 </style>
