@@ -60,7 +60,7 @@
                               background-color: #bcbcbc;
                               width: 616px;
                               height: 568px;
-                              border: 2px solid black;
+                              border-radius: 10px
                             "
                         /></label>
                         <label v-else for="file"
@@ -69,10 +69,10 @@
                             alt=""
                             id="default-img"
                             style="
-                              background-color: gray;
+                              background-color: #f5f2eb;
                               width: 616px;
                               height: 568px;
-                              border: 2px solid black;
+                              border-radius: 10px
                             "
                         /></label>
                         <input
@@ -92,11 +92,12 @@
                 <div
                   id="test"
                   style="
-                    border: 2px solid black;
+                    border-radius: 10px;
                     padding: 10px;
                     width: 586px;
                     height: 568px;
                     overflow: auto;
+                    background-color: #f5f2eb;
                   "
                 >
                   <div class="shop-details-price">
@@ -791,6 +792,6 @@ export default {
   border-radius: 100px;
 }
 #test::-webkit-scrollbar-track {
-  background-color: white; /*스크롤바 트랙 색상*/
+  background-color: rgba(0,0,0,0); /*스크롤바 트랙 색상*/
 }
 </style>

@@ -161,7 +161,7 @@
                       aria-labelledby="details-tab"
                       style="text-align: center;"
                     >
-                      <div class="product-desc-content" style="height:600px; width:600px; display: inline-block;">
+                      <div class="product-desc-content" style="height:600px; width:60%; display: inline-block;">
                         <div class="row justify-content-center" style="display: inline;">
                           <div><h1>유기된 동물의 종류</h1></div>
                           <div class="col-12" style="background-color: white">
@@ -181,7 +181,7 @@
                       aria-labelledby="details-tab"
                         style="text-align: center;"
                     >
-                      <div  class="product-desc-content" style="height:600px; width:1100px; display: inline-block;" >
+                      <div  class="product-desc-content" style="height:600px; width:100%; display: inline-block;" >
                          <div class="row justify-content-center"  style="display: inline;">
                           <div><h1>무게 별 유기동물 등록 건수</h1></div>
                           <div class="col-12" style="background-color: white">
@@ -201,7 +201,7 @@
                       aria-labelledby="details-tab"
                       style="text-align: center;"
                     >
-                      <div  class="product-desc-content" style="height:600px; width:1100px; display: inline-block;" >
+                      <div  class="product-desc-content" style="height:600px; width:100%; display: inline-block;" >
                         <div class="row justify-content-center" style="display: inline;">
                           <div><h1>월 별 유기동물 등록 건수</h1></div>
                             <div class="col-12" style="background-color: white">
@@ -222,7 +222,7 @@
                       aria-labelledby="details-tab"
                         style="text-align: center;"
                     >
-                       <div  class="product-desc-content" style="height:600px; width:1100px; display: inline-block;" >
+                       <div  class="product-desc-content" style="height:600px; width:100%; display: inline-block;" >
                         <div class="row justify-content-center" style="display: inline;">
                           <div><h1>연도 별 유기동물 등록 건수</h1></div>
                           <div class="col" style="background-color: white">
@@ -244,7 +244,7 @@
                     >
                       <div  class="product-desc-content" style="height:600px; width:600px; display: inline;" >
                         <div class="row justify-content-center">
-                          <div id="t" class="counter-title text-center mb-65">
+                          <div id="t" class="counter-title text-center">
                             <div><h1>품종 별 WORD CLOUD</h1></div>
                             <h5 style="color: #9859ff">
                               ※ 코숏 : ( 코리안 숏헤어를 뜻하며, 품종이 정해지지 않은
@@ -278,7 +278,7 @@
                       aria-labelledby="details-tab"
                       style="text-align: center;"
                     >
-                      <div  class="product-desc-content" style="height:600px; width:600px; display: inline;">
+                      <div  class="product-desc-content" style="height:100%; width:100%; display: inline;">
                         <div class="row justify-content-center" >
                           <div><h1>지역 별 유기동물 등록 횟수</h1></div>
                           <div></div>
