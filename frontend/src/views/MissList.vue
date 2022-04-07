@@ -286,8 +286,10 @@ export default {
     };
   },
   created() {
-    this.searchMissnimaldefualt();
+    if(this.$store.getters.getHaderindex != 2)
+      this.$store.dispatch('reset')
     this.$store.commit("setHaderindex", 2);
+    this.searchMissnimaldefualt();
   },
   methods: {
     userInfoNo() {
@@ -297,6 +299,15 @@ export default {
     },
 
     searchMissnimaldefualt() {
+      if(this.$store.getters.getMissSearch.page != ""){
+        const datas = this.$store.getters.getMissSearch
+        this.search.happenPlace = datas.happenPlace
+        this.search.kindCd = datas.kindCd
+        this.page = datas.page
+        this.searchMissnimalPage(this.page)
+        return;
+      }
+
       this.$store.commit("loading/load", true);
       axios({
         method: "get",
@@ -335,6 +346,9 @@ export default {
           this.total = res.data.allCount;
           this.pagegroup = 1;
           this.pagegroupmax = Math.ceil(this.total / 9);
+          const datas = this.search
+          datas.page = this.page
+          this.$store.commit('setMissSearch', datas)
         })
         .catch((error) => {
           console.log(error);
@@ -366,6 +380,9 @@ export default {
           this.total = res.data.allCount;
           this.pagegroup = 1;
           this.pagegroupmax = Math.ceil(this.total / 9);
+          const datas = this.search
+          datas.page = this.page
+          this.$store.commit('setMissSearch', datas)
         })
         .catch((error) => {
           console.log(error);

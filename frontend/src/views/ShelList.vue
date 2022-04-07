@@ -1262,6 +1262,8 @@ export default {
     };
   },
   created() {
+    if(this.$store.getters.getHaderindex != 1)
+      this.$store.dispatch('reset')
     this.searchShelnimaldefualt();
     this.$store.commit("setHaderindex", 1);
   },
@@ -1287,6 +1289,19 @@ export default {
       return year + "-" + month + "-" + day;
     },
     searchShelnimaldefualt() {
+      if(this.$store.getters.getShelSearch.page != ""){
+        const datas = this.$store.getters.getShelSearch
+        this.search.noticeSdt = datas.noticeSdt
+        this.search.noticeEdt = datas.noticeEdt
+        this.search.upKindCd = datas.upKindCd
+        this.search.kindCd = datas.kindCd
+        this.search.neuterYn = datas.neuterYn
+        this.search.careAddr = datas.careAddr
+        this.search.processState = datas.processState
+        this.page = datas.page
+        this.searchShelnimalPage(this.page)
+        return;
+      }
       this.shelList = "";
       this.$store.commit("loading/load", true);
       axios({
@@ -1329,6 +1344,9 @@ export default {
           this.total = res.data.allCount;
           this.pagegroup = 1;
           this.pagegroupmax = Math.ceil(this.total / 9);
+          const datas = this.search
+          datas.page = this.page
+          this.$store.commit('setShelSearch', datas)
         })
         .catch((error) => {
           console.log(error);
@@ -1364,6 +1382,9 @@ export default {
           this.shelList = res.data.shelnimalDtos;
           this.total = res.data.allCount;
           this.pagegroupmax = Math.ceil(this.total / 9);
+          const datas = this.search
+          datas.page = this.page
+          this.$store.commit('setShelSearch', datas)
         })
         .catch((error) => {
           console.log(error);
