@@ -137,17 +137,17 @@
                   <div class="adoption-meta">
                     <ul>
                       <li>
-                        <i class="fas fa-cog"></i
-                        ><a >{{ shelnimal.kindCd }}</a>
+                        <i class="fa fa-hashtag"></i
+                        > &nbsp; {{ shelnimal.kindCd }}
                       </li>
                       <li>
-                        <i class="far fa-calendar"></i>{{ shelnimal.age }}
+                        <i class="fa fa-align-justify"></i> &nbsp; {{ shelnimal.age }}
                       </li>
                     </ul>
                   </div>
                   <div class="adoption-rating">
                     <ul>
-                      <li><i class="fas fa-coins"></i> 특징</li>
+                      <li><i class="fa fa-asterisk"></i></li>
                       <li style="text-align: right; width: 220px">
                         {{ shelnimal.specialMark }}
                       </li>
