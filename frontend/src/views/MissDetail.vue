@@ -377,19 +377,16 @@
                             </router-link>
                           </div>
                           <div class="shop-content">
-                            <h5 class="title">
-                              <router-link
-                                :to="{
-                                  name: 'ShelDetail',
-                                  params: { no: miss.desertionNo },
-                                }"
+
+                             <div class="shop-content-bottom">
+                              <span class="price"
+                                > <i class="fa fa-location-arrow"></i> &nbsp; {{ miss.orgNm }} {{ miss.happenPlace }}</span
                               >
-                                {{ miss.orgNm }} {{ miss.happenPlace }}
-                              </router-link>
-                            </h5>
+                            </div>
+                                
                             <div class="shop-content-bottom">
                               <span class="price"
-                                >보호기관 : {{ miss.careTel }}</span
+                                > <i class="fa fa-phone"></i> &nbsp; {{ miss.careTel }}</span
                               >
                             </div>
                           </div>
