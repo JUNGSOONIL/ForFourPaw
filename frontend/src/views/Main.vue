@@ -464,18 +464,15 @@ export default {
   },
   mounted() {
     // window.addEventListener('beforeunload', this.clearStorage)
-    // console.log(session.getItem("userInfo"));
   },
   methods: {
     // clearStorage() {
     //   localStorage.removeItem('vuex');
     // },
     shelimalList() {
-      console.log("비로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalList");
     },
     shelimalListLogin() {
-      console.log("로그인 접속");
       this.$store.dispatch("mainView/mainShelnimalListLogin");
     },
     selectmaincnt() {
@@ -486,14 +483,12 @@ export default {
       })
         .then((res) => {
           this.maincnt = res.data;
-          console.log(res.data);
         })
         .catch((error) => {
           console.log(error);
         })
         .finally(
           () => this.$store.commit("loading/load", false),
-          console.log("selectmaincnt End!!")
         );
     },
   },

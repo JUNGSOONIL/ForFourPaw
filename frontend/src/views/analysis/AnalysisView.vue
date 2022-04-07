@@ -750,7 +750,6 @@ export default {
         .then((res) => {
           // this.dispatch('accessTokenRefresh', res) // store에서
 
-          // console.log(res.data);
           var templaabels = [];
           var tempdata = [];
           res.data.list.forEach((element) => {
@@ -959,8 +958,6 @@ export default {
           });
 
           this.kindwordcloudload();
-          // console.log(this.words);
-
           // 지역       //Chart_region
           templaabels = [];
           tempdata = [];
@@ -1045,7 +1042,6 @@ export default {
         .text((d) => d.text);
     },
     load_analysis() {
-      // console.log("바꾸기 : " + this.isLoading );
       this.loaddata();
       this.isLoading = !this.isLoading;
     },
