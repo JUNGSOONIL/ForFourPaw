@@ -93,7 +93,7 @@
                         width: 326px;
                         height: 297px;
                         border: 1px solid gray;
-                        border-radius: 15%;
+                        border-radius: 50%;
                       "
                       alt=""
                     />
