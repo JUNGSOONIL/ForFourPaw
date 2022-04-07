@@ -96,7 +96,7 @@
       <section class="adoption-shop-area">
         <div class="container">
           <div class="row justify-content-center">
-            <div class="col-xl-7 col-lg-9">
+            <div class="col-xl-12 col-lg-9">
               <div class="section-title text-center mb-65">
                 <div class="section-icon">
                   <img src="/img/icon/pawprint.png" alt="" />
