@@ -45,13 +45,13 @@
 
                   
                   <div class="shop-pagination"  style="float:left; margin-left:10px; margin-right:589px; margin-bottom:0px">
-                        <label style="margin-right:10px; color:#0a303a; font-size: 13px;">날짜</label>
-                        <input type="date" id="input_date" v-model="search.noticeSdt" style="width:140px; height:39px; "/>
-                        &nbsp; ~ &nbsp;
-                        <input type="date" id="input_date" v-model="search.noticeEdt" style="width:140px; height:39px; "/>
+                        <label style="margin-right:10px; color:#0a303a; font-size: 13px; float:left; margin-top:9px">날짜</label>
+                        <datepicker style="float:left;" id="input_date" format="yyyy-MM-dd" placeholder="연도-월-일" @input="noticeSdt_dateFormat" ></datepicker>
+                        <p style="float:left;" >&nbsp; ~ &nbsp;</p>
+                        <datepicker style="float:left;" id="input_date" format="yyyy-MM-dd" placeholder="연도-월-일" @input="noticeEdt_dateFormat"></datepicker>
                   </div>
 
-                  <div class="shop-pagination"  style="float:left; margin-left:210px; margin-right:600px; margin-top:0px; margin-bottom:2px; font-size:12px">
+                  <div class="shop-pagination"  style="float:left; margin-left:190px; margin-right:600px; margin-top:0px; margin-bottom:2px; font-size:12px">
                     (날짜는 접수일 기준입니다)
                   </div>
 
@@ -717,10 +717,13 @@
 
 <script>
 import axios from "axios";
+import Datepicker from 'vuejs-datepicker';
 
 export default {
   name: "App",
-  components: {},
+   components: {
+    Datepicker
+  },
   data() {
     return {
       search: {
@@ -744,6 +747,20 @@ export default {
     this.$store.commit('setHaderindex',1);
   },
   methods: {
+    noticeSdt_dateFormat(date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        month = month >= 10 ? month : '0' + month;
+        day = day >= 10 ? day : '0' + day;
+        this.search.noticeSdt=date.getFullYear()+month+day;
+    },
+    noticeEdt_dateFormat(date) {
+        let month = date.getMonth() + 1;
+        let day = date.getDate();
+        month = month >= 10 ? month : '0' + month;
+        day = day >= 10 ? day : '0' + day;
+        this.search.noticeEdt= date.getFullYear()+month+day;
+    },
     changeDateString(date){
       var year = date.substr(0,4);
       var month = date.substr(4,2);
@@ -772,10 +789,9 @@ export default {
       this.shelList = ""
       this.$store.commit('loading/load', true);
       this.page = 1
-
       let data = {
-        noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
-        noticeEdt: this.search.noticeEdt  == null ? null : this.search.noticeEdt.split("-").join(""),
+        noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt,
+        noticeEdt: this.search.noticeEdt  == null ? null : this.search.noticeEdt,
         upKindCd : this.search.upKindCd,
         kindCd: this.search.kindCd,
         neuterYn: this.search.neuterYn,
@@ -810,8 +826,8 @@ export default {
       this.page = el
 
       let data = {
-        noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt.split("-").join(""),
-        noticeEdt: this.search.noticeEdt  == null ? null : this.search.noticeEdt.split("-").join(""),
+        noticeSdt: this.search.noticeSdt == null ? null : this.search.noticeSdt,
+        noticeEdt: this.search.noticeEdt  == null ? null : this.search.noticeEdt,
         upKindCd : this.search.upKindCd,
         kindCd: this.search.kindCd,
         neuterYn: this.search.neuterYn,
@@ -856,6 +872,7 @@ export default {
     font-weight: 500;
     color: #111e49;
     border-radius: 3px;
+    width:120px;
 }
 #test::-webkit-scrollbar {
   width: 15px; /*스크롤바의 너비*/
