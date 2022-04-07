@@ -54,6 +54,7 @@
                             width: 616px;
                             height: 568px;
                             border-radius: 10px
+                            border: 2px solid #f5f2eb;
                           "
                         />
                         <img
@@ -65,6 +66,7 @@
                             width: 616px;
                             height: 568px;
                              border-radius: 10px
+                             border: 2px solid #f5f2eb;
                           "
                         />
                       </div>
