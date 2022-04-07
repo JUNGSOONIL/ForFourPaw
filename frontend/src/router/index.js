@@ -98,16 +98,6 @@ export default new VueRouter({
       path: "/AnalysisView",
       component: AnalysisView,
     },
-    {
-      name: "UserPage",
-      path: "/userPage",
-      component: UserPage,
-    },
-    {
-      name: "MissList",
-      path: "/missList",
-      component: MissList,
-    },
   ],
 
   //페이지 이동시 유지되던 스크롤 위치를 맨위로 이동
