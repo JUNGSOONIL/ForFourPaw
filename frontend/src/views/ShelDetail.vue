@@ -12,10 +12,19 @@
             <div class="col-12">
               <div class="breadcrumb-content">
                 <h2 class="title">유기 동물</h2>
-                 <nav style="background-color:#f5f2eb; width:270px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
-                  <ol style="margin-left:20px" class="breadcrumb">
+                <nav
+                  style="
+                    background-color: #f5f2eb;
+                    width: 270px;
+                    border-radius: 15px 15px 40px 15px;
+                  "
+                  aria-label="breadcrumb"
+                >
+                  <ol style="margin-left: 20px" class="breadcrumb">
                     <li class="breadcrumb-item" aria-current="page">
-                      <router-link style="color:gray" to="/shelList">유기 동물 공고</router-link>
+                      <router-link style="color: gray" to="/shelList"
+                        >유기 동물 공고</router-link
+                      >
                     </li>
                     <li class="breadcrumb-item" aria-current="page">
                       <router-link to="/shelDetail">유기 동물 상세</router-link>
@@ -30,11 +39,13 @@
       <!-- breadcrumb-area-end -->
 
       <!-- shop-details-area -->
-      <section class="shop-details-area  pt-30 pb-60">
+      <section class="shop-details-area pt-30 pb-60">
         <div class="container">
           <div class="shop-details-wrap">
             <div class="row">
-               <h4 style="margin-left:12px; width:100%" class="title">유기 동물 상세</h4>
+              <h4 style="margin-left: 12px; width: 100%" class="title">
+                유기 동물 상세
+              </h4>
               <div class="col-6">
                 <div class="shop-details-img-wrap">
                   <div class="tab-content" id="myTabContent">
@@ -97,7 +108,7 @@
                       type="text"
                       v-model="miss.processState"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalKind">품종</label>
@@ -106,7 +117,7 @@
                       type="text"
                       v-model="miss.kindCd"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalColor">색상</label>
@@ -115,7 +126,7 @@
                       type="text"
                       v-model="miss.colorCd"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalAge">나이</label>
@@ -124,7 +135,7 @@
                       type="text"
                       v-model="miss.age"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalSex">성별</label>
@@ -133,7 +144,7 @@
                       type="text"
                       v-model="miss.sexCd"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalneuter">중성화</label>
@@ -142,7 +153,7 @@
                       type="text"
                       v-model="miss.neuterYn"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalDesc">특이사항</label>
@@ -151,7 +162,7 @@
                       type="text"
                       v-model="miss.specialMark"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                   </div>
@@ -166,7 +177,7 @@
                       type="text"
                       v-model="miss.happenDt"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalHappenPlace">발생장소</label>
@@ -176,8 +187,8 @@
                         type="text"
                         v-model="miss.happenPlace"
                         class="form-control"
-                        style=" background-color: white;"
-                      disabled
+                        style="background-color: white"
+                        disabled
                       />
                     </div>
                     <label for="animalnoticeSdt">공고기간</label>
@@ -187,8 +198,8 @@
                         type="text"
                         v-model="noticedt"
                         class="form-control"
-                        style=" background-color: white;"
-                      disabled
+                        style="background-color: white"
+                        disabled
                       />
                     </div>
                   </div>
@@ -203,7 +214,7 @@
                       type="text"
                       v-model="miss.careNm"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalHappenPlace">보호소 위치</label>
@@ -213,8 +224,8 @@
                         type="text"
                         v-model="miss.careAddr"
                         class="form-control"
-                        style=" background-color: white;"
-                      disabled
+                        style="background-color: white"
+                        disabled
                       />
                     </div>
                     <label for="animalnoticeSdt">보호소 전화번호</label>
@@ -224,8 +235,8 @@
                         type="text"
                         v-model="miss.careTel"
                         class="form-control"
-                        style=" background-color: white;"
-                      disabled
+                        style="background-color: white"
+                        disabled
                       />
                     </div>
                   </div>
@@ -241,7 +252,7 @@
                       type="text"
                       v-model="miss.orgNm"
                       class="form-control"
-                      style=" background-color: white;"
+                      style="background-color: white"
                       disabled
                     />
                     <label for="animalHappenPlace">담당자</label>
@@ -252,8 +263,8 @@
                         type="text"
                         v-model="miss.chargeNm"
                         class="form-control"
-                        style=" background-color: white;"
-                      disabled
+                        style="background-color: white"
+                        disabled
                       />
                     </div>
                     <label for="animalnoticeSdt">전화번호</label>
@@ -264,8 +275,8 @@
                         type="text"
                         v-model="miss.officeTel"
                         class="form-control"
-                        style=" background-color: white;"
-                      disabled
+                        style="background-color: white"
+                        disabled
                       />
                     </div>
                   </div>
@@ -299,20 +310,20 @@
                     aria-labelledby="details-tab"
                   >
                     <div class="product-desc-content">
-                      <h5>
+                      <p>
                         「동물보호법」 제17조, 시행령7조 및 동법 시행규칙
                         제20조에 따라 유기·유실동물을 보호하고 있는 경우에는
                         소유자 등이 보호조치 사실을 알 수 있도록 7일 동안
                         공고하여야 합니다. 공고 중인 동물 소유자는 해당 시군구
                         및 동물보호센터에 문의하시어 동물을 찾아가시기 바랍니다.
                         다만, 「동물보호법」 제19조 및 동법 시행규칙 제21조에
-                        따라 소유자에게 보호비용이 청구될 수 있습니다. 또한
-                        「동물보호법」 제17조에 따른 공고가 있는 날부터 10일이
-                        경과하여도 소유자 등을 알 수 없는 경우에는 「유실물법」
-                        제12조 및 「민법」 제253조의 규정에도 불구하고 해당
-                        시·도지사 또는 시장·군수·구청장이 그 동물의 소유권을
-                        취득하게 됩니다.
-                      </h5>
+                        따라 소유자에게 보호비용이 청구될 수 있습니다.
+                        <br />또한 「동물보호법」 제17조에 따른 공고가 있는
+                        날부터 10일이 경과하여도 소유자 등을 알 수 없는 경우에는
+                        「유실물법」 제12조 및 「민법」 제253조의 규정에도
+                        불구하고 해당 시·도지사 또는 시장·군수·구청장이 그
+                        동물의 소유권을 취득하게 됩니다.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -353,11 +364,11 @@ export default {
   mounted() {},
 
   methods: {
-    changeDateString(date){
-      var year = date.substr(0,4);
-      var month = date.substr(4,2);
-      var day = date.substr(6,2);
-    return year + "-" + month + "-" + day
+    changeDateString(date) {
+      var year = date.substr(0, 4);
+      var month = date.substr(4, 2);
+      var day = date.substr(6, 2);
+      return year + "-" + month + "-" + day;
     },
     selectShel() {
       axios({
@@ -366,19 +377,21 @@ export default {
       })
         .then((res) => {
           this.miss = res.data; // 여기 수정
-          this.miss.happenDt = this.changeDateString(this.miss.happenDt)
-          this.noticedt = this.changeDateString(this.miss.noticeSdt) + " ~ " + this.changeDateString(this.miss.noticeEdt);
+          this.miss.happenDt = this.changeDateString(this.miss.happenDt);
+          this.noticedt =
+            this.changeDateString(this.miss.noticeSdt) +
+            " ~ " +
+            this.changeDateString(this.miss.noticeEdt);
           if (this.$store.state["login"].isLogin == true) {
             this.viewStore();
           }
         })
         .catch((error) => {
           console.log(error);
-        })
+        });
     },
 
     viewStore() {
-
       let data = {
         no: JSON.parse(session.getItem("userInfo")).no,
         desertionNo: this.miss.desertionNo,
@@ -388,12 +401,11 @@ export default {
         method: "post",
         url: "/api/shel/view/detail",
         data: data,
-      })
-        .catch((error) => {
-          if(error.response.data.message != "중복"){
-            console.log(error)
-          }
-        })
+      }).catch((error) => {
+        if (error.response.data.message != "중복") {
+          console.log(error);
+        }
+      });
     },
   },
 };
@@ -413,6 +425,6 @@ export default {
   border-radius: 100px;
 }
 #test::-webkit-scrollbar-track {
-  background-color: rgba(0,0,0,0); /*스크롤바 트랙 색상*/
+  background-color: rgba(0, 0, 0, 0); /*스크롤바 트랙 색상*/
 }
 </style>
