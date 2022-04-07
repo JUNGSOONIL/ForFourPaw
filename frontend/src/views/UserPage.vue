@@ -392,11 +392,9 @@ export default {
         this.$store.dispatch('login/accessTokenRefresh', res)
         console.log(res.data)
         this.boardlist = res.data
-        console.log(this.boardlist)
       }).catch((error) => {
         console.log(error);
       }).then(() => {
-        console.log('selectmyboard End!!');
       });
     },
     pagemove(el){
@@ -481,9 +479,7 @@ export default {
         this.$router.push("/");
       }).catch((error) => {
         console.log(error);
-      }).then(() => {
-        console.log('updateuser End!!');
-      });
+      })
     },
 
     alertifyDelete(){
@@ -505,9 +501,7 @@ export default {
         this.$router.push({ name: "LogoutPage", params: { msg: "회원탈퇴"}});
       }).catch((error) => {
         console.log(error);
-      }).then(() => {
-        console.log('deleteuser End!!');
-      });
+      })
     },
 
     deleteuser(){
