@@ -97,19 +97,19 @@ commit log: 싸피 외부 깃헙/깃랩 주소
   - FRONT BUILD
 
     - npm i
-      ![npm_1](exec\img\npm_1.PNG)
+      ![npm_1](/exec/img/npm_1.PNG)
 
       
 
     - npm run serve -- --port 5500
-      ![npm_2](exec\img\npm_2.PNG)
+      ![npm_2](/exec/img/npm_2.PNG)
 
       
 
   - BACKEND BUILD
 
     - 서버 시작
-    - ![Spring_1](exec\img\Spring_1.png)
+    - ![Spring_1](/exec/img/Spring_1.png)
 
 
 
@@ -136,7 +136,7 @@ exec/DB/
 
 - DBProperty.PNG
 
-  ![DB_Property](exec\img\DB_Property.PNG)
+  ![DB_Property](/exec/img/DB_Property.PNG)
 
 - DB_PassWord : ffp1234!
 
@@ -148,7 +148,7 @@ exec/DB/
 
 ## ERD
 
-![ERD](exec\img\ERD.PNG)
+![ERD](/exec/img/ERD.PNG)
 
 
 
@@ -160,25 +160,25 @@ exec/DB/
 
   - 로그인 페이지
 
-    ![Login_1](exec\img\Login_1.PNG)
+    ![Login_1](/exec/img/Login_1.PNG)
 
   - 구글 로그인
 
-    ![Login_2](exec\img\Login_2.PNG)
+    ![Login_2](/exec/img/Login_2.PNG)
 
   - 카카오 로그인
 
-    ![Login_kakao](exec\img\Login_kakao.PNG)
+    ![Login_kakao](/exec/img/Login_kakao.PNG)
 
   - 마이페이지
 
     - 개인 정보
 
-      ![마이페이지](exec\img\마이페이지.PNG)
+      ![마이페이지](/exec/img/마이페이지.PNG)
 
     - 정보 수정, 삭제
 
-      ![마이페이지_수정_삭제](exec\img\마이페이지_수정_삭제.PNG)
+      ![마이페이지_수정_삭제](/exec/img/마이페이지_수정_삭제.PNG)
 
       
 
@@ -186,33 +186,33 @@ exec/DB/
 
   - 통계
 
-    ![Main_통계](exec\img\Main_통계.PNG)
+    ![Main_통계](/exec/img/Main_통계.PNG)
 
     
 
   - 유기 동물 추천
 
-    ![Main_유기동물추천](exec\img\Main_유기동물추천.PNG)
+    ![Main_유기동물추천](/exec/img/Main_유기동물추천.PNG)
 
     
 
   - 도움 사이트
 
-    ![Main_도움사이트링크](exec\img\Main_도움사이트링크.PNG)
+    ![Main_도움사이트링크](/exec/img/Main_도움사이트링크.PNG)
 
   - UCC
 
-    ![Main_UCC](exec\img\Main_UCC.PNG)
+    ![Main_UCC](/exec/img/Main_UCC.PNG)
 
 - 유기 동물
 
   - 유기 동물 목록
 
-  ![유기동물리스트](exec\img\유기동물리스트.PNG)
+  ![유기동물리스트](/exec/img/유기동물리스트.PNG)
 
   - 유기 동물 상세 페이지
 
-    ![유기동물디테일](exec\img\유기동물디테일.PNG)
+    ![유기동물디테일](/exec/img/유기동물디테일.PNG)
 
   
 
@@ -220,21 +220,21 @@ exec/DB/
 
   - 실종 동물 목록
 
-    ![실종동물리스트](exec\img\실종동물리스트.PNG)
+    ![실종동물리스트](/exec/img/실종동물리스트.PNG)
 
   
 
   - 실종 동물 등록
 
-    ![실종동물등록](exec\img\실종동물등록.PNG)
+    ![실종동물등록](/exec/img/실종동물등록.PNG)
 
   - 실종 동물 매칭
 
-    ![실종동물매칭](exec\img\실종동물매칭.PNG)
+    ![실종동물매칭](/exec/img/실종동물매칭.PNG)
 
   - 실종 동물 댓글
 
-    ![실종동물댓글](exec\img\실종동물댓글.PNG)
+    ![실종동물댓글](/exec/img/실종동물댓글.PNG)
 
   
 
@@ -242,41 +242,41 @@ exec/DB/
 
   - 메인 화면
 
-    ![데이터분석_1](exec\img\데이터분석_1.PNG)
+    ![데이터분석_1](/exec/img/데이터분석_1.PNG)
 
     
 
   - 종류 별
 
-    ![데이터분석_종류별](exec\img\데이터분석_종류별.PNG)
+    ![데이터분석_종류별](/exec/img/데이터분석_종류별.PNG)
 
   - 지역 별
 
-    ![데이터분석_지역별](exec\img\데이터분석_지역별.PNG)
+    ![데이터분석_지역별](/exec/img/데이터분석_지역별.PNG)
 
     
 
   - 품종 별
 
-    ![데이터분석_품종별](exec\img\데이터분석_품종별.PNG)
+    ![데이터분석_품종별](/exec/img/데이터분석_품종별.PNG)
 
     
 
   - 월 별
 
-    ![데이터분석_월별](D:\ssafy\Project\Second_Project\S06P22E105\exec\img\데이터분석_월별.PNG)
+    ![데이터분석_월별](/exec/img/데이터분석_월별.PNG)
 
     
 
   - 연도 별
 
-    ![데이터분석_연도별](exec\img\데이터분석_연도별.PNG)
+    ![데이터분석_연도별](/exec/img/데이터분석_연도별.PNG)
 
     
 
   - 무게 별
 
-    ![데이터분석_무게별](exec\img\데이터분석_무게별.PNG)
+    ![데이터분석_무게별](/exec/img/데이터분석_무게별.PNG)
 
     
 
