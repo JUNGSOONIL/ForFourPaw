@@ -53,6 +53,7 @@
                             background-color: #bcbcbc;
                             width: 616px;
                             height: 568px;
+                            border: 2px solid #f5f2eb;
                             border-radius: 10px
                           "
                         />
@@ -64,6 +65,7 @@
                           background-color: #f5f2eb;
                             width: 616px;
                             height: 568px;
+                             border: 2px solid #f5f2eb;
                              border-radius: 10px
                           "
                         />

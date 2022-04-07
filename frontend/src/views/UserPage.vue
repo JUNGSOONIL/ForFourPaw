@@ -39,7 +39,7 @@
             <h3 class="title">프로필</h3>
             <div
               class="row justify-content-center justify-content-lg-between"
-              style="border: 1px solid gray; border-radius: 40px; padding: 15px"
+              style="border: 3px solid #f5f2eb; border-radius: 40px; padding: 15px"
             >
               <div class="col-lg-6 col-md-8 order-2 order-lg-0">
                 <div class="contact-wrap-content">
@@ -93,7 +93,7 @@
                         width: 326px;
                         height: 297px;
                         border: 1px solid gray;
-                        border-radius: 50%;
+                        border-radius: 15%;
                       "
                       alt=""
                     />
@@ -129,7 +129,7 @@
             <h3 class="title">프로필</h3>
             <div
               class="row justify-content-center justify-content-lg-between"
-              style="border: 1px solid gray; border-radius: 40px; padding: 15px"
+              style="border: 3px solid #f5f2eb; border-radius: 40px; padding: 15px"
             >
               <div class="col-lg-6 col-md-8 order-2 order-lg-0">
                 <div class="contact-wrap-content">
@@ -318,7 +318,7 @@
             <div
             id="test"
               class="row"
-              style="border: 1px solid gray; border-radius: 40px; padding: 15px; height:448px; overflow:auto;"
+              style="border: 3px solid #f5f2eb; border-radius: 40px; padding: 15px; height:448px; overflow:auto;"
             >
               <table class="table align-items-center mb-0 table-hover">
                 <thead>
