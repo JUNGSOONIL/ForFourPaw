@@ -179,7 +179,7 @@
                   style="text-align: center; margin-top: 20px"
                 >
                   <h3>조건에 맞는 검색 정보가 없습니다.</h3>
-                  <h3>품종을 기타 또는 믹스로 수정 후 한번 더 검색하시기 바랍니다.</h3>
+                  <h3>품종을 전체로 수정 후 한번 더 검색하시기 바랍니다.</h3>
                   <img src="/img/bg/logo5.png" alt="" />
                 </div>
 
