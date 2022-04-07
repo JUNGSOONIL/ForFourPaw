@@ -261,7 +261,7 @@
                       role="tab"
                       aria-controls="details"
                       aria-selected="true"
-                      >매칭</a
+                      >💡 매칭</a
                     >
                   </li>
                   <li v-if="userInfoNo() != null" class="nav-item">
@@ -397,6 +397,7 @@
                       </div>
                     </div>
                   </div>
+
                   <div
                     class="tab-pane fade show"
                     id="comment"
