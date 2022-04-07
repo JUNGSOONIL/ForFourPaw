@@ -1,13 +1,6 @@
 <template>
-  <div>
-    <!-- adoption-shop-area -->
-        <section class="adoption-shop-area">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-7 col-lg-9" style="padding:60px">
-            <div class="section-title mb-65">
-              <!-- 추가 정보 start -->
-              <div style="margin-top:40px; width:600px; height:500px;" class="comment-reply-box">
+   <div class="section-title text-center" style="display: flex; justify-content: center; align-items:center; min-height: 100vh;">
+    <div style="margin-top:0px; width:600px; height:500px;" class="comment-reply-box">
                 <h3 class="text-left">
                   멍멍! 야옹! <br />
                   포포포(For Four Paw)에서
@@ -17,7 +10,7 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-grp">
-                        <label class="input-non-point" for="Name">이름:</label>
+                        <label style="float:left" class="input-non-point " for="Name">이름:</label>
                         <input
                           type="text"
                           v-model="name"
@@ -28,7 +21,7 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-grp">
-                        <label class="input-non-point" for="Nickname"
+                        <label style="float:left" class="input-non-point" for="Nickname"
                           >닉네임:</label
                         >
                         <input
@@ -48,11 +41,10 @@
                     </div>
                     <div class="col-md-12">
                       <div class="form-grp">
-                        <label class="input-non-point" for="address"
+                        <label style="float:left" class="input-non-point" for="address"
                           >거주지역:</label
                         >
                         <select
-                          @change="change"
                           v-model="addrs"
                           class="form-control"
                           name="거주지역"
@@ -85,12 +77,6 @@
                   </button>
                 </div>
               </div>
-              <!-- 추가정보 End -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
   </div>
 </template>
 
@@ -128,9 +114,6 @@ export default {
     },
   },
   methods: {
-    change() {
-      console.log(this.addrs);
-    },
     validateName() {
       this.isUserNameValid = this.name.length > 1 ? true : false;
     },
@@ -150,13 +133,11 @@ export default {
         })
           .then((res) => {
             this.$store.dispatch("login/accessTokenRefresh", res); // store아닌곳에서
-            console.log("success");
             this.$alertify.success("아이디를 사용할 수 있습니다.");
             this.isNickNameDBValid = true;
           })
           .catch((error) => {
             console.log(error);
-            console.log("error");
             this.$alertify.error("아이디가 중복됩니다.");
             this.isNickNameDBValid = false;
           });
@@ -180,7 +161,6 @@ export default {
         new Blob([JSON.stringify(info)], { type: "application/json" })
       );
       if (this.isNickNameValid && this.isNickNameDBValid && this.addrs != "") {
-        console.log("send");
         axios({
           method: "put",
           url: `/api/users`,
@@ -195,9 +175,6 @@ export default {
             console.log(error);
           });
       } else {
-        console.log(this.isNickNameValid);
-        console.log(this.isNickNameDBValid);
-        console.log(this.addrs);
         this.$alertify.error("정보를 수정할 수 없습니다");
       }
     },

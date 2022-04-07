@@ -7,6 +7,9 @@
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
+    <button style="margin-right:60px" class="scroll-top scroll-to-target" @click="$router.go(-1)">
+      <i class="fas fa-angle-left"></i>
+    </button>
     <button class="scroll-top scroll-to-target" onclick="window.scrollTo(0,0);">
       <i class="fas fa-angle-up"></i>
     </button>
@@ -30,19 +33,39 @@
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
-                    <ul class="navigation" >
-                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 0}">
+                    <ul class="navigation">
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 0,
+                        }"
+                      >
                         <router-link to="/">홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
-                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 1}">
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 1,
+                        }"
+                      >
                         <router-link to="/shelList">유기동물</router-link>
                       </li>
                       <!-- 헤더-실종동물 -->
-                      <li class="menu-item-has-children" :class="{active : this.$store.getters.getHaderindex == 2}">
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 2,
+                        }"
+                      >
                         <router-link to="/missList">실종동물</router-link>
                       </li>
-                      <li class="menu-item-has-children"  :class="{active : this.$store.getters.getHaderindex == 3}">
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 3,
+                        }"
+                      >
                         <router-link to="/analysisview"
                           >데이터 분석</router-link
                         >
@@ -51,7 +74,6 @@
                   </div>
                   <div class="header-action d-none d-md-block">
                     <ul>
-                    
                       <li
                         class="header-btn"
                         style="margin: 1px"
@@ -104,7 +126,10 @@
                             font-size: 17px;
                             padding: 19px 15px;
                           "
-                          to="/logoutPage"
+                          :to="{
+                            name: `LogoutPage`,
+                            params: { msg: `로그아웃` },
+                          }"
                           class="btn"
                           @click.native="logout"
                           >로그아웃<img src="/img/icon/w_pawprint.png" alt=""
@@ -201,22 +226,21 @@
 const session = window.sessionStorage;
 
 export default {
-    data() {
+  data() {
     return {
-      navclick : 0,
+      navclick: 0,
     };
   },
   computed: {
     isLoginGetters() {
-       return session.getItem("userInfo"); 
-      // return this.$store.getters["login/isLogin"];
+      return session.getItem("userInfo");
     },
     userInfoGetters() {
       return this.$store.getters["login/userInfo"];
     },
     activeMoreInfo() {
       let isAddrsvalidate = false;
-      if (this.userInfoGetters!=null && this.userInfoGetters.addrs != "") {
+      if (this.userInfoGetters != null && this.userInfoGetters.addrs != "") {
         isAddrsvalidate = true;
       }
       return this.isLoginGetters && !isAddrsvalidate;

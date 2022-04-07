@@ -14,6 +14,7 @@ import MoreInfo from "@/views/accounts/MoreInfo.vue";
 import AnalysisView from "@/views/analysis/AnalysisView.vue";
 import MissList from "@/views/MissList.vue";
 import UserPage from "@/views/UserPage.vue";
+import KaKaoLogin from "@/views/accounts/KaKaoLogin.vue";
 
 export default new VueRouter({
   mode: "history",
@@ -72,7 +73,7 @@ export default new VueRouter({
     {
       name: "KaKaoLogin",
       path: "/socialLogin/KaKaoLogin",
-      component: () => import("@/views/accounts/KaKaoLogin.vue"),
+      component: KaKaoLogin,
       meta: {
         loginRequired: false,
         testRequired: false,
@@ -84,6 +85,7 @@ export default new VueRouter({
       name: "LogoutPage",
       path: "/logoutPage",
       component: LogoutPage,
+      props: true,
     },
 
     {
@@ -96,17 +98,6 @@ export default new VueRouter({
       path: "/AnalysisView",
       component: AnalysisView,
     },
-    {
-      name: "UserPage",
-      path: "/userPage",
-      component: UserPage,
-    },
-    {
-      name: "MissList",
-      path: "/missList",
-      component: MissList,
-    },
-    
   ],
 
   //페이지 이동시 유지되던 스크롤 위치를 맨위로 이동
