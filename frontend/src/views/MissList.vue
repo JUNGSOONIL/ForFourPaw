@@ -12,10 +12,17 @@
             <div class="col-12">
               <div class="breadcrumb-content">
                 <h2 class="title">실종 동물</h2>
-                <nav style="background-color:#f5f2eb; width:180px; border-radius: 15px 15px 40px 15px;" aria-label="breadcrumb">
-                   <ol style="margin-left:20px" class="breadcrumb">
+                <nav
+                  style="
+                    background-color: #f5f2eb;
+                    width: 180px;
+                    border-radius: 15px 15px 40px 15px;
+                  "
+                  aria-label="breadcrumb"
+                >
+                  <ol style="margin-left: 20px" class="breadcrumb">
                     <li class="breadcrumb-item">
-                      <router-link style="color:gray" to="/">홈</router-link>
+                      <router-link style="color: gray" to="/">홈</router-link>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                       <router-link to="/missList">실종 동물 목록</router-link>
@@ -30,7 +37,7 @@
       <!-- breadcrumb-area-end -->
 
       <!-- shop-area -->
-      <div class="shop-area  pt-30 pb-60">
+      <div class="shop-area pt-30 pb-60">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-1"></div>
@@ -59,7 +66,7 @@
                 >
                   <div
                     class="shop-show-list"
-                    style="float: left; margin-left:10px; margin-right: 20px"
+                    style="float: left; margin-left: 10px; margin-right: 20px"
                   >
                     <form action="#">
                       <label for="careAddr">지역</label>
@@ -132,42 +139,58 @@
                   <div
                     v-for="(miss, index) in missList"
                     v-bind:key="index"
-                    style="width: 341px; height: 430px; padding: 10px; display: inline;"
+                    style="
+                      width: 341px;
+                      height: 430px;
+                      padding: 10px;
+                      display: inline;
+                    "
                   >
                     <div class="adoption-shop-item mb-55">
-                 <div class="adoption-shop-thumb">
-                  <img
-                            v-if="miss.profile"
-                            :src="miss.profile"
-                            style="width: 321px; height: 268px"
-                            alt=""
-                          />
-                          <img
-                            v-if="!miss.profile"
-                            src="../assets/img/image.png"
-                            style="background-color: #bcbcbc"
-                            alt=""
-                          />
-                  <router-link
-                    :to="{ name: 'MissDetail', params: { no: miss.no  } }"
-                    class="btn"
-                    >보러가기<img src="img/icon/w_pawprint.png" alt=""
-                  /></router-link>
-                </div>
+                      <div class="adoption-shop-thumb">
+                        <img
+                          v-if="miss.profile"
+                          :src="miss.profile"
+                          style="width: 321px; height: 268px"
+                          alt=""
+                        />
+                        <img
+                          v-if="!miss.profile"
+                          src="../assets/img/image.png"
+                          style="background-color: #bcbcbc"
+                          alt=""
+                        />
+                        <router-link
+                          :to="{ name: 'MissDetail', params: { no: miss.no } }"
+                          class="btn"
+                          >보러가기<img src="img/icon/w_pawprint.png" alt=""
+                        /></router-link>
+                      </div>
                       <div class="shop-content">
-                        <div class="shop-content-bottom"> 
-                        <span class="price"> <i class="fa fa-hashtag"></i> &nbsp;{{ miss.name }}</span>
-                        </div>
-                        <div class="shop-content-bottom"> 
-                          <span class="price"> <i class="far fa-calendar"></i> &nbsp; {{ miss.happenDt }} </span>
-                        </div>
                         <div class="shop-content-bottom">
-                          <span class="price"
-                            ><i class="fa fa-location-arrow"></i> &nbsp; {{ miss.happenPlace }}</span
+                          <span class="price">
+                            <i class="fa fa-hashtag"></i> &nbsp;{{
+                              miss.name
+                            }}</span
                           >
                         </div>
                         <div class="shop-content-bottom">
-                          <span class="price"><i class="fa fa-asterisk"></i> &nbsp; {{ miss.descr }}</span>
+                          <span class="price">
+                            <i class="far fa-calendar"></i> &nbsp;
+                            {{ miss.happenDt }}
+                          </span>
+                        </div>
+                        <div class="shop-content-bottom">
+                          <span class="price"
+                            ><i class="fa fa-location-arrow"></i> &nbsp;
+                            {{ miss.happenPlace }}</span
+                          >
+                        </div>
+                        <div class="shop-content-bottom">
+                          <span class="price"
+                            ><i class="fa fa-asterisk"></i> &nbsp;
+                            {{ miss.descr }}</span
+                          >
                         </div>
                       </div>
                     </div>
@@ -197,7 +220,10 @@
                   <div class="shop-pagination" style="margin: 0px">
                     <ul>
                       <li>
-                        <a v-show="pagegroup != 1" @click="pagegroup--"
+                        <a
+                          v-show="pagegroup != 1"
+                          @click="pagegroup--"
+                          class="pagination"
                           ><i class="fas fa-angle-double-left"></i
                         ></a>
                       </li>
@@ -213,7 +239,7 @@
                           active: index + 1 + (pagegroup - 1) * 10 == page,
                         }"
                       >
-                        <a>
+                        <a class="pagination">
                           {{ index + 1 + (pagegroup - 1) * 10 }}
                         </a>
                       </li>
@@ -221,6 +247,7 @@
                         <a
                           v-show="pagegroup * 10 < pagegroupmax"
                           @click="pagegroup++"
+                          class="pagination"
                           ><i class="fas fa-angle-double-right"></i
                         ></a>
                       </li>
@@ -263,7 +290,6 @@ export default {
     this.$store.commit("setHaderindex", 2);
   },
   methods: {
-
     userInfoNo() {
       if (session.getItem("userInfo") != null)
         return JSON.parse(session.getItem("userInfo")).no;
@@ -285,9 +311,7 @@ export default {
         .catch((error) => {
           console.log(error);
         })
-        .finally(
-          () => this.$store.commit("loading/load", false),
-        );
+        .finally(() => this.$store.commit("loading/load", false));
     },
 
     searchMissnimal() {
@@ -318,9 +342,7 @@ export default {
           this.total = 0;
           this.pagegroupmax = 0;
         })
-        .finally(
-          () => this.$store.commit("loading/load", false),
-        );
+        .finally(() => this.$store.commit("loading/load", false));
     },
 
     searchMissnimalPage(el) {
@@ -363,6 +385,11 @@ export default {
 <style>
 #app {
 }
+
+.pagination {
+  cursor: pointer;
+}
+
 #test::-webkit-scrollbar {
   width: 15px; /*스크롤바의 너비*/
 }
