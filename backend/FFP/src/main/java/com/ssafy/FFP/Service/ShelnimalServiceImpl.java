@@ -19,9 +19,13 @@ import com.ssafy.FFP.Dao.ShelnimalDao;
 import com.ssafy.FFP.Dto.DatasetDto;
 import com.ssafy.FFP.Dto.SearchDto;
 import com.ssafy.FFP.Dto.ShelnimalDto;
+import com.ssafy.FFP.Dto.ViewStoreDto;
 
 @Service
 public class ShelnimalServiceImpl implements ShelnimalService {
+	
+	private static final int SUCCESS = 1;
+    private static final int FAIL = -1;
 	
 	static class Node{
 		String shelnimalId; // 반려동물 Id
@@ -66,14 +70,19 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     ShelnimalDao shelnimalDao;
 
     @Override
-    public ShelnimalDto select(int no) {
+    public ShelnimalDto select(String no) {
         ShelnimalDto shelnimalDto = shelnimalDao.select(no);
         return shelnimalDto;
     }
 
-    @Override
-    public List<ShelnimalDto> list(int sdt, int offset) {
-        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt, offset);
+	@Override
+	public int insert(ShelnimalDto data) {
+		return shelnimalDao.insert(data);
+	}
+
+	@Override
+    public List<ShelnimalDto> list(int sdt, int offset, int limit) {
+        List<ShelnimalDto> shelnimalDtos = shelnimalDao.list(sdt, offset, limit);
         return shelnimalDtos;
 
     }
@@ -85,7 +94,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
     }
 
     @Override
-    public List<DatasetDto> find(SearchDto searchDto) {
+    public List<ShelnimalDto> find(SearchDto searchDto) {
         return shelnimalDao.find(searchDto);
     }
 
@@ -176,7 +185,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 			String recommendUser = no;
 //			System.out.println("mainListLogin : " + userID.get(recommendUser));
 			// 사용자 간 유사도 계산 [cosine similarity]
-			int recommendUserId = userID.get(recommendUser);
+//			int recommendUserId = userID.get(recommendUser);
 //			for (int i = 0; i < sparseMatrix.length; i++) {
 //				if(i != recommendUserId) {
 //					System.out.println(idUser.get(recommendUserId)+"--"+idUser.get(i)+" similarity :"+sparseMatrix[recommendUserId][i]/Math.sqrt(userItemLength.get(idUser.get(recommendUserId))*userItemLength.get(idUser.get(i))));
@@ -194,6 +203,11 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 					// 권장 사용자가 현재 아이템을 구입하지 않은 경우 권장 사항이 계산됩니다. 
 					double itemRecommendDegree = 0.0;
 					for (String user: users){
+						if(userID.get(recommendUser) == null) {
+							String processState = "보호중";
+							List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
+							return shelnimalDtos;	
+						}
 						itemRecommendDegree += sparseMatrix[userID.get(recommendUser)][userID.get(user)]/Math.sqrt(userItemLength.get(recommendUser)*userItemLength.get(user));
 						// 권장계산
 					}
@@ -205,7 +219,7 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 			DescendingObj descending = new DescendingObj();
 	        Collections.sort(recommend, descending);
 	        
-	        if(items.size() < 6) {
+	        if(items.size() < 6 || recommend.size() < 6) {
 	        	String processState = "보호중";
 	    		List<DatasetDto> shelnimalDtos = shelnimalDao.mainList(processState);
 	    		System.out.println(shelnimalDtos.toString());
@@ -224,5 +238,14 @@ public class ShelnimalServiceImpl implements ShelnimalService {
 		}
 		
         
+	}
+
+	@Override
+	public int viewStore(ViewStoreDto viewStoreDto) {
+		
+		if (shelnimalDao.viewStore(viewStoreDto) == SUCCESS) // 성공
+            return SUCCESS;
+        else // 실패
+            return FAIL;
 	}
 }

@@ -10,21 +10,12 @@ public class SearchDto {
     private String happenDt;
     private String happenPlace;
     private String careAddr;
+    private String processState;
     private int limit;
+    private String upKindCd;
+    private String noticeEdt;
+    private String noticeSdt;
     private int offset;
-
-	public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt, String happenPlace, String careAddr, int limit, int offset) {
-        this.kindCd = kindCd;
-        this.colorCd = colorCd;
-        this.age = age;
-        this.sexCd = sexCd;
-        this.neuterYn = neuterYn;
-        this.happenDt = happenDt;
-        this.happenPlace = happenPlace;
-        this.careAddr = careAddr;
-        this.limit = limit;
-        this.offset = offset;
-    }
 
     public SearchDto() {
 
@@ -108,5 +99,76 @@ public class SearchDto {
 
     public void setOffset(int offset) {
         this.offset = offset;
+    }
+
+    public String getProcessState() {
+        return processState;
+    }
+
+    public void setProcessState(String processState) {
+        this.processState = processState;
+    }
+
+    public String getUpKindCd() {
+        return upKindCd;
+    }
+
+    public void setUpKindCd(String upKindCd) {
+        this.upKindCd = upKindCd;
+    }
+
+    public String getNoticeEdt() {
+        return noticeEdt;
+    }
+
+    public void setNoticeEdt(String noticeEdt) {
+        this.noticeEdt = noticeEdt;
+    }
+
+    public String getNoticeSdt() {
+        return noticeSdt;
+    }
+
+    public void setNoticeSdt(String noticeSdt) {
+        this.noticeSdt = noticeSdt;
+    }
+
+    public SearchDto(String kindCd, String colorCd, String age, String sexCd, String neuterYn, String happenDt,
+                     String happenPlace, String careAddr, String processState, int limit, String upKindCd,
+                     String noticeEdt, String noticeSdt, int offset) {
+        this.kindCd = kindCd;
+        this.colorCd = colorCd;
+        this.age = age;
+        this.sexCd = sexCd;
+        this.neuterYn = neuterYn;
+        this.happenDt = happenDt;
+        this.happenPlace = happenPlace;
+        this.careAddr = careAddr;
+        this.processState = processState;
+        this.limit = limit;
+        this.upKindCd = upKindCd;
+        this.noticeEdt = noticeEdt;
+        this.noticeSdt = noticeSdt;
+        this.offset = offset;
+    }
+
+    @Override
+    public String toString() {
+        return "SearchDto{" +
+                "kindCd='" + kindCd + '\'' +
+                ", colorCd='" + colorCd + '\'' +
+                ", age='" + age + '\'' +
+                ", sexCd='" + sexCd + '\'' +
+                ", neuterYn='" + neuterYn + '\'' +
+                ", happenDt='" + happenDt + '\'' +
+                ", happenPlace='" + happenPlace + '\'' +
+                ", careAddr='" + careAddr + '\'' +
+                ", processState='" + processState + '\'' +
+                ", limit=" + limit +
+                ", upKindCd='" + upKindCd + '\'' +
+                ", noticeEdt='" + noticeEdt + '\'' +
+                ", noticeSdt='" + noticeSdt + '\'' +
+                ", offset=" + offset +
+                '}';
     }
 }

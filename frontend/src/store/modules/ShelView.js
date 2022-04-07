@@ -35,7 +35,6 @@ const actions = {
             headers: headers,  // 넣는거 까먹지 마세요
           }).then((res) => {
             
-            console.log(res);
             this.dispatch('login/accessTokenRefresh', res) // store아닌곳에서 상황에 따라서 메서드가 다르다
     
             context.commit("SET_SEARCH_LIST", res.data);
@@ -71,7 +70,6 @@ const actions = {
             headers: headers,  // 넣는거 까먹지 마세요
           }).then((res) => {
             
-            console.log(res);
             this.dispatch('login/accessTokenRefresh', res) // 상황에 따라서 메서드가 다르다
     
           }).catch((error) => {

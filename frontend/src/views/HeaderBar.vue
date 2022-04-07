@@ -1,12 +1,15 @@
 <template>
   <div id="app">
     <!-- Preloader -->
-    <div id="preloader">
+    <!-- <div id="preloader">
       <img src="/img/preloader.gif" alt="" />
-    </div>
+    </div> -->
     <!-- Preloader-end -->
 
     <!-- Scroll-top -->
+    <button style="margin-right:60px" class="scroll-top scroll-to-target" @click="$router.go(-1)">
+      <i class="fas fa-angle-left"></i>
+    </button>
     <button class="scroll-top scroll-to-target" onclick="window.scrollTo(0,0);">
       <i class="fas fa-angle-up"></i>
     </button>
@@ -23,142 +26,110 @@
                 <nav class="menu-nav show">
                   <div class="logo">
                     <router-link to="/"
-                      ><img src="/img/logo/paw_logo_2line.png" alt=""
+                      ><img
+                        src="/img/logo/paw_logo_2line.png"
+                        alt=""
+                        onclick="window.scrollTo(0,0);"
                     /></router-link>
                   </div>
                   <div class="navbar-wrap main-menu d-none d-lg-flex">
                     <ul class="navigation">
-                      <li class="active menu-item-has-children">
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 0,
+                        }"
+                      >
                         <router-link to="/">홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">유기동물</router-link>
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 1,
+                        }"
+                      >
+                        <router-link to="/shelList">유기동물</router-link>
                       </li>
                       <!-- 헤더-실종동물 -->
-                      <li class="menu-item-has-children">
-                        <router-link to="/shop">실종동물</router-link>
-
-                        <ul class="submenu">
-                          <li>
-                            <router-link to="/missList"
-                              >실종동물 목록</router-link
-                            >
-                          </li>
-                          <li>
-                            <router-link to="/missWrite"
-                              >실종동물 추가</router-link
-                            >
-                          </li>
-                          <!-- <li>
-                            <router-link to="/missDetail"
-                              >실종동물 상세</router-link
-                            >
-                          </li> -->
-                          <!-- <li>
-                            <router-link to="/shelDetail"
-                              >유기동물 상세</router-link
-                            >
-                          </li> -->
-                        </ul>
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 2,
+                        }"
+                      >
+                        <router-link to="/missList">실종동물</router-link>
                       </li>
-                      <li class="menu-item-has-children">
-                        <router-link to="/analysisview">데이터 분석</router-link>
+                      <li
+                        class="menu-item-has-children"
+                        :class="{
+                          active: this.$store.getters.getHaderindex == 3,
+                        }"
+                      >
+                        <router-link to="/analysisview"
+                          >데이터 분석</router-link
+                        >
                       </li>
-                      <!-- <li><a href="adoption.html">Adoption</a></li> -->
-                      <!-- <li class="menu-item-has-children">
-                        <a href="breeder.html">Breeder</a>
-                        <ul class="submenu">
-                          <li><a href="breeder.html">Our Breeder</a></li>
-                          <li>
-                            <a href="breeder-details.html">Breeder Details</a>
-                          </li>
-                        </ul>
-                      </li> -->
-
-                      <!-- <li><a href="contact.html">contacts</a></li> -->
                     </ul>
                   </div>
                   <div class="header-action d-none d-md-block">
                     <ul>
-                      <!-- <li class="header-search">
-                        <a href="#"><i class="flaticon-search"></i></a>
-                      </li>
-                      <li class="header-shop-cart">
-                        <a href="#"
-                          ><i class="flaticon-shopping-bag"></i
-                          ><span>2</span></a
+                      <li
+                        class="header-btn"
+                        style="margin: 1px"
+                        v-if="isLoginGetters"
+                      >
+                        <router-link
+                          to="/userPage"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                         >
-                        <ul class="minicart">
-                          <li class="d-flex align-items-start">
-                            <div class="cart-img">
-                              <a href="#"
-                                ><img src="/img/product/cart_p01.jpg" alt=""
-                              /></a>
-                            </div>
-                            <div class="cart-content">
-                              <h4><a href="#">The King Charles Spaniel</a></h4>
-                              <div class="cart-price">
-                                <span class="new">$229.9</span>
-                                <span><del>$229.9</del></span>
-                              </div>
-                            </div>
-                            <div class="del-icon">
-                              <a href="#"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                          </li>
-                          <li class="d-flex align-items-start">
-                            <div class="cart-img">
-                              <a href="#"
-                                ><img src="/img/product/cart_p02.jpg" alt=""
-                              /></a>
-                            </div>
-                            <div class="cart-content">
-                              <h4><a href="#">The Labrador Retriever</a></h4>
-                              <div class="cart-price">
-                                <span class="new">$229.9</span>
-                                <span><del>$229.9</del></span>
-                              </div>
-                            </div>
-                            <div class="del-icon">
-                              <a href="#"><i class="far fa-trash-alt"></i></a>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="total-price">
-                              <span class="f-left">Total:</span>
-                              <span class="f-right">$239.9</span>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="checkout-link">
-                              <a href="#">Shopping Cart</a>
-                              <a class="black-color" href="#">Checkout</a>
-                            </div>
-                          </li>
-                        </ul>
-                      </li> -->
-                      <li class="header-btn" style="margin: 1px" v-if="isLoginGetters">
-                        <router-link to="/userPage" class="btn" style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;">
                           내정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
-                    </li>
+                      </li>
                       <li class="header-btn" v-if="!isLoginGetters">
-                        <router-link to="/socialLogin" class="btn"
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                        <router-link
+                          to="/socialLogin"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
-                      <li class="header-btn" v-if="isLoginGetters">
-                        <router-link to="/moreInfo" class="btn"
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
+                      <li class="header-btn" v-if="activeMoreInfo">
+                        <router-link
+                          to="/moreInfo"
+                          class="btn"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
                           >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
                       </li>
                       <li class="header-btn" v-if="isLoginGetters">
                         <router-link
-                          style="width: 100%; height: 10px; font-size:17px; padding: 19px 15px;"
-                          to="/logoutPage"
+                          style="
+                            width: 100%;
+                            height: 10px;
+                            font-size: 17px;
+                            padding: 19px 15px;
+                          "
+                          :to="{
+                            name: `LogoutPage`,
+                            params: { msg: `로그아웃` },
+                          }"
                           class="btn"
                           @click.native="logout"
                           >로그아웃<img src="/img/icon/w_pawprint.png" alt=""
@@ -255,9 +226,24 @@
 const session = window.sessionStorage;
 
 export default {
+  data() {
+    return {
+      navclick: 0,
+    };
+  },
   computed: {
     isLoginGetters() {
-      return this.$store.getters["login/isLogin"];
+      return session.getItem("userInfo");
+    },
+    userInfoGetters() {
+      return this.$store.getters["login/userInfo"];
+    },
+    activeMoreInfo() {
+      let isAddrsvalidate = false;
+      if (this.userInfoGetters != null && this.userInfoGetters.addrs != "") {
+        isAddrsvalidate = true;
+      }
+      return this.isLoginGetters && !isAddrsvalidate;
     },
   },
   methods: {

@@ -29,14 +29,12 @@ public class AnalysisController {
     @Autowired
     AnalysisService analysisService;
 
-    @GetMapping(value = "/test")
-    public ResponseEntity<?> test(
+    @GetMapping(value="/loaddata")
+    public ResponseEntity<?> loaddata(
             HttpServletRequest request) throws Exception {
-
-        System.out.println("테스트 메소드 실행");
-        AnalysisResultDto result = analysisService.test();
+        System.out.println("[system] DB에서 chart data 불러오기");
+        AnalysisResultDto result = analysisService.loaddata();
         System.out.println(result.toString());
-
         return ResponseEntity.ok().body(result);
     }
 }

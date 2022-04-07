@@ -1,11 +1,13 @@
 package com.ssafy.FFP.Service;
 
 
+import com.ssafy.FFP.Dao.AnalysisDao;
 import com.ssafy.FFP.Dto.AnalysisDto;
 import com.ssafy.FFP.Dto.AnalysisResultDto;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Map.Entry;
@@ -16,7 +18,6 @@ import static org.apache.spark.sql.functions.*;
 @Service
 public class AnalysisServiceImpl implements  AnalysisService {
 
-
     private static final int SUCCESS = 1;
     private static final int FAIL = -1;
 
@@ -24,26 +25,70 @@ public class AnalysisServiceImpl implements  AnalysisService {
     static HashMap<String, Long > HM;
     static List<AnalysisDto> list;
 
-    @Override
-    public AnalysisResultDto test() {
-        AnalysisResultDto result = new AnalysisResultDto();
+    @Autowired
+    AnalysisDao analysisDao;
 
-        result.setNumber(486);
+    // DB에서 불러오기
+    @Override
+    public AnalysisResultDto loaddata() {
+        System.out.println("[system] load data from DB");
+        // 리턴 결과
+        AnalysisResultDto result = new AnalysisResultDto();
+        result.setNumber(19961105);
+
+        //001 무게 별
+        List<AnalysisDto> templist = analysisDao.chartlist("001");
+        result.setList(templist);
+
+        //002 월별
+        templist = analysisDao.chartlist("002");
+        result.setDatelist(templist);
+
+        //003 개 고양이 기타 분류
+        templist = analysisDao.chartlist("003");
+        result.setKindlist(templist);
+        //
+        //004 품종워드클라우드
+        templist = analysisDao.chartlist("004");
+        result.setKindlist2(templist);
+
+        //005 지역별
+        templist = analysisDao.chartlist("005");
+        result.setRegionlist(templist);
+
+        //006 연도별
+        templist = analysisDao.chartlist("006");
+        result.setYearlist(templist);
+
+        return result;
+    }
+
+    @Override
+    public void updateChartDB() {
+
+        // 테이블 비우기 먼저
+        analysisDao.cleartable();
+
         // 스파크
         System.out.println("[System] Spark 데이터 분석");
-
-//        String logFile = "src/main/resources/data/dataset.csv";
-//        String logFile = "/home/ubuntu/docker-volume/jenkins/workspace/FFP/backend/FFP/src/main/resources/data/dataset.csv";
-//        String logFile = "/../../../../../main/resources/data/dataset.csv";
-        String logFile ="/";
 
         SparkSession spark = SparkSession.builder()
                 .appName("simple app")
                 .config("spark.master", "local")
                 .getOrCreate();
 
-        Dataset<Row> df = spark.read().option("delimiter", ";").option("header", "true").option("encoding", "euc-kr").csv(logFile);
+        String url =  "jdbc:mysql://3.38.149.72:3306/ffp?serverTimezone=Asia/Seoul";
+        Dataset<Row> df = spark
+                .read()
+                .format("jdbc")
+                .option("driver", "com.mysql.jdbc.Driver")
+                .option("url", url)
+                .option("user", "FFP")
+                .option("password", "ffp1234!")
+                .option("dbtable", "dataset")
+                .load();
 
+        // 001 : 무게
         System.out.println("[System] 데이터 전처리 실행 ");
         Dataset<Row> re = df
                 .select( regexp_replace( col("weight"), "[(]Kg[)]| |[^0-9|.]|[0-9]+[.][(0-9)]+[.][0-9]+[(]Kg[)]", "").alias("holy"), col("weight"))
@@ -86,27 +131,22 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 } else if ( 10 <= num ){
                     valuearr[10] += (long)now.get(1);
                 }
-//                System.out.println(Arrays.toString(valuearr));
             }
         });
 
 
-        System.out.println(Arrays.toString(valuearr));
-
-        List<AnalysisDto> result_list = new ArrayList<AnalysisDto>();
+        // 무게 코드 001
         for (int i = 0 ; i <= 10; i++ ){
-            result_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
-            System.out.println(result_list.get(i).toString());
+            AnalysisDto dto = new AnalysisDto( Integer.toString(i), valuearr[i], "001");
+            int weight_rs = analysisDao.Insert(dto);
         }
-        result.setList(result_list);
 
-        // 날짜 분류 코드
+//         날짜 분류 코드
         Dataset<Row> date_re = df
-//                .select( regexp_replace( col("weight"), "[(]Kg[)]", "").alias("holyshit"), col("weight"))
                 .select( regexp_replace( col("happenDt"), "20[0-9]{2}|[^0-9]", "").alias("date"), col("happenDt"))
                 .groupBy("date")
                 .count();
-        date_re.show();
+//        date_re.show();
 
         valuearr = new long[12];
         date_re.foreach( now -> {
@@ -119,14 +159,13 @@ public class AnalysisServiceImpl implements  AnalysisService {
         });
         // 결과 출력
         System.out.println("월별 통계");
-        System.out.println(Arrays.toString(valuearr));
-        List<AnalysisDto> date_list = new ArrayList<AnalysisDto>();
         for (int i = 0 ; i < 12; i++ ){
-            date_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
+            AnalysisDto dto = new AnalysisDto( Integer.toString(i), valuearr[i], "002");
+            int weight_rs = analysisDao.Insert(dto);
         }
-        result.setDatelist(date_list);
 
-        // 풍종 분류
+
+//         풍종 분류
         System.out.println("[system] 품종 별로 분류");
         re  = df
                 .select( regexp_replace( col("kindCd"), "(?!개|고|기).|", "").alias("kind"), col("kindCd"))
@@ -148,11 +187,10 @@ public class AnalysisServiceImpl implements  AnalysisService {
         });
         System.out.println("동물 별 통계");
         System.out.println(Arrays.toString(valuearr));
-        List<AnalysisDto> kind_list = new ArrayList<AnalysisDto>();
         for (int i = 0 ; i < valuearr.length ; i++ ){
-            kind_list.add( new AnalysisDto( Integer.toString(i), valuearr[i] ));
+            AnalysisDto dto = new AnalysisDto( Integer.toString(i), valuearr[i], "003");
+            int weight_rs = analysisDao.Insert(dto);
         }
-        result.setKindlist(kind_list);
 
         // 품종 분류2
         System.out.println("[system] 품종 별로 분류 2");
@@ -161,7 +199,7 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .groupBy("kind")
                 .count();
         re = re.orderBy(desc("count"));
-        
+
         System.out.println("품종별 통계");
         re.show(200);
         HM = new HashMap<String,Long>();
@@ -182,13 +220,11 @@ public class AnalysisServiceImpl implements  AnalysisService {
             }
         });
 
-        ArrayList<AnalysisDto> kind_list2 = new ArrayList<AnalysisDto>();
-        for ( Entry<String, Long> entry : HM.entrySet()) {
+        for ( Map.Entry<String, Long> entry : HM.entrySet()) {
 //            if ( entry.getValue() > 80 )
-                kind_list2.add( new AnalysisDto( entry.getKey(), entry.getValue() ));
-            System.out.println("[Key]:" + entry.getKey() + " [Value]:" + entry.getValue());
+            AnalysisDto dto = new AnalysisDto( entry.getKey(), entry.getValue() , "004");
+            int weight_rs = analysisDao.Insert(dto);
         }
-        result.setKindlist2(kind_list2);
 
         // 지역 통계
         System.out.println("[system] 지역 통계");
@@ -197,9 +233,9 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 .groupBy("region")
                 .count();
         re = re.orderBy(desc("count"));
-//        re.show(100);
 
         list = new ArrayList<AnalysisDto>();
+
         re.foreach( now -> {
             String temp = (String) now.get(0);
             long value = (long) now.get(1);
@@ -207,20 +243,21 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 list.add(new AnalysisDto(temp,value));
             }
         });
-        result.setRegionlist(list);
+
+        for(AnalysisDto temp : list ){
+            temp.setCode("005");
+            int weight_rs = analysisDao.Insert(temp);
+        }
 
         // 연도 통계
         System.out.println("[system] 연도 통계");
-        //SELECT substring(noticeSdt, 1, 4) AS y , COUNT(substring(noticeSdt, 1, 4)) AS "카운트"
-        //FROM dataset
-        //GROUP BY y;
         df.createOrReplaceTempView("animal");
         Dataset<Row> sqlDF = spark.sql(" " +
                 " SELECT substring(noticeSdt, 1, 4) AS y, COUNT(substring(noticeSdt, 1, 4)) AS COUNT" +
                 " FROM animal " +
                 " GROUP BY y " +
                 " ORDER BY y; ");
-        sqlDF.show();
+//        sqlDF.show();
 
         list = new ArrayList<AnalysisDto>();
         sqlDF.foreach( now -> {
@@ -228,11 +265,12 @@ public class AnalysisServiceImpl implements  AnalysisService {
                 list.add(new AnalysisDto( (String) now.get(0), (long) now.get(1) ));
             }
         });
-        result.setYearlist(list);
+        for(AnalysisDto temp : list ){
+            temp.setCode("006");
+            int weight_rs = analysisDao.Insert(temp);
+        }
 
-
-        // 여기서 실행
-        return result;
+        System.out.println("[system] data 업데이트 완료!");
     }
 
 }
