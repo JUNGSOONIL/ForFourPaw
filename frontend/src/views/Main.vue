@@ -16,6 +16,7 @@
                     <div class="slider-title">
                       <h2
                         class="title"
+                        style="font-size:80px"
                         data-animation="fadeInUpBig"
                         data-delay=".2s"
                         data-duration="1.2s"
@@ -30,10 +31,9 @@
                         data-animation="fadeInUpBig"
                         data-delay=".4s"
                         data-duration="1.2s"
-                      >
-                        For Four Paw 에서는 유기동물 및 실종동물을 조회할 수
-                        있습니다.
-                      </p>
+                      ></p>
+                        <h1 style="font-family:SLE;color:#d30000; text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white; font-size:30px"> For Four Paw 는 <br/> 유기동물 빅데이터를 활용한 <br/> 매칭 사이트 입니다 </h1>
+                      
                     </div>
                   </div>
                 </div>
@@ -376,4 +376,22 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+
+@font-face {
+  font-family: "RFR";
+  src: url("../assets/fonts/EliceDigitalRegular.ttf");
+}
+
+@font-face {
+  font-family: "LeferiBaseBold";
+  src: url("../assets/fonts/LeferiBaseBold.ttf");
+}
+
+@font-face {
+  font-family: "SLE";
+  src: url("../assets/fonts/SLEIGothicTTF.ttf");
+}
+
+
+</style>
