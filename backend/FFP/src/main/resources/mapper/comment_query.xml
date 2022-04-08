@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.CommentDao">
+
+    <select id="list" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo, u.nickname as authorNickname, u.profile_img as profileImage
+        from ffp.comment co, ffp.miss_comment mc, ffp.user u
+        where co.no = mc.comment_no and mc.miss_no = #{missNo} and co.author = u.no
+        order by co.write_time desc
+    </select>
+
+    <select id="read" parameterType="int" resultType="com.ssafy.FFP.Dto.CommentDto">
+        select co.no, co.descr, co.author, co.write_time as writeTime, mc.miss_no as missNo
+        from comment co, miss_comment mc
+        where co.no = #{no} and mc.comment_no = #{no}
+    </select>
+
+    <insert id="create" parameterType="com.ssafy.FFP.Dto.CommentDto">
+        insert into comment(descr, author) values (  #{descr}, #{author})
+        <selectKey keyProperty="no" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <insert id="relation" parameterType="map">
+        insert into miss_comment(miss_no, comment_no) values (  #{missNo}, #{commentNo})
+    </insert>
+
+    <update id="update" parameterType="com.ssafy.FFP.Dto.CommentDto">
+        update comment
+        set descr = #{descr}
+        author = #{author}
+        write_time = #{writeTime}
+        where no = #{no}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from comment where no = #{no}
+    </delete>
+
+</mapper>
