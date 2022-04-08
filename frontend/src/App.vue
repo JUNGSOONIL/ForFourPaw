@@ -52,4 +52,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+#app {
+    font-family: 'RFR', sans-serif !important;
+}
+@font-face {
+  font-family: "RFR";
+  src: url("assets/fonts/EliceDigitalRegular.ttf");
+}
+</style>

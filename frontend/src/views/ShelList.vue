@@ -11,7 +11,8 @@
           <div class="row">
             <div class="col-12">
               <div class="breadcrumb-content">
-                <h2 class="title">유기 동물</h2>
+                <!-- <span style="font-family:SLE; color:#ffffff; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black; font-size:25x"> 보호자를 기다리고 있는 친구들이에요 </span> -->
+                <h2 class="title">유기 동물</h2> 
                 <nav
                   style="
                     background-color: #f5f2eb;
@@ -19,7 +20,7 @@
                     border-radius: 15px 15px 40px 15px;
                   "
                   aria-label="breadcrumb"
-                >
+                > 
                   <ol style="margin-left: 20px" class="breadcrumb">
                     <li class="breadcrumb-item">
                       <router-link style="color: gray" to="/">홈</router-link>
@@ -29,6 +30,7 @@
                     </li>
                   </ol>
                 </nav>
+                
               </div>
             </div>
           </div>
@@ -1432,4 +1434,21 @@ export default {
 #test::-webkit-scrollbar-track {
   background-color: white; /*스크롤바 트랙 색상*/
 }
+
+
+@font-face {
+  font-family: "RFR";
+  src: url("../assets/fonts/EliceDigitalRegular.ttf");
+}
+
+@font-face {
+  font-family: "LeferiBaseBold";
+  src: url("../assets/fonts/LeferiBaseBold.ttf");
+}
+
+@font-face {
+  font-family: "SLE";
+  src: url("../assets/fonts/SLEIGothicTTF.ttf");
+}
+
 </style>
