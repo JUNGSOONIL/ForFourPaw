@@ -497,8 +497,29 @@ export default {
     if (this.no != null) {
       this.selectMiss();
     }
+    if(this.userInfoNo() == 78)
+      this.CSHtest()
   },
   methods: {
+    CSHtest(){
+        this.miss.name = "후"
+        this.miss.kindCd = "포메"
+        this.miss.colorCd = "흰색"
+        this.miss.age = "5"
+        this.miss.sexCd = "M"
+        this.miss.neuterYn = "N"
+        this.miss.careTel = "010-2222-3333"
+        this.miss.happenDt = "2022-04-08"
+        this.miss.happenGugun = "서울특별시"
+        this.miss.happenPlace = "관악구 일대"
+        this.miss.descr = "윤식이네 반려견"
+        this.miss.profile = ""
+    },
+    userInfoNo() {
+      if (session.getItem("userInfo") != null)
+        return JSON.parse(session.getItem("userInfo")).no;
+      return null;
+    },
     koreaname(el) {
       this.miss.name = el.target.value;
       this.validate.name = this.miss.name.length > 0 ? true : false;
@@ -598,10 +619,13 @@ export default {
       this.miss.profile = URL.createObjectURL(this.$refs.animalImg.files[0]);
     },
     insertMiss() {
-      if (this.check() === true) {
-        this.$alertify.error("똑바로 입력하세요");
-        return;
+      if(this.userInfoNo() != 78){
+        if (this.check() === true) {
+          this.$alertify.error("똑바로 입력하세요");
+          return;
+        }
       }
+      
       const userInfo = JSON.parse(session.getItem("userInfo"));
 
       let headers = {
