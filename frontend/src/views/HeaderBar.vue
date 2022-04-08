@@ -40,7 +40,7 @@
                           active: this.$store.getters.getHaderindex == 0,
                         }"
                       >
-                        <router-link to="/">홈</router-link>
+                        <router-link to="/" style="font-family:RFR; font-size:20px"> 홈</router-link>
                       </li>
                       <!-- 헤더-유기동물 -->
                       <li
@@ -49,7 +49,7 @@
                           active: this.$store.getters.getHaderindex == 1,
                         }"
                       >
-                        <router-link to="/shelList">유기동물</router-link>
+                        <router-link to="/shelList" style="font-family:RFR; font-size:20px"> 유기동물</router-link>
                       </li>
                       <!-- 헤더-실종동물 -->
                       <li
@@ -58,7 +58,7 @@
                           active: this.$store.getters.getHaderindex == 2,
                         }"
                       >
-                        <router-link to="/missList">실종동물</router-link>
+                        <router-link to="/missList" style="font-family:RFR; font-size:20px"> 실종동물</router-link>
                       </li>
                       <li
                         class="menu-item-has-children"
@@ -66,8 +66,7 @@
                           active: this.$store.getters.getHaderindex == 3,
                         }"
                       >
-                        <router-link to="/analysisview"
-                          >데이터 분석</router-link
+                        <router-link to="/analysisview" style="font-family:RFR; font-size:20px">  데이터 분석</router-link
                         >
                       </li>
                     </ul>
@@ -87,6 +86,8 @@
                             height: 10px;
                             font-size: 17px;
                             padding: 19px 15px;
+                            font-family:RFR; 
+                            font-size:20px;
                           "
                         >
                           내정보<img src="/img/icon/w_pawprint.png" alt=""
@@ -101,6 +102,8 @@
                             height: 10px;
                             font-size: 17px;
                             padding: 19px 15px;
+                            font-family:RFR; 
+                            font-size:20px;
                           "
                           >로그인<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
@@ -114,6 +117,8 @@
                             height: 10px;
                             font-size: 17px;
                             padding: 19px 15px;
+                            font-family:RFR; 
+                            font-size:20px;
                           "
                           >추가정보<img src="/img/icon/w_pawprint.png" alt=""
                         /></router-link>
@@ -125,6 +130,8 @@
                             height: 10px;
                             font-size: 17px;
                             padding: 19px 15px;
+                            font-family:RFR; 
+                            font-size:20px;
                           "
                           :to="{
                             name: `LogoutPage`,
@@ -256,4 +263,24 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@font-face {
+  font-family: "RFR";
+  src: url("../assets/fonts/EliceDigitalRegular.ttf");
+}
+
+@font-face {
+  font-family: "LeferiBaseBold";
+  src: url("../assets/fonts/LeferiBaseBold.ttf");
+}
+
+@font-face {
+  font-family: "SLE";
+  src: url("../assets/fonts/SLEIGothicTTF.ttf");
+}
+
+@font-face{
+  font-family:"kyobo";
+  src:url("../assets/fonts/KyoboHandwriting2020pdy.ttf");
+}
+</style>
