@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.AnalysisDao">
+
+    <insert id="I_weight_list" parameterType="java.util.List">
+        INSERT INTO analysis_result( AR_listcode, AR_key, AR_value )
+        VALUES
+        <foreach item="item" index="index" collection="list">
+            ( #{item.code}, #{item.key}, #{item.value} )
+        </foreach>
+    </insert>
+
+<!--    INSERT INTO `ffp`.`analysis_result` (`AR_listcode`, `AR_key`, `AR_value`) VALUES ('130', '테스트용2', '3');-->
+
+    <insert id="test">
+        INSERT INTO analysis_result( AR_listcode, AR_key, AR_value )
+        VALUES ( '002', '테스트', '003' )
+    </insert>
+
+    <insert id="I_weight" parameterType="com.ssafy.FFP.Dto.AnalysisDto">
+        INSERT INTO analysis_result( AR_listcode, AR_key, AR_value )
+        VALUES ( #{code}, #{key}, #{value} );
+    </insert>
+
+    <insert id="Insert" parameterType="com.ssafy.FFP.Dto.AnalysisDto">
+        INSERT INTO analysis_result( AR_listcode, AR_key, AR_value )
+        VALUES ( #{code}, #{key}, #{value} );
+    </insert>
+
+    <select id="chartlist" parameterType="String" resultType="com.ssafy.FFP.Dto.AnalysisDto">
+        SELECT AR_key as name, AR_value as value
+        FROM analysis_result
+        WHERE AR_listcode = #{code};
+    </select>
+
+    <delete id="cleartable">
+        TRUNCATE TABLE analysis_result;
+    </delete>
+
+</mapper>

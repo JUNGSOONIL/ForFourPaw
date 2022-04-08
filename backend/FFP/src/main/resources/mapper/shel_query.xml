@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.ShelnimalDao">
+
+    <select id="select" parameterType="String"
+            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd,
+               colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
+               processState, sexCd, neuterYn, specialMark, careNm, careTel,
+               careAddr, orgNm, chargeNm, officetel as officeTel
+        from dataset
+        where desertionNo = #{no}
+    </select>
+
+    <insert id="insert" parameterType="com.ssafy.FFP.Dto.DatasetDto">
+        INSERT INTO dataset(desertionNo, filename, happenDt, happenPlace, kindCd,
+            colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd,
+            neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel)
+        VALUES
+            (
+            #{desertionNo}, #{filename}, #{happenDt}, #{happenPlace}, #{kindCd},
+            #{colorCd}, #{age}, #{weight}, #{noticeNo}, #{noticeSdt}, #{noticeEdt},
+            #{popfile}, #{processState}, #{sexCd}, #{neuterYn}, #{specialMark}, #{careNm},
+            #{careTel}, #{careAddr}, #{orgNm}, #{chargeNm}, #{officeTel}
+            )
+    </insert>
+
+    <select id="list" parameterType="map"
+            resultType="com.ssafy.FFP.Dto.ShelnimalDto">
+        select q.no, desertionNo, filename, happenDt, happenPlace, kindCd,
+               colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
+               processState, sexCd, neuterYn, specialMark, careNm, careTel,
+               careAddr, orgNm, chargeNm, officetel as officeTel
+        from (
+            select no
+            from ffp.dataset
+            WHERE noticeEdt >= #{sdt} and processState = '보호중'
+            limit #{limit} offset #{offset}
+        ) q
+        join ffp.dataset d
+        on q.no = d.no
+    </select>
+
+    <select id="find" parameterType="com.ssafy.FFP.Dto.SearchDto"
+            resultType="com.ssafy.FFP.Dto.DatasetDto">
+        select q.no, desertionNo, filename, happenDt, happenPlace, kindCd,
+               colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile,
+               processState, sexCd, neuterYn, specialMark, careNm, careTel,
+               careAddr, orgNm, chargeNm, officetel as officeTel
+        from (
+            select no
+            from ffp.dataset
+            WHERE no is not null
+            <if test ="kindCd != null">
+                AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
+            </if>
+            <if test ="neuterYn != null">
+                AND neuterYn = #{neuterYn}
+            </if>
+            <if test ="sexCd != null">
+                AND sexCd = #{sexCd}
+            </if>
+            <if test ="careAddr != null">
+                AND careAddr LIKE CONCAT('%', #{careAddr}, '%')
+            </if>
+            <if test ="processState == '보호중'">
+                AND processState LIKE CONCAT('%', #{processState}, '%')
+            </if>
+            <if test ="processState == '종료'">
+                AND processState NOT LIKE CONCAT('%', '보호중', '%')
+            </if>
+            order by noticeSdt DESC
+            limit 9 offset 0
+        ) q
+        join ffp.dataset d
+        on q.no = d.no
+    </select>
+    
+    <select id="mainList" parameterType="String" resultType="com.ssafy.FFP.Dto.DatasetDto">
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd, colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd, neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel
+        from dataset
+        where processState = #{processState}
+        ORDER BY RAND() LIMIT 6
+    </select>
+    
+    <select id="searchList" parameterType="String" resultType="String">
+        select kindCd
+        from dataset
+        WHERE kindCd like CONCAT('%',#{kindCd},'%')
+        group by kindCd
+    </select>
+    
+    <select id="userCount" resultType="Integer">
+        SELECT count(distinct no) as count
+		FROM ffp.view
+    </select>
+    
+    <select id="userInfo" resultType="String">
+        select distinct no
+		from ffp.view 
+    </select>
+    
+    <select id="userItem" parameterType="String" resultType="String">
+        select shelnimalId
+		from ffp.view
+		where no = #{no};
+    </select>
+    
+    <select id="mainListLogin" parameterType="java.util.List" resultType="com.ssafy.FFP.Dto.DatasetDto">
+        select no, desertionNo, filename, happenDt, happenPlace, kindCd, colorCd, age, weight, noticeNo, noticeSdt, noticeEdt, popfile, processState, sexCd, neuterYn, specialMark, careNm, careTel, careAddr, orgNm, chargeNm, officetel
+        from dataset
+        where 
+		<foreach collection="list" item="item" open="(" close=")" separator="or">
+		desertionNo = #{item}
+		</foreach>
+    </select>
+    
+    <insert id="viewStore" parameterType="com.ssafy.FFP.Dto.ViewStoreDto">
+		insert IGNORE into ffp.view(no, shelnimalId)
+		values (#{no}, #{desertionNo})
+	</insert>
+
+</mapper>

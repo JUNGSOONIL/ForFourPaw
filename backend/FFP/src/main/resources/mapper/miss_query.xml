@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.MissnimalDao">
+
+    <select id="selectByUser" parameterType="map"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select m.no, m.name, m.kindCd, m.colorCd, m.age, m.sexCd, m.neuterYn, m.author, m.careTel, m.happenDt,
+        m.happenPlace, m.descr, m.profile, u.name as authorName, m.write_time as writeTime
+        from ffp.missnimal m, ffp.user u
+        where m.no = #{no} and u.no = #{userNo}
+    </select>
+
+    <select id="select" parameterType="map"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select m.no, m.name, m.kindCd, m.colorCd, m.age, m.sexCd, m.neuterYn, m.author, m.careTel, m.happenDt,
+               m.happenPlace, m.descr, m.profile, u.name as authorName, m.write_time as writeTime
+        from ffp.missnimal m, ffp.user u
+        where m.no = #{no} and u.no = m.author
+    </select>
+
+    <select id="list" parameterType="map"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile,
+               write_time as writeTime
+        from missnimal
+        ORDER BY no DESC
+        limit #{limit} offset #{offset}
+    </select>
+
+    <select id="find" parameterType="com.ssafy.FFP.Dto.SearchDto"
+            resultType="com.ssafy.FFP.Dto.MissnimalDto">
+        select no, name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile,
+               write_time as writeTime
+        from missnimal
+        WHERE no is not null
+        <if test ="kindCd != null">
+            AND kindCd LIKE CONCAT('%', #{kindCd}, '%')
+        </if>
+        <if test ="careAddr != null">
+            AND happenPlace LIKE CONCAT('%', #{careAddr}, '%')
+        </if>
+        order by no DESC
+        limit #{limit} offset #{offset}
+
+    </select>
+
+    <insert id="create"
+            parameterType="com.ssafy.FFP.Dto.MissnimalDto">
+        insert into missnimal(name, kindCd, colorCd, age, sexCd, neuterYn, author, careTel, happenDt, happenPlace, descr, profile)
+        values (#{name}, #{kindCd}, #{colorCd}, #{age}, #{sexCd}, #{neuterYn}, #{author}, #{careTel}, #{happenDt}, #{happenPlace}, #{descr}, #{profile})
+        <selectKey keyProperty="no" resultType="int" order="AFTER">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
+    </insert>
+
+    <insert id="relation" parameterType="map">
+        insert into miss_img(img_no, miss_no)
+        values (#{imgNo}, #{missNo})
+    </insert>
+
+    <update id="update" parameterType="com.ssafy.FFP.Dto.MissnimalDto">
+        update missnimal
+            set name = #{name},
+            kindCd = #{kindCd},
+            colorCd = #{colorCd},
+            age = #{age},
+            sexCd = #{sexCd},
+            neuterYn = #{neuterYn},
+            careTel = #{careTel},
+            happenDt = #{happenDt},
+            happenPlace = #{happenPlace},
+            descr = #{descr},
+            profile = #{profile}
+        where no = #{no}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        delete from missnimal where
+        no = #{no}
+    </delete>
+</mapper>

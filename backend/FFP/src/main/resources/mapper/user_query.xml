@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.FFP.Dao.UserDao">
+
+	<insert id="userRegister"
+			parameterType="com.ssafy.FFP.Dto.UserDto">
+		insert into ffp.user(email, nickname, name)
+		values (#{email}, #{nickname}, #{name})
+	</insert>
+
+	<select id="userSelect" parameterType="int"
+			resultType="com.ssafy.FFP.Dto.UserDto">
+		select no, email, nickname, name, profile_img as profileImg, addrs
+		from ffp.user
+		where no = #{no}
+	</select>
+
+	<select id="userSelectOnMiss" parameterType="int"
+			resultType="com.ssafy.FFP.Dto.MissnimalDto">
+		select m.no, m.name, m.kindCd, m.colorCd, m.age, m.sexCd, m.neuterYn, m.author, m.careTel, m.happenDt,
+			   m.happenPlace, m.descr, m.profile, u.name as authorName, m.write_time as writeTime
+		from user u, missnimal m
+		where u.no = #{userNo} and m.author = u.no
+	</select>
+
+	<select id="userSelectByEmail" parameterType="string"
+			resultType="com.ssafy.FFP.Dto.UserDto">
+		select no, email, nickname, name, profile_img as profileImg, addrs
+		from ffp.user
+		where email = #{email}
+	</select>
+
+	<select id="duplicateEmail" parameterType="String"
+			resultType="int">
+		select count(*)
+		from ffp.user
+		where email = #{email}
+	</select>
+
+	<select id="duplicateNickname" parameterType="String"
+			resultType="int">
+		select count(*)
+		from ffp.user
+		where nickname = #{nickname}
+	</select>
+
+	<delete id="userDelete" parameterType="int">
+		delete from ffp.user where
+		no = #{no}
+	</delete>
+
+	<update id="userUpdate"
+			parameterType="com.ssafy.FFP.Dto.UserDto">
+		update ffp.user
+		set nickname = #{nickname}, name = #{name}, addrs = #{addrs}, profile_img = #{profileImg}
+		where no = #{no}
+	</update>
+
+	<update id="userRefreshToken"
+			parameterType="com.ssafy.FFP.Dto.UserDto">
+		UPDATE ffp.user
+		SET refresh_token = #{refreshToken}
+		WHERE email = #{email}
+	</update>
+
+	<select id="selectRefreshToken" parameterType="String"
+			resultType="String">
+		select refresh_token
+		from ffp.user
+		where email = #{email}
+	</select>
+</mapper>
