@@ -12,8 +12,6 @@
 6. [ERD](#erd)
 7. [사이트 상세](#사이트-상세)
 8. [주요 기술](#주요-기술)
-9. [개발기록](#개발기록)
-
 
 
 
@@ -24,9 +22,9 @@
 
 commit log: 싸피 외부 깃헙/깃랩 주소
 
-🏠 j6e105.p.ssafy.io
+🏠 [홈페이지](http:j6e105.p.ssafy.io)
 
-📷 프로젝트 영상 : 영상주소
+📷 [UCC](https://www.youtube.com/watch?v=xA28rzi21RE)
 
 📜 [노션](https://sore-property-3e2.notion.site/For-Four-Paw-48c6686519e5478fbaf586b20ebc1de2)
 
@@ -297,12 +295,4 @@ exec/DB/
 
   - 사용자 기반 협업 추천 시스템
 
-  
 
-
-
-
-
-## 개발기록
-
-노션 : https://sore-property-3e2.notion.site/02d47176f7644910845c6f922e96d895
